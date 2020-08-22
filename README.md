@@ -13,6 +13,8 @@ $ npm i.
 
 inside source folder `Coding-Society`
 
+npm run dev will run both the server and react app.
+
 $ npm run dev
    * this is because
    ```
@@ -23,3 +25,9 @@ $ npm run dev
     "frontend": "npm run start --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
    ```
+
+----
+
+DO ALL REACT STUFF / FRONT END INSIDE `CLIENT` FOLDER. 
+
+DO ALL BACKEND / EXPRESS STUFF IN `SERVER`. 
