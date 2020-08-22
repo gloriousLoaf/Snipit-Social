@@ -3,11 +3,11 @@ A place for coders to share and create.
 
 # How to use:
 
-$ cd client 
-$ npm i 
+$ cd client   
+$ npm i   
  
-$ cd server
-$ npm i
+$ cd server. 
+$ npm i. 
 
 (NPM WHEREVER YOU SEE A PACKAGE.JSON)
 
