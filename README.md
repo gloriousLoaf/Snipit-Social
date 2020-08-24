@@ -3,11 +3,14 @@ A place for coders to share and create.
 
 # How to use:
 
+inside base folder of coding society
+
+$ npm i
+
 $ cd client   
 $ npm i   
  
-$ cd server. 
-$ npm i. 
+ 
 
 (NPM WHEREVER YOU SEE A PACKAGE.JSON)
 
