@@ -31,6 +31,8 @@ $ npm run dev
 
 ----
 
+look inside server/index.js for routes
+
 DO ALL REACT STUFF / FRONT END INSIDE `CLIENT` FOLDER. 
 
 DO ALL BACKEND / EXPRESS STUFF IN `SERVER`. 
