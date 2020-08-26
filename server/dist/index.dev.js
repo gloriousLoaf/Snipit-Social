@@ -76,7 +76,7 @@ app.get("/logout", function (req, res) {
   req.logout();
   res.redirect("/");
 });
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3001;
 app.listen(port, function () {
   console.log("Server Listening on ".concat(port));
 });
