@@ -28,6 +28,9 @@ $ `npm run dev`.
     "frontend": "npm run start --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
    ```
+Finally,  
+
+`localhost:3001` instead of `localhost:3000`
 
 ----
 
