@@ -18,7 +18,7 @@ inside source folder `Coding-Society`
 
 npm run dev will run both the server and react app.
 
-$ npm run dev
+$ `npm run dev`. 
    * this is because
    ```
      "scripts": {
