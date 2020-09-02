@@ -12,7 +12,9 @@ var passport = require("passport");
 
 var cookieSession = require("cookie-session");
 
-require("./passport-setup"); // Serve static assets if in production
+require("./passport-setup");
+
+var config = require("./config/key"); // Serve static assets if in production
 
 
 if (process.env.NODE_ENV === "production") {
@@ -23,8 +25,20 @@ if (process.env.NODE_ENV === "production") {
   app.get("*", function (req, res) {
     res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
   });
-} // middleware
+}
 
+var mongoose = require("mongoose");
+
+var connect = mongoose.connect(config.mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+}).then(function () {
+  return console.log('MongoDB Connected...');
+})["catch"](function (err) {
+  return console.log(err);
+}); // middleware
 
 app.use(cors());
 app.use(bodyParser.urlencoded({

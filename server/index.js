@@ -6,6 +6,9 @@ const passport = require("passport");
 const cookieSession = require("cookie-session");
 require("./passport-setup");
 
+const config = require("./config/key");
+
+
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
   // Set static folder
@@ -17,6 +20,17 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
   });
 }
+
+
+
+const mongoose = require("mongoose");
+const connect = mongoose.connect(config.mongoURI,
+  {
+    useNewUrlParser: true, useUnifiedTopology: true,
+    useCreateIndex: true, useFindAndModify: false
+  })
+  .then(() => console.log('MongoDB Connected...'))
+  .catch(err => console.log(err));
 
 // middleware
 app.use(cors());
