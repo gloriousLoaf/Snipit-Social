@@ -7,10 +7,18 @@ import Button from "react-bootstrap/Button";
 function AddPost() {
     // render() {
     const [Text, setText] = useState("Should log this on first press");
+    
 
     const handleTweetChange = (e) => {
         setText(e.target.value)
-        console.log(Text)
+        // console.log(Text)
+    }
+
+    const handleTweetSubmit = (e) => {
+        e.preventDefault();
+        console.log(Text);
+
+        // To do send this to db
     }
 
     return (
@@ -41,9 +49,19 @@ function AddPost() {
 
         ; ~ start of TWEET~
         <Form.Group>
-          <Form.Control variant="textField" as="textarea" rows="3" onChange={handleTweetChange}/>
+          <Form.Control 
+          variant="textField"
+           as="textarea"
+            rows="3"
+            onChange={handleTweetChange}
+             />
         </Form.Group>
-          <Button variant="flat" size="xxl" >Send Tweet</Button>{" "}
+          <Button 
+          variant="flat"
+           size="xxl"
+            onClick={handleTweetSubmit}>
+                Send Tweet
+            </Button>{" "}
         ~~ end of TWEET ~
       </div>
     );
