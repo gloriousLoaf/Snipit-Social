@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const passport = require("passport");
+const router = require('express').Router()
 
 // utility functions
 const isLoggedIn = (req, res, next) => {
@@ -13,7 +14,7 @@ const isLoggedIn = (req, res, next) => {
   };
 
 // api calls
-app.get("/", (req, res) => res.send("hello, please go to /google"));
+app.route("/", (req, res) => res.send("hello, please go to /google"));
 
 app.get("/failed", (req, res) => res.send("failure to log in"));
 // just req.user to see the whole json
@@ -41,4 +42,5 @@ app.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
+module.exports = router
 

@@ -9,35 +9,13 @@ const cookieSession = require("cookie-session");
 require("./passport-setup");
 
 const config = require("./config/key");
-<<<<<<< HEAD
 
-
-// Serve static assets if in production
-if (process.env.NODE_ENV === "production") {
-  // Set static folder
-  // All the javascript and css files will be read and served from this folder
-  app.use(express.static("client/build"));
-=======
->>>>>>> a414385f478be45aa8ab6b7d49bbee4ac2624882
-
-// connecting to database
-const mongoose = require("mongoose");
-const connect = mongoose
-  .connect(config.mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  })
-  .then(() => console.log("MongoDB Connected..."))
-  .catch((err) => console.log(err));
-
-
+const authentication = require('./routes/authentication')
 
 const mongoose = require("mongoose");
 const connect = mongoose.connect(config.mongoURI,
   {
-    useNewUrlParser: true, useUnifiedTopology: true,
+    useNewUrlParser: true, useUnifiedTopology: true, 
     useCreateIndex: true, useFindAndModify: false
   })
   .then(() => console.log('MongoDB Connected...'))
@@ -75,7 +53,7 @@ const isLoggedIn = (req, res, next) => {
 // api calls
 
 // IDEALLY, WE WANT TO MOVE ALL OF THIS, TO THIS
-// app.use('/api/users', require('./routes/users'));
+// app.use('/', authentication);
 
 app.get("/", (req, res) => res.send("hello, please go to /google"));
 
