@@ -4,7 +4,6 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import listPost from "./components/posts/ListPost";
-import Main from "./components/Main";
 import Chat from "./components/chatrooms/Chat/index.js"
 
 
@@ -17,6 +16,7 @@ class App extends Component {
               <img src={logo} className="App-logo" alt="logo" />
               <p>Click the link below!!</p>
               <Route path="/Posts" component={listPost}></Route>
+              <Route path="/Chat" component={Chat}></Route>
 
               <a
                 className="App-link"
