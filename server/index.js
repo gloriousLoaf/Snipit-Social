@@ -10,17 +10,16 @@ require("./passport-setup");
 
 const config = require("./config/key");
 
-// connecting to database
+const authentication = require('./routes/authentication')
+
 const mongoose = require("mongoose");
-const connect = mongoose
-  .connect(config.mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
+const connect = mongoose.connect(config.mongoURI,
+  {
+    useNewUrlParser: true, useUnifiedTopology: true, 
+    useCreateIndex: true, useFindAndModify: false
   })
-  .then(() => console.log("MongoDB Connected..."))
-  .catch((err) => console.log(err));
+  .then(() => console.log('MongoDB Connected...'))
+  .catch(err => console.log(err));
 
 // middleware
 app.use(cors());
@@ -54,7 +53,7 @@ const isLoggedIn = (req, res, next) => {
 // api calls
 
 // IDEALLY, WE WANT TO MOVE ALL OF THIS, TO THIS
-// app.use('/api/users', require('./routes/users'));
+// app.use('/', authentication);
 
 app.get("/", (req, res) => res.send("hello, please go to /google"));
 
