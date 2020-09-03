@@ -2,32 +2,41 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const cors = require("cors");
-
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
 require("./passport-setup");
 
+//// CHAT ADDITIONAL REQUIREMENTS////
+const http = require('http');
+const socketio = require('socket.io');
+// const router = require('./router');
+const { addUser, removeUser, getUser, getUsersInRoom } = require('./usersChat');
+//// rest of implementation is below express & passport ////
+
 const config = require("./config/key");
-
-const authentication = require('./routes/authentication')
-
+const authentication = require('./routes/authentication');
 const mongoose = require("mongoose");
 const connect = mongoose.connect(config.mongoURI,
   {
-    useNewUrlParser: true, useUnifiedTopology: true, 
+    useNewUrlParser: true, useUnifiedTopology: true,
     useCreateIndex: true, useFindAndModify: false
   })
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
 
-// middleware
-app.use(cors());
 
+// Middleware
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-
+// Chat header helpers, prevent CORS err during dev
+app.use(authentication);
+app.use((req, res) => {
+  res.header('Access-Control-Allow-Origin', "localhost:3000");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+});
 app.use(
   cookieSession({
     name: "Coding-society-session",
@@ -50,6 +59,52 @@ const isLoggedIn = (req, res, next) => {
   }
 };
 
+//// SOCKET.IO CHAT ////
+const server = http.createServer(app);
+const io = socketio(server);
+io.origins("*:*");
+
+// On Connect, connect client-side socket
+io.on('connect', (socket) => {
+  socket.on('join', ({ name, room }, cb) => {
+    // pass to addUser()
+    const { err, user } = addUser({ id: socket.id, name, room });
+    if (err) return cb(err);
+    // join user into room
+    socket.join(user.room);
+    // welcome message from admin on signin
+    socket.emit('message', { user: 'admin', text: `Hello ${user.name}, welcome to ${user.room}.` });
+    // broadcast to room that new user has join
+    socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} has joined!` });
+    // who is in the room?
+    io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
+    // final cb no err
+    cb();
+  });
+
+  // expecting message
+  socket.on('sendMessage', (message, cb) => {
+    // get user by id
+    const user = getUser(socket.id);
+    // emit message to room when user sends
+    io.to(user.room).emit('message', { user: user.name, text: message });
+    // io.to(user.room).emit('roomData', { room: user.name, users: getUsersInRoom(user.room) });
+    cb();
+  });
+
+  // On Disconnect
+  socket.on('disconnect', () => {
+    // get user by id
+    const user = removeUser(socket.id);
+    // let the room know user left
+    if (user) {
+      io.to(user.room).emit('message', { user: 'Admin', text: `${user.name} has left.` });
+      io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
+    }
+  })
+});
+//// END SOCKET.IO ////
+
 // api calls
 
 // IDEALLY, WE WANT TO MOVE ALL OF THIS, TO THIS
@@ -62,25 +117,25 @@ app.get("/failed", (req, res) => res.send("failure to log in"));
 app.get("/good", isLoggedIn, (req, res) => res.send(`welcome ${req.user}`));
 
 app.get(
-"/google",
-passport.authenticate("google", { scope: ["profile", "email"] })
+  "/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
 app.get(
-"/google/callback",
-passport.authenticate("google", { failureRedirect: "/failed" }),
-function(req, res) {
-  // Successful authentication, redirect home.
-  res.redirect("/good");
-}
+  "/google/callback",
+  passport.authenticate("google", { failureRedirect: "/failed" }),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/good");
+  }
 );
 
 app.get("/logout", (req, res) => {
-// ending the session
-req.session = null;
-// passports requires you to do this
-req.logout();
-res.redirect("/");
+  // ending the session
+  req.session = null;
+  // passports requires you to do this
+  req.logout();
+  res.redirect("/");
 });
 
 //  
@@ -91,7 +146,7 @@ if (process.env.NODE_ENV === "production") {
   // All the javascript and css files will be read and served from this folder
   app.use(express.static("client/build"));
 
-  // index.html for all page routes    html or routing and naviagtion
+  // index.html for all page routes html or routing and naviagtion
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
   });
@@ -99,6 +154,6 @@ if (process.env.NODE_ENV === "production") {
 
 const port = process.env.PORT || 3001;
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server Listening on ${port}`);
 });
