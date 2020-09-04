@@ -3,6 +3,7 @@ const app = express();
 const path = require("path");
 const cors = require("cors");
 
+
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
@@ -51,6 +52,9 @@ const isLoggedIn = (req, res, next) => {
 };
 
 // api calls
+const posts = require('./routes/posts');
+
+app.use('/api/posts', posts);
 
 // IDEALLY, WE WANT TO MOVE ALL OF THIS, TO THIS
 // app.use('/', authentication);
