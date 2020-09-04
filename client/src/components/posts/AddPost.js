@@ -9,26 +9,34 @@ import Button from "react-bootstrap/Button";
 // class AddPost extends Component {
 function AddPost() {
   // render() {
+
+  // this is hooks state for the Form.Control text area below.
   const [Text, setText] = useState("Should log this on first press");
   // probably need context for global state of userID 
 
-  const [formObject, setFormObject] = useState({});
 
+
+  // onChange, set the state to e.target.value (whatever the user entered)
   const handleTweetChange = e => {
     setText(e.target.value);
     // console.log(Text)
   };
 
+  // onClick on the button, prevent default and do something. 
   const handleTweetSubmit = e => {
     e.preventDefault();
-    // console.log(Text);
-    API.savePost({
-      text: Text
-    })
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
 
-    // To do send this to db
+    // display the state
+    console.log(Text);
+    
+    // Sends to db! from ../Utils folder
+
+    // API.savePost({
+    //   text: Text
+    // })
+    //   .then(res => console.log(res))
+    //   .catch(err => console.log(err))
+
   };
 
   return (

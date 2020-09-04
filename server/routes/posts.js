@@ -23,7 +23,7 @@ router.route("/add/").post(
   }
 );
 
-router.route('/').get(
+router.route('/find').get(
     (req, res) => {
         Post.find()
             .sort({ createdAt: -1})
