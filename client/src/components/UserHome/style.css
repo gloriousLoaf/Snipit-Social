@@ -1,4 +1,4 @@
-.container{
+/* .container{
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -53,4 +53,4 @@ span:nth-child(2) {
 span:not(:nth-child(2)){
     margin-top: 8px;
     font-size: 14px;
-}
+} */

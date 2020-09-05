@@ -22,7 +22,7 @@ const Join = () => {
                     </div>
                     {/* Link creates URL w/ params from useState Hooks */}
                     <Link onClick={e => (!name || !room) ? e.preventDefault() : null} to={`/chat?name=${name}&room=${room}`}>
-                        <button className="button marginTop" type="submit">Sign In</button>
+                        <button className="joinBtn marginTop" type="submit">Sign In</button>
                     </Link>
                 </form>
             </div>

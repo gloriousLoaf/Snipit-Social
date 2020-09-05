@@ -6,6 +6,9 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
 require("./passport-setup");
+// GH Auth req.
+const FormData = require("form-data");
+const fetch = require("node-fetch");
 
 //// CHAT ADDITIONAL REQUIREMENTS////
 const http = require('http');
@@ -33,11 +36,13 @@ app.use(router);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(authentication);
-// Chat header helpers, prevent CORS err during dev
+// Chat & GH Auth header helpers, prevent CORS err during dev
 app.use((req, res) => {
   res.header('Access-Control-Allow-Origin', "localhost:3000");
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
+  //////// SAT 9/5 NEW! and not sure what it does yet! ///////////
+  next();
 });
 app.use(
   cookieSession({
@@ -142,7 +147,42 @@ app.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-//  
+/////// GITHUB AUTH PROXIES ///////
+app.post("/authenticate", (req, res) => {
+  const { client_id, redirect_uri, client_secret, code } = req.body;
+
+  const data = new FormData();
+  data.append("client_id", client_id);
+  data.append("client_secret", client_secret);
+  data.append("code", code);
+  data.append("redirect_uri", redirect_uri);
+
+  // Request to exchange code for an access token
+  fetch(`https://github.com/login/oauth/access_token`, {
+    method: "POST",
+    body: data
+  })
+    .then(response => response.text())
+    .then(paramsString => {
+      let params = new URLSearchParams(paramsString);
+      const access_token = params.get("access_token");
+      const scope = params.get("scope");
+      const token_type = params.get("token_type");
+
+      // Request to return data of a user that has been authenticated
+      return fetch(
+        `https://api.github.com/user?access_token=${access_token}&scope=${scope}&token_type=${token_type}`
+      );
+    })
+    .then(response => response.json())
+    .then(response => {
+      return res.status(200).json(response);
+    })
+    .catch(error => {
+      return res.status(400).json(error);
+    });
+});
+/////// END GH PROXY ///////
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {

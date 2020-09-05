@@ -2,8 +2,8 @@
 // merge into Profile Page
 import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
-import { AuthContext } from "../App";
-import '.style.css';
+import { AuthContext } from "../../App";
+import './style.css';
 
 // create UserHome, temporary profile with GH data, using AuthContext global state
 const UserHome = () => {
@@ -23,20 +23,18 @@ const UserHome = () => {
     }
 
     return (
-        <Wrapper>
-            <div className="container">
-                <button onClick={() => handleLogout()}>Logout</button>
-                <div>
-                    <div className="content">
-                        <img src={avatar_url} alt="Avatar" />
-                        <span>{name}</span>
-                        <span>{public_repos} Repos</span>
-                        <span>{followers} Followers</span>
-                        <span>{following} Following</span>
-                    </div>
+        <div className="container">
+            <button onClick={() => handleLogout()}>Logout</button>
+            <div>
+                <div className="content">
+                    <img src={avatar_url} alt="Avatar" />
+                    <span>{name}</span>
+                    <span>{public_repos} Repos</span>
+                    <span>{followers} Followers</span>
+                    <span>{following} Following</span>
                 </div>
             </div>
-        </Wrapper>
+        </div>
     );
 };
 

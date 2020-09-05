@@ -1,14 +1,16 @@
 import React, { createContext, useReducer } from "react";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 // import logo from "./logo.svg";
 // import "./App.css";
-
 import listPost from "./components/posts/ListPost";
 // import Main from "./components/Main";
 // NEW GitHub Auth Login. MERGE with Google Auth page!
 import Login from "./components/Login";
 // NEW This should MERGE with Profile page!
 import UserHome from "./components/UserHome";
+// NEW reducer for AuthContext
+import { initialState, reducer } from "./store/reducer";
+// Chat
 import Chat from "./components/chatrooms/Chat/index.js";
 import Join from './components/chatrooms/Join/index.js';
 
@@ -26,14 +28,6 @@ const App = () => {
         }}
       >
         <BrowserRouter>
-          <a
-            className="App-link"
-            href="localhost:3001"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Click here for backend test!
-              </a>
           <Switch>
             {/* <Link to="/Posts" /> */}
             <Route path="/login" component={Login} />
@@ -41,13 +35,10 @@ const App = () => {
             <Route path="/Posts" component={listPost}></Route>
             <Route path="/join" exact component={Join} />
             <Route path="/chat" component={Chat}></Route>
-
-            <Link to={"/join"} style={{ margin: "0 5rem" }}>Join Chat</Link>
-
           </Switch>
         </BrowserRouter>
       </AuthContext.Provider>
-    </div>
+    </div >
   );
 }
 
