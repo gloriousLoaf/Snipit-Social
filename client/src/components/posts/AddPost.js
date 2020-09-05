@@ -27,15 +27,15 @@ function AddPost() {
     e.preventDefault();
 
     // display the state
-    console.log(Text);
+    // console.log(Text);
     
     // Sends to db! from ../Utils folder
 
-    // API.savePost({
-    //   text: Text
-    // })
-    //   .then(res => console.log(res))
-    //   .catch(err => console.log(err))
+    API.savePost({
+      text: Text
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
 
   };
 
