@@ -42,11 +42,4 @@ app.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-//// CHAT ////
-router.get("/chat", (req, res) => {
-  res.header('Access-Control-Allow-Credentials', false);
-  res.send({ response: "Server is running" }).status(200);
-});
-
 module.exports = router
-

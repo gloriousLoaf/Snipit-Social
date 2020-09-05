@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import queryString from 'query-string';
 import io from "socket.io-client";
-import TextBox from '../TextBox';
+import CurrentUsers from '../CurrentUsers';
 import Messages from '../Messages';
 import InfoBar from '../InfoBar';
 import Input from '../Input';
@@ -19,7 +19,7 @@ const Chat = ({ location }) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     // ENDPOINT will need to change if server changes
-    const ENDPOINT = 'localhost:5000';
+    const ENDPOINT = 'localhost:3000';
 
     // On Connect, data from URL params
     useEffect(() => {
@@ -34,7 +34,8 @@ const Chat = ({ location }) => {
                 alert(err);
             }
         });
-        // above .emit() might crash? try this:
+
+        // ABOVE BLOCK socket.emit() might crash? try this:
         // socket.emit('join', {name, room}, (err) => {
         //     if(err){
         //          do{
@@ -44,11 +45,13 @@ const Chat = ({ location }) => {
         //     });
         //  }, [ENDPOINT, location.search]);
 
-        // might not need?
+        // might not need? begin:
         return () => {
             socket.emit('disconnect');
             socket.off();
         }
+        // end
+
     }, [ENDPOINT, location.search]);
 
     // message handling
@@ -78,7 +81,7 @@ const Chat = ({ location }) => {
                 <Messages messages={messages} name={name} />
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
             </div>
-            <TextBox users={users} />
+            <CurrentUsers users={users} />
         </div>
     );
 }

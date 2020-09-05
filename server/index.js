@@ -10,9 +10,10 @@ require("./passport-setup");
 //// CHAT ADDITIONAL REQUIREMENTS////
 const http = require('http');
 const socketio = require('socket.io');
-// const router = require('./router');
+// const router = require('./router');    THIS IS TEMPORARILY IN AUTH.JS
+const router = require('./routes/chatRouter.js');
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./usersChat');
-//// rest of implementation is below express & passport ////
+//// THE REST is below express & passport ////
 
 const config = require("./config/key");
 const authentication = require('./routes/authentication');
@@ -28,10 +29,11 @@ const connect = mongoose.connect(config.mongoURI,
 
 // Middleware
 app.use(cors());
+app.use(router);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// Chat header helpers, prevent CORS err during dev
 app.use(authentication);
+// Chat header helpers, prevent CORS err during dev
 app.use((req, res) => {
   res.header('Access-Control-Allow-Origin', "localhost:3000");
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -60,7 +62,8 @@ const isLoggedIn = (req, res, next) => {
 };
 
 //// SOCKET.IO CHAT ////
-const server = http.createServer(app);
+// This line pulls in express app:
+const server = http.createServer(app)
 const io = socketio(server);
 io.origins("*:*");
 
@@ -88,6 +91,7 @@ io.on('connect', (socket) => {
     const user = getUser(socket.id);
     // emit message to room when user sends
     io.to(user.room).emit('message', { user: user.name, text: message });
+    // depending on implementations, might need this instead:
     // io.to(user.room).emit('roomData', { room: user.name, users: getUsersInRoom(user.room) });
     cb();
   });
@@ -154,6 +158,8 @@ if (process.env.NODE_ENV === "production") {
 
 const port = process.env.PORT || 3001;
 
+/* This server using http & express app should still implement
+  all aspects needed for express, see line 64 */
 server.listen(port, () => {
   console.log(`Server Listening on ${port}`);
 });

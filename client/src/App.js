@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
-import logo from "./logo.svg";
-import "./App.css";
+// import logo from "./logo.svg";
+// import "./App.css";
 
 import listPost from "./components/posts/ListPost";
 // import Main from "./components/Main";
@@ -28,6 +28,7 @@ class App extends Component {
             <Route path="/join" exact component={Join} />
             <Route path="/chat" component={Chat}></Route>
 
+            <Link to={"/join"} style={{ margin: "0 5rem" }}>Join Chat</Link>
 
 
           </Switch>

@@ -1,7 +1,10 @@
+/* CURRENT USERS */
+// this might go away entirely?
 import React from 'react';
+import onlineIcon from '../Icons/onlineIcon.png';
+import './style.css';
 
-
-const TextContainer = ({ users }) => (
+const CurrentUsers = ({ users }) => (
     <div className="textContainer">
         {
             users
@@ -13,7 +16,7 @@ const TextContainer = ({ users }) => (
                                 {users.map(({ name }) => (
                                     <div key={name} className="activeItem">
                                         {name}
-                                        <img alt="Online Icon" />
+                                        <img alt="Online Icon" src={onlineIcon} />
                                     </div>
                                 ))}
                             </h2>
@@ -25,4 +28,4 @@ const TextContainer = ({ users }) => (
     </div>
 );
 
-export default TextContainer;
+export default CurrentUsers;
