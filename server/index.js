@@ -70,6 +70,8 @@ app.get(
 passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
+// might have to change this redirect to "ACCOUNT CREATED",
+// currently it sends "login failed" for the first time user signs up. 
 app.get(
 "/google/callback",
 passport.authenticate("google", { failureRedirect: "/failed" }),

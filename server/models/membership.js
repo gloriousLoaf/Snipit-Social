@@ -4,6 +4,9 @@ const mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
+const User = require("./User");
+
+
 const membershipSchema = new Schema({
     provider: {
         type: String,
@@ -16,7 +19,7 @@ const membershipSchema = new Schema({
     },
     userId: {
         type: ObjectId, 
-        ref:"User",
+        ref: User,
     },
     dateAdded: {
         type: Date,
