@@ -1,5 +1,16 @@
 const passport = require("passport");
-var GoogleStrategy = require("passport-google-oauth20").Strategy;
+const User = require("../server/models/User");
+const mongoose = require('mongoose');
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const Membership = require('./models/membership')
+
+
+// this is what we can get out of Google sign in 
+// https://developers.google.com/identity/protocols/oauth2/scopes#google-sign-in
+// const SCOPE = [
+//   profile,
+//   email
+// ]
 
 // what its suppose to be
 // passport.serializeUser(function(user, done) {
@@ -39,12 +50,39 @@ passport.use(
       //if user is not in db, create user, then pass into the `done` function
 
       // default settings for real MERN
-      // User.findOrCreate({ googleId: profile.id }, function(err, user) {
+      // need to create user model
+      User.findOne({ 
+        providerUserId: profile.id,
+        email: profile.email
+      }, function(err, user) {
 
-      // for testing, doing done(null, profile)
-      // but is normally done(err, user)
-      return done(null, profile);
-      //});
+        // for testing, doing done(null, profile)
+        // but is normally done(err, user)
+        
+        // return done(null, providerUserId);
+        
+        if (err) {
+          return(done(err));
+        }
+
+        // if no user was found...
+        if (!user) {
+          user = new User({
+            name: profile.displayName,
+            email: profile.emails[0].value,
+            username: profile.username,
+            provider: 'Google',
+            google: profile._json 
+          });
+          user.save(function(err) {
+            if (err) console.log(err);
+            return done(err, user);
+          });
+        } else {
+          //found user
+          return done(err, user);
+        }
+      });
     }
   )
 );
