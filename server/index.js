@@ -6,14 +6,14 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
 require("./passport-setup");
-// GH Auth req.
+// GH Auth
+require('dotenv').config();
 const FormData = require("form-data");
 const fetch = require("node-fetch");
 
 //// CHAT ADDITIONAL REQUIREMENTS////
 const http = require('http');
 const socketio = require('socket.io');
-// const router = require('./router');    THIS IS TEMPORARILY IN AUTH.JS
 const router = require('./routes/chatRouter.js');
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./usersChat');
 //// THE REST is below express & passport ////
@@ -35,15 +35,9 @@ app.use(cors());
 app.use(router);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.json({ type: "text/*" }));
 app.use(authentication);
-// Chat & GH Auth header helpers, prevent CORS err during dev
-app.use((req, res) => {
-  res.header('Access-Control-Allow-Origin', "localhost:3000");
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  //////// SAT 9/5 NEW! and not sure what it does yet! ///////////
-  next();
-});
+
 app.use(
   cookieSession({
     name: "Coding-society-session",
@@ -68,7 +62,7 @@ const isLoggedIn = (req, res, next) => {
 
 //// SOCKET.IO CHAT ////
 // This line pulls in express app:
-const server = http.createServer(app)
+const server = http.createServer(app);
 const io = socketio(server);
 io.origins("*:*");
 
@@ -148,8 +142,13 @@ app.get("/logout", (req, res) => {
 });
 
 /////// GITHUB AUTH PROXIES ///////
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', "*");
+  next();
+});
 app.post("/authenticate", (req, res) => {
   const { client_id, redirect_uri, client_secret, code } = req.body;
+
 
   const data = new FormData();
   data.append("client_id", client_id);
@@ -169,6 +168,19 @@ app.post("/authenticate", (req, res) => {
       const scope = params.get("scope");
       const token_type = params.get("token_type");
 
+      /* HERE this will need to be updated to have.
+      access_token moved to a header param in fetch()
+      Request to return data of a user that has been authenticated
+      something like this:
+
+      return fetch(
+        `https://api.github.com/user?scope=${scope}&token_type=${token_type}`, {
+        headers: {
+          Authorization: access_token
+        }
+      }); */
+
+      ///// THIS METHOD Deprecating in a few months
       // Request to return data of a user that has been authenticated
       return fetch(
         `https://api.github.com/user?access_token=${access_token}&scope=${scope}&token_type=${token_type}`
@@ -196,7 +208,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 5000;
 
 /* This server using http & express app should still implement
   all aspects needed for express, see line 64 */

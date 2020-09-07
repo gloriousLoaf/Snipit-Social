@@ -13,7 +13,7 @@ const Login = () => {
     const { client_id, redirect_uri } = state;
 
     useEffect(() => {
-        //  Github redirects back  with a code parameter
+        //  Github redirects back with a code parameter
         const url = window.location.href;
         const hasCode = url.includes("?code=");
 
@@ -54,9 +54,10 @@ const Login = () => {
     }, [state, dispatch, data]);
 
     if (state.isLoggedIn) {
-        return <Redirect to="/" />;
+        return <Redirect to="/userhome" />;
     }
 
+    // Based on login state, this displays a loading spinner and / or error msg
     return (
         <div className="login-card">
             <h1 className="welcome">Welcome</h1>
@@ -73,11 +74,11 @@ const Login = () => {
                                 // Link to request GitHub access
                             }
 
-                            <button className="login-link"
+                            <a className="login-link"
                                 href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}
                                 onClick={() => {
                                     setData({ ...data, errorMessage: "" });
-                                }}>Login with GitHub</button>
+                                }}>Login with GitHub</a>
                         </>
                     )}
             </div>
