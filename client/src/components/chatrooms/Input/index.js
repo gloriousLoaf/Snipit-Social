@@ -6,7 +6,7 @@ import './style.css';
 
 // render the Input text bar, passing all these as props
 const Input = ({ setMessage, sendMessage, message }) => (
-    <form className="form">
+    <form className="chatForm">
         <input
             className="input"
             type="text"

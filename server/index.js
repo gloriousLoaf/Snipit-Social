@@ -208,6 +208,9 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+// socket.io is configured for 3001, but GH auth needs 5000
+// working on fix...
+// const port = process.env.PORT || 3001;
 const port = process.env.PORT || 5000;
 
 /* This server using http & express app should still implement

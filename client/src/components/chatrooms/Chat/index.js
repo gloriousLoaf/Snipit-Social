@@ -64,7 +64,7 @@ const Chat = ({ location }) => {
         socket.on("roomData", ({ users }) => {
             setUsers(users);
         });
-    }, []); // might need [messages]
+    }, []); // might need [messages] in callback
 
     // send a new message
     const sendMessage = (e) => {
@@ -76,7 +76,7 @@ const Chat = ({ location }) => {
 
     return (
         <div className="outerContainer">
-            <div className="container">
+            <div className="chatContainer">
                 <InfoBar room={room} />
                 <Messages messages={messages} name={name} />
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />

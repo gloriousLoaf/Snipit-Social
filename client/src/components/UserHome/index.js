@@ -23,16 +23,14 @@ const UserHome = () => {
     }
 
     return (
-        <div className="container">
-            <button onClick={() => handleLogout()}>Logout</button>
-            <div>
-                <div className="content">
-                    <img src={avatar_url} alt="Avatar" />
-                    <span>{name}</span>
-                    <span>{public_repos} Repos</span>
-                    <span>{followers} Followers</span>
-                    <span>{following} Following</span>
-                </div>
+        <div className="profileContainer">
+            <button className="logoutBtn" onClick={() => handleLogout()}>Logout</button>
+            <div className="profileContent">
+                <img className="avatar" src={avatar_url} alt="Avatar" />
+                <span>{name}</span>
+                <span>{public_repos} Repos</span>
+                <span>{followers} Followers</span>
+                <span>{following} Following</span>
             </div>
         </div>
     );

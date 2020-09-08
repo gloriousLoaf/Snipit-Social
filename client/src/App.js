@@ -55,7 +55,7 @@ const App = () => {
             eventually this is the user's profile page */}
             <Route path="/userhome" component={UserHome} />
 
-            {/* not created yet */}
+            {/* no content yet */}
             {/* <Route path="/Posts" component={listPost} /> */}
 
             {/* Join goes to Chat. Join is temporary until DMs exist */}
