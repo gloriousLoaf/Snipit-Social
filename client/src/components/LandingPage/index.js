@@ -9,7 +9,7 @@
 // all in one big chunk.
 
 import React, { useState } from 'react';
-import { Form, Nav, Button, Modal } from 'react-bootstrap'
+import { Form, Nav, Tabs, Tab, Button, Modal } from 'react-bootstrap'
 import './style.css';
 
 const LandingPage = () => {
@@ -63,11 +63,10 @@ const LandingPage = () => {
                 show={show}
                 onHide={handleClose}
                 backdrop="static"
-                keyboard={false}
+                keyboard={true}
             >
-                <Modal.Header closeButton >
-                    {/* Modal Nav tabs */}
-                    <Nav className="nav nav-tabs" role="tablist" variant="tabs">
+                {/* MODAL NAB TABS - left these in because they have the <i> icons */}
+                {/* <Nav className="nav nav-tabs" role="tablist" variant="tabs">
                         <Nav.Item className="nav-item">
                             <Nav.Link href="#login" className="nav-link active text-secondary" data-toggle="tab" role="tab">
                                 <i className="fa fa-user"></i>
@@ -81,80 +80,84 @@ const LandingPage = () => {
                                 &nbsp; Register
                             </Nav.Link>
                         </Nav.Item>
-                    </Nav>
+                    </Nav> */}
 
+                {/* CLOSE BUTTON can only be implementend in a Modal.Header, but that
+                puts a janky looking header-line under it. Escape key closes Modal */}
+                {/* <Modal closeButton className="text-secondary flex-row-reverse" >
+                    <span className="ml-1">close</span>
+                </Modal> */}
 
-                    {/* LEFT OFF HERE! */}
-
-
-                    <div className="tab-content">
-                        {/* Login Modal Tab */}
-                        <div className="tab-pane fade in show active" id="login" role="tabpanel">
-                        </div>
-                    </div>
-                </Modal.Header>
                 <Modal.Body>
-                    {/* Login Body */}
-                    <div className="modal-body mx-4">
-                        {/* Email */}
-                        <div className="md-form mb-4">
-                            <label data-error="wrong" data-success="right" htmlFor="Form-email1">Your email</label>
-                            <input type="email" id="Form-email1" className="form-control validate" />
-                        </div>
-                        {/* Password */}
-                        <div className="md-form pb-3">
-                            <label data-error="wrong" data-success="right" htmlFor="Form-pass1">Your password</label>
-                            <input type="password" id="Form-pass1" className="form-control validate" />
-                            <p className="font-small blue-text d-flex justify-content-end">Forgot <a href="#" className="blue-text ml-1">Password?</a></p>
-                        </div>
-                        {/* Sign in */}
-                        <div className="text-center mb-3">
-                            <button type="button" className="btn btn-primary btn-block btn-rounded z-depth-1a">Sign in</button>
-                        </div>
-                        {/* Other Sign in Methods */}
-                        <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">or Sign in with</p>
-                        <div className="row my-2 d-flex justify-content-center">
-                            {/* Facebook Login, stretch goal?? */}
-                            {/* <button type="button" className="btn btn-white btn-rounded mr-md-2"><i className="fa fa-facebook text-center" style={{ fontSize: 30 }}></i></button> */}
-                            {/* Google Login */}
-                            <button type="button" className="btn btn-white btn-rounded mr-md-2"><i className="fa fa-google" style={{ fontSize: 30 }}></i></button>
-                            {/* Github Login */}
-                            <button type="button" className="btn btn-white btn-rounded mr-md-2"><i className="fa fa-github" style={{ fontSize: 30 }}></i></button>
-                        </div>
-                    </div>
+                    <Tabs defaultActiveKey="login">
 
-                    {/* Register Modal Tab */}
-                    <div className="tab-pane fade" id="register" role="tabpanel">
-                        {/* Register Body */}
-                        <div className="modal-body">
+                        {/* Login Body */}
+                        <Tab eventKey="login" title="Login">
+                            <div className="modal-body mx-4">
+                                {/* Email */}
+                                <div className="md-form mb-4">
+                                    <label data-error="wrong" data-success="right" htmlFor="Form-email1">Your email</label>
+                                    <input type="email" id="Form-email1" className="form-control validate" />
+                                </div>
+                                {/* Password */}
+                                <div className="md-form pb-3">
+                                    <label data-error="wrong" data-success="right" htmlFor="Form-pass1">Your password</label>
+                                    <input type="password" id="Form-pass1" className="form-control validate" />
+                                    <p className="font-small blue-text d-flex justify-content-end">Forgot <a href="#" className="blue-text ml-1">Password?</a></p>
+                                </div>
+                                {/* Sign in */}
+                                <div className="text-center mb-3">
+                                    <button type="button" className="btn btn-primary btn-block btn-rounded z-depth-1a">Sign in</button>
+                                </div>
+                                {/* Other Sign in Methods */}
+                                <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">or Sign in with</p>
+                                <div className="row my-2 d-flex justify-content-center">
 
-                            {/* Name */}
-                            <div className="md-form form-sm mb-4">
-                                <i className="fa fa-user prefix"></i>
-                                <input type="email" id="modalLRInput12" className="form-control form-control-sm validate" />
-                                <label data-error="wrong" data-success="right" htmlFor="modalLRInput12">Your Name</label>
+                                    {/* Facebook Login, stretch goal?? */}
+                                    {/* <button type="button" className="btn btn-white btn-rounded mr-md-2"><i className="fa fa-facebook text-center" style={{ fontSize: 30 }}></i></button> */}
+
+                                    {/* Google Login */}
+                                    <button type="button" className="btn btn-white btn-rounded mr-md-2"><i className="fa fa-google" style={{ fontSize: 30 }}></i></button>
+                                    {/* Github Login */}
+                                    <button type="button" className="btn btn-white btn-rounded mr-md-2"><i className="fa fa-github" style={{ fontSize: 30 }}></i></button>
+                                </div>
                             </div>
+                        </Tab>
 
-                            {/* Email   */}
-                            <div className="md-form form-sm mb-4">
-                                <i className="fa fa-envelope prefix"></i>
-                                <input type="email" id="modalLRInput12" className="form-control form-control-sm validate" />
-                                <label data-error="wrong" data-success="right" htmlFor="modalLRInput12">Your Email</label>
-                            </div>
 
-                            {/* Password */}
-                            <div className="md-form form-sm mb-4">
-                                <i className="fa fa-lock prefix"></i>
-                                <input type="password" id="modalLRInput13" className="form-control form-control-sm validate" />
-                                <label data-error="wrong" data-success="right" htmlFor="modalLRInput13">Your Password</label>
-                            </div>
+                        {/* Register Modal Tab */}
+                        <Tab eventKey="register" title="Register" id="register">
+                            {/* Register Body */}
+                            <div className="modal-body">
+                                {/* Name */}
+                                <div className="md-form form-sm mb-4">
+                                    <i className="fa fa-user prefix"></i>
+                                    <input type="email" id="modalLRInput12" className="form-control form-control-sm validate" />
+                                    <label data-error="wrong" data-success="right" htmlFor="modalLRInput12">Your Name</label>
+                                </div>
 
-                            {/* Sign Up */}
-                            <div className="text-center form-sm mt-2">
-                                <button className="btn btn-primary">Sign up <i className="fa fa-sign-in ml-1"></i></button>
+                                {/* Email */}
+                                <div className="md-form form-sm mb-4">
+                                    <i className="fa fa-envelope prefix"></i>
+                                    <input type="email" id="modalLRInput12" className="form-control form-control-sm validate" />
+                                    <label data-error="wrong" data-success="right" htmlFor="modalLRInput12">Your Email</label>
+                                </div>
+
+                                {/* Password */}
+                                <div className="md-form form-sm mb-4">
+                                    <i className="fa fa-lock prefix"></i>
+                                    <input type="password" id="modalLRInput13" className="form-control form-control-sm validate" />
+                                    <label data-error="wrong" data-success="right" htmlFor="modalLRInput13">Your Password</label>
+                                </div>
+
+                                {/* Sign Up */}
+                                <div className="text-center form-sm mt-2">
+                                    <button className="btn btn-primary">Sign up <i className="fa fa-sign-in ml-1"></i></button>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        </Tab>
+
+                    </Tabs>
                 </Modal.Body>
                 <Modal.Footer>
                     <div className="modal-footer">
