@@ -1,18 +1,30 @@
 import React, { createContext, useReducer } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-// import logo from "./logo.svg";
-// import "./App.css";
-import listPost from "./components/posts/ListPost";
 // import Main from "./components/Main";
-// NEW GitHub Auth Login. MERGE with Google Auth page!
+
+// NEW Landing Page, from Chase's home-page branch
+import LandingPage from './components/LandingPage';
+
+// GitHub Auth Login. MERGE with Google Auth page!
 import Login from "./components/Login";
-// NEW This should MERGE with Profile page!
+
+// This should MERGE with Profile page!
 import UserHome from "./components/UserHome";
-// NEW reducer for AuthContext
+
+// Timeline stuff, coming soon
+// import listPost from "./components/posts/ListPost";
+
+// NEW reducer store for AuthContext,
+// may be how all logins are handled
 import { initialState, reducer } from "./store/reducer";
+
 // Chat
 import Chat from "./components/chatrooms/Chat/index.js";
 import Join from './components/chatrooms/Join/index.js';
+
+// Eventually we'll have a logo and basic App-wide styles
+// import logo from "./logo.svg";
+// import "./App.css";
 
 export const AuthContext = createContext();
 
@@ -29,14 +41,30 @@ const App = () => {
       >
         <BrowserRouter>
           <Switch>
-            {/* <Link to="/Posts" /> */}
+
+            {/* This screws up navigating manually to other pages
+            for some reason? Comment it out to get to others.
+            Must fix soon, possibly related to BS auth'ing? */}
+            {/* NEW - LandingPage - merge in all Auth's */}
+            <Route path="/" component={LandingPage} />
+
+            {/* Login is going to merge into LandingPage */}
             <Route path="/login" component={Login} />
+
+            {/* UserHome is where GH auth directs to,
+            eventually this is the user's profile page */}
             <Route path="/userhome" component={UserHome} />
-            <Route path="/Posts" component={listPost}></Route>
+
+            {/* not created yet */}
+            {/* <Route path="/Posts" component={listPost} /> */}
+
+            {/* Join goes to Chat. Join is temporary until DMs exist */}
             <Route path="/join" exact component={Join} />
-            <Route path="/chat" component={Chat}></Route>
+            <Route path="/chat" component={Chat} />
+
           </Switch>
         </BrowserRouter>
+
       </AuthContext.Provider>
     </div >
   );

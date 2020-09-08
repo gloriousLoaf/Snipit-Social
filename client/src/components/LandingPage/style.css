@@ -1,0 +1,31 @@
+:root {
+	--main-color: #18a0fb;
+	--dark-color: #272828;
+	--footer-link-color: #aab8c2;
+	--forter-top-border-color: #e6ecf0;
+}
+
+.btn-round {
+	border-radius: 30px;
+}
+.bg-main {
+	background: var(--main-color);
+}
+
+.bg-dark {
+	background: var(--dark-color);
+}
+
+.text-cyan {
+	color: #35bdff;
+}
+
+.border {
+	border-color: var(--dark-color);
+}
+
+@media (min-width: 768px) {
+	.h-md-100 {
+		height: 100vh;
+	}
+}
