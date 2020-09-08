@@ -2,10 +2,10 @@
 	--main-color: #18a0fb;
 	--dark-color: #272828;
 	--footer-link-color: #aab8c2;
-	--forter-top-border-color: #e6ecf0;
+	--footer-top-border-color: #e6ecf0;
 }
 
-.btn-round {
+.signinBtn {
 	border-radius: 30px;
 }
 .bg-main {
@@ -27,5 +27,8 @@
 @media (min-width: 768px) {
 	.h-md-100 {
 		height: 100vh;
-	}
+    }
+    .signinBtn {
+        padding: 0.5rem 3rem;
+    }
 }

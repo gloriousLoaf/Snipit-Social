@@ -48,11 +48,7 @@ const LandingPage = () => {
                 <div className="d-md-flex align-items-center h-md-100 p-5 justify-content-center loginarea">
                     <div className="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
                         <Form className="p-5">
-                            {/* old button, CDN method: */}
-                            {/* <Button type="button" className="btn btn-primary btn-round btn-block shadow-sm" data-toggle="modal" data-target="#exampleModalCenter">Sign in</Button> */}
-
-                            {/* NEW react way (hopefully) */}
-                            <Button type="button" className="btn btn-primary btn-round btn-block shadow-sm" onClick={handleShow}>Sign in</Button>
+                            <Button type="button" className="signinBtn btn btn-primary btn-round btn-block shadow-sm" onClick={handleShow}>Sign in</Button>
                         </Form>
                     </div>
                 </div>
@@ -160,12 +156,11 @@ const LandingPage = () => {
                     </Tabs>
                 </Modal.Body>
                 <Modal.Footer>
-                    <div className="modal-footer">
-                        <div className="options text-right">
-                            <p className="pt-1">Already have an account? <a href="login" className="blue-text mr-1">Log In</a></p>
-                        </div>
-                        <button type="button" className="btn btn-outline-primary waves-effect ml-auto" data-dismiss="modal">Close</button>
+                    <div className="options text-right">
+                        <p className="pt-1">Already have an account? <a href="login" className="blue-text mr-1">Log In</a></p>
+                        <p>Escape to close</p>
                     </div>
+                    {/* <Button type="button" className="btn btn-outline-primary waves-effect ml-auto" data-dismiss="modal">Close</Button> */}
                 </Modal.Footer>
             </Modal>
         </div>
