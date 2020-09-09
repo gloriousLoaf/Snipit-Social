@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 // import Main from "./components/Main";
 
 // NEW Landing Page, from Chase's home-page branch
-import LandingPage from './components/LandingPage';
+// import LandingPage from './components/LandingPage';
 
 // GitHub Auth Login. MERGE with Google Auth page!
 import Login from "./components/Login";
@@ -46,7 +46,7 @@ const App = () => {
             for some reason? Comment it out to get to others.
             Must fix soon, possibly related to BS auth'ing? */}
             {/* NEW - LandingPage - merge in all Auth's */}
-            <Route path="/" component={LandingPage} />
+            {/* <Route path="/" component={LandingPage} /> */}
 
             {/* Login is going to merge into LandingPage */}
             <Route path="/login" component={Login} />

@@ -19,7 +19,7 @@ const Chat = ({ location }) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     // ENDPOINT will need to change if server changes
-    const ENDPOINT = 'localhost:3000';
+    const ENDPOINT = 'localhost:5000';
 
     // On Connect, data from URL params
     useEffect(() => {

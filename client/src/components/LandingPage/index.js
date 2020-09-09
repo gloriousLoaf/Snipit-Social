@@ -9,7 +9,7 @@
 // all in one big chunk.
 
 import React, { useState } from 'react';
-import { Form, Nav, Tabs, Tab, Button, Modal } from 'react-bootstrap'
+import { Form, Tabs, Tab, Button, Modal } from 'react-bootstrap'
 import './style.css';
 
 const LandingPage = () => {
