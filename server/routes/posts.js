@@ -38,8 +38,7 @@ router.route("/delete/:id").delete((req, res) => {
       return res.json(Tweets)
     })
       .catch(err => res.status(422).json(err));
-    
-    
+  
     // .then(Posts => res.json(Posts))
     // res.redirect('/posts')
 });
