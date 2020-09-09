@@ -99,6 +99,7 @@ passport.use(
           }
           if (!membershipData) {
             membership = new Membership({
+              // change this line to whatever provider (e.g. Github)
               provider: "Google",
               providerUserId: profile.id,
               // accessToken: accessToken,
