@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from "react";
+import API from "../../utils/API";
 
-class Post extends Component {
-    render() {
-        return (
-            <div>
-                This is a post item.
-            </div>
-        )
-    }
+function Posts() {
+
+  return ( 
+  <div>
+      This is a post item.
+      </div>
+  );
 }
 
-export default Post;
+export default Posts;
