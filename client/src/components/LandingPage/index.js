@@ -89,68 +89,72 @@ const LandingPage = () => {
 
                         {/* Login Body */}
                         <Tab eventKey="login" title="Login">
-                            <div className="modal-body mx-4">
+                            <Form className="modal-body mx-4">
                                 {/* Email */}
-                                <div className="md-form mb-4">
-                                    <label data-error="wrong" data-success="right" htmlFor="Form-email1">Your email</label>
-                                    <input type="email" id="Form-email1" className="form-control validate" />
-                                </div>
+                                <Form.Group className="md-form mb-4" controlId="formBasicEmail">
+                                    <Form.Label data-error="wrong" data-success="right">Your email</Form.Label>
+                                    <Form.Control type="email"
+                                        placeholder="Enter email" className="form-control validate" />
+                                    <Form.Text className="text-muted">
+                                        We'll never share your email with anyone else.
+                                    </Form.Text>
+                                </Form.Group>
                                 {/* Password */}
-                                <div className="md-form pb-3">
-                                    <label data-error="wrong" data-success="right" htmlFor="Form-pass1">Your password</label>
-                                    <input type="password" id="Form-pass1" className="form-control validate" />
-                                    <p className="font-small blue-text d-flex justify-content-end">Forgot <a href="#" className="blue-text ml-1">Password?</a></p>
-                                </div>
+                                <Form.Group className="md-form pb-3" controlId="formBasicPassword">
+                                    <Form.Label data-error="wrong" data-success="right">Your password</Form.Label>
+                                    <Form.Control type="password" placeholder="••••••" className="form-control validate" />
+                                    <p className="font-small blue-text d-flex justify-content-end"><a href="#" className="blue-text ml-1">Forgot Password?</a></p>
+                                </Form.Group>
                                 {/* Sign in */}
                                 <div className="text-center mb-3">
-                                    <button type="button" className="btn btn-primary btn-block btn-rounded z-depth-1a">Sign in</button>
+                                    <Button type="button" className="btn btn-primary btn-block btn-rounded z-depth-1a">Sign in</Button>
                                 </div>
                                 {/* Other Sign in Methods */}
-                                <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">or Sign in with</p>
+                                <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">Or Sign in with</p>
                                 <div className="row my-2 d-flex justify-content-center">
 
                                     {/* Facebook Login, stretch goal?? */}
                                     {/* <button type="button" className="btn btn-white btn-rounded mr-md-2"><i className="fa fa-facebook text-center" style={{ fontSize: 30 }}></i></button> */}
 
                                     {/* Google Login */}
-                                    <button type="button" className="btn btn-white btn-rounded mr-md-2"><i className="fa fa-google" style={{ fontSize: 30 }}></i></button>
+                                    <Button type="button" className="btn-dark mr-2 md-2"><i className="fa fa-google" style={{ fontSize: 30 }}></i></Button>
                                     {/* Github Login */}
-                                    <button type="button" className="btn btn-white btn-rounded mr-md-2"><i className="fa fa-github" style={{ fontSize: 30 }}></i></button>
+                                    <Button type="button" className="btn-dark mr-2 md-2"><i className="fa fa-github" style={{ fontSize: 30 }}></i></Button>
                                 </div>
-                            </div>
+                            </Form>
                         </Tab>
 
 
                         {/* Register Modal Tab */}
                         <Tab eventKey="register" title="Register" id="register">
                             {/* Register Body */}
-                            <div className="modal-body">
+                            <Form className="modal-body">
                                 {/* Name */}
-                                <div className="md-form form-sm mb-4">
-                                    <i className="fa fa-user prefix"></i>
-                                    <input type="email" id="modalLRInput12" className="form-control form-control-sm validate" />
-                                    <label data-error="wrong" data-success="right" htmlFor="modalLRInput12">Your Name</label>
-                                </div>
+                                <Form.Group className="md-form form-sm mb-4">
+                                    <i className="fa fa-user prefix mr-2"></i>
+                                    <Form.Label data-error="wrong" data-success="right">Your Name</Form.Label>
+                                    <Form.Control type="email" placeholder="Enter email" className="form-control form-control-sm validate" />
+                                </Form.Group>
 
                                 {/* Email */}
-                                <div className="md-form form-sm mb-4">
-                                    <i className="fa fa-envelope prefix"></i>
-                                    <input type="email" id="modalLRInput12" className="form-control form-control-sm validate" />
-                                    <label data-error="wrong" data-success="right" htmlFor="modalLRInput12">Your Email</label>
-                                </div>
+                                <Form.Group className="md-form form-sm mb-4">
+                                    <i className="fa fa-envelope prefix mr-2"></i>
+                                    <Form.Label data-error="wrong" data-success="right">Your Email</Form.Label>
+                                    <Form.Control type="email" placeholder="Enter email" className="form-control form-control-sm validate" />
+                                </Form.Group>
 
                                 {/* Password */}
-                                <div className="md-form form-sm mb-4">
-                                    <i className="fa fa-lock prefix"></i>
-                                    <input type="password" id="modalLRInput13" className="form-control form-control-sm validate" />
-                                    <label data-error="wrong" data-success="right" htmlFor="modalLRInput13">Your Password</label>
-                                </div>
+                                <Form.Group className="md-form form-sm mb-4">
+                                    <i className="fa fa-lock prefix mr-2"></i>
+                                    <Form.Label data-error="wrong" data-success="right">Your Password</Form.Label>
+                                    <Form.Control type="password" placeholder="••••••" className="form-control form-control-sm validate" />
+                                </Form.Group>
 
                                 {/* Sign Up */}
                                 <div className="text-center form-sm mt-2">
-                                    <button className="btn btn-primary">Sign up <i className="fa fa-sign-in ml-1"></i></button>
+                                    <Button className="btn btn-primary">Sign up <i className="fa fa-sign-in ml-1"></i></Button>
                                 </div>
-                            </div>
+                            </Form>
                         </Tab>
 
                     </Tabs>
@@ -160,7 +164,6 @@ const LandingPage = () => {
                         <p className="pt-1">Already have an account? <a href="login" className="blue-text mr-1">Log In</a></p>
                         <p>Escape to close</p>
                     </div>
-                    {/* <Button type="button" className="btn btn-outline-primary waves-effect ml-auto" data-dismiss="modal">Close</Button> */}
                 </Modal.Footer>
             </Modal>
         </div>

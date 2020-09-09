@@ -8,7 +8,7 @@ import './style.css';
 const Input = ({ setMessage, sendMessage, message }) => (
     <form className="chatForm">
         <input
-            className="input"
+            className="chatInput"
             type="text"
             placeholder="What's up?"
             value={message}
