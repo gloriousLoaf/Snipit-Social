@@ -42,25 +42,22 @@ const App = () => {
         <BrowserRouter>
           <Switch>
 
-            {/* This screws up navigating manually to other pages
-            for some reason? Comment it out to get to others.
-            Must fix soon, possibly related to BS auth'ing? */}
             {/* NEW - LandingPage - merge in all Auth's */}
-            <Route path="/" component={LandingPage} />
+            <Route path="/" exact component={LandingPage} />
 
             {/* Login is going to merge into LandingPage */}
-            <Route path="/login" component={Login} />
+            <Route path="/login" exact component={Login} />
 
             {/* UserHome is where GH auth directs to,
             eventually this is the user's profile page */}
-            <Route path="/userhome" component={UserHome} />
+            <Route path="/userhome" exact component={UserHome} />
 
             {/* no content yet */}
             {/* <Route path="/Posts" component={listPost} /> */}
 
             {/* Join goes to Chat. Join is temporary until DMs exist */}
             <Route path="/join" exact component={Join} />
-            <Route path="/chat" component={Chat} />
+            <Route path="/chat" exact component={Chat} />
 
           </Switch>
         </BrowserRouter>
