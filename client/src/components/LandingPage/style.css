@@ -27,7 +27,7 @@
 @media (min-width: 768px) {
 	.h-md-100 {
 		height: 100vh;
-    }
+	}
     .signinBtn {
         padding: 0.5rem 3rem;
     }
