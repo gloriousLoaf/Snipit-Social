@@ -1,13 +1,11 @@
 import React, { createContext, useReducer } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 // import Main from "./components/Main";
-
-// NEW Landing Page, from Chase's home-page branch
 import LandingPage from './components/LandingPage';
-
-// GitHub Auth Login. MERGE with Google Auth page!
 import GitHubLogin from "./components/GitHubLogin";
 
+// NEW Refactoring Profilepage branch to React
+import Profile from './components/Profile';
 // This should MERGE with Profile page!
 import UserHome from "./components/UserHome";
 
@@ -22,9 +20,9 @@ import { initialState, reducer } from "./store/reducer";
 import Chat from "./components/chatrooms/Chat/index.js";
 import Join from './components/chatrooms/Join/index.js';
 
-// Eventually we'll have a logo and basic App-wide styles
+// Eventually we'll have a logo
 // import logo from "./logo.svg";
-// import "./App.css";
+import "./App.css";
 
 export const AuthContext = createContext();
 
@@ -42,14 +40,14 @@ const App = () => {
         <BrowserRouter>
           <Switch>
 
-            {/* NEW - LandingPage - merge in all Auth's */}
             <Route path="/" exact component={LandingPage} />
-
-            {/* Login is going to merge into LandingPage */}
             <Route path="/githublogin" exact component={GitHubLogin} />
+            {/* Soon */}
+            {/* <Route path="/googlelogin" exact component={GoogleLogin} /> */}
 
-            {/* UserHome is where GH auth directs to,
-            eventually this is the user's profile page */}
+            {/* NEW Profile Page */}
+            <Route path="/profile" exact component={Profile} />
+            {/* UserHome soon to merge info Profile */}
             <Route path="/userhome" exact component={UserHome} />
 
             {/* no content yet */}

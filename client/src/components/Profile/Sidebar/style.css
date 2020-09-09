@@ -1,0 +1,25 @@
+.sidebar {
+    background-color: #18a0fb;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+  
+  
+.sidebar a {
+    font-size: 25px;
+    color: #fff;
+    transition: all 0.5s ease;
+}
+  
+.sidebar a:hover {
+    font-size: 50px;
+}
+
+  
