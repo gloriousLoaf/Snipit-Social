@@ -85,8 +85,7 @@ const Login = () => {
                             </>
                         )}
                 </div>
-                <p className="text-secondary text-center">This will take you to GitHub's Authorization Page</p>
-
+                <p className="text-secondary text-center">This leads to GitHub's Authorization</p>
             </div >
         </div >
 

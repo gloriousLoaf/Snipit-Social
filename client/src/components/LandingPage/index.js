@@ -1,14 +1,11 @@
-// React-Bootstrap Components need to be imported and
-// deployed JSX style. Just getting started, lots of
-// research to do. See comments below to see where I'm at!
-
-// Also, this one component is monstrous and should
+// This one component is monstrous and should
 // ideally be broken into several smaller ones.
 // That can come later, and I think its actually much
 // easier to convert this to proper bootstrap format
 // all in one big chunk.
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Form, Tabs, Tab, Button, Modal } from 'react-bootstrap'
 import './style.css';
 
@@ -46,7 +43,7 @@ const LandingPage = () => {
                 <div className="d-md-flex align-items-center h-md-100 p-5 justify-content-center loginarea">
                     <div className="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
                         <Form className="p-5">
-                            <Button type="button" className="signinBtn btn btn-primary btn-round btn-block shadow-sm" onClick={handleShow}>Sign in</Button>
+                            <Button type="button" className="signinBtn btn btn-primary btn-round btn-block" onClick={handleShow}>Sign in</Button>
                         </Form>
                     </div>
                 </div>
@@ -59,29 +56,6 @@ const LandingPage = () => {
                 backdrop="static"
                 keyboard={true}
             >
-                {/* MODAL NAB TABS - left these in because they have the <i> icons */}
-                {/* <Nav className="nav nav-tabs" role="tablist" variant="tabs">
-                        <Nav.Item className="nav-item">
-                            <Nav.Link href="#login" className="nav-link active text-secondary" data-toggle="tab" role="tab">
-                                <i className="fa fa-user"></i>
-                                &nbsp; Login
-                            </Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item className="nav-item">
-                            <Nav.Link href="#register" className="nav-link text-secondary"
-                                data-toggle="tab" role="tab">
-                                <i className="fa fa-user-plus"></i>
-                                &nbsp; Register
-                            </Nav.Link>
-                        </Nav.Item>
-                    </Nav> */}
-
-                {/* CLOSE BUTTON can only be implementend in a Modal.Header, but that
-                puts a janky looking header-line under it. Escape key closes Modal */}
-                {/* <Modal closeButton className="text-secondary flex-row-reverse" >
-                    <span className="ml-1">close</span>
-                </Modal> */}
-
                 <Modal.Body>
                     <Tabs defaultActiveKey="login">
 
@@ -105,7 +79,7 @@ const LandingPage = () => {
                                 </Form.Group>
                                 {/* Sign in */}
                                 <div className="text-center mb-3">
-                                    <Button type="button" className="btn btn-primary btn-block btn-rounded z-depth-1a">Sign in</Button>
+                                    <Button type="button" className="modalSignin btn btn-primary btn-block btn-rounded">Sign in</Button>
                                 </div>
                                 {/* Other Sign in Methods */}
                                 <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">Or Sign in with</p>
@@ -115,9 +89,17 @@ const LandingPage = () => {
                                     {/* <button type="button" className="btn btn-white btn-rounded mr-md-2"><i className="fa fa-facebook text-center" style={{ fontSize: 30 }}></i></button> */}
 
                                     {/* Google Login */}
-                                    <Button type="button" className="btn-dark mr-2 md-2"><i className="fa fa-google" style={{ fontSize: 30 }}></i></Button>
+                                    <Button type="button" className="goog btn-dark mr-2 md-2">
+                                        {/* <Link className="googLink" to="/googlelogin"> */}
+                                        <i className="fa fa-google" style={{ fontSize: 30 }}></i>
+                                        {/* </Link> */}
+                                    </Button>
                                     {/* Github Login */}
-                                    <Button type="button" className="btn-dark mr-2 md-2"><i className="fa fa-github" style={{ fontSize: 30 }}></i></Button>
+                                    <Button type="button" className="github btn-dark mr-2 md-2">
+                                        <Link className="ghLink" to="/githublogin">
+                                            <i className="fa fa-github" style={{ fontSize: 30 }}></i>
+                                        </Link>
+                                    </Button>
                                 </div>
                             </Form>
                         </Tab>
@@ -150,7 +132,7 @@ const LandingPage = () => {
 
                                 {/* Sign Up */}
                                 <div className="text-center form-sm mt-2">
-                                    <Button className="btn btn-primary">Sign up <i className="fa fa-sign-in ml-1"></i></Button>
+                                    <Button className="modalSignin btn btn-primary">Sign up <i className="fa fa-sign-in ml-1"></i></Button>
                                 </div>
                             </Form>
                         </Tab>
