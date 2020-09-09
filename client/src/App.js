@@ -1,17 +1,52 @@
-import React, { Component } from "react";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { createContext, useReducer } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+// import Main from "./components/Main";
 
+<<<<<<< HEAD
+// NEW Landing Page, from Chase's home-page branch
+import LandingPage from './components/LandingPage';
+=======
 import listPost from "./components/posts/ListPost";
 import Chat from "./components/chatrooms/Chat/index.js"
+>>>>>>> 30662a9ab7b680ba13953d554bfdd59e4d34aa9a
 
+// GitHub Auth Login. MERGE with Google Auth page!
+import Login from "./components/Login";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
+// This should MERGE with Profile page!
+import UserHome from "./components/UserHome";
+
+// Timeline stuff, coming soon
+// import listPost from "./components/posts/ListPost";
+
+// NEW reducer store for AuthContext,
+// may be how all logins are handled
+import { initialState, reducer } from "./store/reducer";
+
+// Chat
+import Chat from "./components/chatrooms/Chat/index.js";
+import Join from './components/chatrooms/Join/index.js';
+
+// Eventually we'll have a logo and basic App-wide styles
+// import logo from "./logo.svg";
+// import "./App.css";
+
+export const AuthContext = createContext();
+
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div className="App">
+      <AuthContext.Provider
+        value={{
+          state,
+          dispatch
+        }}
+      >
         <BrowserRouter>
+<<<<<<< HEAD
+=======
             <header className="App-header">
               <img src={logo} className="App-logo" alt="logo" />
               <p>Click the link below!!</p>
@@ -27,19 +62,32 @@ class App extends Component {
                 Click here for backend test!
               </a>
             </header>
+>>>>>>> 30662a9ab7b680ba13953d554bfdd59e4d34aa9a
           <Switch>
-            {/* <Link to="/Posts" /> */}
 
-            <Route path="/Posts" component={listPost}></Route>
-            <Route path="/Chat" component={Chat}></Route>
+            {/* NEW - LandingPage - merge in all Auth's */}
+            <Route path="/" exact component={LandingPage} />
 
-            
+            {/* Login is going to merge into LandingPage */}
+            <Route path="/login" exact component={Login} />
+
+            {/* UserHome is where GH auth directs to,
+            eventually this is the user's profile page */}
+            <Route path="/userhome" exact component={UserHome} />
+
+            {/* no content yet */}
+            {/* <Route path="/Posts" component={listPost} /> */}
+
+            {/* Join goes to Chat. Join is temporary until DMs exist */}
+            <Route path="/join" exact component={Join} />
+            <Route path="/chat" exact component={Chat} />
 
           </Switch>
         </BrowserRouter>
-      </div>
-    );
-  }
+
+      </AuthContext.Provider>
+    </div >
+  );
 }
 
 export default App;

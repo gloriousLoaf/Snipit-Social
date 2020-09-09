@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactEmoji from 'react-emoji';
+import './style.css';
 
 
 const Message = ({ message: { text, user }, name }) => {

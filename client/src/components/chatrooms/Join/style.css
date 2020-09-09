@@ -1,0 +1,64 @@
+/* JOIN */ 
+* {
+box-sizing: border-box;
+}
+/* html, body {
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+} */
+  
+/* #root {
+height: 100vh;
+} */
+
+.outerContainer {
+display: flex;
+justify-content: center;
+text-align: center;
+height: 100vh;
+align-items: center;
+}
+
+.innerContainer {
+width: 20%;
+}
+
+.joinInput {
+padding: 1rem 1.2rem;
+border-radius: 0.25rem;
+width: 100%;
+}
+
+.marginTop {
+    margin-top: 1.25rem;
+}
+
+.heading {
+    color: #fff;
+    font-size: 2.5em;
+    padding-bottom: 0.7rem;
+    border-bottom: 2px solid white;
+}
+
+.joinBtn {
+    color: #fff;
+    background: #2979FF;
+    display: inline-block;
+    padding: 1.25rem;
+    border-radius: 0.25rem;
+    display: inline-block;
+    border: none;
+    width: 100%;
+}
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .joinOuterContainer {
+        height: 100%;
+    }
+
+    .joinInnerContainer {
+        width: 90%;
+}
+}

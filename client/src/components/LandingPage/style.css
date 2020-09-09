@@ -1,0 +1,34 @@
+:root {
+	--main-color: #18a0fb;
+	--dark-color: #272828;
+	--footer-link-color: #aab8c2;
+	--footer-top-border-color: #e6ecf0;
+}
+
+.signinBtn {
+	border-radius: 30px;
+}
+.bg-main {
+	background: var(--main-color);
+}
+
+.bg-dark {
+	background: var(--dark-color);
+}
+
+.text-cyan {
+	color: #35bdff;
+}
+
+.border {
+	border-color: var(--dark-color);
+}
+
+@media (min-width: 768px) {
+	.h-md-100 {
+		height: 100vh;
+	}
+    .signinBtn {
+        padding: 0.5rem 3rem;
+    }
+}
