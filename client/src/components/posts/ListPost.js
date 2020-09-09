@@ -3,6 +3,7 @@ import AddPost from "./AddPost";
 import Post from "./Post";
 import API from "../../utils/API";
 import { List, ListItem } from "../posts/List";
+import DeleteButton from "./DeleteButton";
 
 // react can't directly just list out object children
 // we have to send it to the state of this file,
@@ -31,7 +32,17 @@ function ListPost() {
       // this is intialized with empty array
   }, []);
 
-  console.log(posts)
+
+  // should make this (if id matches poster id == delete.)
+  function deletePost(id) {
+    console.log(id)
+    API.deletePosts(id)
+        .then(res => API.getPosts())
+        .catch(err => console.log(err));
+}
+  
+console.log(posts)
+
   
   return (
     <div>
@@ -44,6 +55,7 @@ function ListPost() {
         {posts.map(tweets => (
           <ListItem key={tweets._id}>
             {tweets.text}
+            <DeleteButton onClick={() => deletePost(tweets._id)} />
           </ListItem>
         ))}
       </List>

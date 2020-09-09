@@ -15,4 +15,10 @@ export default {
     getPosts: function() {
         return axios.get("/api/posts/find")
     },
+
+    // deleting posts
+
+    deletePosts: function(id) {
+        return axios.delete("/api/posts/delete/" + id)
+    }
 };
