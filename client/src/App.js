@@ -2,16 +2,11 @@ import React, { createContext, useReducer } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 // import Main from "./components/Main";
 
-<<<<<<< HEAD
 // NEW Landing Page, from Chase's home-page branch
 import LandingPage from './components/LandingPage';
-=======
-import listPost from "./components/posts/ListPost";
-import Chat from "./components/chatrooms/Chat/index.js"
->>>>>>> 30662a9ab7b680ba13953d554bfdd59e4d34aa9a
 
 // GitHub Auth Login. MERGE with Google Auth page!
-import Login from "./components/Login";
+import GitHubLogin from "./components/GitHubLogin";
 
 // This should MERGE with Profile page!
 import UserHome from "./components/UserHome";
@@ -45,31 +40,13 @@ const App = () => {
         }}
       >
         <BrowserRouter>
-<<<<<<< HEAD
-=======
-            <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>Click the link below!!</p>
-              <Route path="/Posts" component={listPost}></Route>
-              <Route path="/Chat" component={Chat}></Route>
-
-              <a
-                className="App-link"
-                href="localhost:3001"
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                Click here for backend test!
-              </a>
-            </header>
->>>>>>> 30662a9ab7b680ba13953d554bfdd59e4d34aa9a
           <Switch>
 
             {/* NEW - LandingPage - merge in all Auth's */}
             <Route path="/" exact component={LandingPage} />
 
             {/* Login is going to merge into LandingPage */}
-            <Route path="/login" exact component={Login} />
+            <Route path="/githublogin" exact component={GitHubLogin} />
 
             {/* UserHome is where GH auth directs to,
             eventually this is the user's profile page */}
