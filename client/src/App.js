@@ -12,8 +12,7 @@ import UserHome from "./components/UserHome";
 // Timeline stuff, coming soon
 // import listPost from "./components/posts/ListPost";
 
-// NEW reducer store for AuthContext,
-// may be how all logins are handled
+// Reducer store for AuthContext (Logins)
 import { initialState, reducer } from "./store/reducer";
 
 // Chat

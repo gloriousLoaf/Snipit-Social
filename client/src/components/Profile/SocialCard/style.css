@@ -2,15 +2,21 @@
 #social {
     flex-direction: row;
 }
-  
-.fbLogo, .instaLogo,
-.linkedLogo, .gitLogo {
-    color: #384047;
-    font-size: 50px;
-    transition: all 0.5s ease;
+
+.socialBtn {
+    transition: 0.3s;
+    background-color: inherit;
+    border: none;
 }
-  
-.logo:hover {
-    color: #1a24ae;
-    font-size: 70px;
+
+.socialBtn i {
+    color: #384047;
+    font-size: 3rem;
+
+}
+.socialBtn:hover, .socialBtn:focus {
+    cursor: pointer;
+    letter-spacing: 0.3rem;
+    box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 1);
+    background-color: inherit;
 }
