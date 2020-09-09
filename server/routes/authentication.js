@@ -5,13 +5,13 @@ const router = require('express').Router()
 
 // utility functions
 const isLoggedIn = (req, res, next) => {
-    if (req.user) {
-      next();
-    } else {
-      // change unauthorized page here
-      res.sendStatus(401);
-    }
-  };
+  if (req.user) {
+    next();
+  } else {
+    // change unauthorized page here
+    res.sendStatus(401);
+  }
+};
 
 // api calls
 app.route("/", (req, res) => res.send("hello, please go to /google"));
@@ -28,7 +28,7 @@ app.get(
 app.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/failed" }),
-  function(req, res) {
+  function (req, res) {
     // Successful authentication, redirect home.
     res.redirect("/good");
   }
@@ -43,4 +43,3 @@ app.get("/logout", (req, res) => {
 });
 
 module.exports = router
-
