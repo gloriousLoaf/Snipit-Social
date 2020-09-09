@@ -1,1 +1,14 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
 
+html {
+	--main-color: #18a0fb;
+	--dark-color: #272828;
+	--footer-link-color: #aab8c2;
+    --footer-top-border-color: #e6ecf0;
+        height: 100vh;
+        width: 100vw;
+        background-color: #272828;
+}
