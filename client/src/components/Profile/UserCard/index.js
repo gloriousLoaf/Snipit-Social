@@ -1,5 +1,6 @@
 // USERCARD - PROFILE
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import './style.css';
 
 const UserCard = () => {
@@ -11,7 +12,7 @@ const UserCard = () => {
             <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium atque distinctio similique
             illum facilis molestiae, a veniam, explicabo perspiciatis
    soluta error autem excepturi sed dolorem itaque. Mollitia deleniti animi laborum! Now is time to re-invente myself. This journey is starting with me learning web development in beautiful Lisbon</p>
-            <a href="https://github.com/gbarthere" target="_blank" className="btn-click">Message me</a>
+            <Button href="#" target="_blank" className="msgBtn">Message me</Button>
         </div>
     )
 };

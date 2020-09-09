@@ -12,14 +12,17 @@
 }
   
   
-.sidebar a {
+.sidebarLogo {
     font-size: 25px;
     color: #fff;
-    transition: all 0.5s ease;
+    background-color: inherit;
+    border: none;
+    transition: 0.3s;
 }
   
-.sidebar a:hover {
+.sidebarLogo:hover, .sidebarLogo:focus {
     font-size: 2rem;
+    background-color: #18a0fb;
+    box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 0.4);
 }
 
-  

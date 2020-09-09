@@ -1,8 +1,12 @@
 import React, { createContext, useReducer } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-// import Main from "./components/Main";
 import LandingPage from './components/LandingPage';
 import GitHubLogin from "./components/GitHubLogin";
+// Chat
+import Chat from "./components/chatrooms/Chat/index.js";
+import Join from './components/chatrooms/Join/index.js';
+// Reducer store for AuthContext (Logins)
+import { initialState, reducer } from "./store/reducer";
 
 // NEW Refactoring Profilepage branch to React
 import Profile from './components/Profile';
@@ -11,13 +15,6 @@ import UserHome from "./components/UserHome";
 
 // Timeline stuff, coming soon
 // import listPost from "./components/posts/ListPost";
-
-// Reducer store for AuthContext (Logins)
-import { initialState, reducer } from "./store/reducer";
-
-// Chat
-import Chat from "./components/chatrooms/Chat/index.js";
-import Join from './components/chatrooms/Join/index.js';
 
 // Eventually we'll have a logo
 // import logo from "./logo.svg";

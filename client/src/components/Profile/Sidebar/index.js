@@ -1,19 +1,20 @@
 // SIDEBAR - PROFILE
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import './style.css';
 
 const Sidebar = () => {
     return (
         <div className="sidebar">
-            <a href="#profile">
+            <Button href="#profile" className="sidebarLogo">
                 <i className="fa fa-user" aria-hidden="true" title="profile"></i>
-            </a>
-            <a href="#movies">
+            </Button>
+            <Button href="#movies" className="sidebarLogo">
                 <i className="fa fa-film" aria-hidden="true"></i>
-            </a>
-            <a href="#about">
+            </Button>
+            <Button href="#about" className="sidebarLogo">
                 <i className="fa fa-link" aria-hidden="true"></i>
-            </a>
+            </Button>
         </div>
     )
 };

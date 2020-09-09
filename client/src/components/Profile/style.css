@@ -15,28 +15,6 @@
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(13, 37, 145, 0.1);
 }
-  
-#profile {
-    flex-flow: column wrap;
-    align-items: center;
-}
-  
-.book-card img {
-    width: 110px;
-    padding: 20px;
-}
-  
-.book-card {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-  
-.book-content {
-    text-align: justify;
-    display: flex;
-    flex-direction: column;
-}
 
 /* MEDIA QUERIES aren't working yet */ 
 @media (max-width: 960px) {

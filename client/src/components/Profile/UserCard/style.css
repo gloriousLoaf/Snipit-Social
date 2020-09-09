@@ -3,3 +3,20 @@
     border: 2px solid #18a0fb;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
+
+#profile {
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.msgBtn {
+    transition: 0.3s;
+    background-color: #18a0fb;
+    border: none;
+}
+
+.msgBtn:hover, .msgBtn:focus {
+    letter-spacing: 0.1rem;
+    box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 1);
+    background-color: #18a0fb;
+}
