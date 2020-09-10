@@ -8,10 +8,8 @@ import Join from './components/chatrooms/Join/index.js';
 // Reducer store for AuthContext (Logins)
 import { initialState, reducer } from "./store/reducer";
 
-// NEW Refactoring Profilepage branch to React
+// NEW Refactored Profilepage branch to React
 import Profile from './components/Profile';
-// This should MERGE with Profile page!
-import UserHome from "./components/UserHome";
 
 // Timeline stuff, coming soon
 // import listPost from "./components/posts/ListPost";
@@ -37,14 +35,16 @@ const App = () => {
           <Switch>
 
             <Route path="/" exact component={LandingPage} />
-            <Route path="/githublogin" exact component={GitHubLogin} />
+
+            {/* IMPORTANT - for now GH must be at /login,
+            hopefully Google can be at a different path */}
+            <Route path="/login" exact component={GitHubLogin} />
+
             {/* Soon */}
             {/* <Route path="/googlelogin" exact component={GoogleLogin} /> */}
 
             {/* NEW Profile Page */}
             <Route path="/profile" exact component={Profile} />
-            {/* UserHome soon to merge info Profile */}
-            <Route path="/userhome" exact component={UserHome} />
 
             {/* no content yet */}
             {/* <Route path="/Posts" component={listPost} /> */}

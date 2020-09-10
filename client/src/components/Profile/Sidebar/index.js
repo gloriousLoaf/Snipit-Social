@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import './style.css';
 
+// THIS COULD BE COME OUR NAV FOR THE WHOLE APP!!
 const Sidebar = () => {
     return (
         <div className="sidebar">
