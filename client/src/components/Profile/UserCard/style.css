@@ -7,6 +7,14 @@
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
+.ghStats h5 {
+    margin-right: 2rem;
+}
+
+.ghStats li {
+    margin: 0.25rem 0 0.25rem 1.25rem;
+}
+
 #profile {
     flex-flow: column wrap;
     align-items: center;

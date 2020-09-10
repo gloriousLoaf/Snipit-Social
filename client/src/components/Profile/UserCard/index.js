@@ -25,7 +25,7 @@ const UserCard = () => {
 
             {/* if the user logs in w/ GH, show some details this ternary
             could be expanded & nested to sort for Google logins as well */}
-            <ul>GitHub Stats:
+            <ul className="ghStats mt-3"><h5>GitHub Stats</h5>
                 {!state.user ? (
                     <li>Click the Octocat button below to check out my profile!</li>
                 ) : (
@@ -33,7 +33,6 @@ const UserCard = () => {
                             <li>{public_repos} Repos</li>
                             <li>{followers} Followers</li>
                             <li>{following} Following</li>
-                            <li>Click the Octocat button below to see more!</li>
                         </>
                     )}
             </ul>
