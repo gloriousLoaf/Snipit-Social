@@ -82,7 +82,7 @@ const SignupModal = (props) => {
                                 </Button>
                                 {/* Github Login */}
                                 <Button type="button" className="github btn-dark mr-2 md-2">
-                                    <Link className="ghLink" to="/githublogin">
+                                    <Link className="ghLink" to="/login">
                                         <i className="fa fa-github" style={{ fontSize: 30 }}></i>
                                     </Link>
                                 </Button>
