@@ -7,7 +7,7 @@ import GitHubLogo from './gh.png';
 import './style.css';
 
 // creating our login component, using AuthContext global state
-const Login = () => {
+const GitHubLogin = () => {
     const { state, dispatch } = useContext(AuthContext);
     const [data, setData] = useState({ errorMessage: "", isLoading: false });
 
@@ -55,7 +55,7 @@ const Login = () => {
     }, [state, dispatch, data]);
 
     if (state.isLoggedIn) {
-        return <Redirect to="/userhome" />;
+        return <Redirect to="/profile" />;
     }
 
     // Based on login state, this displays a loading spinner and / or error msg
@@ -81,7 +81,7 @@ const Login = () => {
                                     href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}
                                     onClick={() => {
                                         setData({ ...data, errorMessage: "" });
-                                    }}>Login</a>
+                                    }}>Authorize</a>
                             </>
                         )}
                 </div>
@@ -92,4 +92,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default GitHubLogin;

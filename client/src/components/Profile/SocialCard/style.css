@@ -1,0 +1,21 @@
+/* SOCIAL CARD - PROFILE */ 
+#social {
+    flex-direction: row;
+}
+
+.socialBtn {
+    transition: 0.3s;
+    background-color: inherit;
+    border: none;
+}
+
+.socialBtn i {
+    color: #384047;
+    font-size: 3rem;
+
+}
+.socialBtn:hover, .socialBtn:focus {
+    letter-spacing: 0.3rem;
+    box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 1);
+    background-color: inherit;
+}
