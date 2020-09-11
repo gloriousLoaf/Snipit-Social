@@ -27,11 +27,11 @@ const UserActions = () => {
 
                 {/* Edit Profile function doesn't exist yet */}
                 <Button className="settingBtn">
-                    <i class="fas fa-sliders-h"></i>
+                    <i className="fas fa-sliders-h"></i>
                 </Button>
 
                 <Button className="settingBtn" onClick={() => handleLogout()}>
-                    <i class="fas fa-sign-out-alt"></i>
+                    <i className="fas fa-sign-out-alt"></i>
                 </Button>
 
 
