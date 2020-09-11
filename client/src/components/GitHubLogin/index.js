@@ -1,8 +1,9 @@
-//// LOGIN ////
+//// GITHUB LOGIN ////
 // for now, this is just GitHub, but we can integrate Gogle here too
 import React, { useState, useEffect, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../../App";
+import GitHubLogo from './gh.png';
 import './style.css';
 
 // creating our login component, using AuthContext global state
@@ -59,29 +60,33 @@ const Login = () => {
 
     // Based on login state, this displays a loading spinner and / or error msg
     return (
-        <div className="login-card">
-            <h1 className="welcome">Welcome</h1>
-            <span className="coding">Coding Society</span>
-            <span className="errMsg">{data.errorMessage}</span>
-            <div className="login-bar">
-                {data.isLoading ? (
-                    <div className="loader-container">
-                        <div className="loader"></div>
-                    </div>
-                ) : (
-                        <>
-                            {
-                                // Link to request GitHub access
-                            }
+        <div className="gitContainer">
+            <div className="login-card">
+                <h1 className="welcome">Welcome</h1>
+                <h5 className="coding">Coding Society</h5>
+                <img src={GitHubLogo} alt="GitHub OctoCat" className="octocat" />
+                <span className="errMsg">{data.errorMessage}</span>
+                <div className="login-bar">
+                    {data.isLoading ? (
+                        <div className="loader-container">
+                            <div className="loader"></div>
+                        </div>
+                    ) : (
+                            <>
+                                {
+                                    // Link to request GitHub access
+                                }
 
-                            <a className="login-link"
-                                href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}
-                                onClick={() => {
-                                    setData({ ...data, errorMessage: "" });
-                                }}>Login with GitHub</a>
-                        </>
-                    )}
-            </div>
+                                <a className="login-link"
+                                    href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}
+                                    onClick={() => {
+                                        setData({ ...data, errorMessage: "" });
+                                    }}>Login</a>
+                            </>
+                        )}
+                </div>
+                <p className="text-secondary text-center">This leads to GitHub's Authorization</p>
+            </div >
         </div >
 
     );

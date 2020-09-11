@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from './components/LandingPage';
 
 // GitHub Auth Login. MERGE with Google Auth page!
-import Login from "./components/Login";
+import GitHubLogin from "./components/GitHubLogin";
 
 // This should MERGE with Profile page!
 import UserHome from "./components/UserHome";
@@ -46,7 +46,7 @@ const App = () => {
             <Route path="/" exact component={LandingPage} />
 
             {/* Login is going to merge into LandingPage */}
-            <Route path="/login" exact component={Login} />
+            <Route path="/githublogin" exact component={GitHubLogin} />
 
             {/* UserHome is where GH auth directs to,
             eventually this is the user's profile page */}
