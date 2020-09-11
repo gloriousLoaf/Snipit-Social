@@ -5,6 +5,7 @@ import UserCard from './UserCard';
 import SocialCard from './SocialCard';
 import AboutCard from './AboutCard';
 import UserActions from './UserActions';
+import PostsCard from './PostsCard'
 import './style.css';
 
 const Profile = () => {
@@ -16,6 +17,7 @@ const Profile = () => {
             <div className="main-container container">
                 <UserCard />
                 <SocialCard />
+                {/* To Do <PostsCard /> */}
                 <AboutCard />
                 <UserActions />
             </div>

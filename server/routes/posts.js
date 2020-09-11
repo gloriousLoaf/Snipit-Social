@@ -23,13 +23,15 @@ router.route("/add/").post(
   }
 );
 
-router.route("/find").get((req, res) => {
+// finding any posts
+router.route("/findAny").get((req, res) => {
   Post.find()
     .sort({ createdAt: -1 })
     .then(posts => res.json(posts))
     .catch(err => console.log(err));
 });
 
+// deleting by id
 router.route("/delete/:id").delete((req, res) => {
   Post.findById(req.params.id)
     .then(console.log(req.params.id))
@@ -42,5 +44,16 @@ router.route("/delete/:id").delete((req, res) => {
     // .then(Posts => res.json(Posts))
     // res.redirect('/posts')
 });
+
+router.route("/findUserPosts/:id")
+  .get((req, res) => {
+    Post.findById(req.params.id)
+      .then(console.log(req.params.id))
+      .then(Tweets => {
+        return res.json(Tweets)
+      })
+        .catch(err => res.status(422).json(err));
+
+  })
 
 module.exports = router;

@@ -10,15 +10,20 @@ export default {
         return axios.post("/api/posts/add", postText)
     },
 
-    // getting posts
+    // getting all posts
 
     getPosts: function() {
-        return axios.get("/api/posts/find")
+        return axios.get("/api/posts/findAny")
     },
 
     // deleting posts
 
     deletePosts: function(id) {
         return axios.delete("/api/posts/delete/" + id)
+    },
+
+    // getting specific posts
+    getUserPosts: function(id) {
+        return axios.get("/api/posts/findUserPosts/" + id)
     }
 };
