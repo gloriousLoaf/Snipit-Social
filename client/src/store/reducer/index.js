@@ -14,6 +14,8 @@ export const initialState = {
 };
 
 // reducer actions dispatched to mutate state
+
+// ADD TO DB??
 export const reducer = (state, action) => {
     switch (action.type) {
         case "LOGIN": {
