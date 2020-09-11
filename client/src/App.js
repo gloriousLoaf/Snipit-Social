@@ -12,7 +12,7 @@ import GitHubLogin from "./components/GitHubLogin";
 import UserHome from "./components/UserHome";
 
 // Timeline stuff, coming soon
-// import listPost from "./components/posts/ListPost";
+import listPost from "./components/posts/ListPost";
 
 // NEW reducer store for AuthContext,
 // may be how all logins are handled
@@ -53,7 +53,7 @@ const App = () => {
             <Route path="/userhome" exact component={UserHome} />
 
             {/* no content yet */}
-            {/* <Route path="/Posts" component={listPost} /> */}
+            <Route path="/Posts" component={listPost} />
 
             {/* Join goes to Chat. Join is temporary until DMs exist */}
             <Route path="/join" exact component={Join} />
