@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// you should have a unique key instead of just a unique
 const userSchema = new Schema({
     name: {
         type: String,

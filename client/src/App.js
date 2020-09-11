@@ -12,7 +12,7 @@ import { initialState, reducer } from "./store/reducer";
 import Profile from './components/Profile';
 
 // Timeline stuff, coming soon
-// import listPost from "./components/posts/ListPost";
+import listPost from "./components/posts/ListPost";
 
 // Eventually we'll have a logo
 // import logo from "./logo.svg";
@@ -47,7 +47,7 @@ const App = () => {
             <Route path="/profile" exact component={Profile} />
 
             {/* no content yet */}
-            {/* <Route path="/Posts" component={listPost} /> */}
+            <Route path="/Posts" component={listPost} />
 
             {/* Join goes to Chat. Join is temporary until DMs exist */}
             <Route path="/join" exact component={Join} />

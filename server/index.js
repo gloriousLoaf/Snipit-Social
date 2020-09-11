@@ -7,7 +7,7 @@ const passport = require("passport");
 const cookieSession = require("cookie-session");
 require("./passport-setup");
 // GH Auth
-require('dotenv').config();
+require('dotenv').config(); 
 const FormData = require("form-data");
 const fetch = require("node-fetch");
 
@@ -198,8 +198,6 @@ app.post("/authenticate", (req, res) => {
     });
 });
 /////// END GH PROXY ///////
-// to do: move to authentication ================== ///
-//  
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
