@@ -10,16 +10,16 @@ const Social = () => {
 
             {/* This setup should work, just need to drop in links? */}
             <Button href="#" type="button" className="socialBtn">
-                <i className="fa fa-facebook-square m-2" aria-hidden="true" title="facebook" ></i>
+                <i className="fab fa-facebook-square m-2" aria-hidden="true" title="facebook" ></i>
             </Button>
             <Button href="#" type="button" className="socialBtn">
-                <i className="fa fa-instagram m-2" aria-hidden="true" title="Instagram" ></i>
+                <i className="fab fa-instagram m-2" aria-hidden="true" title="Instagram" ></i>
             </Button>
             <Button href="#" type="button" className="socialBtn">
-                <i className="fa fa-linkedin-square m-2" aria-hidden="true" title="Linkedin" ></i>
+                <i className="fab fa-linkedin m-2" aria-hidden="true" title="Linkedin" ></i>
             </Button>
             <Button href="#" type="button" className="socialBtn">
-                <i className="fa fa-github-square m-2" aria-hidden="true" title="Github" ></i>
+                <i className="fab fa-github-square m-2" aria-hidden="true" title="Github" ></i>
             </Button>
 
         </div>

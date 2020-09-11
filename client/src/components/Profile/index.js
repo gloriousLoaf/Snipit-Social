@@ -1,6 +1,6 @@
 // PROFILE PAGE
 import React from 'react';
-import Sidebar from './Sidebar';
+import NavBar from '../NavBar';
 import UserCard from './UserCard';
 import SocialCard from './SocialCard';
 import AboutCard from './AboutCard';
@@ -9,17 +9,14 @@ import './style.css';
 
 const Profile = () => {
     return (
-        <div className="profilePage">
-
-            <Sidebar />
-
-            <div className="main-container container">
+        <div className="profContainer">
+            <NavBar />
+            <div className="cardContainer">
                 <UserCard />
                 <SocialCard />
                 <AboutCard />
                 <UserActions />
             </div>
-
         </div>
     )
 };

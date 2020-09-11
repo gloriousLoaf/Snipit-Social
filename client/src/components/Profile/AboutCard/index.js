@@ -1,6 +1,5 @@
 // ABOUTCARD - PROFILE
 import React from 'react';
-import DharmaBums from './dharma-bums.jpg';
 import './style.css';
 
 const AboutCard = () => {
@@ -8,7 +7,6 @@ const AboutCard = () => {
         <div className="card profCard text-align container">
             <h2 className="d-flex justify-content-center">About me</h2>
             <div className="book-card">
-                <img src={DharmaBums} alt="The Dharma Bums cover" />
                 <div className="book-content">
                     <h4>Favorite Book</h4>
                     <p>The book concerns duality in Kerouac's life and ideals, examining the relationship of the outdoors, mountaineering, hiking, and hitchhiking through the West with his "city life" of jazz clubs, poetry readings, and drunken parties. The protagonist's search for a "Buddhist" context to his experiences (and those of others he encounters) recurs throughout the story.</p>
