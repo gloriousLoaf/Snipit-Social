@@ -1,30 +1,22 @@
 import React, { createContext, useReducer } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-// import Main from "./components/Main";
-
-// NEW Landing Page, from Chase's home-page branch
 import LandingPage from './components/LandingPage';
-
-// GitHub Auth Login. MERGE with Google Auth page!
 import GitHubLogin from "./components/GitHubLogin";
+// Chat
+import Chat from "./components/chatrooms/Chat/index.js";
+import Join from './components/chatrooms/Join/index.js';
+// Reducer store for AuthContext (Logins)
+import { initialState, reducer } from "./store/reducer";
 
-// This should MERGE with Profile page!
-import UserHome from "./components/UserHome";
+// NEW Refactored Profilepage branch to React
+import Profile from './components/Profile';
 
 // Timeline stuff, coming soon
 // import listPost from "./components/posts/ListPost";
 
-// NEW reducer store for AuthContext,
-// may be how all logins are handled
-import { initialState, reducer } from "./store/reducer";
-
-// Chat
-import Chat from "./components/chatrooms/Chat/index.js";
-import Join from './components/chatrooms/Join/index.js';
-
-// Eventually we'll have a logo and basic App-wide styles
+// Eventually we'll have a logo
 // import logo from "./logo.svg";
-// import "./App.css";
+import "./App.css";
 
 export const AuthContext = createContext();
 
@@ -42,15 +34,17 @@ const App = () => {
         <BrowserRouter>
           <Switch>
 
-            {/* NEW - LandingPage - merge in all Auth's */}
             <Route path="/" exact component={LandingPage} />
 
-            {/* Login is going to merge into LandingPage */}
-            <Route path="/githublogin" exact component={GitHubLogin} />
+            {/* IMPORTANT - for now GH must be at /login,
+            hopefully Google can be at a different path */}
+            <Route path="/login" exact component={GitHubLogin} />
 
-            {/* UserHome is where GH auth directs to,
-            eventually this is the user's profile page */}
-            <Route path="/userhome" exact component={UserHome} />
+            {/* Soon */}
+            {/* <Route path="/googlelogin" exact component={GoogleLogin} /> */}
+
+            {/* NEW Profile Page */}
+            <Route path="/profile" exact component={Profile} />
 
             {/* no content yet */}
             {/* <Route path="/Posts" component={listPost} /> */}

@@ -1,0 +1,28 @@
+.sidebar {
+    background-color: #18a0fb;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+  
+  
+.sidebarLogo {
+    font-size: 25px;
+    color: #fff;
+    background-color: inherit;
+    border: none;
+    transition: 0.3s;
+}
+  
+.sidebarLogo:hover, .sidebarLogo:focus {
+    font-size: 2rem;
+    background-color: #18a0fb;
+    box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 0.4);
+}
+
