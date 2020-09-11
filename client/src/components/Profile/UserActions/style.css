@@ -1,0 +1,15 @@
+.settingBtn {
+    color: #333;
+    background-color: inherit;
+    font-size: 2rem;
+    border: none;
+    padding: 1rem;
+    transition: 0.3s;
+}
+
+.settingBtn:hover, .settingBtn:focus {
+    color: #333;
+    background-color: inherit;
+    letter-spacing: 0.1rem;
+    box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 1);
+}

@@ -1,10 +1,8 @@
 /* PROFILE PAGE */
-.main-container {
-    max-width: 800px;
-    margin: 0 auto;
+.profContainer {
+    width: 100vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
 }
   
 .profCard {
@@ -16,36 +14,16 @@
     border: 1px solid rgba(13, 37, 145, 0.1);
 }
 
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 10% 5rem 10%;
+}
+
 /* MEDIA QUERIES aren't working yet */ 
-@media (max-width: 960px) {
-    /* For a screen < 960px, this CSS will be read */
-    .main-container {
-      width: 700px;
-      margin: 0 auto;
-    }
-  
-    .sidebar-container {
-      width: 100px;
-    }
-}
-@media (max-width: 720px) {
-/* For a screen < 720px, this CSS will be read */
-    .main-container {
-        width: 500px;
-        margin: 0 auto;
-    }
-    .sidebar-container {
-    width: 80px;
-    }
-}
-@media (max-width: 540px) {
-    /* For a screen < 540px, this CSS will be read */
-    .main-container {
-      width: 300px;
-      margin: 0 auto;
-    }
-  
-    .sidebar-container {
-      width: 60px;
+/* Screen > Portrait Tablet */
+@media (min-width: 960px) {
+    .cardContainer {
+      margin: 1rem auto 5rem auto;
     }
 }

@@ -1,18 +1,16 @@
 /* ABOUTCARD - PROFILE */ 
-.book-card {
+
+/* Old stuff from the book card, do we need it?
+    Will we have books. Complicated. */ 
+    
+/* .book-card {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-/* this book image is crazy, 30rem should barely fit the page */ 
-.book-card img {
-    width: 30rem;
-    padding: 20px;
-}  
 
 .book-content {
-    text-align: justify;
     display: flex;
     flex-direction: column;
-}
+} */
