@@ -6,7 +6,7 @@ const mongoose = require('mongoose'),
 
 const User = require("./User");
 
-
+// think we can just context
 const membershipSchema = new Schema({
     provider: {
         type: String,

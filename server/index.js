@@ -110,8 +110,10 @@ io.on('connect', (socket) => {
 
 // api calls
 const posts = require('./routes/posts');
+const gitinfo = require('./routes/gitAuthentication')
 
 app.use('/api/posts', posts);
+app.use('/api/gitinfo', gitinfo);
 
 
 app.get("/", (req, res) => res.send("hello, please go to /google"));
