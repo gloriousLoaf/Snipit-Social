@@ -4,26 +4,24 @@ const passport = require("passport");
 const router = require("express").Router();
 const GitInfo = require("../models/Github");
 
+router.route("/addGitInfo").post((req, res) => {
+  // always returns in req.body apparently?
+  console.log(req.body);
+  const id = req.body.id;
 
-router.route("/addGitInfo")
-.post((req, res) => {
-    // always returns in req.body apparently?
-    console.log(req.body)
-  const id = req.body.id
+  const name = req.body.name;
 
-  const name = req.body.name
+  const htmlUrl = req.body.htmlURL;
 
-  const htmlUrl = req.body.htmlURL
+  const avatarUrl = req.body.avatarUrl;
 
-  const avatarUrl = req.body.avatarUrl
+  const bio = req.body.bio;
 
-  const bio = req.body.bio
+  const blog = req.body.blog;
 
-  const blog = req.body.blog
+  const company = req.body.company;
 
-  const company = req.body.company
-
-  const hireable = req.body.hireable
+  const hireable = req.body.hireable;
 
   const newInfo = new GitInfo({
     id,
@@ -33,14 +31,13 @@ router.route("/addGitInfo")
     bio,
     blog,
     company,
-    hireable,
+    hireable
   });
 
-  newInfo 
+  newInfo
     .save()
     .then(post => res.json(post))
     .catch(err => console.log(err));
 });
-
 
 module.exports = router;
