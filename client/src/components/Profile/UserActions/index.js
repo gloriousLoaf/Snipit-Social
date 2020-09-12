@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 import { AuthContext } from "../../../App";
-// import './style.css';
+import './style.css';
 
 const UserActions = () => {
 
@@ -11,7 +11,7 @@ const UserActions = () => {
     const { state, dispatch } = useContext(AuthContext);
 
     if (!state.isLoggedIn) {
-        return <Redirect to="/login" />;
+        return <Redirect to="/" />;
     }
 
     const handleLogout = () => {
@@ -21,20 +21,19 @@ const UserActions = () => {
     }
 
     return (
-        <div className="card profCard">
+        <div className="card profCard actions container">
             <h2 className="d-flex justify-content-center">Settings</h2>
-            <div className="row my-3">
+            <div className="row justify-content-around my-2">
 
-                {/* ADJUST - col-sm-XX, px-XX justify-content-(center,end, around),
-                    as needed for more buttons in the future? */}
-                <div className="col-sm-6 d-flex justify-content-end">
-                    {/* Edit Profile function doesn't exist yet */}
-                    <Button className="msgBtn px-2">Edit Profile</Button>
-                </div>
-                <div className="col-sm-6 d-flex justify-content-start">
-                    {/* handleLogout logs out, but isn't super clean yet. */}
-                    <Button className="msgBtn px-3" onClick={() => handleLogout()}>Logout</Button>
-                </div>
+                {/* Edit Profile function doesn't exist yet */}
+                <Button className="settingBtn">
+                    <i className="fas fa-sliders-h"></i>
+                </Button>
+
+                <Button className="settingBtn" onClick={() => handleLogout()}>
+                    <i className="fas fa-sign-out-alt"></i>
+                </Button>
+
 
             </div>
         </div>

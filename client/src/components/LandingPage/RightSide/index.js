@@ -75,16 +75,12 @@ const SignupModal = (props) => {
                                 {/* Facebook Login, stretch goal?? */}
 
                                 {/* Google Login */}
-                                <Button type="button" className="goog btn-dark mr-2 md-2">
-                                    {/* <Link className="googLink" to="/googlelogin"> */}
-                                    <i className="fa fa-google" style={{ fontSize: 30 }}></i>
-                                    {/* </Link> */}
+                                <Button href="/googlelogin" type="button" className="goog btn-dark mr-2 md-2">
+                                    <i className="fab fa-google" style={{ fontSize: 30 }}></i>
                                 </Button>
                                 {/* Github Login */}
-                                <Button type="button" className="github btn-dark mr-2 md-2">
-                                    <Link className="ghLink" to="/login">
-                                        <i className="fa fa-github" style={{ fontSize: 30 }}></i>
-                                    </Link>
+                                <Button href="/login" type="button" className="github btn-dark mr-2 md-2">
+                                    <i className="fab fa-github" style={{ fontSize: 30 }}></i>
                                 </Button>
                             </div>
                         </Form>
