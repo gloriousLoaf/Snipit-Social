@@ -1,25 +1,31 @@
 // USERCARD - PROFILE
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 import { AuthContext } from "../../../App";
 import './style.css';
+import gitAPI from "../../../utils/GithubAPIS";
+
 
 const UserCard = () => {
 
     // AuthContext using reducer
-    const { state } = useContext(AuthContext);
+    const { state, dispatch } = useContext(AuthContext);
+
 
     if (!state.isLoggedIn) {
         return <Redirect to="/login" />;
     }
 
     
-
     console.log(state.user)
 
     // create props for user
-    const { avatar_url, name, public_repos, followers, following } = state.user;
+    const { 
+        avatar_url, 
+        name, 
+        public_repos, followers, following } = state.user
+
 
     return (
         <div className="card profCard container" id="profile">
