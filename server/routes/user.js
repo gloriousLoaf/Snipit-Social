@@ -15,7 +15,7 @@ router.route("/:id")
             .then(user => {
                 if (user) {
                     return res.json({
-                        id: user.id,
+                        id: user._id,
                         name: user.name,
                         avatarURL: user.avatarURL,
                         bio: user.bio,

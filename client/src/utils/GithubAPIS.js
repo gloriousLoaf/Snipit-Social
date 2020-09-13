@@ -16,7 +16,7 @@ export default {
     // get gitInfo from db
 
     getGitInfo: function(id) { 
-        return axios.get("/api/gitinfo/getGitId/" + id)
+        return axios.get("/api/userInfo/" + id)
     }
     
 };

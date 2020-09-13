@@ -1,14 +1,35 @@
 // USERCARD - PROFILE
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 import { AuthContext } from "../../../App";
 import './style.css';
+import gitAPI from "../../../utils/GithubAPIS";
+
 
 const UserCard = () => {
 
     // AuthContext using reducer
-    const { state } = useContext(AuthContext);
+    const { state, dispatch } = useContext(AuthContext);
+
+    const profileState = {
+        id: "",
+        htmlURL: "",
+        name: "",
+        avatarUrl: "",
+        bio: "",
+        blog: "",
+        company: "",
+        hireable: ""
+    };
+
+    useEffect(() => {
+        gitAPI.getGitInfo(state.user.id)
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(err => console.log(err));
+    })
 
     if (!state.isLoggedIn) {
         return <Redirect to="/login" />;
@@ -16,7 +37,7 @@ const UserCard = () => {
 
     
 
-    console.log(state.user)
+    // console.log(state.user)
 
     // create props for user
     const { avatar_url, name, public_repos, followers, following } = state.user;
