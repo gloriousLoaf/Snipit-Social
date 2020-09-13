@@ -76,15 +76,16 @@ router.route("/addGitInfo").post((req, res) => {
   //   .catch(err => console.log(err));
 });
 
-// router.route("getGitId/:id").get((req, res) => {
-//   GitInfo.findOne{
+router.route("getGitInfo/:id").get((req, res) => {
+  GitInfo.findOne({
+    id: req.body.id,
+  }
+  )
+    .then(info => res.json(info))
+    .catch(err => console.log(err));
 
-//   }
-//     .then(info => res.json(info))
-//     .catch(err => console.log(err));
+    console.log(req.params.id)
 
-//     console.log(req.params.id)
-
-// });
+});
 
 module.exports = router;

@@ -55,7 +55,7 @@ const GitHubLogin = () => {
     }, [state, dispatch, data]);
 
     if (state.isLoggedIn) {
-        return <Redirect to="/profile" />;
+        return <Redirect to="/profile/:id"/>;
     }
 
     // Based on login state, this displays a loading spinner and / or error msg

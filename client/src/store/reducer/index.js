@@ -10,7 +10,7 @@ const { REACT_APP_CLIENT_ID, REACT_APP_CLIENT_SECRET, REACT_APP_REDIRECT_URI, RE
 export const initialState = {
     isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn")) || false,
     user: JSON.parse(localStorage.getItem("user")) || null,
-    dbUserInfo: {},
+    id: "",
     client_id: REACT_APP_CLIENT_ID,
     redirect_uri: REACT_APP_REDIRECT_URI,
     client_secret: REACT_APP_CLIENT_SECRET,
@@ -51,6 +51,8 @@ export const reducer = (state, action) => {
                 ...state,
                 isLoggedIn: action.payload.isLoggedIn,
                 user: action.payload.user,
+                gitId: action.payload.user.id,
+
             };
         }
         case "LOGOUT": {

@@ -44,7 +44,7 @@ const App = () => {
             {/* <Route path="/googlelogin" exact component={GoogleLogin} /> */}
 
             {/* NEW Profile Page */}
-            <Route path="/profile" exact component={Profile} />
+            <Route path="/profile/:id" exact component={Profile} />
 
             {/* no content yet */}
             <Route path="/Posts" component={listPost} />
