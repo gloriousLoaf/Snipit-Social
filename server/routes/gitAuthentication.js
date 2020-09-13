@@ -4,43 +4,87 @@ const passport = require("passport");
 const router = require("express").Router();
 const GitInfo = require("../models/Github");
 
+router.route("/addGitInfo").post((req, res) => {
+  // always returns in req.body apparently?
+  GitInfo.findOne(
+    {
+      id: req.body.id
+    },
+    function(err, gitInfo) {
+      if (err) {
+        return console.log(err);
+      }
 
-router.route("/addGitInfo")
-.post((req, res) => {
-    // always returns in req.body apparently?
-    console.log(req.body)
-  const id = req.body.id
+      if (!gitInfo) {
+        const newInfo = new GitInfo({
+          id: req.body.id,
 
-  const name = req.body.name
+          name: req.body.name,
 
-  const htmlUrl = req.body.htmlURL
+          htmlUrl: req.body.htmlURL,
 
-  const avatarUrl = req.body.avatarUrl
+          avatarUrl: req.body.avatarUrl,
 
-  const bio = req.body.bio
+          bio: req.body.bio,
 
-  const blog = req.body.blog
+          blog: req.body.blog,
 
-  const company = req.body.company
+          company: req.body.company,
 
-  const hireable = req.body.hireable
+          hireable: req.body.hireable
+        });
 
-  const newInfo = new GitInfo({
-    id,
-    name,
-    htmlUrl,
-    avatarUrl,
-    bio,
-    blog,
-    company,
-    hireable,
-  });
+        newInfo
+          .save()
+          .then(post => res.json(post))
+          .catch(err => console.log(err));
+      }
+      gitInfo
+    }
+  );
+  console.log(req.body);
+  // const id = req.body.id;
 
-  newInfo 
-    .save()
-    .then(post => res.json(post))
-    .catch(err => console.log(err));
+  // const name = req.body.name;
+
+  // const htmlUrl = req.body.htmlURL;
+
+  // const avatarUrl = req.body.avatarUrl;
+
+  // const bio = req.body.bio;
+
+  // const blog = req.body.blog;
+
+  // const company = req.body.company;
+
+  // const hireable = req.body.hireable;
+
+  // const newInfo = new GitInfo({
+  //   id,
+  //   name,
+  //   htmlUrl,
+  //   avatarUrl,
+  //   bio,
+  //   blog,
+  //   company,
+  //   hireable
+  // });
+
+  // newInfo
+  //   .save()
+  //   .then(post => res.json(post))
+  //   .catch(err => console.log(err));
 });
 
+// router.route("getGitId/:id").get((req, res) => {
+//   GitInfo.findOne{
+
+//   }
+//     .then(info => res.json(info))
+//     .catch(err => console.log(err));
+
+//     console.log(req.params.id)
+
+// });
 
 module.exports = router;

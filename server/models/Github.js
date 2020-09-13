@@ -7,6 +7,7 @@ const gitSchema = new Schema({
     id: {
         type: Number,
         required: false,
+        unique: 1,
     },
     name: {
         type: String,

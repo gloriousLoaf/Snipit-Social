@@ -12,6 +12,7 @@ function PostsCard() {
   // currently it only pulls tweets on load bc life cycle
   // can just put this in an event listener?
 
+  // for now this will show all tweets too :()
   // need to change this to userPosts
   useEffect(() => {
     API.getPosts().then(response => {

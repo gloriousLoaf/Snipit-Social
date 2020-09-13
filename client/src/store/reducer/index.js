@@ -1,5 +1,8 @@
 //// REDUCER for AuthContext in App.js ////
-import API from "../../utils/GithubAPIS"
+import gitAPI from "../../utils/GithubAPIS"
+import { userInfo } from "os";
+
+
 // pulled from client/.env
 const { REACT_APP_CLIENT_ID, REACT_APP_CLIENT_SECRET, REACT_APP_REDIRECT_URI, REACT_APP_PROXY_URL } = process.env;
 
@@ -7,6 +10,7 @@ const { REACT_APP_CLIENT_ID, REACT_APP_CLIENT_SECRET, REACT_APP_REDIRECT_URI, RE
 export const initialState = {
     isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn")) || false,
     user: JSON.parse(localStorage.getItem("user")) || null,
+    dbUserInfo: {},
     client_id: REACT_APP_CLIENT_ID,
     redirect_uri: REACT_APP_REDIRECT_URI,
     client_secret: REACT_APP_CLIENT_SECRET,
@@ -29,7 +33,8 @@ export const reducer = (state, action) => {
             // ORRR "findbyId, if (!user): submit this info"
             // on login, we will save this info into the database
             console.log(action.payload.user)
-            API.saveGitInfo({
+
+            const variables = { 
                 id: action.payload.user.id,
                 htmlURL: action.payload.user.html_url,
                 name: action.payload.user.name,
@@ -38,7 +43,9 @@ export const reducer = (state, action) => {
                 blog: action.payload.user.blog,
                 company: action.payload.user.company,
                 hireable: action.payload.user.hireable
-            })
+            }
+
+            gitAPI.saveGitInfo(variables)
 
             return {
                 ...state,

@@ -14,6 +14,10 @@ const UserCard = () => {
         return <Redirect to="/login" />;
     }
 
+    
+
+    console.log(state.user)
+
     // create props for user
     const { avatar_url, name, public_repos, followers, following } = state.user;
 

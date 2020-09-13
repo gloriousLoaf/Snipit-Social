@@ -12,4 +12,11 @@ export default {
     saveGitInfo: function(gitInfo) {
         return axios.post("/api/gitinfo/addGitInfo", gitInfo)
     },
+
+    // get gitInfo from db
+
+    // getGitId: function(id) { 
+    //     return axios.get("/api/gitinfo/getGitId", id)
+    // }
+    
 };
