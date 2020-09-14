@@ -1,15 +1,18 @@
 /* INPUT */
-.chatForm {
+
+/* if commented-out, its from the old layout,
+not currently in use and on the chopping block! */
+
+/* .chatForm {
     display: flex;
     border-top: 2px solid #aab8c2;
-}
+} */
 
 .chatInput {
     border: none;
     border-radius: 1rem;
-    padding: 5%;
-    width: 80%;
     font-size: 1.2em;
+    overflow: hidden;
 }
 
 input:focus, textarea:focus, select:focus{

@@ -4,7 +4,6 @@ import LandingPage from "./components/LandingPage";
 import GitHubLogin from "./components/GitHubLogin";
 // Chat
 import Chat from "./components/chatrooms/Chat/index.js";
-import Join from "./components/chatrooms/Join/index.js";
 // Reducer store for AuthContext (Logins)
 import { initialState, reducer } from "./store/reducer";
 
@@ -15,7 +14,7 @@ import { initialState, reducer } from "./store/reducer";
 import Profile from "./components/Profile";
 
 // Timeline stuff, coming soon
-import listPost from "./components/posts/ListPost";
+// import listPost from "./components/posts/ListPost";
 
 // Eventually we'll have a logo
 // import logo from "./logo.svg";
@@ -53,10 +52,9 @@ const App = () => {
             {/* </ProfileContext.Provider> */}
 
             {/* no content yet */}
-            <Route path="/Posts" component={listPost} />
+            {/* <Route path="/Posts" component={listPost} /> */}
 
-            {/* Join goes to Chat. Join is temporary until DMs exist */}
-            <Route path="/join" exact component={Join} />
+            {/* Chat now reached through NavBar button */}
             <Route path="/chat" exact component={Chat} />
           </Switch>
         </BrowserRouter>

@@ -1,35 +1,19 @@
-.messageBox {
-    background: #F3F3F3;
-    border-radius: 1.25rem;
-    padding: 0.25rem 1.25rem;
-    color: white;
-    display: inline-block;
-    max-width: 80%;
-}
+/* MESSAGE - Single messages */ 
 
-.messageText {
-    width: 100%;
-    letter-spacing: 0;
-    float: left;
-    font-size: 1.1em;
-    word-wrap: break-word;
+/* Hiding the scroll bar, but keeping scrollability.
+    scrollbar still has some ghost margin to balance out. */
+.message-content-inner {
+    -ms-overflow-style: none;
+    overflow: auto;
+    scrollbar-width: none;
 }
-
-.messageText img {
-    vertical-align: middle;
-}
-
-.messageContainer {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0 5%;
-    margin-top: 0.2rem;
+/* same */
+.message-content-inner::-webkit-scrollbar {
+    display: none;
 }
 
 .sentText {
     display: flex;
-    align-items: center;
-    font-family: Helvetica;
     color: #828282;
     letter-spacing: 0.3px;
 }
@@ -50,18 +34,26 @@
     justify-content: flex-end;
 }
 
-.colorWhite {
-color: white;
-}
 
-.colorDark {
-    color: #353535;
-}
 
-.backgroundBlue {
-    background: #2979FF;
-}
-
-.backgroundLight {
+/* OLD Layout - might use parts? */
+/* .messageBox {
     background: #F3F3F3;
-}  
+    border-radius: 1.25rem;
+    padding: 0.25rem 1.25rem;
+    color: white;
+    display: inline-block;
+    max-width: 80%;
+}
+
+.messageText {
+    width: 100%;
+    letter-spacing: 0;
+    float: left;
+    font-size: 1.1em;
+    word-wrap: break-word;
+}
+
+.messageText img {
+    vertical-align: middle;
+} */
