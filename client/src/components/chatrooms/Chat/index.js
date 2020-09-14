@@ -3,23 +3,17 @@ import React, { useState, useEffect } from "react";
 import queryString from 'query-string';
 import io from "socket.io-client";
 // import CurrentUsers from '../CurrentUsers';
+import NavBar from '../../NavBar';
 import Messages from '../Messages';
 import InfoBar from '../InfoBar';
 import Input from '../Input';
+// NEW!! Framework is in pages/
+import '../../../pages/Framework/css/style.css';
+import '../../../pages/Framework/css/framework.css';
+import '../../../pages/Framework/css/icons.css';
+import '../../../pages/Framework/css/night-mode.css';
+// Keep this css to override framework as needed:
 import './style.css';
-
-// NEW!! Framework is here in this branch,
-// BUT in the main is should live in pages.
-// see commented out links to make that connection
-import '../framework/css/style.css';
-import '../framework/css/framework.css';
-import '../framework/css/icons.css';
-import '../framework/css/night-mode.css';
-
-// import '../../../pages/FeedView/style.css';
-// import '../../../pages/FeedView/css/framework.css';
-// import '../../../pages/FeedView/css/icons.css';
-// import '../../../pages/FeedView/night-mode.css';
 
 let socket;
 // Change room to thread, like texting? User to user, not group rooms?
@@ -89,6 +83,7 @@ const Chat = ({ location }) => {
 
     return (
         <div className="outerChatContainer">
+            <NavBar />
             <div className="chatContainer">
                 <InfoBar room={room} />
                 <Messages messages={messages} name={name} />

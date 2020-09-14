@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    padding-bottom: 3.4rem;
 }
 
 .chatContainer {
@@ -19,8 +20,8 @@
 }
   
 @media (min-width: 320px) and (max-width: 480px) {
-    .outerContainer {
-        height: 100%;
+    .outerChatContainer {
+        height: 100vh;
     }
 
     .chatContainer {
@@ -29,8 +30,9 @@
     }
 }
   
-@media (min-width: 480px) and (max-width: 1200px) {
+@media (min-width: 480px) {
     .chatContainer {
         width: 60%;
+        height: 90vh;
     }
 }
