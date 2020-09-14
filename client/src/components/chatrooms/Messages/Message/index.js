@@ -4,10 +4,10 @@ import ReactEmoji from 'react-emoji';
 import './style.css';
 
 // NEW!!
-import '../../framework/css/style.css';
-import '../../framework/css/framework.css';
-import '../../framework/css/icons.css';
-import '../../framework/css/night-mode.css';
+import '../../../../pages/Framework/css/style.css';
+import '../../../../pages/Framework/css/framework.css';
+import '../../../../pages/Framework/css/icons.css';
+import '../../../../pages/Framework/css/night-mode.css';
 
 const Message = ({ message: { text, user }, name }) => {
 
