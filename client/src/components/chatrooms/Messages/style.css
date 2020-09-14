@@ -1,6 +1,18 @@
-/* MESSAGES */ 
+/* MESSAGES Box */ 
+
+/* Hiding the scroll bar, but keeping scrollability.
+    scrollbar still has some ghost margin to balance out. */
 .messages {
-    padding: 5% 0;
+    padding: 1rem 0 1rem 1.55rem;
     overflow: auto;
     flex: auto;
+}
+
+/* same */
+div.messageViewer > div:first-child {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+div.messageViewer > div:first-child::-webkit-scrollbar {
+    display: none;
 }
