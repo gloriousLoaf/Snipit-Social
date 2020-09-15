@@ -9,14 +9,14 @@ export default {
 
     // save post to db
 
-    saveGitInfo: function(gitInfo) {
+    saveGitInfo: function (gitInfo) {
         return axios.post("/api/gitinfo/addGitInfo", gitInfo)
     },
 
     // get gitInfo from db
 
-    getGitInfo: function(id) { 
+    getGitInfo: function (id) {
         return axios.get("/api/userInfo/" + id)
     }
-    
+
 };

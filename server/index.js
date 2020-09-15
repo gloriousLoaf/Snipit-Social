@@ -7,7 +7,7 @@ const passport = require("passport");
 const cookieSession = require("cookie-session");
 require("./passport-setup");
 // GH Auth
-require('dotenv').config(); 
+require('dotenv').config();
 const FormData = require("form-data");
 const fetch = require("node-fetch");
 
@@ -21,6 +21,9 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./usersChat');
 const config = require("./config/key");
 const authentication = require('./routes/authentication');
 const mongoose = require("mongoose");
+
+// used this alternate path to actually see local database
+// mongoose.connect("mongodb://localhost/gitinfo",
 const connect = mongoose.connect(config.mongoURI,
   {
     useNewUrlParser: true, useUnifiedTopology: true,
@@ -112,10 +115,12 @@ io.on('connect', (socket) => {
 const posts = require('./routes/posts');
 const gitinfo = require('./routes/gitAuthentication');
 const users = require('./routes/user');
+const searchUser = require('./routes/searchUser')
 
 app.use('/api/posts', posts);
 app.use('/api/gitinfo', gitinfo);
 app.use('/api/users', users);
+app.use('/api/searchUserName', searchUser);
 
 
 app.get("/", (req, res) => res.send("hello, please go to /google"));

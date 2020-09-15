@@ -24,14 +24,17 @@ const NavBar = () => {
     const handleSearch = (e) => {
         e.preventDefault();
         // send search to API to DB?
+        // HOW DOES THIS WORK??
         searchAPI.searchUser(search)
             .then(res => {
-                if (res.data.items === "error") {
-                    throw new Error(res.data.items);
-                } else {
-                    console.log(res.data.items);
-                }
+                // if (res.data.items === "error") {
+                //     throw new Error(res.data.items);
+                // } else {
+                //     console.log(res.data.items);
+                // }
+                console.log(res)
             })
+            .catch(err => console.log(err));
     }
 
     return (
