@@ -7,24 +7,20 @@ const Schema = mongoose.Schema;
 
 
 const userSchema = new Schema({
-    name: {
+    fullname: {
         type: String,
     },
     email: {
         type: String,
-        trim: true,
-        unique: 1
+        required: true,
+        unique: true,
     },
-    username: {
+    password: {
         type: String,
-        trim: true,
     },
     role : {
         type: Number,
         default: 0
-    },
-    provider: {
-        type: String,
     },
     followers: [],
     following: []

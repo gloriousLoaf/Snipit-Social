@@ -20,11 +20,11 @@ class Signup extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
     const userData = {
+      fullname: this.state.fullname,
       email: this.state.email,
-      login: this.state.login,
       password: this.state.password,
-      password2: this.state.password2
     };
 
     console.log(userData);
@@ -42,12 +42,12 @@ class Signup extends Component {
               Your Name
             </Form.Label>
 
-            {/* user input name */}
+            {/* name */}
             <Form.Control
-              type="email"
-              placeholder="Enter email"
+              type="name"
+              placeholder="Enter name"
               className="form-control form-control-sm validate"
-              value = {this.state.name}
+              value = {this.state.fullname}
               onChange = {this.handleChange}
               name="fullname"
             />
@@ -81,12 +81,19 @@ class Signup extends Component {
               type="password"
               placeholder="••••••"
               className="form-control form-control-sm validate"
+              value = {this.state.password}
+              onChange = {this.handleChange}
+              name = "password"
+
             />
           </Form.Group>
 
           {/* Sign Up */}
           <div className="text-center form-sm mt-2">
-            <Button className="modalSignin btn btn-primary">
+            <Button 
+            className="modalSignin btn btn-primary"
+            onClick = {this.handleSubmit}
+            >
               Sign up <i className="fa fa-sign-in ml-1"></i>
             </Button>
           </div>

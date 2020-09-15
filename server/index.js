@@ -111,11 +111,11 @@ io.on('connect', (socket) => {
 // api calls
 const posts = require('./routes/posts');
 const gitinfo = require('./routes/gitAuthentication');
-const userInfo = require('./routes/user');
+const users = require('./routes/user');
 
 app.use('/api/posts', posts);
 app.use('/api/gitinfo', gitinfo);
-app.use('/api/userInfo', userInfo);
+app.use('/api/users', users);
 
 
 app.get("/", (req, res) => res.send("hello, please go to /google"));
