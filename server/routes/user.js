@@ -19,8 +19,10 @@ router.route("/register").post((req, res) => {
   User.findOne({
     email: req.body.email
   }).then(user => {
+
     if (user) {
       errors.email = "Email was used!";
+      return res.status(404).json(errors)
     }
 
     bcrypt.genSalt(10, function(err, salt) {
@@ -34,7 +36,7 @@ router.route("/register").post((req, res) => {
         newUser
           .save()
           .then(newUser => res.json(newUser))
-          .catch(error => console.log(error));
+          .catch(err => console.log(err));
       });
     });
   });
