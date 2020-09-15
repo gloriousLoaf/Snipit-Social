@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 
-import { withRouter } from "react-router-dom"
-import { connect } from "react-redux"
-import { registerUser } from "../../../actions/authActions/authActions"
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { registerUser } from "../../../actions/authActions/authActions";
 
 class Signup extends Component {
   constructor(props) {
@@ -19,10 +19,10 @@ class Signup extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // really cool way to handle new errors 
+  // really cool way to handle new errors
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors })
+      this.setState({ errors: nextProps.errors });
     }
   }
 
@@ -36,14 +36,13 @@ class Signup extends Component {
     const userData = {
       fullname: this.state.fullname,
       email: this.state.email,
-      password: this.state.password,
+      password: this.state.password
     };
 
-    this.props.registerUser(userData, this.props.history)
+    this.props.registerUser(userData, this.props.history);
 
     console.log(userData);
   }
-
 
   render() {
     const { classes } = this.props;
@@ -67,12 +66,7 @@ class Signup extends Component {
               onChange={this.handleChange}
               name="fullname"
             />
-            <Form.Text
-
-            >
-
-            </Form.Text>
-
+            <Form.Text>{errors ? errors.fullname : null}</Form.Text>
           </Form.Group>
 
           {/* Email */}
@@ -90,6 +84,7 @@ class Signup extends Component {
               onChange={this.handleChange}
               name="email"
             />
+            <Form.Text>{errors ? errors.email : null}</Form.Text>
           </Form.Group>
 
           {/* Password */}
@@ -106,8 +101,11 @@ class Signup extends Component {
               value={this.state.password}
               onChange={this.handleChange}
               name="password"
-
             />
+                        <Form.Text
+            >
+              {errors ? errors.password : null}
+            </Form.Text>
           </Form.Group>
 
           {/* Sign Up */}
@@ -125,8 +123,8 @@ class Signup extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   errors: state.errors
-})
+});
 
-export default connect(mapStateToProps, { registerUser })(withRouter((Signup)));
+export default connect(mapStateToProps, { registerUser })(withRouter(Signup));
