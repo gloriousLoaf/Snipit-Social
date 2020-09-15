@@ -9,16 +9,39 @@ import gitAPI from "../../../utils/GithubAPIS";
 
 const UserCard = () => {
 
-    // AuthContext using reducer
+    // // AuthContext using reducer
     const { state, dispatch } = useContext(AuthContext);
 
+    // const [gitName, setGitName] = useState()
+    // const [id, setId] = useState()
+    // const [bio, setBio] = useState()
+    // const [company, setCompany] = useState()
+    // const [blog, setBlog] = useState()
+    // const [hireable, setHireable] = useState()
+    // const [avatarURL, setAvatarURL] = useState()
+
+    // useEffect(() => {
+    //     gitAPI.getGitInfo(state.user.id)
+    //         .then(res => {
+    //             // console.log(res.data)
+    //             setGitName = res.data.name
+    //             setId = res.data.id;
+    //             setBio = res.data.bio;
+    //             setCompany = res.data.company;
+    //             setBlog = res.data.blog;
+    //             setHireable = res.data.hireable;
+    //             setAvatarURL = res.data.avatarURL;
+    //         })
+    //         .catch(err => console.log(err));
+    //         // console.log(profileState)
+    // })
 
     if (!state.isLoggedIn) {
         return <Redirect to="/login" />;
     }
 
     
-    console.log(state.user)
+    // console.log(state.user)
 
     // create props for user
     const { 

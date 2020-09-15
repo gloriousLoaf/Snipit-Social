@@ -1,13 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React, { ComponentElement, Component } from "react";
 import API from "../../utils/API";
+import Card from "react-bootstrap/Card"
 
-function Posts() {
+import AddPost from "./AddPost"
+import { connect } from 'react-redux';
+import { getPosts} from "../../actions/postActions/postActions"
 
-  return ( 
-  <div>
-      This is a post item.
-      </div>
-  );
+class Post extends Component {
+  render() {
+    const { classes, post } = this.props
+
+    // const items = list && list.map( )
+
+    // console.log(classes)
+
+    console.log(post)
+
+
+    return ( 
+      <Card>
+        <div />
+
+        <div>
+            <h3> {post} 
+
+            </h3>
+        </div>
+      </Card>
+    )
+}
 }
 
-export default Posts;
+
+export default (Post);
