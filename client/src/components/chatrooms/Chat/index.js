@@ -2,10 +2,17 @@
 import React, { useState, useEffect } from "react";
 import queryString from 'query-string';
 import io from "socket.io-client";
-import CurrentUsers from '../CurrentUsers';
+// import CurrentUsers from '../CurrentUsers';
+import NavBar from '../../NavBar';
 import Messages from '../Messages';
 import InfoBar from '../InfoBar';
 import Input from '../Input';
+// NEW!! Framework is in pages/
+import '../../../pages/Framework/css/style.css';
+import '../../../pages/Framework/css/framework.css';
+import '../../../pages/Framework/css/icons.css';
+import '../../../pages/Framework/css/night-mode.css';
+// Keep this css to override framework as needed:
 import './style.css';
 
 let socket;
@@ -75,13 +82,14 @@ const Chat = ({ location }) => {
     };
 
     return (
-        <div className="outerContainer">
+        <div className="outerChatContainer">
+            <NavBar />
             <div className="chatContainer">
                 <InfoBar room={room} />
                 <Messages messages={messages} name={name} />
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
             </div>
-            <CurrentUsers users={users} />
+            {/* <CurrentUsers users={users} /> */}
         </div>
     );
 }

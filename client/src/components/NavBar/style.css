@@ -1,3 +1,4 @@
+/* NAVBAR */
 .navbarContainer {
     z-index: 1;
     background-color: #18a0fb;
@@ -24,4 +25,21 @@
     box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 0.4);
 }
 
+/* chats dropup */ 
+.navbarLogo .btn-primary {
+    background-color: #18a0fb;
+    border: none;
+    font-size: 1.6rem;
+}
+
+/* "Chat Rooms:" option is not a link */ 
+.liveChats {
+    cursor: default;
+    pointer-events: none;
+}
+
+/* remove silly caret from chats dropup */
+.dropdown-toggle::after {
+    display: none !important;
+}
 /* @media () */
