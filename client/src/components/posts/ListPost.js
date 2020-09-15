@@ -1,67 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from 'react';
+import { connect } from "react-redux"
+
 import AddPost from "./AddPost";
-import Post from "./Post";
-import API from "../../utils/API";
-import { List, ListItem } from "../posts/List";
-import DeleteButton from "./DeleteButton";
+import Post from "./Post"
 
-// react can't directly just list out object children
-// we have to send it to the state of this file,
-// then list out the state
+import { getPosts } from "../../actions/postActions/postActions"
+import LoadingPosts from "./LoadingPosts"
 
-// lets make list function
 
-// children ==== prop
-// in react, inner text / inner whatever goes as children in react cause you have to specify po
+class ListPost extends Component { 
 
-// lets make this list item
+    componentDidMount() {
+        this.props.getPosts(); 
+    }
 
-function ListPost() {
-  // your .map or .key function is completely dependent on this part.
-  const [posts, setPosts] = useState([]);
+    render() {
+        const { list, loading } = this.props; 
 
-  // have to set useEffect to an empty array to ensure only executed once.
+        console.log(this.props)
 
-  // change component cycle, 
-  // currently it only pulls tweets on load bc life cycle
-  // can just put this in an event listener? 
-  useEffect(() => {
-    API.getPosts().then(response => {
-      // console.log(response.data);
-      setPosts(response.data);
-    });
-    // this is intialized with empty array
-  }, []);
-
-  // should make this (if id matches poster id == delete.)
-  function deletePost(id) {
-    console.log(id);
-    API.deletePosts(id)
-      .then(res => API.getPosts())
-      .catch(err => console.log(err));
-  }
-
-  console.log(posts);
-
-  return (
-    <div>
-      <AddPost />
-      ~~~LIST POST PAGE~~~
-      <br></br>
-      change key to mongo id w/ context
-      <List>
-        {posts.map(tweets => (
-          <ListItem key={tweets._id}>
-            {tweets.text}
-            <DeleteButton onClick={() => deletePost(tweets._id)} />
-          </ListItem>
-        ))}
-      </List>
-      <br />
-      ~~~ END OF LIST POST PAGE ~~~
-      <Post />
-    </div>
-  );
+        const items = list && list.map(el => <Post key={el._id} post={el.text} />)
+        return ( 
+            <div>
+                <AddPost />
+                List Post Page
+                { loading ? <LoadingPosts /> : items}
+                <Post />
+            </div>
+        )
+    }
 }
 
-export default ListPost;
+const mapStateToProps = (state) => ({
+    list: state.post.list,
+    loading: state.post.loading,
+
+})
+
+export default connect(mapStateToProps, { getPosts}) (ListPost);
