@@ -1,8 +1,48 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 
+import userLogin from "../RightSide/"
+import { connect } from "react-redux"
+
+
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+      errors: {}
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  // really cool way to handle new errors
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    const userData = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    console.log(userData);
+  }
+
   render() {
+    const { classes } = this.props;
+    const { errors } = this.state;
+
     return (
       <div>
         <Form className="modal-body mx-4">
@@ -10,7 +50,7 @@ class Login extends Component {
           <Form.Group className="md-form mb-4" controlId="formBasicEmail">
             <Form.Label data-error="wrong" data-success="right">
               Your email
-              </Form.Label>
+            </Form.Label>
             {/* this is where user text goes, add cool autocomplete stuff to it later */}
 
             <Form.Control
@@ -19,14 +59,17 @@ class Login extends Component {
               className="form-control validate"
             />
             <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-              </Form.Text>
+              {errors.email
+                ? errors.email
+                : "We'll never share your email with anyone else."}
+            </Form.Text>
           </Form.Group>
+
           {/* Password */}
           <Form.Group className="md-form pb-3" controlId="formBasicPassword">
             <Form.Label data-error="wrong" data-success="right">
               Your password
-              </Form.Label>
+            </Form.Label>
 
             {/* this is where user pw input */}
             <Form.Control
@@ -34,10 +77,13 @@ class Login extends Component {
               placeholder="••••••"
               className="form-control validate"
             />
+            <Form.Text className="text-muted">
+              {errors.password ? errors.password: ""}
+            </Form.Text>
             <p className="font-small blue-text d-flex justify-content-end">
               <a href="/" className="blue-text ml-1">
                 Forgot Password?
-                </a>
+              </a>
             </p>
           </Form.Group>
           {/* Sign in */}
@@ -47,12 +93,12 @@ class Login extends Component {
               className="modalSignin btn btn-primary btn-block btn-rounded"
             >
               Sign in
-              </Button>
+            </Button>
           </div>
           {/* Other Sign in Methods */}
           <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">
             Or Sign in with
-            </p>
+          </p>
           <div className="row my-2 d-flex justify-content-center">
             {/* Facebook Login, stretch goal?? */}
 
@@ -69,15 +115,17 @@ class Login extends Component {
               href="/login"
               type="button"
               className="github btn-dark mr-2 md-2"
-            >
+              onClick= {this.handleSubmit}
+            > 
               <i className="fab fa-github" style={{ fontSize: 30 }}></i>
             </Button>
           </div>
         </Form>
-
       </div>
     );
   }
 }
 
-export default Login;
+
+export default (Login);
+

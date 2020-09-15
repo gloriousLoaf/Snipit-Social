@@ -41,7 +41,6 @@ class Signup extends Component {
 
     this.props.registerUser(userData, this.props.history);
 
-    console.log(userData);
   }
 
   render() {
@@ -66,7 +65,7 @@ class Signup extends Component {
               onChange={this.handleChange}
               name="fullname"
             />
-            <Form.Text>{errors ? errors.fullname : null}</Form.Text>
+            <Form.Text>{errors.fullname ? errors.fullname : null}</Form.Text>
           </Form.Group>
 
           {/* Email */}
@@ -84,7 +83,7 @@ class Signup extends Component {
               onChange={this.handleChange}
               name="email"
             />
-            <Form.Text>{errors ? errors.email : null}</Form.Text>
+            <Form.Text>{errors.email ? errors.email : null}</Form.Text>
           </Form.Group>
 
           {/* Password */}
@@ -104,7 +103,7 @@ class Signup extends Component {
             />
                         <Form.Text
             >
-              {errors ? errors.password : null}
+              {errors.password ? errors.password : null}
             </Form.Text>
           </Form.Group>
 
