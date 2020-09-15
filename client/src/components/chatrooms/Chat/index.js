@@ -18,14 +18,18 @@ import './style.css';
 let socket;
 // Change room to thread, like texting? User to user, not group rooms?
 const Chat = ({ location }) => {
-    // Hooks
+
+    /* HOOKS */
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
+
+    // console will complain about "unused" users var,
+    // but socket.io DEF uses it on the back end
     const [users, setUsers] = useState('');
+
     // individual message & all messages
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
-    // ENDPOINT will need to change if server changes
     const ENDPOINT = 'localhost:5000';
 
     // On Connect, data from URL params

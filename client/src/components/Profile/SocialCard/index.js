@@ -1,5 +1,6 @@
 // SOCIAL CARD - PROFILE
 import React, { useContext } from 'react';
+import { Redirect } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 import { AuthContext } from "../../../App";
 import './style.css';
@@ -8,8 +9,15 @@ import './style.css';
 const Social = () => {
 
     // pulling state.user from Context
-    const { state, dispatch } = useContext(AuthContext);
+    const { state } = useContext(AuthContext);
+
+    // Redirect needed to prevent crashing
+    if (!state.isLoggedIn) {
+        return <Redirect to="/" />;
+    }
+    // needs to be below if()
     const { html_url } = state.user;
+
 
     return (
         <div className="card profCard container my-2 d-flex justify-content-center" id="social">

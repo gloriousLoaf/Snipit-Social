@@ -1,10 +1,10 @@
 import React, { ComponentElement, Component } from "react";
-import API from "../../utils/API";
+// import API from "../../utils/API";
 import Card from "react-bootstrap/Card"
 
-import AddPost from "./AddPost"
-import { connect } from 'react-redux';
-import { getPosts} from "../../actions/postActions/postActions"
+// import AddPost from "./AddPost"
+// import { connect } from 'react-redux';
+// import { getPosts} from "../../actions/postActions/postActions"
 
 class Post extends Component {
   render() {
@@ -17,18 +17,18 @@ class Post extends Component {
     console.log(post)
 
 
-    return ( 
+    return (
       <Card>
         <div />
 
         <div>
-            <h3> {post} 
+          <h3> {post}
 
-            </h3>
+          </h3>
         </div>
       </Card>
     )
-}
+  }
 }
 
 

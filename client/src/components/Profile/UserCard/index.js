@@ -1,16 +1,17 @@
 // USERCARD - PROFILE
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
+// import React, { useContext, useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 import { AuthContext } from "../../../App";
 import './style.css';
-import gitAPI from "../../../utils/GithubAPIS";
+// import gitAPI from "../../../utils/GithubAPIS";
 
 
 const UserCard = () => {
 
     // // AuthContext using reducer
-    const { state, dispatch } = useContext(AuthContext);
+    const { state } = useContext(AuthContext);
 
     // const [gitName, setGitName] = useState()
     // const [id, setId] = useState()
@@ -40,7 +41,7 @@ const UserCard = () => {
         return <Redirect to="/login" />;
     }
 
-    
+
     // console.log(state.user)
 
     // create props for user

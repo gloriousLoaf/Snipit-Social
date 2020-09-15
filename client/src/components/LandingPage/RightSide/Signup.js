@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Form, Tabs, Tab, Button, Modal } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 import { withRouter } from "react-router-dom"
-import { connect} from "react-redux"
+import { connect } from "react-redux"
 import { registerUser } from "../../../actions/authActions/authActions"
 
 class Signup extends Component {
@@ -23,8 +23,8 @@ class Signup extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors })
-      }
     }
+  }
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -43,11 +43,11 @@ class Signup extends Component {
 
     console.log(userData);
   }
-  
+
 
   render() {
     const { classes } = this.props;
-    const {errors } = this.state;
+    const { errors } = this.state;
 
     return (
       <div>
@@ -63,14 +63,14 @@ class Signup extends Component {
               type="name"
               placeholder="Enter name"
               className="form-control form-control-sm validate"
-              value = {this.state.fullname}
-              onChange = {this.handleChange}
+              value={this.state.fullname}
+              onChange={this.handleChange}
               name="fullname"
             />
             <Form.Text
-            
+
             >
-              pls
+
             </Form.Text>
 
           </Form.Group>
@@ -86,9 +86,9 @@ class Signup extends Component {
               type="email"
               placeholder="Enter email"
               className="form-control form-control-sm validate"
-              value = {this.state.email}
-              onChange = {this.handleChange}
-              name = "email"
+              value={this.state.email}
+              onChange={this.handleChange}
+              name="email"
             />
           </Form.Group>
 
@@ -103,18 +103,18 @@ class Signup extends Component {
               type="password"
               placeholder="••••••"
               className="form-control form-control-sm validate"
-              value = {this.state.password}
-              onChange = {this.handleChange}
-              name = "password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              name="password"
 
             />
           </Form.Group>
 
           {/* Sign Up */}
           <div className="text-center form-sm mt-2">
-            <Button 
-            className="modalSignin btn btn-primary"
-            onClick = {this.handleSubmit}
+            <Button
+              className="modalSignin btn btn-primary"
+              onClick={this.handleSubmit}
             >
               Sign up <i className="fa fa-sign-in ml-1"></i>
             </Button>
@@ -129,4 +129,4 @@ const mapStateToProps = (state) => ({
   errors: state.errors
 })
 
-export default connect(mapStateToProps, {registerUser}) (withRouter((Signup)));
+export default connect(mapStateToProps, { registerUser })(withRouter((Signup)));

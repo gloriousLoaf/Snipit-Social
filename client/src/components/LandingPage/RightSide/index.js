@@ -3,7 +3,6 @@
 // Modal built-in,  could be broken out to a
 // third Component, but that needs more research?
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { Form, Tabs, Tab, Button, Modal } from "react-bootstrap";
 
 import Signup from "./Signup";
