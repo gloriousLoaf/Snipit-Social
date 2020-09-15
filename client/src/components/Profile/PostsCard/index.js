@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { List, ListItem } from "../../posts/List";
+
 import API from "../../../utils/API";
 
 function PostsCard() {
@@ -14,25 +14,18 @@ function PostsCard() {
 
   // for now this will show all tweets too :()
   // need to change this to userPosts
-  useEffect(() => {
-    API.getPosts().then(response => {
-      // console.log(response.data);
-      setPosts(response.data);
-    });
-    // this is intialized with empty array
-  }, []);
+  // useEffect(() => {
+  //   API.getPosts().then(response => {
+  //     // console.log(response.data);
+  //     setPosts(response.data);
+  //   });
+  //   // this is intialized with empty array
+  // }, []);
 
-  return (
-    <div>
-      <List>
-        {posts.map(tweets => (
-          <ListItem key={tweets._id}>
-            {tweets.text}
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
+  // return (
+  //   <div>
+  //   </div>
+  // );
 }
 
 export default PostsCard;

@@ -8,7 +8,7 @@ import {
 export const addPost = postData => dispatch => {
     axios.post('/api/posts/add', postData)
         .then(res => dispatch({
-            type: 'ADD_POST',
+            type: ADD_POST,
             payload: res.data
         }))
         .catch(err => console.log(err))

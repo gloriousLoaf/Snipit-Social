@@ -5,8 +5,6 @@ import React, { useState, useEffect } from "react";
 import AddPost from "./AddPost";
 import Post from "./Post";
 import API from "../../utils/API";
-import { List, ListItem } from "./List";
-import DeleteButton from "./DeleteButton";
 
 
 // react can't directly just list out object children
@@ -53,14 +51,9 @@ function ListingPost() {
       ~~~LIST POST PAGE~~~
       <br></br>
       change key to mongo id w/ context
-      <List>
-        {posts.map(tweets => (
-          <ListItem key={tweets._id}>
-            {tweets.text}
-            <DeleteButton onClick={() => deletePost(tweets._id)} />
-          </ListItem>
-        ))}
-      </List>
+
+
+
       <br />
       ~~~ END OF LIST POST PAGE ~~~
       <Post />
