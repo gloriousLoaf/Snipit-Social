@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Form, Tabs, Tab, Button, Modal } from "react-bootstrap";
 
+import { withRouter } from "react-router-dom"
+import { connect} from "react-redux"
+import { registerUser } from "../../../actions/authActions/authActions"
+
 class Signup extends Component {
   constructor(props) {
     super(props);
@@ -8,11 +12,19 @@ class Signup extends Component {
       fullname: "",
       email: "",
       password: "",
-      password2: ""
+      password2: "",
+      errors: {}
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  // really cool way to handle new errors 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors })
+      }
+    }
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -20,18 +32,22 @@ class Signup extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
     const userData = {
+      fullname: this.state.fullname,
       email: this.state.email,
-      login: this.state.login,
       password: this.state.password,
-      password2: this.state.password2
     };
+
+    this.props.registerUser(userData, this.props.history)
 
     console.log(userData);
   }
+  
 
   render() {
     const { classes } = this.props;
+    const {errors } = this.state;
 
     return (
       <div>
@@ -42,15 +58,21 @@ class Signup extends Component {
               Your Name
             </Form.Label>
 
-            {/* user input name */}
+            {/* name */}
             <Form.Control
-              type="email"
-              placeholder="Enter email"
+              type="name"
+              placeholder="Enter name"
               className="form-control form-control-sm validate"
-              value = {this.state.name}
+              value = {this.state.fullname}
               onChange = {this.handleChange}
               name="fullname"
             />
+            <Form.Text
+            
+            >
+              pls
+            </Form.Text>
+
           </Form.Group>
 
           {/* Email */}
@@ -81,12 +103,19 @@ class Signup extends Component {
               type="password"
               placeholder="••••••"
               className="form-control form-control-sm validate"
+              value = {this.state.password}
+              onChange = {this.handleChange}
+              name = "password"
+
             />
           </Form.Group>
 
           {/* Sign Up */}
           <div className="text-center form-sm mt-2">
-            <Button className="modalSignin btn btn-primary">
+            <Button 
+            className="modalSignin btn btn-primary"
+            onClick = {this.handleSubmit}
+            >
               Sign up <i className="fa fa-sign-in ml-1"></i>
             </Button>
           </div>
@@ -96,4 +125,8 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+const mapStateToProps = (state) => ({
+  errors: state.errors
+})
+
+export default connect(mapStateToProps, {registerUser}) (withRouter((Signup)));
