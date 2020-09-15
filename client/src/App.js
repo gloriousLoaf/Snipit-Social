@@ -5,7 +5,7 @@ import LandingPage from "./components/LandingPage";
 import GitHubLogin from "./components/GitHubLogin";
 // Chat
 import Chat from "./components/chatrooms/Chat/index.js";
-import Join from "./components/chatrooms/Join/index.js";
+import Join from "./components/chatrooms/Chat/index";
 
 // Reducer store for AuthContext (Logins)
 import { initialState, reducer } from "./store/reducer";

@@ -5,8 +5,8 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      fullname: "",
       email: "",
-      login: "",
       password: "",
       password2: ""
     };
@@ -35,7 +35,6 @@ class Signup extends Component {
 
     return (
       <div>
-
         <Form className="modal-body">
           <Form.Group className="md-form form-sm mb-4">
             <i className="fa fa-user prefix mr-2"></i>
@@ -48,6 +47,9 @@ class Signup extends Component {
               type="email"
               placeholder="Enter email"
               className="form-control form-control-sm validate"
+              value = {this.state.name}
+              onChange = {this.handleChange}
+              name="fullname"
             />
           </Form.Group>
 
@@ -62,6 +64,9 @@ class Signup extends Component {
               type="email"
               placeholder="Enter email"
               className="form-control form-control-sm validate"
+              value = {this.state.email}
+              onChange = {this.handleChange}
+              name = "email"
             />
           </Form.Group>
 

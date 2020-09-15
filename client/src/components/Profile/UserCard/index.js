@@ -40,12 +40,8 @@ const UserCard = () => {
         return <Redirect to="/login" />;
     }
 
-<<<<<<< HEAD
     
     // console.log(state.user)
-=======
-    console.log(state.user);
->>>>>>> 9bf0b6de30945c76d2b0006dfb8f3c00c9f04cc9
 
     // create props for user
     const {
