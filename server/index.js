@@ -5,7 +5,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
-require("./passport-setup");
+// require("./passport-setup");
 // GH Auth
 require('dotenv').config(); 
 const FormData = require("form-data");
@@ -46,6 +46,11 @@ app.use(
 );
 //intialize with passport,
 app.use(passport.initialize());
+
+//instead of the passport-setup.js, using this one
+require("./config/passport")(passport)
+
+
 // use sessions, if using sessions need cookie session lib
 app.use(passport.session());
 
@@ -118,35 +123,35 @@ app.use('/api/gitinfo', gitinfo);
 app.use('/api/users', users);
 
 
-app.get("/", (req, res) => res.send("hello, please go to /google"));
+// app.get("/", (req, res) => res.send("hello, please go to /google"));
 
-app.get("/failed", (req, res) => res.send("failure to log in"));
-// just req.user to see the whole json
-app.get("/good", isLoggedIn, (req, res) => res.send(`welcome ${req.user}`));
+// app.get("/failed", (req, res) => res.send("failure to log in"));
+// // just req.user to see the whole json
+// app.get("/good", isLoggedIn, (req, res) => res.send(`welcome ${req.user}`));
 
-app.get(
-  "/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
+// app.get(
+//   "/google",
+//   passport.authenticate("google", { scope: ["profile", "email"] })
+// );
 
-// might have to change this redirect to "ACCOUNT CREATED",
-// currently it sends "login failed" for the first time user signs up. 
-app.get(
-  "/google/callback",
-  passport.authenticate("google", { failureRedirect: "/failed" }),
-  function (req, res) {
-    // Successful authentication, redirect home.
-    res.redirect("/good");
-  }
-);
+// // might have to change this redirect to "ACCOUNT CREATED",
+// // currently it sends "login failed" for the first time user signs up. 
+// app.get(
+//   "/google/callback",
+//   passport.authenticate("google", { failureRedirect: "/failed" }),
+//   function (req, res) {
+//     // Successful authentication, redirect home.
+//     res.redirect("/good");
+//   }
+// );
 
-app.get("/logout", (req, res) => {
-  // ending the session
-  req.session = null;
-  // passports requires you to do this
-  req.logout();
-  res.redirect("/");
-});
+// app.get("/logout", (req, res) => {
+//   // ending the session
+//   req.session = null;
+//   // passports requires you to do this
+//   req.logout();
+//   res.redirect("/");
+// });
 
 /////// GITHUB AUTH PROXIES ///////
 app.use((req, res, next) => {

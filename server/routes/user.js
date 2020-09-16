@@ -71,16 +71,29 @@ router.route("/login").post((req, res) => {
           );
         } else {
           // good practice to not tell them whats wrong, just its wrong.
-          errors.password = "Invalid login";
+          errors.password = "Invalid pw";
           return res.status(404).json(errors);
         }
       });
     } else {
-      errors.email = "Invalid logni";
+      errors.email = "email";
       return res.status(404).json(errors);
     }
   });
 });
+
+
+// passport . authenticate basically checks your header for the jwt, if the header does nost match, do not pass. 
+router.route("/")
+  .get( passport.authenticate("jwt", { session: false}), (req, res) => {
+    console.log("testing")
+    res.json({
+      _id: req.user._id,
+      email: req.user.email,
+      followers: req.user.followers,
+      following: req.user.following
+    })
+  })
 
 router.route("/:id").get((req, res) => {
   // if we want more than just gitinfo,

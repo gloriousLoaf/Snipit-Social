@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 
+import { withRouter } from "react-router-dom"
+
 import userLogin from "../RightSide/"
 import { connect } from "react-redux"
+import { loginUser } from "../../../actions/authActions/authActions"
 
 
 class Login extends Component {
@@ -15,6 +18,12 @@ class Login extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/')
+    }
   }
 
   // really cool way to handle new errors
@@ -37,6 +46,8 @@ class Login extends Component {
     };
 
     console.log(userData);
+
+    this.props.loginUser(userData);
   }
 
   render() {
@@ -57,6 +68,9 @@ class Login extends Component {
               type="email"
               placeholder="Enter email"
               className="form-control validate"
+              name="email"
+              value = {this.state.email}
+              onChange = {this.handleChange}
             />
             <Form.Text className="text-muted">
               {errors.email
@@ -76,6 +90,9 @@ class Login extends Component {
               type="password"
               placeholder="••••••"
               className="form-control validate"
+              name="password"
+              value = {this.state.password}
+              onChange = {this.handleChange}
             />
             <Form.Text className="text-muted">
               {errors.password ? errors.password: ""}
@@ -91,6 +108,7 @@ class Login extends Component {
             <Button
               type="button"
               className="modalSignin btn btn-primary btn-block btn-rounded"
+              onClick= {this.handleSubmit}
             >
               Sign in
             </Button>
@@ -115,7 +133,7 @@ class Login extends Component {
               href="/login"
               type="button"
               className="github btn-dark mr-2 md-2"
-              onClick= {this.handleSubmit}
+
             > 
               <i className="fab fa-github" style={{ fontSize: 30 }}></i>
             </Button>
@@ -126,6 +144,11 @@ class Login extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors,
+})
 
-export default (Login);
+
+export default connect(mapStateToProps, { loginUser }) (withRouter (Login));
 
