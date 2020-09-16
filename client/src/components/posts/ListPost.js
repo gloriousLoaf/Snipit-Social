@@ -17,7 +17,7 @@ class ListPost extends Component {
     render() {
         const { list, loading } = this.props; 
 
-        console.log(this.props)
+        console.log("ListPost; ", this.props)
 
         const items = list && list.map(el => <Post key={el._id} post={el.text} />)
         return ( 

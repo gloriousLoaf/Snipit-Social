@@ -1,7 +1,7 @@
 import React, { ComponentElement, Component } from "react";
 // import API from "../../utils/API";
 import Card from "react-bootstrap/Card"
-
+import NavBar from "../NavBar";
 // import AddPost from "./AddPost"
 // import { connect } from 'react-redux';
 // import { getPosts} from "../../actions/postActions/postActions"
@@ -19,7 +19,9 @@ class Post extends Component {
 
     return (
       <Card>
-        <div />
+        <div> 
+          <NavBar/>
+        </div>
 
         <div>
           <h3> {post}

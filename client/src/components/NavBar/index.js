@@ -40,7 +40,7 @@ const NavBar = () => {
 
     return (
         <div className="navbarContainer">
-            <Button href="/feed" className="navbarLogo">
+            <Button href="/Posts" className="navbarLogo">
                 <i className="fas fa-stream" aria-hidden="true" title="profile"></i>
             </Button>
 
