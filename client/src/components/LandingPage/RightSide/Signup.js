@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Form, Button } from "react-bootstrap";
-
-import { withRouter } from "react-router-dom";
+import { Form, Button, Modal } from "react-bootstrap";
+import { Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerUser } from "../../../actions/authActions/authActions";
 
 class Signup extends Component {
   constructor(props) {
+    // VS Intellisense is marking this use of 'super' as deprecated
     super(props);
     this.state = {
       fullname: "",
@@ -42,6 +42,9 @@ class Signup extends Component {
     console.log(userData)
 
     this.props.registerUser(userData, this.props.history);
+
+    // working on redirect after login, but this doesn't hit yet
+    // return <Redirect to="/profile/:id" />
 
   }
 
@@ -94,7 +97,7 @@ class Signup extends Component {
             <Form.Label data-error="wrong" data-success="right">
               Your Password
             </Form.Label>
-            
+
             {/* user input pw */}
             <Form.Control
               type="password"
@@ -104,7 +107,7 @@ class Signup extends Component {
               onChange={this.handleChange}
               name="password"
             />
-                        <Form.Text
+            <Form.Text
             >
               {errors.password ? errors.password : null}
             </Form.Text>
@@ -114,12 +117,25 @@ class Signup extends Component {
           <div className="text-center form-sm mt-2">
             <Button
               className="modalSignin btn btn-primary"
-              onClick={this.handleSubmit}
+              onClick={() => this.handleSubmit}
             >
               Sign up <i className="fa fa-sign-in ml-1"></i>
             </Button>
           </div>
         </Form>
+
+        <Modal.Footer>
+          <div className="options text-right">
+            <p className="pt-1">
+              Already have an account?{" "}
+              <a href="login" className="text-primary mr-1">
+                Log In
+            </a>
+            </p>
+            <p>Escape to close</p>
+          </div>
+        </Modal.Footer>
+
       </div>
     );
   }
