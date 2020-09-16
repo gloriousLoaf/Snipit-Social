@@ -10,7 +10,7 @@ router.route("/addGitInfo").post((req, res) => {
     {
       id: req.body.id
     },
-    function(err, gitInfo) {
+    function (err, gitInfo) {
       if (err) {
         return console.log(err);
       }

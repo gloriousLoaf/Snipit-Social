@@ -7,7 +7,7 @@ const passport = require("passport");
 const cookieSession = require("cookie-session");
 // require("./passport-setup");
 // GH Auth
-require('dotenv').config(); 
+require('dotenv').config();
 const FormData = require("form-data");
 const fetch = require("node-fetch");
 
@@ -118,10 +118,12 @@ io.on('connect', (socket) => {
 const posts = require('./routes/posts');
 const gitinfo = require('./routes/gitAuthentication');
 const users = require('./routes/user');
+const searchUser = require('./routes/searchUser')
 
 app.use('/api/posts', posts);
 app.use('/api/gitinfo', gitinfo);
 app.use('/api/users', users);
+app.use('/api/searchUserName', searchUser);
 
 /////// GITHUB AUTH PROXIES ///////
 app.use((req, res, next) => {

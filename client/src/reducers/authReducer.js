@@ -3,7 +3,7 @@ import {
 } from "../constants"
 
 const initialState = {
-    isAuthenticated: true,
+    isAuthenticated: false,
     user: null
 }
 

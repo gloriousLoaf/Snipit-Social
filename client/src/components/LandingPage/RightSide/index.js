@@ -62,7 +62,7 @@ const SignupModal = props => {
         <div className="options text-right">
           <p className="pt-1">
             Already have an account?{" "}
-            <a href="login" className="blue-text mr-1">
+            <a href="login" className="text-primary mr-1">
               Log In
             </a>
           </p>

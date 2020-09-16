@@ -137,7 +137,7 @@ class Login extends Component {
             </Button>
             {/* Github Login */}
             <Button
-              href="/login"
+              href="/githublogin"
               type="button"
               className="github btn-dark mr-2 md-2"
 

@@ -16,27 +16,31 @@ const NavBar = () => {
     // this works, grabs name & room selected to create URL
     const userName = JSON.parse(localStorage.getItem("user"));
     const handleSelect = (e) => {
-        setRoom(e)
         setName(userName.name);
+        setRoom(e);
+
     }
 
 
     const handleSearch = (e) => {
         e.preventDefault();
         // send search to API to DB?
+        // HOW DOES THIS WORK??
         searchAPI.searchUser(search)
             .then(res => {
-                if (res.data.items === "error") {
-                    throw new Error(res.data.items);
-                } else {
-                    console.log(res.data.items);
-                }
+                // if (res.data.items === "error") {
+                //     throw new Error(res.data.items);
+                // } else {
+                //     console.log(res.data.items);
+                // }
+                console.log(res)
             })
+            .catch(err => console.log(err));
     }
 
     return (
         <div className="navbarContainer">
-            <Button href="/feed" className="navbarLogo">
+            <Button href="/Posts" className="navbarLogo">
                 <i className="fas fa-stream" aria-hidden="true" title="profile"></i>
             </Button>
 
@@ -47,12 +51,12 @@ const NavBar = () => {
                 title={
                     <i className="far fa-comment-alt" aria-hidden="true"></i>
                 } drop="up">
-                <Dropdown.Item onClick={e => (!name || !room) ? e.preventDefault() : null} className="liveChats">Chat Rooms:</Dropdown.Item>
-                <Dropdown.Item onClick={e => (!name || !room) ? e.preventDefault() : null} href={`/chat?name=${name}&room=${room}`} eventKey="Frontend" onSelect={handleSelect}>#frontend</Dropdown.Item>
-                <Dropdown.Item onClick={e => (!name || !room) ? e.preventDefault() : null} href={`/chat?name=${name}&room=${room}`} eventKey="Backend" onSelect={handleSelect}>#backend</Dropdown.Item>
-                <Dropdown.Item onClick={e => (!name || !room) ? e.preventDefault() : null} href={`/chat?name=${name}&room=${room}`} eventKey="Hardware" onSelect={handleSelect}>#hardware</Dropdown.Item>
-                <Dropdown.Item onClick={e => (!name || !room) ? e.preventDefault() : null} href={`/chat?name=${name}&room=${room}`} eventKey="Gaming" onSelect={handleSelect}>#gaming</Dropdown.Item>
-                <Dropdown.Item onClick={e => (!name || !room) ? e.preventDefault() : null} href={`/chat?name=${name}&room=Life`} eventKey="Life" onSelect={handleSelect}>#life</Dropdown.Item>
+                <Dropdown.Item className="liveChats">Chat Rooms:</Dropdown.Item>
+                <Dropdown.Item href={`/chat?name=${name}&room=${room}`} eventKey="Frontend" onSelect={handleSelect}>#frontend</Dropdown.Item>
+                <Dropdown.Item href={`/chat?name=${name}&room=${room}`} eventKey="Backend" onSelect={handleSelect}>#backend</Dropdown.Item>
+                <Dropdown.Item href={`/chat?name=${name}&room=${room}`} eventKey="Hardware" onSelect={handleSelect}>#hardware</Dropdown.Item>
+                <Dropdown.Item href={`/chat?name=${name}&room=${room}`} eventKey="Gaming" onSelect={handleSelect}>#gaming</Dropdown.Item>
+                <Dropdown.Item href={`/chat?name=${name}&room=Life`} eventKey="Life" onSelect={handleSelect}>#life</Dropdown.Item>
             </DropdownButton>
 
             {/* Dropup Search - pass submission to db (not written)  */}
@@ -73,7 +77,7 @@ const NavBar = () => {
                 </Form>
             </DropdownButton>
 
-            <Button href="/profile" className="navbarLogo">
+            <Button href="/profile/:id" className="navbarLogo">
                 <i className="far fa-user-circle" aria-hidden="true"></i>
             </Button>
         </div>

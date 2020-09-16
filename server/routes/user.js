@@ -88,14 +88,14 @@ router.route("/login").post((req, res) => {
 // passport . authenticate basically checks your header for the jwt, if the header does nost match, do not pass. 
 router.route("/")
   .get( passport.authenticate("jwt", { session: false}), (req, res) => {
-      res.send(req.user)
+      // res.send(req.user)
 
-    // res.json({
-    //   _id: req.user._id,
-    //   email: req.user.email,
-    //   followers: req.user.followers,
-    //   following: req.user.following
-    // })
+    res.json({
+      _id: req.user._id,
+      email: req.user.email,
+      followers: req.user.followers,
+      following: req.user.following
+    })
   })
 
 module.exports = router;

@@ -48,14 +48,21 @@ const UserCard = () => {
     const {
         avatar_url,
         name,
-        public_repos, followers, following } = state.user
+        public_repos, followers, following } = state.user;
 
 
     return (
         <div className="card profCard container" id="profile">
-            <img className="avatar" src={avatar_url} alt="Avatar" />
+
+            {/* ternary to display GH avatar or placeholder */}
+            {!state.avatar_url ? (
+                <img className="avatar" src={avatar_url} alt="Avatar" />
+            ) : (
+                    <i className="avatar fas fa-user-circle" alt="Avatar"></i>
+                )
+            }
             <h1>{name}</h1>
-            <h3>Programmer | Meditator | Boxer | Surfer | Learner</h3>
+            {/* <h3>Programmer | Meditator | Boxer | Surfer | Learner</h3> */}
 
             {/* if the user logs in w/ GH, show some details this ternary
             could be expanded & nested to sort for Google logins as well */}
@@ -70,9 +77,8 @@ const UserCard = () => {
                         </>
                     )}
             </ul>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium atque distinctio similique
-            illum facilis molestiae, a veniam, explicabo perspiciatis
-   soluta error autem excepturi sed dolorem itaque. Mollitia deleniti animi laborum! Now is time to re-invente myself. This journey is starting with me learning web development in beautiful Lisbon</p>
+            <p> Maybe this will be the one box you can edit & write something
+                about yourself. Plus, I couldn't look at the Lorem Ipsum anymore.</p>
             <Button href="#" target="_blank" className="msgBtn">Message me</Button>
         </div>
     )
