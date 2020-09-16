@@ -35,7 +35,7 @@ export const reducer = (state, action) => {
       // just for testing, might have to make this for register case instead of log in
       // ORRR "findbyId, if (!user): submit this info"
       // on login, we will save this info into the database
-      console.log(action.payload.user);
+      // console.log(action.payload.user);
 
       const variables = {
         id: action.payload.user.id,
