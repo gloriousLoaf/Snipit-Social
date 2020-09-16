@@ -3,16 +3,16 @@ const passport = require("passport");
 const Post = require("../models/Post");
 
 router.route("/add/").post(
-  // passport.authenticate("google", { failureRedirect: "/failed" }),
+  passport.authenticate("jwt", { failureRedirect: "/failed" }),
   (req, res) => {
-    const text = req.body.text;
+    const text = req.body.text.trim();
     // return res.send("Test ok!")
 
     const newPost = new Post({
-      // user: {
-      //   id: req.user.id,
-      //   login: req.user.login
-      // },
+      user: {
+        id: req.user.id,
+        fullname: req.user.fullname
+      },
       text
     });
 

@@ -39,6 +39,8 @@ class Signup extends Component {
       password: this.state.password
     };
 
+    console.log(userData)
+
     this.props.registerUser(userData, this.props.history);
 
   }

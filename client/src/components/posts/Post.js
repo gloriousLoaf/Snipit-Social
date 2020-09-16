@@ -20,18 +20,20 @@ class Post extends Component {
     return (
       <Card>
         <div> 
-          <NavBar/>
         </div>
 
-        <div>
-          <h3> {post}
-
+        <div> {post.user.fullname}
+          <h3> 
+            <span> {new Date(post.createdAt).toLocaleString()} </span>
           </h3>
+          {post.text}
+
         </div>
       </Card>
     )
   }
 }
+
 
 
 export default (Post);

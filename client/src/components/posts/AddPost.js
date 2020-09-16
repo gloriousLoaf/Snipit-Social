@@ -31,8 +31,8 @@ class AddPost extends Component {
     };
     
     console.log(postData)
+
     this.props.addPost(postData);
-    
     
     this.setState({ text: "" });
   }

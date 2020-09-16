@@ -15,13 +15,11 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema({
     user: {
         type: Schema.Types.Object,
-        // required: true,
-        required: false,
+        required: true,
     },
     text: {
         type: String,
-        // required: true
-        required: false,
+        required: true
     },
     createdAt: {
         type: Date,

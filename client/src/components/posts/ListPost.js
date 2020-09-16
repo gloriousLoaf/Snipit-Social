@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
 
+import NavBar from "../NavBar"
 import AddPost from "./AddPost";
 import Post from "./Post"
 
@@ -17,16 +18,16 @@ class ListPost extends Component {
     render() {
         const { list, loading } = this.props; 
 
-        console.log("ListPost; ", this.props)
 
-        const items = list && list.map(el => <Post key={el._id} post={el.text} />)
+        const items = list && list.map(el => <Post key={el._id} post={el} />)
         return ( 
             <div>
                 <AddPost />
                 List Post Page
                 { loading ? <LoadingPosts /> : items}
-                <Post />
+                <NavBar/>
             </div>
+
         )
     }
 }
