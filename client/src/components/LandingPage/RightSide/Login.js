@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Modal } from "react-bootstrap";
 
-import { withRouter } from "react-router-dom"
+import { Redirect, withRouter } from "react-router-dom";
 
-import userLogin from "../RightSide/"
+// import userLogin from "../RightSide/"
 import { connect } from "react-redux"
 import { loginUser } from "../../../actions/authActions/authActions"
 
 
 class Login extends Component {
   constructor(props) {
+    // VS Intellisense is marking this use of 'super' as deprecated
     super(props);
     this.state = {
       email: "",
@@ -51,6 +52,9 @@ class Login extends Component {
     console.log(userData);
 
     this.props.loginUser(userData);
+
+    // working on redirect after login, but this doesn't hit yet
+    // return <Redirect to="/profile/:id" />
   }
 
   render() {
@@ -72,8 +76,8 @@ class Login extends Component {
               placeholder="Enter email"
               className="form-control validate"
               name="email"
-              value = {this.state.email}
-              onChange = {this.handleChange}
+              value={this.state.email}
+              onChange={this.handleChange}
             />
             <Form.Text className="text-muted">
               {errors.email
@@ -94,11 +98,13 @@ class Login extends Component {
               placeholder="••••••"
               className="form-control validate"
               name="password"
-              value = {this.state.password}
-              onChange = {this.handleChange}
+              value={this.state.password}
+              onChange={this.handleChange}
             />
+            <div className="text-center mb-3">
+            </div>
             <Form.Text className="text-muted">
-              {errors.password ? errors.password: ""}
+              {errors.password ? errors.password : ""}
             </Form.Text>
             <p className="font-small blue-text d-flex justify-content-end">
               <a href="/" className="blue-text ml-1">
@@ -111,7 +117,7 @@ class Login extends Component {
             <Button
               type="button"
               className="modalSignin btn btn-primary btn-block btn-rounded"
-              onClick= {this.handleSubmit}
+              onClick={this.handleSubmit}
             >
               Sign in
             </Button>
@@ -137,11 +143,18 @@ class Login extends Component {
               type="button"
               className="github btn-dark mr-2 md-2"
 
-            > 
+            >
               <i className="fab fa-github" style={{ fontSize: 30 }}></i>
             </Button>
           </div>
         </Form>
+
+        <Modal.Footer>
+          <div className="options text-right">
+            <p>Escape to close</p>
+          </div>
+        </Modal.Footer>
+
       </div>
     );
   }
@@ -153,5 +166,5 @@ const mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps, { loginUser }) (withRouter (Login));
+export default connect(mapStateToProps, { loginUser })(withRouter(Login));
 

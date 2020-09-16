@@ -57,18 +57,6 @@ const SignupModal = props => {
           </Tab>
         </Tabs>
       </Modal.Body>
-
-      <Modal.Footer>
-        <div className="options text-right">
-          <p className="pt-1">
-            Already have an account?{" "}
-            <a href="login" className="text-primary mr-1">
-              Log In
-            </a>
-          </p>
-          <p>Escape to close</p>
-        </div>
-      </Modal.Footer>
     </Modal>
   );
 };
