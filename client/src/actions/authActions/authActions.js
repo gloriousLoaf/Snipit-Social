@@ -43,6 +43,8 @@ export const setCurrentUser = (data) => {
     }
 }
 
-// export const logOutUser = () => dispatch => {
-
-// }
+export const logoutUser = () => dispatch => {
+    localStorage.removeItem('jwtToken')
+    setAuthHeader();
+    dispatch(setCurrentUser())
+}

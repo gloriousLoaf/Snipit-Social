@@ -9,6 +9,11 @@ import Join from "./components/chatrooms/Chat/index";
 
 // Reducer store for AuthContext (Logins)
 import { initialState, reducer } from "./store/reducer";
+import { logoutUser, getCurrentUser } from "./actions/authActions/authActions";
+
+import jwt_decode from "jwt-decode";
+
+import setHeaderAuth from "./utils/setAuthHeader";
 
 //refactoring into redux (combining reducers)
 import store from "./store";
@@ -27,11 +32,22 @@ import ListPost from "./components/posts/ListPost";
 import "./App.css";
 
 export const AuthContext = createContext();
-// export const ProfileContext = createContext();
+
+// if theres a token in the storage, check how long its been up, log them out if its past expiration date that we set in the passport strategy
+if (localStorage.getItem("jwToken")) {
+  const currentTime = Date.now() / 1000;
+  const decode = jwt_decode(localStorage.getItem("jwToken"));
+
+  if (currentTime > decode.exp) {
+    store.dispatch(logoutUser());
+  } else {
+    setHeaderAuth(localStorage.getItem("jwToken"));
+    store.dispatch(getCurrentUser());
+  }
+}
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  // const [profileState, profileDispatch] = useReducer(profileReducer, profileState);
 
   return (
     <div className="App">
