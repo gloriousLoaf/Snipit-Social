@@ -20,22 +20,18 @@ class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // 
-  componentDidMount() {
+  // we don't need to be authenticated outside
+  // componentDidMount() {
     
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/')
-    }
-  }
+  //   if (this.props.auth.isAuthenticated) {
+  //     this.props.history.push('/')
+  //   }
+  // }
 
   // really cool way to handle new errors
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
-    }
-
-    if (nextProps.auth.isAuthenticated) {
-      this.props.history.push('/')
     }
 
   }
