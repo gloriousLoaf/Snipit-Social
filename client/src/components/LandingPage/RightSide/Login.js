@@ -34,9 +34,9 @@ class Login extends Component {
       this.setState({ errors: nextProps.errors });
     }
 
-    // if (this.props.auth.isAuthenticated) {
-    //   this.props.history.push('/')
-    // }
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push('/')
+    }
 
   }
 

@@ -24,9 +24,10 @@ class Post extends Component {
         </div>
 
         <div>
-          <h3> {post}
-
+          <h3> 
+            <span> </span>
           </h3>
+          {post}
         </div>
       </Card>
     )
