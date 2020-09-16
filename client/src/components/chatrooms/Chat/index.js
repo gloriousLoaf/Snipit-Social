@@ -10,8 +10,9 @@ import Input from '../Input';
 // NEW!! Framework is in pages/
 import '../../../pages/Framework/css/style.css';
 import '../../../pages/Framework/css/framework.css';
-import '../../../pages/Framework/css/icons.css';
 import '../../../pages/Framework/css/night-mode.css';
+import '../../../pages/Framework/css/icons.css';
+
 // Keep this css to override framework as needed:
 import './style.css';
 

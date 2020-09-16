@@ -48,7 +48,7 @@ const App = () => {
 
               {/* IMPORTANT - for now GH must be at /login,
             hopefully Google can be at a different path */}
-              <Route path="/login" exact component={GitHubLogin} />
+              <Route path="/githublogin" exact component={GitHubLogin} />
 
               {/* Soon */}
               {/* <Route path="/googlelogin" exact component={GoogleLogin} /> */}
