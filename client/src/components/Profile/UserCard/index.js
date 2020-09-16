@@ -48,12 +48,19 @@ const UserCard = () => {
     const {
         avatar_url,
         name,
-        public_repos, followers, following } = state.user
+        public_repos, followers, following } = state.user;
 
 
     return (
         <div className="card profCard container" id="profile">
-            <img className="avatar" src={avatar_url} alt="Avatar" />
+
+            {/* ternary to display GH avatar or placeholder */}
+            {!state.avatar_url ? (
+                <img className="avatar" src={avatar_url} alt="Avatar" />
+            ) : (
+                    <i className="avatar fas fa-user-circle" alt="Avatar"></i>
+                )
+            }
             <h1>{name}</h1>
             {/* <h3>Programmer | Meditator | Boxer | Surfer | Learner</h3> */}
 

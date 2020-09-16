@@ -1,6 +1,5 @@
 // INPUT Chat box
 import React from 'react';
-// import Plane from '../Icons/paper-plane.svg'
 import './style.css';
 
 

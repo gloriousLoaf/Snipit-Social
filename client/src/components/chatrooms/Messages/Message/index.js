@@ -1,6 +1,7 @@
 // MESSAGE - Single messages
-import React from 'react';
+import React, { useContext } from "react";
 import ReactEmoji from 'react-emoji';
+import { AuthContext } from "../../../../App";
 import './style.css';
 
 // NEW!!
@@ -10,6 +11,10 @@ import '../../../../pages/Framework/css/icons.css';
 import '../../../../pages/Framework/css/night-mode.css';
 
 const Message = ({ message: { text, user }, name }) => {
+
+    const { state } = useContext(AuthContext);
+    const { avatar_url } = state.user;
+
 
     // getting names corresponding to who sent the message
     let isSentByCurrentUser = false;
@@ -25,15 +30,16 @@ const Message = ({ message: { text, user }, name }) => {
             ? (
                 <div className="message-content-inner">
 
-                    {/* <!-- Time Sign --> */}
-                    <div className="message-time-sign">
-                        <span>28 June, 2018 - oh shit, timestamps...</span>
-                    </div>
-
                     <div className="message-bubble me">
                         <div className="message-bubble-inner">
-                            <div className="message-avatar"><img
-                                src="assets/images/avatars/avatar-1.jpg" alt="" />
+                            <div className="message-avatar">
+                                {/* ternary to display GH avatar or placeholder */}
+                                {!state.avatar_url ? (
+                                    <img className="lilAvatar" src={avatar_url} alt="Avatar" />
+                                ) : (
+                                        <i className="fas fa-user-circle" alt="Avatar"></i>
+                                    )
+                                }
                             </div>
                             <div className="message-text">
                                 <p>{ReactEmoji.emojify(text)}</p>
@@ -48,8 +54,14 @@ const Message = ({ message: { text, user }, name }) => {
                 <div className="message-content-inner">
                     <div className="message-bubble">
                         <div className="message-bubble-inner">
-                            <div className="message-avatar"><img
-                                src="assets/images/avatars/avatar-2.jpg" alt="" />
+                            <div className="message-avatar">
+                                {/* ternary to display GH avatar or placeholder */}
+                                {!state.avatar_url ? (
+                                    <i className="lilAvatar fas fa-user-circle" alt="Avatar"></i>
+                                ) : (
+                                        <img className="avatar" src={avatar_url} alt="Avatar" />
+                                    )
+                                }
                             </div>
                             <div className="message-text">
                                 <p>{ReactEmoji.emojify(text)}</p>
