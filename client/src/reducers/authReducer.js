@@ -3,9 +3,12 @@ import {
 } from "../constants"
 
 const initialState = {
-    isAuthenticated: false,
+    isAuthenticated: true,
     user: null
 }
+
+
+// this authentication part is probably 
 
 export default function (state = initialState, action) {
     switch (action.type) {
@@ -13,6 +16,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 isAuthenticated: Object.keys(action.payload).length !== 0,
+
                 user: action.payload
             }
         default:

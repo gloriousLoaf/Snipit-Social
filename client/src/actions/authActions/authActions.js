@@ -9,7 +9,9 @@ export const loginUser = (userData) => dispatch => {
             const { token } = res.data
             localStorage.setItem("jwToken", token)
             setAuthHeader(token);
-            getCurrentUser();
+            dispatch(getCurrentUser());
+
+            // browser is not getting token properly 
         })
         .catch(err => {
             dispatch({
@@ -30,7 +32,7 @@ export const registerUser = (userData, history) => dispatch => {
 }
 
 export const getCurrentUser = () => dispatch => {
-    axios.post("/api/users")
+    axios.get("/api/users")
         .then(res => dispatch(setCurrentUser(res.data)))
 }
 
@@ -40,3 +42,7 @@ export const setCurrentUser = (data) => {
         payload: data
     }
 }
+
+// export const logOutUser = () => dispatch => {
+
+// }

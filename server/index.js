@@ -21,6 +21,7 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./usersChat');
 const config = require("./config/key");
 const authentication = require('./routes/authentication');
 const mongoose = require("mongoose");
+
 const connect = mongoose.connect(config.mongoURI,
   {
     useNewUrlParser: true, useUnifiedTopology: true,
@@ -36,14 +37,14 @@ app.use(router);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: "text/*" }));
-app.use(authentication);
+// app.use(authentication);
 
-app.use(
-  cookieSession({
-    name: "Coding-society-session",
-    keys: ["key1", "key2"],
-  })
-);
+// app.use(
+//   cookieSession({
+//     name: "Coding-society-session",
+//     keys: ["key1", "key2"],
+//   })
+// );
 //intialize with passport,
 app.use(passport.initialize());
 
@@ -121,37 +122,6 @@ const users = require('./routes/user');
 app.use('/api/posts', posts);
 app.use('/api/gitinfo', gitinfo);
 app.use('/api/users', users);
-
-
-// app.get("/", (req, res) => res.send("hello, please go to /google"));
-
-// app.get("/failed", (req, res) => res.send("failure to log in"));
-// // just req.user to see the whole json
-// app.get("/good", isLoggedIn, (req, res) => res.send(`welcome ${req.user}`));
-
-// app.get(
-//   "/google",
-//   passport.authenticate("google", { scope: ["profile", "email"] })
-// );
-
-// // might have to change this redirect to "ACCOUNT CREATED",
-// // currently it sends "login failed" for the first time user signs up. 
-// app.get(
-//   "/google/callback",
-//   passport.authenticate("google", { failureRedirect: "/failed" }),
-//   function (req, res) {
-//     // Successful authentication, redirect home.
-//     res.redirect("/good");
-//   }
-// );
-
-// app.get("/logout", (req, res) => {
-//   // ending the session
-//   req.session = null;
-//   // passports requires you to do this
-//   req.logout();
-//   res.redirect("/");
-// });
 
 /////// GITHUB AUTH PROXIES ///////
 app.use((req, res, next) => {

@@ -65,7 +65,7 @@ class Signup extends Component {
               onChange={this.handleChange}
               name="fullname"
             />
-            <Form.Text>{errors.fullname ? errors.fullname : null}</Form.Text>
+            <Form.Text> {errors.fullname ? errors.fullname : null} </Form.Text>
           </Form.Group>
 
           {/* Email */}
@@ -92,6 +92,7 @@ class Signup extends Component {
             <Form.Label data-error="wrong" data-success="right">
               Your Password
             </Form.Label>
+            
             {/* user input pw */}
             <Form.Control
               type="password"

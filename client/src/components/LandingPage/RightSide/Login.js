@@ -20,7 +20,9 @@ class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // 
   componentDidMount() {
+    
     if (this.props.auth.isAuthenticated) {
       this.props.history.push('/')
     }
@@ -31,6 +33,11 @@ class Login extends Component {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
+
+    // if (this.props.auth.isAuthenticated) {
+    //   this.props.history.push('/')
+    // }
+
   }
 
   handleChange(e) {

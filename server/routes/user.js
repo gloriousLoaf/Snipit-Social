@@ -29,6 +29,8 @@ router.route("/register").post((req, res) => {
       return res.status(404).json(errors);
     }
 
+
+
     bcrypt.genSalt(10, function(err, salt) {
       bcrypt.hash(req.body.password, salt, function(err, hash) {
         const newUser = new User({
@@ -76,7 +78,7 @@ router.route("/login").post((req, res) => {
         }
       });
     } else {
-      errors.email = "email";
+      errors.email = "invalid email";
       return res.status(404).json(errors);
     }
   });
@@ -86,37 +88,14 @@ router.route("/login").post((req, res) => {
 // passport . authenticate basically checks your header for the jwt, if the header does nost match, do not pass. 
 router.route("/")
   .get( passport.authenticate("jwt", { session: false}), (req, res) => {
-    console.log("testing")
-    res.json({
-      _id: req.user._id,
-      email: req.user.email,
-      followers: req.user.followers,
-      following: req.user.following
-    })
-  })
+      res.send(req.user)
 
-router.route("/:id").get((req, res) => {
-  // if we want more than just gitinfo,
-  // we need to make a membership table
-  GitInfo.findOne({
-    id: req.params.id
+    // res.json({
+    //   _id: req.user._id,
+    //   email: req.user.email,
+    //   followers: req.user.followers,
+    //   following: req.user.following
+    // })
   })
-    .then(user => {
-      if (user) {
-        return res.json({
-          id: user._id,
-          name: user.name,
-          avatarURL: user.avatarURL,
-          bio: user.bio,
-          blog: user.blog,
-          company: user.company,
-          hireable: user.hireable
-        });
-      } else {
-        return res.status(404).json({ msg: "user not found" });
-      }
-    })
-    .catch(err => console.log(err));
-});
 
 module.exports = router;
