@@ -76,7 +76,7 @@ const NavBar = () => {
                 </Form>
             </DropdownButton>
 
-            <Button href="/profile" className="navbarLogo">
+            <Button href="/profile/:id" className="navbarLogo">
                 <i className="far fa-user-circle" aria-hidden="true"></i>
             </Button>
         </div>
