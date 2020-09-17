@@ -16,7 +16,6 @@ class Post extends Component {
 
     // console.log(classes)
 
-    console.log(post)
 
 
     return (

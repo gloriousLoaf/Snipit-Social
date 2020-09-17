@@ -83,8 +83,7 @@ router.route("/login").post((req, res) => {
 });
 
 // passport . authenticate basically checks your header for the jwt, if the header does nost match, do not pass.
-router
-  .route("/")
+router.route("/")
   .get(passport.authenticate("jwt", { session: false }), (req, res) => {
     // res.send(req.user)
 
@@ -96,6 +95,49 @@ router
       following: req.user.following
     });
   });
+
+// i have no idea how this find and update thing works LOL - eric
+router.route('/follow')
+  .post(passport.authenticate('jwt', {session: false}),
+  (req, res) => {
+    User.findOneAndUpdate({
+      _id: req.user._id
+    }, {
+      $push: { following: req.body.userId }
+    },
+    { new : true })
+    .then(user => {
+      User.findOneAndUpdate({
+        _id: req.body.userId
+      }, {
+        $push: { followers: req.user.id}
+      },
+      {new: true})
+      .then(user => res.json({userId : req.body.userId}))
+      .catch(err => console.log(err))
+    })
+  })
+
+  router.route("/unfollow")
+    .post(
+      passport.authenticate("jwt", { session : false }),
+      (req, res) => {
+        User.findOneAndUpdate({
+          _id: req.user.id
+        }, {
+          $pull : { following: req.body.userId}
+        }, {new : true})
+        .then(user => {
+          User.findOneAndUpdate({
+            _id: req.body.userId
+          }, {
+            $pull: { followers: req.user.id}
+          }, { new : true})
+          .then(user => res.json({ userId : req.body.userId}))
+        })
+        .catch(err => console.log(err)) 
+      }
+    )
 
 router.route("/:id").get((req, res) => {
   User.findById(req.params.id)
