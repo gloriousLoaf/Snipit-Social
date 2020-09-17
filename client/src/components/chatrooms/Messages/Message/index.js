@@ -68,7 +68,8 @@ const Message = ({ message: { text, user }, name }) => {
                             </div>
                         </div>
                         <div className="uk-clearfix"></div>
-                        <p className="sentText paddingleft">{user}</p>
+                        <p className="sentText paddingLeft">{user}</p>
+                        <span className="sentText paddingLeft"> {new Date().toLocaleString()} </span>
                     </div>
                 </div>
             )
