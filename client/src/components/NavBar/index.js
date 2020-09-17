@@ -8,8 +8,8 @@ import { withRouter } from 'react-router-dom';
 import './style.css';
 
 class NavBar extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             name: '',
             room: '',
@@ -20,12 +20,16 @@ class NavBar extends Component {
 
     // works for GitHub auth, needs additional
     // logic for email auth users
+    
     handleSelect = (e) => {
         let userName;
         let userObj = JSON.parse(localStorage.getItem("user"));
         if (!userObj) {
             // logic for getting email-auth's name
             // userObj = something pulled from db or other localstorage
+
+            // i fixed it -- eric, scroll down to see what we can pull from redux
+            userName = this.props.auth.user.fullname
         } else {
             userName = userObj.name;
         }
@@ -48,6 +52,22 @@ class NavBar extends Component {
     // };
 
     render() {
+
+        const { 
+            auth,
+            user,
+            profile,
+        } = this.props;
+
+        // console.log(auth)
+
+        // console.log(user)
+
+        // console.log(profile)
+
+        console.log(this.props.auth.user)
+
+
         return (
             <div className="navbarContainer">
                 <Button href="/Posts" className="navbarLogo">
@@ -98,11 +118,13 @@ class NavBar extends Component {
 // this is just copy & paste for a moment, idk what this does
 const mapStateToProps = (state) => ({
     auth: state.auth,
+    profile: state.profile,
+    user: state.user
 })
 
 // also c&p kinda
 // export default connect(mapStateToProps)(withRouter(NavBar));
-export default connect(mapStateToProps)(withRouter(NavBar));
+export default connect(mapStateToProps)(NavBar);
 
 
 

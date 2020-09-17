@@ -13,7 +13,7 @@ import '../../../../pages/Framework/css/night-mode.css';
 const Message = ({ message: { text, user }, name }) => {
 
     const { state } = useContext(AuthContext);
-    const { avatar_url } = state.user;
+    // const { avatar_url } = state.user;
 
 
     // getting names corresponding to who sent the message
@@ -33,13 +33,13 @@ const Message = ({ message: { text, user }, name }) => {
                     <div className="message-bubble me">
                         <div className="message-bubble-inner">
                             <div className="message-avatar">
-                                {/* ternary to display GH avatar or placeholder */}
+                                {/* ternary to display GH avatar or placeholder
                                 {!state.avatar_url ? (
                                     <img className="lilAvatar" src={avatar_url} alt="Avatar" />
                                 ) : (
-                                        <i className="fas fa-user-circle" alt="Avatar"></i>
+                                        <img className="fas fa-user-circle" alt="Avatar"></img>
                                     )
-                                }
+                                } */}
                             </div>
                             <div className="message-text">
                                 <p>{ReactEmoji.emojify(text)}</p>
@@ -55,13 +55,13 @@ const Message = ({ message: { text, user }, name }) => {
                     <div className="message-bubble">
                         <div className="message-bubble-inner">
                             <div className="message-avatar">
-                                {/* ternary to display GH avatar or placeholder */}
+                                {/* ternary to display GH avatar or placeholder
                                 {!state.avatar_url ? (
                                     <i className="lilAvatar fas fa-user-circle" alt="Avatar"></i>
                                 ) : (
                                         <img className="avatar" src={avatar_url} alt="Avatar" />
                                     )
-                                }
+                                } */}
                             </div>
                             <div className="message-text">
                                 <p>{ReactEmoji.emojify(text)}</p>
