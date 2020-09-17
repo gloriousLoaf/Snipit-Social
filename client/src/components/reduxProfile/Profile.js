@@ -2,11 +2,13 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 
+// connect this with export default at bottom
 import {
   getPostsByUserId,
   getUserProfile,
   unfollowUser,
-  followUser
+  followUser,
+  refreshUserProfile
 } from "../../actions/profileActions/profileActions";
 
 import NavBar from "../NavBar";
@@ -23,26 +25,38 @@ import LoadingPosts from "../posts/LoadingPosts";
 
 class Profile extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.handleFollow = this.handleFollow.bind(this)
-    this.handleUnfollow = this.handleUnfollow.bind(this)
+    this.handleFollow = this.handleFollow.bind(this);
+    this.handleUnfollow = this.handleUnfollow.bind(this);
   }
 
   componentDidMount() {
     this.props.getPostsByUserId(this.props.match.params.userId);
     this.props.getUserProfile(this.props.match.params.userId);
   }
-  
+
+  // do this for signup and login if you can.
+  componentDidUpdate(prevProps) {
+    if (this.props.auth.isAuthenticated) {
+      // if we changed the following prop,
+      if (
+        prevProps.user &&
+        prevProps.user.following !== this.props.user.following
+      ) {
+        // refresh the page
+        this.props.refreshUserProfile(this.props.match.params.userId);
+      }
+    }
+  }
+
   handleFollow() {
-      this.props.followUser(this.props.match.params.userId)
+    this.props.followUser(this.props.match.params.userId);
   }
 
   handleUnfollow() {
-      this.props.unfollowUser(this.props.match.params.userId)
+    this.props.unfollowUser(this.props.match.params.userId);
   }
-
-
 
   render() {
     const {
@@ -59,29 +73,26 @@ class Profile extends Component {
 
     let profileInfo;
 
+    let newprofileinfo;
+
     let followButtons;
 
-
     if (auth.isAuthenticated) {
-        // if you aren't following this person, show follow, else show unfollow
-      if (user.following.indexOf(this.props.match.params.userId) === -1) {
+      // if you aren't following this person, show follow, else show unfollow
+      if (
+        user &&
+        user.following &&
+        user.following.indexOf(this.props.match.params.userId) === -1
+      ) {
         followButtons = (
           <div>
-            <Button 
-            onClick={ this.handleFollow}
-            >
-                Follow
-            </Button>
+            <Button onClick={this.handleFollow}>Follow</Button>
           </div>
         );
       } else {
         followButtons = (
           <div>
-            <Button
-            onClick = {this.handleUnfollow}
-            >
-                Unfollow
-            </Button>
+            <Button onClick={this.handleUnfollow}>Unfollow</Button>
           </div>
         );
       }
@@ -134,9 +145,11 @@ const mapStateToProps = state => ({
   user: state.auth.user
 });
 
+//everything from actions
 export default connect(mapStateToProps, {
   getPostsByUserId,
   getUserProfile,
   unfollowUser,
-  followUser
+  followUser,
+  refreshUserProfile
 })(Profile);
