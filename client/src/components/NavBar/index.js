@@ -20,12 +20,15 @@ class NavBar extends Component {
 
     // works for GitHub auth, needs additional
     // logic for email auth users
+    
     handleSelect = (e) => {
         let userName;
         let userObj = JSON.parse(localStorage.getItem("user"));
         if (!userObj) {
             // logic for getting email-auth's name
             // userObj = something pulled from db or other localstorage
+
+            // i fixed it -- eric, scroll down to see what we can pull from redux
             userName = this.props.auth.user.fullname
         } else {
             userName = userObj.name;
