@@ -63,7 +63,7 @@ TBD...
 TBD...
 
 ## Sources ##
- [React Router](https://reacttraining.com/react-router/)
+* [React Router](https://reacttraining.com/react-router/)
 * [Proxying API Requests in Development](https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development)
 * [React Lifecycle Methods Diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 * [Presentational vs. Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
