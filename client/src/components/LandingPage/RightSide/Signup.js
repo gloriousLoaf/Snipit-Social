@@ -116,10 +116,10 @@ class Signup extends Component {
           {/* Sign Up */}
           <div className="text-center form-sm mt-2">
             <Button
-              className="modalSignin btn btn-primary"
+              className="modalSignin bg-m btn-dark"
               onClick={() => this.handleSubmit}
             >
-              Sign up <i className="fa fa-sign-in ml-1"></i>
+              Sign Up
             </Button>
           </div>
         </Form>
@@ -128,7 +128,7 @@ class Signup extends Component {
           <div className="options text-right">
             <p className="pt-1">
               Already have an account?{" "}
-              <a href="login" className="text-primary mr-1">
+              <a href="login" className="mr-1 link">
                 Log In
             </a>
             </p>

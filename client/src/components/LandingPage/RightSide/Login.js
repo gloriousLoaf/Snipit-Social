@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 
+
 import { Redirect, withRouter } from "react-router-dom";
 
 // import userLogin from "../RightSide/"
@@ -23,7 +24,7 @@ class Login extends Component {
 
   // we don't need to be authenticated outside
   // componentDidMount() {
-    
+
   //   if (this.props.auth.isAuthenticated) {
   //     this.props.history.push('/')
   //   }
@@ -107,7 +108,7 @@ class Login extends Component {
               {errors.password ? errors.password : ""}
             </Form.Text>
             <p className="font-small blue-text d-flex justify-content-end">
-              <a href="/" className="blue-text ml-1">
+              <a href="/forgotpassword" className="link ml-1">
                 Forgot Password?
               </a>
             </p>
@@ -116,10 +117,10 @@ class Login extends Component {
           <div className="text-center mb-3">
             <Button
               type="button"
-              className="modalSignin btn btn-primary btn-block btn-rounded"
+              className="modalSignin bg-m btn btn-dark"
               onClick={this.handleSubmit}
             >
-              Sign in
+              Sign In
             </Button>
           </div>
           {/* Other Sign in Methods */}
