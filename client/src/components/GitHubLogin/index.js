@@ -6,6 +6,9 @@ import { AuthContext } from "../../App";
 import GitHubLogo from './gh.png';
 import './style.css';
 
+import { connect } from "react-redux"
+
+
 // creating our login component, using AuthContext global state
 const GitHubLogin = () => {
     const { state, dispatch } = useContext(AuthContext);
@@ -46,6 +49,7 @@ const GitHubLogin = () => {
                     });
                 })
                 .catch(error => {
+                    console.log(error)
                     setData({
                         isLoading: false,
                         errorMessage: "Sorry! Login failed"

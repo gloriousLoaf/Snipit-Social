@@ -58,4 +58,4 @@ class AddPost extends Component {
   }
 }
 
-export default connect(null, {addPost }) (AddPost)
+export default connect(null, {addPost} ) (AddPost)
