@@ -12,6 +12,8 @@ import '../../../../pages/Framework/css/night-mode.css';
 
 const Message = ({ message: { text, user }, name }) => {
 
+
+    // only errors we had was avatar URL, fix it later? 
     const { state } = useContext(AuthContext);
     // const { avatar_url } = state.user;
 
