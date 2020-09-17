@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 
-import { Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 // import userLogin from "../RightSide/"
 import { connect } from "react-redux"
@@ -23,7 +23,7 @@ class Login extends Component {
 
   // we don't need to be authenticated outside
   // componentDidMount() {
-    
+
   //   if (this.props.auth.isAuthenticated) {
   //     this.props.history.push('/')
   //   }
@@ -53,8 +53,10 @@ class Login extends Component {
 
     this.props.loginUser(userData);
 
-    // working on redirect after login, but this doesn't hit yet
-    // return <Redirect to="/profile/:id" />
+    // NEW - THIS needs to have use id concatenated for url
+    // for now this sends you to a black page. how fun.
+    this.props.history.push('/profile/');
+
   }
 
   render() {
@@ -63,7 +65,7 @@ class Login extends Component {
 
     return (
       <div>
-        <Form className="modal-body mx-4">
+        <Form className="modal-body mx-4" ref="loggingIn" action="/profile">
           {/* Email */}
           <Form.Group className="md-form mb-4" controlId="formBasicEmail">
             <Form.Label data-error="wrong" data-success="right">
