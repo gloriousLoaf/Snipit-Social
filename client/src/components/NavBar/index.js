@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { Button, Dropdown, DropdownButton, Form, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
+
 import { withRouter } from 'react-router-dom';
 // import { getCurrentUser } from "../../actions/authActions/authActions";
 import './style.css';
@@ -28,7 +29,7 @@ class NavBar extends Component {
             // logic for getting email-auth's name
             // userObj = something pulled from db or other localstorage
 
-            // i fixed it -- eric, scroll down to see what we can pull from redux
+            // i fixed it, scroll down to see what we can pull from redux -- eric
             userName = this.props.auth.user.fullname
         } else {
             userName = userObj.name;
@@ -57,6 +58,7 @@ class NavBar extends Component {
             auth,
             user,
             profile,
+            isAuthenticated,
         } = this.props;
 
         // console.log(auth)
@@ -65,7 +67,14 @@ class NavBar extends Component {
 
         // console.log(profile)
 
-        console.log(this.props.auth.user)
+        // console.log(this.props.auth.user)
+
+        const authLinks = isAuthenticated 
+        && (
+            <Button href={`/reduxProfile/${this.props.auth.user._id}`} className="navbarLogo">
+                <i className="far fa-user-circle" alt="reduxProfile" aria-hidden="true"></i>
+            </Button>
+        )
 
 
         return (
@@ -110,6 +119,8 @@ class NavBar extends Component {
                 <Button href="/profile/:id" className="navbarLogo">
                     <i className="far fa-user-circle" aria-hidden="true"></i>
                 </Button>
+
+                { isAuthenticated ? authLinks : null }
             </div>
         )
     }
@@ -119,7 +130,8 @@ class NavBar extends Component {
 const mapStateToProps = (state) => ({
     auth: state.auth,
     profile: state.profile,
-    user: state.user
+    user: state.user,
+    isAuthenticated: state.auth.isAuthenticated,
 })
 
 // also c&p kinda
