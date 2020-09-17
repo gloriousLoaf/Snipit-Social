@@ -73,6 +73,8 @@ class Profile extends Component {
 
     let profileInfo;
 
+    let newprofileinfo;
+
     let followButtons;
 
     if (auth.isAuthenticated) {
