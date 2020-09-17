@@ -16,7 +16,7 @@ export const addPost = postData => dispatch => {
 
 export const getPosts = () => dispatch => {
     dispatch(loadPosts)
-    axios.get('/api/posts/findAny')
+    axios.get('/api/posts/')
         .then(res => dispatch({
             type: GET_POSTS,
             payload: res.data

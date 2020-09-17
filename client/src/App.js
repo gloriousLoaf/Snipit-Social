@@ -24,8 +24,14 @@ import store from "./store";
 // NEW Refactored Profilepage branch to React
 import Profile from "./components/Profile";
 
+// redux profile testing - eric
+import reduxProfile from "./components/reduxProfile/Profile"
+
 // Timeline stuff, coming soon
 import ListPost from "./components/posts/ListPost";
+
+// utility components 
+import notFound from "./components/UtilityComponents/notFound"
 
 // Eventually we'll have a logo
 // import logo from "./logo.svg";
@@ -70,16 +76,19 @@ const App = () => {
               {/* <Route path="/googlelogin" exact component={GoogleLogin} /> */}
 
               {/* NEW Profile Page */}
-              {/* <ProfileContext.Provider> */}
+
               <Route path="/profile/:id" exact component={Profile} />
-              {/* </ProfileContext.Provider> */}
+              <Route path="/reduxProfile/:userId" component={ reduxProfile } />
 
               {/* no content yet */}
               <Route path="/Posts" component={ListPost} />
 
+
               {/* Join goes to Chat. Join is temporary until DMs exist */}
               <Route path="/join" exact component={Join} />
               <Route path="/chat" exact component={Chat} />
+
+              <Route component={notFound} />
             </Switch>
           </BrowserRouter>
         </AuthContext.Provider>

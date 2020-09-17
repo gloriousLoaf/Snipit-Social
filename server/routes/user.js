@@ -29,8 +29,6 @@ router.route("/register").post((req, res) => {
       return res.status(404).json(errors);
     }
 
-
-
     bcrypt.genSalt(10, function(err, salt) {
       bcrypt.hash(req.body.password, salt, function(err, hash) {
         const newUser = new User({
@@ -58,8 +56,7 @@ router.route("/login").post((req, res) => {
 
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
-      bcrypt.compare(req.body.password, user.password)
-      .then(isMatch => {
+      bcrypt.compare(req.body.password, user.password).then(isMatch => {
         if (isMatch) {
           const token = jwt.sign(
             { id: user._id },
@@ -85,18 +82,38 @@ router.route("/login").post((req, res) => {
   });
 });
 
-
-// passport . authenticate basically checks your header for the jwt, if the header does nost match, do not pass. 
-router.route("/")
-  .get( passport.authenticate("jwt", { session: false}), (req, res) => {
-      // res.send(req.user)
+// passport . authenticate basically checks your header for the jwt, if the header does nost match, do not pass.
+router
+  .route("/")
+  .get(passport.authenticate("jwt", { session: false }), (req, res) => {
+    // res.send(req.user)
 
     res.json({
       _id: req.user._id,
       email: req.user.email,
+      fullname: req.user.fullname,
       followers: req.user.followers,
       following: req.user.following
+    });
+  });
+
+router.route("/:id").get((req, res) => {
+  User.findById(req.params.id)
+    .then(user => {
+      if (user) {
+        console.log(user)
+        return res.json({
+          _id: user._id,
+          email: user.email,
+          fullname: user.fullname,
+          followers: user.followers,
+          following: user.following
+        });
+      } else {
+        return res.status(404).json({ msg: "User not found" });
+      }
     })
-  })
+    .catch(err => console.log(err));
+});
 
 module.exports = router;
