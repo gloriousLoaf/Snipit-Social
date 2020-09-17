@@ -47,8 +47,8 @@ const Message = ({ message: { text, user }, name }) => {
                         </div>
                         <div className="uk-clearfix"></div>
                         <p className="sentText justifyEnd">{trimmedName}</p>
+                        <span className="sentText justifyEnd"> {new Date().toLocaleString()} </span>
                     </div>
-
                 </div>
             ) : (
                 <div className="message-content-inner">
