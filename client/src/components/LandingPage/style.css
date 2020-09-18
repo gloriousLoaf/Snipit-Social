@@ -5,14 +5,77 @@
 	--footer-top-border-color: #e6ecf0;
 }
 
-.signinBtn {
-	border-radius: 30px;
-}
-.bg-main {
-	background: var(--main-color);
+.Snipit {
+	max-width: 50%;
 }
 
-.bg-dark {
+.login {
+	text-align: center;
+}
+
+.logoarea {
+	width: 100%;
+	justify-content: center;
+	line-height: 3rem;
+	font-size: 1.4rem;
+	text-align: center;
+}
+
+.Join {
+	color: white;
+	justify-content: center;
+	font-size: 1.5rem;
+}
+
+.text-cyan {
+	color: #35bdff;
+}
+
+.border {
+	border-color: var(--dark-color);
+}
+
+.loginBtn {
+	border-radius: 30px;
+	background: var(--main-color);
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	margin: 0 auto;
+	border: none;
+	width: 100%;
+}
+
+.signupBtn {
+	border-color: var(--main-color);
+	background-color: transparent;
+	border-radius: 30px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	margin: 0 auto;
+	width: 40%;
+	font-size: 20px;
+}
+
+.loginBtn {
+	border-radius: 30px;
+	background: var(--main-color);
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	margin: 0 auto;
+	border: none;
+	width: 100%;
+	font-size: larger;
+}
+
+.bg-m {
+	background: var(--main-color);
+	border: none;
+}
+
+.bg-d {
 	background: var(--dark-color);
 }
 
@@ -24,19 +87,37 @@
 	border-color: var(--dark-color);
 }
 
-/* Link Styles */ 
-.signinBtn, .modalSignin .github, .goog {
+/* Link Styles */
+.link:hover {
+	color: #18a0fb;
+}
+
+.signupBtn,
+.loginBtn,
+.modalSignin .github,
+.goog {
 	transition: 0.3s;
 }
 
-.modalSignin:hover, .modalSignin:focus,
-.signinBtn:hover, .signinBtn:focus {
-    box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 1);
+.modalSignin:hover,
+.modalSignin:focus,
+.loginBtn:hover,
+.loginBtn:focus {
+	box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 0.6);
 }
 
-.github:hover, .github:focus,
-.goog:hover, .goog:focus {
-    box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 0.6);
+.signupBtn:hover,
+.signupBtn:focus {
+	box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 0.6);
+}
+
+.github:hover,
+.github:focus,
+.goog:hover,
+.goog:focus {
+	box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 0.6);
+	border: rgba(0, 0, 0, 0.6);
+	background-color: var(--main-color);
 }
 
 @media (min-width: 768px) {
