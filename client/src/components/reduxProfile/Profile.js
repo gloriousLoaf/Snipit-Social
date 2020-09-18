@@ -132,6 +132,7 @@ class Profile extends Component {
           {loadingProfile ? <div>Loading</div> : profileInfo}
 
           {/* put any additional sections here, above LoadingPosts */}
+          {/* see respective cards for #DeleteMe */}
           <SocialCard />
           <UserActions />
           {loadingPosts ? <LoadingPosts /> : items}
