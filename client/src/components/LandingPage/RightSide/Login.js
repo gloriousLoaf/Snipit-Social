@@ -140,7 +140,7 @@ class Login extends Component {
           <div className="text-center mb-3">
             <Button
               type="button"
-              className="modalSignin btn btn-primary btn-block btn-rounded"
+              className="modalSignin bg-m btn btn-dark"
               onClick={this.handleSubmit}
             >
               Sign in

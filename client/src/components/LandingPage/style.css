@@ -24,7 +24,7 @@
 .Join {
 	color: white;
 	justify-content: center;
-	font-size: 1.5rem;
+	font-size: 1.1rem;
 }
 
 .text-cyan {
@@ -35,17 +35,6 @@
 	border-color: var(--dark-color);
 }
 
-.loginBtn {
-	border-radius: 30px;
-	background: var(--main-color);
-	display: flex;
-	justify-content: center;
-	text-align: center;
-	margin: 0 auto;
-	border: none;
-	width: 100%;
-}
-
 .signupBtn {
 	border-color: var(--main-color);
 	background-color: transparent;
@@ -54,8 +43,8 @@
 	justify-content: center;
 	text-align: center;
 	margin: 0 auto;
-	width: 40%;
-	font-size: 20px;
+	width: 50%;
+	font-size: larger;
 }
 
 .loginBtn {
@@ -66,7 +55,7 @@
 	text-align: center;
 	margin: 0 auto;
 	border: none;
-	width: 100%;
+	width: 50%;
 	font-size: larger;
 }
 
