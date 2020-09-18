@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
     ADD_POST,
     GET_POSTS,
-    LOADING_POSTS
+    LOADING_POSTS,
+    DELETE_POST
 } from "../../constants"
 
 export const addPost = postData => dispatch => {
@@ -19,6 +20,15 @@ export const getPosts = () => dispatch => {
     axios.get('/api/posts/')
         .then(res => dispatch({
             type: GET_POSTS,
+            payload: res.data
+        }))
+        .catch(err => console.log(err))
+}
+
+export const deletePosts = (id) => dispatch => {
+    axios.delete("/api/posts/delete/" + id)
+        .then(res => dispatch({
+            type: DELETE_POST,
             payload: res.data
         }))
         .catch(err => console.log(err))

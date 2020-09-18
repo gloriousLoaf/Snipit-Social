@@ -1,45 +1,63 @@
-import React, { Component } from 'react';
-import { connect } from "react-redux"
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import NavBar from "../NavBar"
+import NavBar from "../NavBar";
 import AddPost from "./AddPost";
-import Post from "./Post"
+import Post from "./Post";
 
-import { getPosts } from "../../actions/postActions/postActions"
-import LoadingPosts from "./LoadingPosts"
-import './style.css';
+import { getPosts, deletePosts } from "../../actions/postActions/postActions";
+import LoadingPosts from "./LoadingPosts";
+import DeleteButton from "../posts/DeleteButton"
 
+
+
+import "./style.css";
 
 class ListPost extends Component {
+    constructor(props) {
+        super(props);
 
-    componentDidMount() {
-        this.props.getPosts();
+        this.handleDelete = this.handleDelete.bind(this)
+
     }
+  componentDidMount() {
+    this.props.getPosts();
+  }
 
-    render() {
-        const { list, loading } = this.props;
+  handleDelete(id) {
+      this.props.deletePosts(id);
+  }
 
+  render() {
+    const { list, loading } = this.props;
 
-        const items = list && list.map(el => <Post key={el._id} post={el} />)
-        return (
-            <>
-                <NavBar />
-                {/* CSS this div to resize. BUT cardContainer is used in profile,
+    const items =
+      list &&
+      list.map(el => (
+        <div>
+          <Post key={el._id} post={el} />
+
+          <DeleteButton onClick={ () => this.handleDelete(el._id)}/>
+        </div>
+      ));
+    return (
+      <>
+        <NavBar />
+        {/* CSS this div to resize. BUT cardContainer is used in profile,
                 so know that changes here will cascade. Add a new class if needed? */}
-                <div className="cardContainer">
-                    <AddPost />
-                List Post Page
-                {loading ? <LoadingPosts /> : items}
-                </div>
-            </>
-        )
-    }
+        <div className="cardContainer">
+          <AddPost />
+          List Post Page
+          {loading ? <LoadingPosts /> : items}
+        </div>
+      </>
+    );
+  }
 }
 
-const mapStateToProps = (state) => ({
-    list: state.post.list,
-    loading: state.post.loading,
+const mapStateToProps = state => ({
+  list: state.post.list,
+  loading: state.post.loading
+});
 
-})
-
-export default connect(mapStateToProps, { getPosts })(ListPost);
+export default connect(mapStateToProps, { getPosts, deletePosts })(ListPost);
