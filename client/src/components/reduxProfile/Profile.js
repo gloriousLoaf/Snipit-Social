@@ -89,7 +89,7 @@ class Profile extends Component {
     /// can you do all the css in here?
     if (profile && items) {
       profileInfo = (
-        <Card className={classes}>
+        <Card className={classes} className="card-body container">
           <h1> {profile.fullname} </h1>
           <div> {profile.email} </div>
           <div>
@@ -114,7 +114,7 @@ class Profile extends Component {
 
     return (
       <div>
-        <AboutCard />
+       
 
         {loadingProfile ? <div>Loading</div> : profileInfo}
         {loadingPosts ? <LoadingPosts /> : items}

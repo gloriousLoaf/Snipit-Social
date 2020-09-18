@@ -41,7 +41,7 @@ class AddPost extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <div  className="card-body container">
         <Form.Group>
           <Form.Control
             label="What's new?"

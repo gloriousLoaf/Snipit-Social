@@ -6,12 +6,15 @@ import GitHubLogin from "./components/GitHubLogin";
 // Chat
 import Chat from "./components/chatrooms/Chat/index.js";
 import Join from "./components/chatrooms/Chat/index";
+//import js libraries
 
 // Reducer store for AuthContext (Logins)
 import { initialState, reducer } from "./store/reducer";
 import { logoutUser, getCurrentUser } from "./actions/authActions/authActions";
 
 import jwt_decode from "jwt-decode";
+
+import breakroom from './components/breakroom';
 
 import setHeaderAuth from "./utils/setAuthHeader";
 
@@ -82,6 +85,9 @@ const App = () => {
 
               {/* no content yet */}
               <Route path="/Posts" component={ListPost} />
+
+              <Route path="/breakroom" component={breakroom} />
+
 
 
               {/* Join goes to Chat. Join is temporary until DMs exist */}

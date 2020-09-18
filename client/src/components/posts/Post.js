@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card"
 import NavBar from "../NavBar";
 
 import { Link } from 'react-router-dom'
+import './style.css';
 // import AddPost from "./AddPost"
 // import { connect } from 'react-redux';
 // import { getPosts} from "../../actions/postActions/postActions"
@@ -19,21 +20,21 @@ class Post extends Component {
 
 
     return (
-      <Card>
-        <div> 
+      <div className=" card container mb-4 d-flex justify-content-center " id="border" >
+        <hr></hr>
+        <div className="card-title bg-lg">
+          <Link to={`/reduxProfile/${post.user.id}`}><h3>{post.user.fullname}</h3></Link>
+          <span id="date"> {new Date(post.createdAt).toLocaleString()} </span>
         </div>
-
-        <div> {post.user.fullname}
-          <h3> 
-
-            {/* david check this out  */}
-            <Link to={`/reduxProfile/${post.user.id}`}> {post.user.fullname} </Link>
-            <span> {new Date(post.createdAt).toLocaleString()} </span>
-          </h3>
-          {post.text}
+        <div className="card-title">
+          <div className="card-body ">
+            <h6 className="card-text">
+              {post.text}
+            </h6>
+          </div>
 
         </div>
-      </Card>
+      </div>
     )
   }
 }
