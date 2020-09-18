@@ -4,7 +4,7 @@
 // third Component, but that needs more research?
 import React, { useState } from "react";
 import { Form, Tabs, Tab, Button, Modal } from "react-bootstrap";
-import SnipitLogo from '../../snipit.png';
+import SnipitLogo from "../../snipit.png";
 
 import Signup from "./Signup";
 import Login from "./Login";
@@ -23,21 +23,21 @@ const RightSide = () => {
             <Form className="p-10">
               <img alt="logo" classname="" src={SnipitLogo} />
               &nbsp;
-              <p className='Join text-center'>Join Today</p>
+              <p className="Join text-center">Join Today</p>
               <Button
-                type='button'
-                className='loginBtn btn-round btn-block btn-dark'
+                type="button"
+                className="loginBtn btn-round btn-block btn-dark"
                 onClick={handleShow}
               >
                 Log in
-							</Button>
+              </Button>
               <Button
-                type='button'
-                className='signupBtn btn-round btn-block btn-dark'
+                type="button"
+                className="signupBtn btn-round btn-block btn-dark"
                 onClick={handleShow}
               >
                 Sign Up
-							</Button>
+              </Button>
             </Form>
           </div>
         </div>
@@ -59,6 +59,7 @@ const SignupModal = props => {
   return (
     <Modal {...props} backdrop="static" keyboard={true}>
       <Modal.Body>
+        <Modal.Header closeButton />
         <Tabs defaultActiveKey="login">
           <Tab eventKey="login" title="Login">
             <Login />
