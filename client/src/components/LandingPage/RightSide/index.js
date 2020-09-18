@@ -4,6 +4,7 @@
 // third Component, but that needs more research?
 import React, { useState } from "react";
 import { Form, Tabs, Tab, Button, Modal } from "react-bootstrap";
+import Snipit from '../../snipit.png';
 
 import Signup from "./Signup";
 import Login from "./Login";
@@ -16,13 +17,15 @@ const RightSide = () => {
 
   return (
     <>
-      <div className="col-md-6 p-0 bg-dark h-md-100 loginarea">
+      <div className="col-md-6 p-0 bg-d h-md-100 loginarea">
         <div className="d-md-flex align-items-center h-md-100 p-5 justify-content-center loginarea">
           <div className="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
-            <Form className="p-5">
+            <Form className="p-10">
+              <img alt="logo" classname="" src={Snipit} />
+              &nbsp;
               <Button
                 type="button"
-                className="signinBtn btn btn-primary btn-round btn-block"
+                className="signupBtn btn-dark btn-block"
                 onClick={handleShow}
               >
                 Sign in
