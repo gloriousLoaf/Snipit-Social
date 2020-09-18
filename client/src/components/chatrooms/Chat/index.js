@@ -91,7 +91,7 @@ const Chat = ({ location }) => {
             <NavBar />
             <div className="chatContainer">
                 <InfoBar room={room} />
-                <Messages messages={messages} name={name} />
+                <Messages classname="bubble" messages={messages} name={name} />
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
             </div>
             {/* <CurrentUsers users={users} /> */}

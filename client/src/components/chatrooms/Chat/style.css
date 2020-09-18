@@ -1,11 +1,19 @@
 /* CHAT */ 
 
+:root {
+	--main-color: #18a0fb;
+	--dark-color: #272828;
+	--footer-link-color: #aab8c2;
+	--footer-top-border-color: #e6ecf0;
+}
+
 .outerChatContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     padding-bottom: 3.4rem;
+    background-color: var(--dark-color);
 }
 
 .chatContainer {
@@ -13,7 +21,6 @@
     flex-direction: column;
     justify-content: space-between;
     background: #FFFFFF;
-    border: solid 1px #e8e8e8;
     border-radius: 8px;
     height: 60%;
     width: 35%;
