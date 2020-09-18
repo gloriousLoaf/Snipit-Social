@@ -131,7 +131,7 @@ class Login extends Component {
               {errors.password ? errors.password : ""}
             </Form.Text>
             <p className="font-small blue-text d-flex justify-content-end">
-              <a href="/" className="blue-text ml-1">
+              <a href="/" className="link ml-1">
                 Forgot Password?
               </a>
             </p>
@@ -140,7 +140,7 @@ class Login extends Component {
           <div className="text-center mb-3">
             <Button
               type="button"
-              className="modalSignin bg-m btn btn-dark"
+              className="modalSignin bg-m btn-dark"
               onClick={this.handleSubmit}
             >
               Sign in
@@ -152,33 +152,16 @@ class Login extends Component {
           </p>
           <div className="row my-2 d-flex justify-content-center">
             {/* Facebook Login, stretch goal?? */}
-
-            {/* Google Login */}
-            <Button
-              href="/googlelogin"
-              type="button"
-              className="goog btn-dark mr-2 md-2"
-            >
-              <i className="fab fa-google" style={{ fontSize: 30 }}></i>
-            </Button>
             {/* Github Login */}
             <Button
               href="/githublogin"
               type="button"
-              className="github btn-dark mr-2 md-2"
-
+              className="github btn-dark mb-3"
             >
               <i className="fab fa-github" style={{ fontSize: 30 }}></i>
             </Button>
           </div>
         </Form>
-
-        <Modal.Footer>
-          <div className="options text-right">
-            <p>Escape to close</p>
-          </div>
-        </Modal.Footer>
-
       </div>
     );
   }
