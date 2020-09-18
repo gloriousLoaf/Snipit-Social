@@ -71,8 +71,6 @@ const App = () => {
             <Switch>
               <Route path="/" exact component={LandingPage} />
 
-              {/* IMPORTANT - for now GH must be at /login,
-            hopefully Google can be at a different path */}
               <Route path="/githublogin" exact component={GitHubLogin} />
 
               {/* Soon */}
@@ -81,7 +79,7 @@ const App = () => {
               {/* NEW Profile Page */}
 
               <Route path="/profile/:id" exact component={Profile} />
-              <Route path="/reduxProfile/:userId" component={ reduxProfile } />
+              <Route path="/reduxProfile/:userId" component={reduxProfile} />
 
               {/* no content yet */}
               <Route path="/Posts" component={ListPost} />

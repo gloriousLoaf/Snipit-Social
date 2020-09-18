@@ -14,9 +14,6 @@ import NavBar from "../NavBar";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-// example of how we can reuse components
-import AboutCard from "../Profile/AboutCard";
-
 import Post from "../posts/Post";
 
 import LoadingPosts from "../posts/LoadingPosts";
@@ -33,13 +30,13 @@ class Profile extends Component {
     this.props.getPostsByUserId(this.props.match.params.userId);
     this.props.getUserProfile(this.props.match.params.userId);
   }
-  
+
   handleFollow() {
-      this.props.followUser(this.props.match.params.userId)
+    this.props.followUser(this.props.match.params.userId)
   }
 
   handleUnfollow() {
-      this.props.unfollowUser(this.props.match.params.userId)
+    this.props.unfollowUser(this.props.match.params.userId)
   }
 
 
@@ -63,30 +60,32 @@ class Profile extends Component {
 
 
     if (auth.isAuthenticated) {
-        // if you aren't following this person, show follow, else show unfollow
+      // if you aren't following this person, show follow, else show unfollow
       if (user.following.indexOf(this.props.match.params.userId) === -1) {
         followButtons = (
+          ///////// CSS /////////
           <div>
-            <Button 
-            onClick={ this.handleFollow}
+            <Button
+              onClick={this.handleFollow}
             >
-                Follow
+              Follow
             </Button>
           </div>
         );
       } else {
         followButtons = (
+          ///////// CSS /////////
           <div>
             <Button
-            onClick = {this.handleUnfollow}
+              onClick={this.handleUnfollow}
             >
-                Unfollow
+              Unfollow
             </Button>
           </div>
         );
       }
     }
-    /// can you do all the css in here?
+    ///////// CSS /////////
     if (profile && items) {
       profileInfo = (
         <Card className={classes} className="card-body container">
@@ -113,8 +112,8 @@ class Profile extends Component {
     }
 
     return (
+      ///////// CSS /////////
       <div>
-       
 
         {loadingProfile ? <div>Loading</div> : profileInfo}
         {loadingPosts ? <LoadingPosts /> : items}

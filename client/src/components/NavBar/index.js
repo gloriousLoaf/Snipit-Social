@@ -54,7 +54,7 @@ class NavBar extends Component {
                     <i className="fas fa-stream" aria-hidden="true" title="profile"></i>
                 </Button>
 
-                <Button href="/breakroom" className="breakroom">
+                <Button href="/breakroom" className="navbarLogo breakroom">
                     <i className="fas fa-gamepad" aria-hidden="true" title="profile"></i>
                 </Button>
 

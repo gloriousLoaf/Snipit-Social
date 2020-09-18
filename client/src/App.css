@@ -1,7 +1,9 @@
-* {
+/* Squashing #000 black space from the edges of the viewport */ 
+html, body {
     margin: 0;
-    box-sizing: border-box;
+    background-color: #272828 !important;
 }
+/* End */ 
 
 html {
 	--main-color: #18a0fb;

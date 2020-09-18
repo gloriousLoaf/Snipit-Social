@@ -1,26 +1,15 @@
-import React, { ComponentElement, Component } from "react";
-// import API from "../../utils/API";
-import Card from "react-bootstrap/Card"
-import NavBar from "../NavBar";
+//// POST - Individual post cards ////
+import React, { Component } from "react";
 
 import { Link } from 'react-router-dom'
 import './style.css';
-// import AddPost from "./AddPost"
-// import { connect } from 'react-redux';
-// import { getPosts} from "../../actions/postActions/postActions"
 
 class Post extends Component {
   render() {
     const { classes, post } = this.props
 
-    // const items = list && list.map( )
-
-    // console.log(classes)
-
-
-
     return (
-      <div className=" card container mb-4 d-flex justify-content-center " id="border" >
+      <div className="card container my-4 d-flex justify-content-center" id="border" >
         <hr></hr>
         <div className="card-title bg-lg">
           <Link to={`/reduxProfile/${post.user.id}`}><h3>{post.user.fullname}</h3></Link>
@@ -32,7 +21,6 @@ class Post extends Component {
               {post.text}
             </h6>
           </div>
-
         </div>
       </div>
     )
