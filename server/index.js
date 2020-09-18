@@ -45,12 +45,26 @@ app.use(bodyParser.json({ type: "text/*" }));
 //     keys: ["key1", "key2"],
 //   })
 // );
-//intialize with passport,
-app.use(passport.initialize());
 
 //instead of the passport-setup.js, using this one
 require("./config/passport")(passport)
 
+// github passport auth
+require("./config/passportGithub")(passport)
+
+app.get("/auth/github", passport.authenticate("github"));
+
+app.get(
+  "/auth/github/callback",
+  passport.authenticate("github", { failureRedirect: "/" }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/");
+  }
+);
+
+//intialize with passport,
+app.use(passport.initialize());
 
 // use sessions, if using sessions need cookie session lib
 app.use(passport.session());
@@ -118,12 +132,12 @@ io.on('connect', (socket) => {
 const posts = require('./routes/posts');
 const gitinfo = require('./routes/gitAuthentication');
 const users = require('./routes/user');
-const searchUser = require('./routes/searchUser')
+const searchUser = require('./routes/searchUser');
 
 app.use('/api/posts', posts);
 app.use('/api/gitinfo', gitinfo);
 app.use('/api/users', users);
-app.use('/api/searchUserName', searchUser);
+app.use('/api/searchUser', searchUser);
 
 /////// GITHUB AUTH PROXIES ///////
 app.use((req, res, next) => {

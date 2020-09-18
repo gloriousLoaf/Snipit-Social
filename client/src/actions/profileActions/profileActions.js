@@ -11,6 +11,16 @@ export const getUserProfile = (userId) => dispatch => {
         .catch(err => console.log(err))
 }
 
+export const refreshUserProfile = (userId) => dispatch => {
+
+    axios.get(`/api/users/${userId}`)
+        .then(res => dispatch({
+            type: GET_PROFILE,
+            payload: res.data
+        }))
+        .catch(err => console.log(err))
+}
+
 export const getPostsByUserId = (userId) => dispatch => {
     dispatch(loadPosts())
     axios.get(`/api/posts/${userId}`)

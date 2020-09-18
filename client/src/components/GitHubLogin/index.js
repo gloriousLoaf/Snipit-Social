@@ -58,8 +58,14 @@ const GitHubLogin = () => {
         }
     }, [state, dispatch, data]);
 
+    // THIS will redirect to user's profile w/ GitHub id,
+    // different than mongodb _id but still unique and won't
+    // disrupt other functioning, right?
     if (state.isLoggedIn) {
-        return <Redirect to="/profile/:id"/>;
+        let ghID = state.user.id;
+        return <Redirect to={`/profile/:${ghID}`} />;
+        // previous version:
+        // return <Redirect to="/profile/:id" />;
     }
 
     // Based on login state, this displays a loading spinner and / or error msg

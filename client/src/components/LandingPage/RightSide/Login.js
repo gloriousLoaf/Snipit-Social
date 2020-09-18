@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect, Component } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 
 import { withRouter } from "react-router-dom";
@@ -6,6 +6,8 @@ import { withRouter } from "react-router-dom";
 // import userLogin from "../RightSide/"
 import { connect } from "react-redux"
 import { loginUser } from "../../../actions/authActions/authActions"
+
+import searchAPI from '../../../utils/searchUserAPI';
 
 
 class Login extends Component {
@@ -53,7 +55,28 @@ class Login extends Component {
 
     this.props.loginUser(userData);
 
-    // NEW - THIS needs to have use id concatenated for url
+
+    ///////////////////////////
+
+    /// ok, we have an email address in state, right? query db?
+    // but this is 404, probably a mistake I'm making in
+    // utils/searchUserAPI, or in routes/searchUser
+
+    searchAPI.searchUser(this.state.email)
+      .then((res) => {
+        if (res === "error") {
+          throw new Error(res);
+        } else {
+          console.log(res)
+          // let id = res.asdfasdf
+          // this.props.history.push(`/profile/${id}`);
+        }
+      })
+      .catch(err => console.log(err));
+
+    ///////////////////////////
+
+    // THIS needs to have use id concatenated for url
     // for now this sends you to a black page. how fun.
     this.props.history.push('/profile/');
 

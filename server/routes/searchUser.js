@@ -1,19 +1,19 @@
 /* DEPENDING ON how many different auth methods we have,
-    and which db models are available, we might handle searches 
+    and which db models are available, we might handle searches
     by user with models/User for the NavBar Search dropup */
 
 const express = require("express");
 const router = express.Router();
-const GitInfo = require("../models/Github");
-// const User = require("../models/User");
+const User = require("../models/User");
 
-router.route("/searchUserName/:name").get((res, req) => {
-    GitInfo.findOne(
+// 404 but close maybe?
+router.route("/searchUser/:email").get((res, req) => {
+    User.findOne(
         {
-            name: req.body.name
+            email: req.body.email
         }
     )
-        .then(name => res.json(name))
+        .then(email => res.json(email))
         .catch(err => console.log(err));
 });
 

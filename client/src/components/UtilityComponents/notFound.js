@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import NavBar from "../NavBar";
 
 class notFound extends Component {
   render() {
@@ -8,6 +9,8 @@ class notFound extends Component {
         <div>
           <img src="" alt="insert cute puppy here :) "></img>
         </div>
+
+        <NavBar />
       </div>
     );
   }

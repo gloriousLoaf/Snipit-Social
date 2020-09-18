@@ -12,6 +12,8 @@ import '../../../../pages/Framework/css/night-mode.css';
 
 const Message = ({ message: { text, user }, name }) => {
 
+
+    // only errors we had was avatar URL, fix it later? 
     const { state } = useContext(AuthContext);
     const { avatar_url } = state.user;
 
@@ -37,7 +39,7 @@ const Message = ({ message: { text, user }, name }) => {
                                 {!state.avatar_url ? (
                                     <img className="lilAvatar" src={avatar_url} alt="Avatar" />
                                 ) : (
-                                        <i className="fas fa-user-circle" alt="Avatar"></i>
+                                        <img className="fas fa-user-circle" alt="Avatar"></img>
                                     )
                                 }
                             </div>
@@ -74,36 +76,6 @@ const Message = ({ message: { text, user }, name }) => {
                 </div>
             )
     )
-
-
-    // OLD LAYOUT - might need chunks
-    // for if, ternary to make user's own messages look different
-    // let isSentByCurrentUser = false;
-    // const trimmedName = name.trim().toLowerCase();
-
-    // if (user === trimmedName) {
-    //     isSentByCurrentUser = true;
-    // }
-
-    // return (
-    //     isSentByCurrentUser
-    //         ? (
-    //             <div className="messageContainerC">
-    //                 <p className="sentText paddingRight">{trimmedName}</p>
-    //                 <div className="messageBox backgroundBlue">
-    //                     <p className="messageText colorWhite">{ReactEmoji.emojify(text)}</p>
-    //                 </div>
-    //             </div>
-    //         )
-    //         : (
-    //             <div className="messageContainer justifyStart">
-    //                 <div className="messageBox backgroundLight">
-    //                     <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
-    //                 </div>
-    //                 <p className="sentText paddingLeft ">{user}</p>
-    //             </div>
-    //         )
-    // );
 }
 
 export default Message;
