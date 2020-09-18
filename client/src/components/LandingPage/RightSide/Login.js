@@ -76,9 +76,8 @@ class Login extends Component {
 
     ///////////////////////////
 
-    // THIS needs to have use id concatenated for url
-    // for now this sends you to a black page. how fun.
-    this.props.history.push('/profile/');
+    // redirect to posts
+    this.props.history.push('/posts');
 
   }
 
