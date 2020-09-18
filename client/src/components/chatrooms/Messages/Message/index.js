@@ -15,7 +15,7 @@ const Message = ({ message: { text, user }, name }) => {
 
     // only errors we had was avatar URL, fix it later? 
     const { state } = useContext(AuthContext);
-    // const { avatar_url } = state.user;
+    const { avatar_url } = state.user;
 
 
     // getting names corresponding to who sent the message
@@ -35,13 +35,13 @@ const Message = ({ message: { text, user }, name }) => {
                     <div className="message-bubble me">
                         <div className="message-bubble-inner">
                             <div className="message-avatar">
-                                {/* ternary to display GH avatar or placeholder
+                                {/* ternary to display GH avatar or placeholder */}
                                 {!state.avatar_url ? (
                                     <img className="lilAvatar" src={avatar_url} alt="Avatar" />
                                 ) : (
                                         <img className="fas fa-user-circle" alt="Avatar"></img>
                                     )
-                                } */}
+                                }
                             </div>
                             <div className="message-text">
                                 <p>{ReactEmoji.emojify(text)}</p>
@@ -57,13 +57,13 @@ const Message = ({ message: { text, user }, name }) => {
                     <div className="message-bubble">
                         <div className="message-bubble-inner">
                             <div className="message-avatar">
-                                {/* ternary to display GH avatar or placeholder
+                                {/* ternary to display GH avatar or placeholder */}
                                 {!state.avatar_url ? (
                                     <i className="lilAvatar fas fa-user-circle" alt="Avatar"></i>
                                 ) : (
                                         <img className="avatar" src={avatar_url} alt="Avatar" />
                                     )
-                                } */}
+                                }
                             </div>
                             <div className="message-text">
                                 <p>{ReactEmoji.emojify(text)}</p>
@@ -76,36 +76,6 @@ const Message = ({ message: { text, user }, name }) => {
                 </div>
             )
     )
-
-
-    // OLD LAYOUT - might need chunks
-    // for if, ternary to make user's own messages look different
-    // let isSentByCurrentUser = false;
-    // const trimmedName = name.trim().toLowerCase();
-
-    // if (user === trimmedName) {
-    //     isSentByCurrentUser = true;
-    // }
-
-    // return (
-    //     isSentByCurrentUser
-    //         ? (
-    //             <div className="messageContainerC">
-    //                 <p className="sentText paddingRight">{trimmedName}</p>
-    //                 <div className="messageBox backgroundBlue">
-    //                     <p className="messageText colorWhite">{ReactEmoji.emojify(text)}</p>
-    //                 </div>
-    //             </div>
-    //         )
-    //         : (
-    //             <div className="messageContainer justifyStart">
-    //                 <div className="messageBox backgroundLight">
-    //                     <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
-    //                 </div>
-    //                 <p className="sentText paddingLeft ">{user}</p>
-    //             </div>
-    //         )
-    // );
 }
 
 export default Message;
