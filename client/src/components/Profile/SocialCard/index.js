@@ -8,35 +8,47 @@ import './style.css';
 
 const Social = () => {
 
+    // ALL THIS commented out stuff worked with GH auth,
+    // not working now but please keep
+
     // pulling state.user from Context
-    const { state } = useContext(AuthContext);
+    // const { state } = useContext(AuthContext);
 
     // Redirect needed to prevent crashing
-    if (!state.isLoggedIn) {
-        return <Redirect to="/" />;
-    }
+    // if (!state.isLoggedIn) {
+    //     return <Redirect to="/" />;
+    // }
     // needs to be below if()
-    const { html_url } = state.user;
+    // const { html_url } = state.user;
 
 
     return (
-        <div className="card profCard container my-2 d-flex justify-content-center" id="social">
+        <>
+            <div style={{ color: "#fff", textAlign: "center" }}>
+                <p>#DeleteMe: 👇 None of these actually work, need user input.</p>
+            </div>
+            <div className="card container my-3 py-2 d-flex justify-content-center" id="social">
+                {/* This setup should work, just need to drop in links? */}
+                <Button href="#" type="button" className="socialBtn">
+                    <i className="fab fa-facebook-square m-2" aria-hidden="true" title="facebook" ></i>
+                </Button>
+                <Button href="#" type="button" className="socialBtn">
+                    <i className="fab fa-instagram m-2" aria-hidden="true" title="Instagram" ></i>
+                </Button>
+                <Button href="#" type="button" className="socialBtn">
+                    <i className="fab fa-linkedin m-2" aria-hidden="true" title="Linkedin" ></i>
+                </Button>
+                <Button href="#" type="button" className="socialBtn">
+                    <i className="fab fa-github-square m-2" aria-hidden="true" title="Github" ></i>
+                </Button>
 
-            {/* This setup should work, just need to drop in links? */}
-            <Button href="#" type="button" className="socialBtn">
-                <i className="fab fa-facebook-square m-2" aria-hidden="true" title="facebook" ></i>
-            </Button>
-            <Button href="#" type="button" className="socialBtn">
-                <i className="fab fa-instagram m-2" aria-hidden="true" title="Instagram" ></i>
-            </Button>
-            <Button href="#" type="button" className="socialBtn">
-                <i className="fab fa-linkedin m-2" aria-hidden="true" title="Linkedin" ></i>
-            </Button>
-            <Button href={html_url} type="button" className="socialBtn">
+                {/* GH would pull links this: */}
+                {/* <Button href={html_url} type="button" className="socialBtn">
                 <i className="fab fa-github-square m-2" aria-hidden="true" title="Github" ></i>
-            </Button>
+            </Button> */}
 
-        </div>
+            </div>
+        </>
     )
 };
 

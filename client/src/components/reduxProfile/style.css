@@ -1,4 +1,4 @@
-/* SOCIAL CARD - PROFILE */ 
+/* PROFILE - Main */ 
 #social {
   flex-direction: row;
 }
@@ -27,6 +27,7 @@
   font-size: 0.75rem;
   color: #545454;
 }
+
 .card {
   box-shadow: 0 8px 12px 0 rgba(10, 35, 90, 0.2);
   transition: 0.4s;
@@ -36,7 +37,6 @@
 }
 
 
-/* PROFILE PAGE */
 .profContainer {
     width: 100vw;
     display: flex;
@@ -69,16 +69,7 @@
 }
 
 
-.profStats h5 {
-  margin-right: 2rem;
-}
-
-.profStats li {
-  margin: 0.25rem 0 0.25rem 1.25rem;
-}
-
-
-/* MEDIA QUERIES aren't working yet */ 
+/* MEDIA QUERIES */ 
 /* Screen > Portrait Tablet */
 @media (min-width: 960px) {
     .cardContainer {
