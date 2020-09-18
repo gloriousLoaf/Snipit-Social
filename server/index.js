@@ -45,12 +45,26 @@ app.use(bodyParser.json({ type: "text/*" }));
 //     keys: ["key1", "key2"],
 //   })
 // );
-//intialize with passport,
-app.use(passport.initialize());
 
 //instead of the passport-setup.js, using this one
 require("./config/passport")(passport)
 
+// github passport auth
+require("./config/passportGithub")(passport)
+
+app.get("/auth/github", passport.authenticate("github"));
+
+app.get(
+  "/auth/github/callback",
+  passport.authenticate("github", { failureRedirect: "/" }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/");
+  }
+);
+
+//intialize with passport,
+app.use(passport.initialize());
 
 // use sessions, if using sessions need cookie session lib
 app.use(passport.session());
