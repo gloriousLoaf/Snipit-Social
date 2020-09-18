@@ -1,8 +1,6 @@
 ///// REDUX PROFILE /////
 import React, { Component } from "react";
-
 import { connect } from "react-redux";
-
 // connect this with export default at bottom
 import {
   getPostsByUserId,
@@ -13,13 +11,12 @@ import {
 } from "../../actions/profileActions/profileActions";
 
 import NavBar from "../NavBar";
-
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-
 import Post from "../posts/Post";
-
 import LoadingPosts from "../posts/LoadingPosts";
+import SocialCard from '../Profile/SocialCard';
+import UserActions from "../Profile/UserActions";
 
 class Profile extends Component {
   constructor(props) {
@@ -88,7 +85,7 @@ class Profile extends Component {
       ) {
 
         followButtons = (
-          ///////// CSS /////////
+          ///////// CSS? /////////
           <div>
             <Button onClick={this.handleFollow}>Follow</Button>
 
@@ -96,27 +93,28 @@ class Profile extends Component {
         );
       } else {
         followButtons = (
-          ///////// CSS /////////
+          ///////// CSS? /////////
           <div>
             <Button onClick={this.handleUnfollow}>Unfollow</Button>
           </div>
         );
       }
     }
-    ///////// CSS /////////
+    ///////// CSS? /////////
+    // this <Card/> will style the user info card
     if (profile && items) {
       profileInfo = (
-        <Card className="card profCard" id="profile">
+        <Card className="card container my-4 py-5 text-center" id="border">
           <h1> {profile.fullname} </h1>
 
           <ul className="profStats list-unstyled mt-3">
-            <li><h5> {profile.email} </h5></li>
+            <li className="py-1"><h5> {profile.email} </h5></li>
 
-            <li> {items.length} posts </li>
+            <li className="py-1"> {items.length} posts </li>
 
-            <li> {profile.followers.length} followers </li>
+            <li className="py-1"> {profile.followers.length} followers </li>
 
-            <li> {profile.following.length} following </li>
+            <li className="py-1"> {profile.following.length} following </li>
 
           </ul>
           {followButtons}
@@ -126,10 +124,17 @@ class Profile extends Component {
 
     return (
       ///////// CSS /////////
+      // these two containers give a ratio like old profile page
+      // changes to cardContainer specifically will cascasde to ListPost.js
       <div className="profContainer">
         <div className="cardContainer">
 
           {loadingProfile ? <div>Loading</div> : profileInfo}
+
+          {/* put any additional sections here, above LoadingPosts */}
+          {/* see respective cards for #DeleteMe */}
+          <SocialCard />
+          <UserActions />
           {loadingPosts ? <LoadingPosts /> : items}
 
         </div>

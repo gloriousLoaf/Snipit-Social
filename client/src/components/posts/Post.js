@@ -9,7 +9,7 @@ class Post extends Component {
     const { classes, post } = this.props
 
     return (
-      <div className="card container my-4 d-flex justify-content-center" id="border" >
+      <div className="card container my-3 d-flex justify-content-center" id="border" >
         <hr></hr>
         <Link to={`/reduxProfile/${post.user.id}`}><h3 className="pl-3">{post.user.fullname}</h3></Link>
         <div className="card-title">
