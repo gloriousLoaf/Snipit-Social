@@ -7,27 +7,31 @@ import Post from "./Post"
 
 import { getPosts } from "../../actions/postActions/postActions"
 import LoadingPosts from "./LoadingPosts"
+import './style.css';
 
 
-class ListPost extends Component { 
+class ListPost extends Component {
 
     componentDidMount() {
-        this.props.getPosts(); 
+        this.props.getPosts();
     }
 
     render() {
-        const { list, loading } = this.props; 
+        const { list, loading } = this.props;
 
 
         const items = list && list.map(el => <Post key={el._id} post={el} />)
-        return ( 
-            <div>
-                <AddPost />
+        return (
+            <>
+                <NavBar />
+                {/* CSS this div to resize. BUT cardContainer is used in profile,
+                so know that changes here will cascade. Add a new class if needed? */}
+                <div className="cardContainer">
+                    <AddPost />
                 List Post Page
-                { loading ? <LoadingPosts /> : items}
-                <NavBar/>
-            </div>
-
+                {loading ? <LoadingPosts /> : items}
+                </div>
+            </>
         )
     }
 }
@@ -38,4 +42,4 @@ const mapStateToProps = (state) => ({
 
 })
 
-export default connect(mapStateToProps, { getPosts}) (ListPost);
+export default connect(mapStateToProps, { getPosts })(ListPost);

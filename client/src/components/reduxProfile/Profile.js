@@ -16,9 +16,6 @@ import NavBar from "../NavBar";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-// example of how we can reuse components
-import AboutCard from "../Profile/AboutCard";
-
 import Post from "../posts/Post";
 
 import LoadingPosts from "../posts/LoadingPosts";
@@ -35,6 +32,7 @@ class Profile extends Component {
     this.props.getPostsByUserId(this.props.match.params.userId);
     this.props.getUserProfile(this.props.match.params.userId);
   }
+
 
   // do this for signup and login if you can.
   componentDidUpdate(prevProps) {
@@ -79,6 +77,7 @@ class Profile extends Component {
 
     // if if authenticated, 
     if (auth.isAuthenticated) {
+
       // if user exist, user has a following array
       if (
         user &&
@@ -86,23 +85,27 @@ class Profile extends Component {
         // if you aren't following this person, show follow, else show unfollow
         user.following.indexOf(this.props.match.params.userId) === -1
         ) {
+
         followButtons = (
+          ///////// CSS /////////
           <div>
             <Button onClick={this.handleFollow}>Follow</Button>
+
           </div>
         );
       } else {
         followButtons = (
+          ///////// CSS /////////
           <div>
             <Button onClick={this.handleUnfollow}>Unfollow</Button>
           </div>
         );
       }
     }
-    /// can you do all the css in here?
+    ///////// CSS /////////
     if (profile && items) {
       profileInfo = (
-        <Card className={classes}>
+        <Card className={classes} className="card-body container">
           <h1> {profile.fullname} </h1>
           <div> {profile.email} </div>
           <div>
@@ -126,8 +129,8 @@ class Profile extends Component {
     }
 
     return (
+      ///////// CSS /////////
       <div>
-        <AboutCard />
 
         {loadingProfile ? <div>Loading</div> : profileInfo}
         {loadingPosts ? <LoadingPosts /> : items}

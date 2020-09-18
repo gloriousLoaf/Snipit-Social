@@ -83,6 +83,10 @@ class NavBar extends Component {
                     <i className="fas fa-stream" aria-hidden="true" title="profile"></i>
                 </Button>
 
+                <Button href="/breakroom" className="navbarLogo breakroom">
+                    <i className="fas fa-gamepad" aria-hidden="true" title="profile"></i>
+                </Button>
+
                 {/* Dropup Chat: pop into any of a few predefined live chatrooms,
                 we can add as many more as we like, let's keep it under 10 maybe? */}
                 <DropdownButton

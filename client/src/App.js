@@ -6,12 +6,15 @@ import GitHubLogin from "./components/GitHubLogin";
 // Chat
 import Chat from "./components/chatrooms/Chat/index.js";
 import Join from "./components/chatrooms/Chat/index";
+//import js libraries
 
 // Reducer store for AuthContext (Logins)
 import { initialState, reducer } from "./store/reducer";
 import { logoutUser, getCurrentUser } from "./actions/authActions/authActions";
 
 import jwt_decode from "jwt-decode";
+
+import breakroom from './components/breakroom';
 
 import setHeaderAuth from "./utils/setAuthHeader";
 
@@ -68,8 +71,6 @@ const App = () => {
             <Switch>
               <Route path="/" exact component={LandingPage} />
 
-              {/* IMPORTANT - for now GH must be at /login,
-            hopefully Google can be at a different path */}
               <Route path="/githublogin" exact component={GitHubLogin} />
 
               {/* Soon */}
@@ -78,10 +79,13 @@ const App = () => {
               {/* NEW Profile Page */}
 
               <Route path="/profile/:id" exact component={Profile} />
-              <Route path="/reduxProfile/:userId" component={ reduxProfile } />
+              <Route path="/reduxProfile/:userId" component={reduxProfile} />
 
               {/* no content yet */}
               <Route path="/Posts" component={ListPost} />
+
+              <Route path="/breakroom" component={breakroom} />
+
 
 
               {/* Join goes to Chat. Join is temporary until DMs exist */}

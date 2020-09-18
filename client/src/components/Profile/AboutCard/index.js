@@ -9,7 +9,7 @@ const AboutCard = () => {
             <div className="book-card">
                 <div className="book-content">
                     <h4>Favorite Book</h4>
-                    <p>The book concerns duality in Kerouac's life and ideals, examining the relationship of the outdoors, mountaineering, hiking, and hitchhiking through the West with his "city life" of jazz clubs, poetry readings, and drunken parties. The protagonist's search for a "Buddhist" context to his experiences (and those of others he encounters) recurs throughout the story.</p>
+                    <p> </p>
                 </div>
             </div>
             <div className="book-card">
