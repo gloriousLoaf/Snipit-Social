@@ -1,8 +1,4 @@
 /* SOCIAL CARD - PROFILE */ 
-html { 
-  background-color: #fff;
-}
-
 #social {
   flex-direction: row;
 }
@@ -45,6 +41,7 @@ html {
     width: 100vw;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
   
 .profCard {
@@ -71,30 +68,15 @@ html {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-.ghStats h5 {
+
+.profStats h5 {
   margin-right: 2rem;
 }
 
-.ghStats li {
+.profStats li {
   margin: 0.25rem 0 0.25rem 1.25rem;
 }
 
-#profile {
-  flex-flow: column wrap;
-  align-items: center;
-}
-
-.msgBtn {
-  transition: 0.3s;
-  background-color: #18a0fb;
-  border: none;
-}
-
-.msgBtn:hover, .msgBtn:focus {
-  letter-spacing: 0.1rem;
-  box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 1);
-  background-color: #18a0fb;
-}
 
 /* MEDIA QUERIES aren't working yet */ 
 /* Screen > Portrait Tablet */

@@ -1,3 +1,4 @@
+///// REDUX PROFILE /////
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
@@ -84,7 +85,7 @@ class Profile extends Component {
         user.following &&
         // if you aren't following this person, show follow, else show unfollow
         user.following.indexOf(this.props.match.params.userId) === -1
-        ) {
+      ) {
 
         followButtons = (
           ///////// CSS /////////
@@ -105,35 +106,33 @@ class Profile extends Component {
     ///////// CSS /////////
     if (profile && items) {
       profileInfo = (
-        <Card className={classes} className="card-body container">
+        <Card className="card profCard" id="profile">
           <h1> {profile.fullname} </h1>
-          <div> {profile.email} </div>
-          <div>
-            <div>
-              {items.length}
-              <span> posts </span>
-            </div>
-            <div>
-              {profile.followers.length}
-              <span> followers </span>
-            </div>
-            <div>
-              {profile.following.length}
-              <span> following </span>
-            </div>
 
-            {followButtons}
-          </div>
+          <ul className="profStats list-unstyled mt-3">
+            <li><h5> {profile.email} </h5></li>
+
+            <li> {items.length} posts </li>
+
+            <li> {profile.followers.length} followers </li>
+
+            <li> {profile.following.length} following </li>
+
+          </ul>
+          {followButtons}
         </Card>
       );
     }
 
     return (
       ///////// CSS /////////
-      <div>
+      <div className="profContainer">
+        <div className="cardContainer">
 
-        {loadingProfile ? <div>Loading</div> : profileInfo}
-        {loadingPosts ? <LoadingPosts /> : items}
+          {loadingProfile ? <div>Loading</div> : profileInfo}
+          {loadingPosts ? <LoadingPosts /> : items}
+
+        </div>
 
         <NavBar />
       </div>

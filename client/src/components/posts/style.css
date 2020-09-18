@@ -48,7 +48,7 @@
 
 #date{
     float: right;
-    margin: 4rem auto -3.5rem !important;
+    padding-bottom: 1rem;
     font-family: inherit;
     font-size: 0.75rem;
     color: #545454;

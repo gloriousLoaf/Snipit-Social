@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 
-import API from "../../../utils/API";
+// import API from "../../../utils/API";
 
-function PostsCard() {
+// function PostsCard() {
   // your .map or .key function is completely dependent on this part.
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
 
   // have to set useEffect to an empty array to ensure only executed once.
 
@@ -28,4 +28,4 @@ function PostsCard() {
   // );
 }
 
-export default PostsCard;
+// export default PostsCard;
