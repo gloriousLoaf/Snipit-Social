@@ -77,13 +77,15 @@ class Profile extends Component {
 
     let followButtons;
 
+    // if if authenticated, 
     if (auth.isAuthenticated) {
-      // if you aren't following this person, show follow, else show unfollow
+      // if user exist, user has a following array
       if (
         user &&
         user.following &&
+        // if you aren't following this person, show follow, else show unfollow
         user.following.indexOf(this.props.match.params.userId) === -1
-      ) {
+        ) {
         followButtons = (
           <div>
             <Button onClick={this.handleFollow}>Follow</Button>
