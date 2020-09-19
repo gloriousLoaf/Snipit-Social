@@ -59,6 +59,18 @@
 	font-size: larger;
 }
 
+.modalSignin {
+	justify-content: center;
+	text-align: center;
+	font-size: larger;
+	width: 40%;
+	
+}
+
+.github {
+
+}
+
 .bg-m {
 	background: var(--main-color);
 	border: none;
