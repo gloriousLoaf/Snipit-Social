@@ -35,12 +35,11 @@ class UserAction extends Component {
   handleLogout() {
     // console.log(id);
     this.props.logoutUser();
-    // localStorage.removeItem("jwToken");
-    console.log(this.state.redirect)
+    localStorage.removeItem("jwToken");
+
     this.setRedirect();
-    console.log(this.state.redirect)
+
     this.renderRedirect();
-    this.context.router.history.push('/');
 }
 
 render() {

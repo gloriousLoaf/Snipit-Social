@@ -21,7 +21,7 @@ const RightSide = () => {
         <div className="d-md-flex align-items-center h-md-100 p-5 justify-content-center loginarea">
           <div className="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
             <Form className="p-10">
-              <img alt="logo" classname="" src={SnipitLogo} />
+              <img alt="logo" className="" src={SnipitLogo} />
               &nbsp;
               <p className="Join text-center">Join Today</p>
               <Button

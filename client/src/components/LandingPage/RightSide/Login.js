@@ -77,12 +77,22 @@ class Login extends Component {
     ///////////////////////////
 
     // redirect to posts
-    // this.props.history.push('/posts');
-
+    
   }
-
+  
   render() {
-    const { classes } = this.props;
+    const { 
+      classes,
+      auth,
+      profile,
+    } = this.props;
+    
+    if (auth.isAuthenticated) {
+      this.props.history.push('/posts');
+    }
+    
+    console.log(auth)
+
     const { errors } = this.state;
 
     return (
@@ -169,6 +179,7 @@ class Login extends Component {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  user: state.auth.user,
   errors: state.errors,
 })
 
