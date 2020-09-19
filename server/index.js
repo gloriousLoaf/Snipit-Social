@@ -211,7 +211,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // const port = process.env.PORT || 3001;
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 
 /* This server using http & express app should still implement
   all aspects needed for express, see line 64 */
