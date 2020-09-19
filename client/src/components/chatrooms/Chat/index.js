@@ -33,8 +33,8 @@ const Chat = ({ location }) => {
     const [messages, setMessages] = useState([]);
 
     ////// HEROKU CHANGES... NOT WORKING YET
-    // const ENDPOINT = process.env.PORT;
-    const ENDPOINT = "localhost:5000";
+    const ENDPOINT = "https://snipit-social.herokuapp.com/";
+    // const ENDPOINT = "localhost:5000";
 
     // On Connect, data from URL params
     useEffect(() => {
