@@ -7,15 +7,21 @@ import {
   getUserProfile,
   unfollowUser,
   followUser,
-  refreshUserProfile
+  refreshUserProfile,
 } from "../../actions/profileActions/profileActions";
+
+import {
+  deletePosts
+} from "../../actions/postActions/postActions"
+
+import DeleteButton from "../../components/posts/DeleteButton"
 
 import NavBar from "../NavBar";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Post from "../posts/Post";
 import LoadingPosts from "../posts/LoadingPosts";
-import SocialCard from '../Profile/SocialCard';
+import SocialCard from "../Profile/SocialCard";
 import UserActions from "../Profile/UserActions";
 
 class Profile extends Component {
@@ -24,13 +30,13 @@ class Profile extends Component {
 
     this.handleFollow = this.handleFollow.bind(this);
     this.handleUnfollow = this.handleUnfollow.bind(this);
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
     this.props.getPostsByUserId(this.props.match.params.userId);
     this.props.getUserProfile(this.props.match.params.userId);
   }
-
 
   // do this for signup and login if you can.
   componentDidUpdate(prevProps) {
@@ -53,6 +59,11 @@ class Profile extends Component {
   handleUnfollow() {
     this.props.unfollowUser(this.props.match.params.userId);
   }
+  
+  handleDelete(id) {
+    this.props.deletePosts(id);
+}
+  
 
   render() {
     const {
@@ -65,7 +76,14 @@ class Profile extends Component {
       profile
     } = this.props;
 
-    const items = list && list.map(el => <Post key={el._id} post={el} />);
+    const items =
+      list &&
+      list.map(el => (
+        <div>
+          <Post key={el._id} post={el} />
+          <DeleteButton onClick={() => this.handleDelete(el._id)} />
+        </div>
+      ));
 
     let profileInfo;
 
@@ -73,9 +91,8 @@ class Profile extends Component {
 
     let followButtons;
 
-    // if if authenticated, 
+    // if if authenticated,
     if (auth.isAuthenticated) {
-
       // if user exist, user has a following array
       if (
         user &&
@@ -83,12 +100,10 @@ class Profile extends Component {
         // if you aren't following this person, show follow, else show unfollow
         user.following.indexOf(this.props.match.params.userId) === -1
       ) {
-
         followButtons = (
           ///////// CSS? /////////
           <div>
             <Button onClick={this.handleFollow}>Follow</Button>
-
           </div>
         );
       } else {
@@ -108,14 +123,15 @@ class Profile extends Component {
           <h1> {profile.fullname} </h1>
 
           <ul className="profStats list-unstyled mt-3">
-            <li className="py-1"><h5> {profile.email} </h5></li>
+            <li className="py-1">
+              <h5> {profile.email} </h5>
+            </li>
 
             <li className="py-1"> {items.length} posts </li>
 
             <li className="py-1"> {profile.followers.length} followers </li>
 
             <li className="py-1"> {profile.following.length} following </li>
-
           </ul>
           {followButtons}
         </Card>
@@ -128,7 +144,6 @@ class Profile extends Component {
       // changes to cardContainer specifically will cascasde to ListPost.js
       <div className="profContainer">
         <div className="cardContainer">
-
           {loadingProfile ? <div>Loading</div> : profileInfo}
 
           {/* put any additional sections here, above LoadingPosts */}
@@ -136,7 +151,6 @@ class Profile extends Component {
           <SocialCard />
           <UserActions />
           {loadingPosts ? <LoadingPosts /> : items}
-
         </div>
 
         <NavBar />
@@ -160,5 +174,6 @@ export default connect(mapStateToProps, {
   getUserProfile,
   unfollowUser,
   followUser,
-  refreshUserProfile
+  refreshUserProfile,
+  deletePosts,
 })(Profile);
