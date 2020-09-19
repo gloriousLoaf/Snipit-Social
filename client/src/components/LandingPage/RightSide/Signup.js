@@ -41,7 +41,7 @@ class Signup extends Component {
 
     console.log(userData)
 
-    this.props.registerUser(userData);
+    this.props.registerUser(userData, this.props.history);
 
     // working on redirect after login, but this doesn't hit yet
     // return <Redirect to="/profile/:id" />
@@ -117,7 +117,7 @@ class Signup extends Component {
           <div className="text-center form-sm mt-2">
             <Button
               className="modalSignin bg-m btn-dark"
-              onClick={() => this.handleSubmit}
+              onClick={this.handleSubmit}
             >
               Sign up
             </Button>
