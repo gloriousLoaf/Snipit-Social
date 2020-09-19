@@ -62,27 +62,37 @@ class Login extends Component {
     // but this is 404, probably a mistake I'm making in
     // utils/searchUserAPI, or in routes/searchUser
 
-    searchAPI.searchUser(this.state.email)
-      .then((res) => {
-        if (res === "error") {
-          throw new Error(res);
-        } else {
-          console.log(res)
-          // let id = res.asdfasdf
-          // this.props.history.push(`/profile/${id}`);
-        }
-      })
-      .catch(err => console.log(err));
+    // searchAPI.searchUser(this.state.email)
+    //   .then((res) => {
+    //     if (res === "error") {
+    //       throw new Error(res);
+    //     } else {
+    //       console.log(res)
+    //       // let id = res.asdfasdf
+    //       // this.props.history.push(`/profile/${id}`);
+    //     }
+    //   })
+    //   .catch(err => console.log(err));
 
     ///////////////////////////
 
     // redirect to posts
-    this.props.history.push('/posts');
-
+    
   }
-
+  
   render() {
-    const { classes } = this.props;
+    const { 
+      classes,
+      auth,
+      profile,
+    } = this.props;
+    
+    if (auth.isAuthenticated) {
+      this.props.history.push('/posts');
+    }
+    
+    console.log(auth)
+
     const { errors } = this.state;
 
     return (
@@ -169,6 +179,7 @@ class Login extends Component {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  user: state.auth.user,
   errors: state.errors,
 })
 
