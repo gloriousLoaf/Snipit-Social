@@ -51,7 +51,6 @@ class Login extends Component {
       password: this.state.password
     };
 
-    console.log(userData);
 
     this.props.loginUser(userData);
 
@@ -90,8 +89,6 @@ class Login extends Component {
     if (auth.isAuthenticated) {
       this.props.history.push('/posts');
     }
-    
-    console.log(auth)
 
     const { errors } = this.state;
 

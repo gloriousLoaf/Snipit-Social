@@ -38,7 +38,6 @@ class ListPost extends Component {
           <div>
           <Post key={el._id} post={el} />
 
-          <DeleteButton onClick={ () => this.handleDelete(el._id)}/>
         </div>
       ));
 
