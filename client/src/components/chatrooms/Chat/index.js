@@ -31,7 +31,10 @@ const Chat = ({ location }) => {
     // individual message & all messages
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
-    const ENDPOINT = process.env.PORT;
+
+    ////// HEROKU CHANGES... NOT WORKING YET
+    // const ENDPOINT = process.env.PORT;
+    const ENDPOINT = "localhost:5000";
 
     // On Connect, data from URL params
     useEffect(() => {
