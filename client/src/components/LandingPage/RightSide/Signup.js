@@ -117,7 +117,7 @@ class Signup extends Component {
           <div className="text-center form-sm mt-2">
             <Button
               className="modalSignin bg-m btn-dark"
-              onClick={() => this.handleSubmit}
+              onClick={this.handleSubmit}
             >
               Sign up
             </Button>

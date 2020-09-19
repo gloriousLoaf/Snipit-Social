@@ -58,8 +58,8 @@ const SignupModal = props => {
   // to work still
   return (
     <Modal {...props} backdrop="static" keyboard={true}>
+      <Modal.Header closeButton> 
       <Modal.Body>
-        <Modal.Header closeButton />
         <Tabs defaultActiveKey="login">
           <Tab eventKey="login" title="Login">
             <Login />
@@ -69,6 +69,7 @@ const SignupModal = props => {
           </Tab>
         </Tabs>
       </Modal.Body>
+      </Modal.Header>
     </Modal>
   );
 };
