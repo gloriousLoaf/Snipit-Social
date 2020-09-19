@@ -15,7 +15,7 @@ const Input = ({ setMessage, sendMessage, message }) => (
             onChange={({ target: { value } }) => setMessage(value)}
             onKeyPress={e => e.key === 'Enter' ? sendMessage(e) : null}
         />
-        <button className="sendButton button primary" onClick={e => sendMessage(e)}><i className="uil-plane"></i></button>
+        <button className="sendButton button primary" onClick={e => sendMessage(e)}><i className="fas fa-arrow-up"></i></button>
     </form>
 
     // OLD LAYOUT - might need chunks

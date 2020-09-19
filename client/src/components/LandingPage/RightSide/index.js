@@ -1,40 +1,38 @@
-// RIGHTSIDE - LANDINGPAGE
-
 // Modal built-in,  could be broken out to a
 // third Component, but that needs more research?
 import React, { useState } from "react";
-import { Form, Tabs, Tab, Button, Modal } from "react-bootstrap";
+import { Form, Button, Modal } from "react-bootstrap";
 import SnipitLogo from "../../snipit.png";
-
 import Signup from "./Signup";
 import Login from "./Login";
-
 const RightSide = () => {
   // Modal State & helper functions
-  const [modalShow, setModalShow] = useState(false);
-  const handleClose = () => setModalShow(false);
-  const handleShow = () => setModalShow(true);
-
+  const [Modal1, setModalShow1] = useState(false);
+  const [Modal2, setModalShow2] = useState(false);
+  const handleClose1 = () => setModalShow1(false);
+  const handleClose2 = () => setModalShow2(false);
+  const handleShow1 = () => setModalShow1(true);
+  const handleShow2 = () => setModalShow2(true);
   return (
     <>
       <div className="col-md-6 p-0 bg-d h-md-100 loginarea">
         <div className="d-md-flex align-items-center h-md-100 p-5 justify-content-center loginarea">
           <div className="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
             <Form className="p-10">
-              <img alt="logo" className="" src={SnipitLogo} />
+              <img alt="logo" classname="" src={SnipitLogo} />
               &nbsp;
               <p className="Join text-center">Join Today</p>
               <Button
                 type="button"
                 className="loginBtn btn-round btn-block btn-dark"
-                onClick={handleShow}
+                onClick={handleShow1}
               >
                 Log in
               </Button>
               <Button
                 type="button"
                 className="signupBtn btn-round btn-block btn-dark"
-                onClick={handleShow}
+                onClick={handleShow2}
               >
                 Sign Up
               </Button>
@@ -42,35 +40,23 @@ const RightSide = () => {
           </div>
         </div>
       </div>
-
-      {/* onHide is not actually used, but maybe we add a close button? */}
-      <SignupModal show={modalShow} onHide={handleClose} />
+      <Modal show={Modal1} backdrop="static">
+        <Modal.Body>
+          <Modal.Header closeButton onClick={handleClose1}>
+            <Modal.Title id='justify-content-center'>Log In</Modal.Title>
+          </Modal.Header>
+          <Login />
+        </Modal.Body>
+      </Modal >
+      <Modal show={Modal2} backdrop="static">
+        <Modal.Body>
+          <Modal.Header closeButton onClick={handleClose2}>
+            <Modal.Title id='justify-content-center'>Sign Up</Modal.Title>
+          </Modal.Header>
+          <Signup />
+        </Modal.Body>
+      </Modal >
     </>
-  );
-};
-
-// pulls props from above to trigger modal on click
-const SignupModal = props => {
-  // so the top part is made in hooks, then passes down props in a spreader operator,
-  // but we need login those login form.controls to be in a `CLASS` component in order for
-  // redux to work...
-  // legit just moved all the code to signup.js and made that as class component, everything seems
-  // to work still
-  return (
-    <Modal {...props} backdrop="static" keyboard={true}>
-      <Modal.Header closeButton> 
-      <Modal.Body>
-        <Tabs defaultActiveKey="login">
-          <Tab eventKey="login" title="Login">
-            <Login />
-          </Tab>
-          <Tab eventKey="register" title="Register" id="register">
-            <Signup />
-          </Tab>
-        </Tabs>
-      </Modal.Body>
-      </Modal.Header>
-    </Modal>
   );
 };
 
