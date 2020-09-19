@@ -33,7 +33,8 @@ class ListPost extends Component {
 
     const items =
       list &&
-      list.map(el => (
+      list.map(el => 
+        (
           <div>
           <Post key={el._id} post={el} />
 
@@ -49,7 +50,7 @@ class ListPost extends Component {
                 so know that changes here will cascade. Add a new class if needed? */}
         <div className="cardContainer">
           <AddPost />
-          List Post Page
+
           {loading ? <LoadingPosts /> : items}
         </div>
       </>

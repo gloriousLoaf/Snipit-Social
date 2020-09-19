@@ -105,11 +105,9 @@ router
     req.session = null;
 
     //remove jwt frmo storage
-
-    localStorage.removeItem("jwToken");
     // passports requires you to do this
     req.logout();
-    res.redirect("/");
+    // res.redirect("/posts");
   });
 
 // i have no idea how this find and update thing works LOL - eric
