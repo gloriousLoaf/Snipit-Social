@@ -67,7 +67,7 @@ class Profile extends Component {
 
   render() {
     const {
-      classes,
+
       loadingPosts,
       loadingProfile,
       list,
@@ -86,7 +86,6 @@ class Profile extends Component {
 
     let profileInfo;
 
-    let newprofileinfo;
 
     let followButtons;
 
