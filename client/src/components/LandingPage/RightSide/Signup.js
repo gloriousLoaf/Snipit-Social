@@ -41,7 +41,7 @@ class Signup extends Component {
 
     console.log(userData)
 
-    this.props.registerUser(userData, this.props.history);
+    this.props.registerUser(userData);
 
     // working on redirect after login, but this doesn't hit yet
     // return <Redirect to="/profile/:id" />
