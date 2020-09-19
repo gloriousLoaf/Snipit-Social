@@ -42,9 +42,34 @@
     background-color: inherit;
 }
 
-.sendSnip {
-    max-width: 10rem;
+.deleteBtn {
+    font-size: 1rem !important;;
+    background-color: #18a0fb !important;
+    border: none;
+    border-radius: 0.5rem;
 }
+.deleteBtn {
+    display: block;
+    font-size: 25px;
+    color: #fff;
+    background-color: inherit;
+    border: none;
+    transition: 0.3s;
+}
+  
+.deleteBtn:hover, .deleteBtn:focus,
+.sendSnip:hover, .sendSnip:focus {
+    background-color: #18a0fb;
+    box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 0.4);
+}
+
+.sendSnip {
+    background-color: #18a0fb;
+    max-width: 10rem;
+    transition: 0.3s;
+    border: none;
+}
+  
 
 #date{
     float: right;

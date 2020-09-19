@@ -13,8 +13,7 @@ import {
 
 import { deletePosts } from "../../actions/postActions/postActions";
 
-import DeleteButton from "../../components/posts/DeleteButton";
-
+import Banner from '../Banner';
 import NavBar from "../NavBar";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -82,7 +81,6 @@ class Profile extends Component {
       list.map(el => (
         <div>
           <Post key={el._id} post={el} />
-          <DeleteButton onClick={() => this.handleDelete(el._id)} />
         </div>
       ));
 
@@ -145,6 +143,7 @@ class Profile extends Component {
       // changes to cardContainer specifically will cascasde to ListPost.js
       <div className="profContainer">
         <div className="cardContainer">
+          <Banner />
           {loadingProfile ? <div>Loading</div> : profileInfo}
 
           {/* put any additional sections here, above LoadingPosts */}

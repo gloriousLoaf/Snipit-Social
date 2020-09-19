@@ -26,6 +26,6 @@
   //   <div>
   //   </div>
   // );
-}
+// }
 
 // export default PostsCard;

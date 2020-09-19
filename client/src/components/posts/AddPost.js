@@ -41,15 +41,11 @@ class AddPost extends Component {
   render() {
     return (
       <>
-        {/* style me better? */}
-        <Card className="getDown card container my-4 mb-4 py-4 d-flex justify-content-center">
-          <h3>#feed</h3>
-        </Card>
         <div className="getDown card container mb-4 d-flex justify-content-center">
 
           < Form.Group className="my-3">
+            <h3>#feed</h3>
             <Form.Control
-              label="What's new?"
               placeholder="<snipit/> cannot be null..."
               as="textarea"
               rows="3"
@@ -57,9 +53,11 @@ class AddPost extends Component {
               value={this.state.text}
             ></Form.Control>
           </Form.Group >
+
           <div className="text-right">
             <Button className="mb-2 sendSnip" onClick={this.handleSubmit}>Send Snip</Button>
           </div>
+
         </div >
       </>
     );

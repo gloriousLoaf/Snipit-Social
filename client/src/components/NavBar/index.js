@@ -69,12 +69,12 @@ class NavBar extends Component {
 
         // console.log(this.props.auth.user)
 
-        const authLinks = isAuthenticated 
-        && (
-            <Button href={`/reduxProfile/${this.props.auth.user._id}`} className="navbarLogo">
-                <i className="far fa-user-circle" alt="reduxProfile" aria-hidden="true"></i>
-            </Button>
-        )
+        const authLinks = isAuthenticated
+            && (
+                <Button href={`/reduxProfile/${this.props.auth.user._id}`} className="navbarLogo">
+                    <i className="far fa-user-circle" alt="reduxProfile" aria-hidden="true"></i>
+                </Button>
+            )
 
 
         return (
@@ -83,9 +83,9 @@ class NavBar extends Component {
                     <i className="fas fa-stream" aria-hidden="true" title="profile"></i>
                 </Button>
 
-                <Button href="/breakroom" className="navbarLogo breakroom">
+                {/* <Button href="/breakroom" className="navbarLogo breakroom">
                     <i className="fas fa-gamepad" aria-hidden="true" title="profile"></i>
-                </Button>
+                </Button> */}
 
                 {/* Dropup Chat: pop into any of a few predefined live chatrooms,
                 we can add as many more as we like, let's keep it under 10 maybe? */}
@@ -124,7 +124,7 @@ class NavBar extends Component {
                     <i className="far fa-user-circle" aria-hidden="true"></i>
                 </Button> */}
 
-                { isAuthenticated ? authLinks : null }
+                { isAuthenticated ? authLinks : null}
             </div>
         )
     }

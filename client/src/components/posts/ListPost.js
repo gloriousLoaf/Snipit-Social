@@ -1,31 +1,31 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import Banner from '../Banner';
 import NavBar from "../NavBar";
 import AddPost from "./AddPost";
 import Post from "./Post";
 
 import { getPosts, deletePosts } from "../../actions/postActions/postActions";
 import LoadingPosts from "./LoadingPosts";
-import DeleteButton from "../posts/DeleteButton"
 
 
 
 import "./style.css";
 
 class ListPost extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.handleDelete = this.handleDelete.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
 
-    }
+  }
   componentDidMount() {
     this.props.getPosts();
   }
 
   handleDelete(id) {
-      this.props.deletePosts(id);
+    this.props.deletePosts(id);
   }
 
   render() {
@@ -33,21 +33,22 @@ class ListPost extends Component {
 
     const items =
       list &&
-      list.map(el => 
+      list.map(el =>
         (
           <div>
-          <Post key={el._id} post={el} />
+            <Post key={el._id} post={el} />
 
-        </div>
-      ));
+          </div>
+        ));
 
 
-      return (
+    return (
       <>
         <NavBar />
         {/* CSS this div to resize. BUT cardContainer is used in profile,
                 so know that changes here will cascade. Add a new class if needed? */}
         <div className="cardContainer">
+          <Banner />
           <AddPost />
 
           {loading ? <LoadingPosts /> : items}

@@ -24,9 +24,6 @@ const Social = () => {
 
     return (
         <>
-            <div style={{ color: "#fff", textAlign: "center" }}>
-                <p>#DeleteMe: 👇 None of these actually work, need user input.</p>
-            </div>
             <div className="card container my-3 py-2 d-flex justify-content-center" id="social">
                 {/* This setup should work, just need to drop in links? */}
                 <Button href="#" type="button" className="socialBtn">

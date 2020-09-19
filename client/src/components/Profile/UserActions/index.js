@@ -25,9 +25,6 @@ const UserActions = () => {
 
     return (
         <>
-            <div style={{ color: "#fff", textAlign: "center" }}>
-                <p>#DeleteMe: 👇 These neither, need logic.</p>
-            </div>
             <div className="card my-4 py-3 actions container">
                 <h2 className="d-flex justify-content-center">Settings</h2>
                 <div className="row justify-content-around my-2">
@@ -40,7 +37,7 @@ const UserActions = () => {
                     {/* Logout used to work with GH AuthContext, but... */}
                     {/* <Button className="settingBtn" onClick={() => handleLogout()}> */}
                     {/* <Button className="settingBtn"> */}
-                        {/* <i className="fas fa-sign-out-alt"></i> */}
+                    {/* <i className="fas fa-sign-out-alt"></i> */}
                     {/* </Button> */}
 
                 </div>

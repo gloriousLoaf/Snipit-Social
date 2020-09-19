@@ -41,9 +41,11 @@ class Post extends Component {
           <div className="card-body ">
             <h6 className="card-text">{post.text}</h6>
           </div>
-          <span id="date"> {new Date(post.createdAt).toLocaleString()} </span>
+          <span className="pt-3" id="date"> {new Date(post.createdAt).toLocaleString()} </span>
 
-          <DeleteButton onClick={() => this.handleDelete(post._id)} />
+          <DeleteButton className="deleteBtn my-1" onClick={() => this.handleDelete(post._id)}>
+            <i className="uil-trash"></i>
+          </DeleteButton>
         </div>
       </div>
     );
