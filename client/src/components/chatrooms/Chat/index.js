@@ -31,7 +31,7 @@ const Chat = ({ location }) => {
     // individual message & all messages
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
-    const ENDPOINT = process.env.PORT || 5000;
+    const ENDPOINT = process.env.PORT;
 
     // On Connect, data from URL params
     useEffect(() => {

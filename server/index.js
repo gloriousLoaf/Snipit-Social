@@ -84,7 +84,7 @@ const isLoggedIn = (req, res, next) => {
 // This line pulls in express app:
 const server = http.createServer(app);
 const io = socketio(server);
-io.origins("*");
+io.origins("*:*");
 
 // On Connect, connect client-side socket
 io.on('connect', (socket) => {
@@ -211,7 +211,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // const port = process.env.PORT || 3001;
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 /* This server using http & express app should still implement
   all aspects needed for express, see line 64 */
