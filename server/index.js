@@ -84,7 +84,7 @@ const isLoggedIn = (req, res, next) => {
 // This line pulls in express app:
 const server = http.createServer(app);
 const io = socketio(server);
-io.origins("*:*");
+io.origins("*");
 
 // On Connect, connect client-side socket
 io.on('connect', (socket) => {

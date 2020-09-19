@@ -16,19 +16,19 @@ class UserAction extends Component {
   }
 
   state = {
-      redirect : false
+    redirect: false
   }
 
   setRedirect = () => {
-      this.setState({
-          redirect: true,
-      })
-    }
-  
+    this.setState({
+      redirect: true,
+    })
+  }
+
 
   renderRedirect = () => {
     if (this.state.redirect) {
-        return (<Redirect to="/posts" />);
+      return (<Redirect to="/posts" />);
     }
   }
 
@@ -40,26 +40,23 @@ class UserAction extends Component {
     this.setRedirect();
 
     this.renderRedirect();
-}
+  }
 
-render() {
-    
-    const { 
-        auth,
-        user
+  render() {
+
+    const {
+      auth,
+      user
     } = this.props;
-    
+
 
     console.log(this.state.redirect)
-    
+
     // console.log(user)
     // console.log(auth)
 
     return (
       <div>
-        <div style={{ color: "#fff", textAlign: "center" }}>
-          <p>#DeleteMe: 👇 These neither, need logic.</p>
-        </div>
         <div className="card my-4 py-3 actions container">
           <h2 className="d-flex justify-content-center">Settings</h2>
           <div className="row justify-content-around my-2">
@@ -69,7 +66,7 @@ render() {
             </Button>
 
             {/* Logout used to work with GH AuthContext, but... */}
-            <Button className="settingBtn" onClick={() => this.handleLogout() +  this.renderRedirect()}>
+            <Button className="settingBtn" onClick={() => this.handleLogout() + this.renderRedirect()}>
               {/* <Button className="settingBtn"> */}
               <i className="fas fa-sign-out-alt"></i>
             </Button>
@@ -85,4 +82,4 @@ const mapStateToProps = state => ({
   user: state.auth.user
 });
 
-export default connect(mapStateToProps, { logoutUser }) (UserAction);
+export default connect(mapStateToProps, { logoutUser })(UserAction);
