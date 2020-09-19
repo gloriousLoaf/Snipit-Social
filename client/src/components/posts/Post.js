@@ -1,29 +1,59 @@
 //// POST - Individual post cards ////
 import React, { Component } from "react";
 
-import { Link } from 'react-router-dom'
-import './style.css';
+import { connect } from "react-redux";
+
+import { deletePosts } from "../../actions/postActions/postActions";
+
+import DeleteButton from "../../components/posts/DeleteButton";
+
+import { Link } from "react-router-dom";
+import "./style.css";
 
 class Post extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleDelete(id) {
+    this.props.deletePosts(id);
+  }
+
   render() {
-    const { classes, post } = this.props
+    const { classes, post, list, auth, user, profile } = this.props;
+
+
+    // console.log(auth);
+    // console.log(list);
 
     return (
-      <div className="card container my-3 d-flex justify-content-center" id="border" >
+      <div
+        className="card container my-3 d-flex justify-content-center"
+        id="border"
+      >
         <hr></hr>
-        <Link to={`/reduxProfile/${post.user.id}`}><h3 className="pl-3">{post.user.fullname}</h3></Link>
+        <Link to={`/reduxProfile/${post.user.id}`}>
+          <h3 className="pl-3">{post.user.fullname}</h3>
+        </Link>
         <div className="card-title">
           <div className="card-body ">
-            <h6 className="card-text">
-              {post.text}
-            </h6>
-          </div><span id="date"> {new Date(post.createdAt).toLocaleString()} </span>
+            <h6 className="card-text">{post.text}</h6>
+          </div>
+          <span id="date"> {new Date(post.createdAt).toLocaleString()} </span>
+
+          <DeleteButton onClick={() => this.handleDelete(post._id)} />
         </div>
       </div>
-    )
+    );
   }
 }
 
+const mapStateToProps = state => ({
+  list: state.post.list,
+  loading: state.post.loading,
+  auth: state.auth
+});
 
-
-export default (Post);
+export default connect(mapStateToProps, { deletePosts })(Post);
