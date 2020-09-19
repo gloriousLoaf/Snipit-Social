@@ -39,9 +39,9 @@ const UserActions = () => {
 
                     {/* Logout used to work with GH AuthContext, but... */}
                     {/* <Button className="settingBtn" onClick={() => handleLogout()}> */}
-                    <Button className="settingBtn">
-                        <i className="fas fa-sign-out-alt"></i>
-                    </Button>
+                    {/* <Button className="settingBtn"> */}
+                        {/* <i className="fas fa-sign-out-alt"></i> */}
+                    {/* </Button> */}
 
                 </div>
             </div>

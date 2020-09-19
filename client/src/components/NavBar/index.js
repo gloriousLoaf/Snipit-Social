@@ -120,9 +120,9 @@ class NavBar extends Component {
                     </Form>
                 </DropdownButton> */}
 
-                <Button href="/profile/:id" className="navbarLogo">
+                {/* <Button href="/Profile/:id" className="navbarLogo">
                     <i className="far fa-user-circle" aria-hidden="true"></i>
-                </Button>
+                </Button> */}
 
                 { isAuthenticated ? authLinks : null }
             </div>

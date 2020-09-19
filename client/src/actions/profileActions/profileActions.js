@@ -49,6 +49,15 @@ export const unfollowUser = (userId) => dispatch => {
         .catch(err => console.log(err))
 }
 
+export const logoutUser = (userId) => dispatch => {
+    axios.get('/api/users/logout', { userId })
+        .then(res => dispatch({
+            type: UNFOLLOW,
+            payload: res.data,
+        }))
+        .catch(err => console.log(err))
+}
+
 export const loadProfile = () => {
     return {
         type: LOAD_PROFILE

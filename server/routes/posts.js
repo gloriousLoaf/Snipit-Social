@@ -24,7 +24,9 @@ router.route("/add/").post(
 );
 
 // finding any posts
-router.route("/").get((req, res) => {
+router.route("/")
+
+.get((req, res) => {
   Post.find()
     .sort({ createdAt: -1 })
     .then(posts => res.json(posts))

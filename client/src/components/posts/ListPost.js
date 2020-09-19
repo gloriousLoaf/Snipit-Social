@@ -33,21 +33,24 @@ class ListPost extends Component {
 
     const items =
       list &&
-      list.map(el => (
-        <div>
+      list.map(el => 
+        (
+          <div>
           <Post key={el._id} post={el} />
 
           <DeleteButton onClick={ () => this.handleDelete(el._id)}/>
         </div>
       ));
-    return (
+
+
+      return (
       <>
         <NavBar />
         {/* CSS this div to resize. BUT cardContainer is used in profile,
                 so know that changes here will cascade. Add a new class if needed? */}
         <div className="cardContainer">
           <AddPost />
-          List Post Page
+
           {loading ? <LoadingPosts /> : items}
         </div>
       </>

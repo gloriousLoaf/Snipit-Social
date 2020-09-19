@@ -8,13 +8,12 @@ import {
   unfollowUser,
   followUser,
   refreshUserProfile,
+  logoutUser
 } from "../../actions/profileActions/profileActions";
 
-import {
-  deletePosts
-} from "../../actions/postActions/postActions"
+import { deletePosts } from "../../actions/postActions/postActions";
 
-import DeleteButton from "../../components/posts/DeleteButton"
+import DeleteButton from "../../components/posts/DeleteButton";
 
 import NavBar from "../NavBar";
 import Card from "react-bootstrap/Card";
@@ -22,15 +21,17 @@ import Button from "react-bootstrap/Button";
 import Post from "../posts/Post";
 import LoadingPosts from "../posts/LoadingPosts";
 import SocialCard from "../Profile/SocialCard";
-import UserActions from "../Profile/UserActions";
+import UserActions from "./UserAction";
 
 class Profile extends Component {
   constructor(props) {
     super(props);
 
+
+
     this.handleFollow = this.handleFollow.bind(this);
     this.handleUnfollow = this.handleUnfollow.bind(this);
-    this.handleDelete = this.handleDelete.bind(this)
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -52,6 +53,7 @@ class Profile extends Component {
     }
   }
 
+
   handleFollow() {
     this.props.followUser(this.props.match.params.userId);
   }
@@ -59,11 +61,10 @@ class Profile extends Component {
   handleUnfollow() {
     this.props.unfollowUser(this.props.match.params.userId);
   }
-  
+
   handleDelete(id) {
     this.props.deletePosts(id);
-}
-  
+  }
 
   render() {
     const {
@@ -153,6 +154,7 @@ class Profile extends Component {
           {loadingPosts ? <LoadingPosts /> : items}
         </div>
 
+
         <NavBar />
       </div>
     );
@@ -176,4 +178,5 @@ export default connect(mapStateToProps, {
   followUser,
   refreshUserProfile,
   deletePosts,
+  logoutUser
 })(Profile);
