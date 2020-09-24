@@ -45,7 +45,7 @@ Users start their experience at our landing page, where they may sign up for a n
 * **Premium Tier** To access new features and buys us a cup of coffee for a couple dollars per month.
 <p>&nbsp;</p>
 
-## 👩‍⚖️ License
+## ⚖️ License
 **MIT** • *(If you fork and recreate this, please be kind and rebrand your version!)*
 <p>&nbsp;</p>
 
