@@ -31,9 +31,9 @@ Users start their experience at our landing page, where they may sign up for a n
 <p>&nbsp;</p>
 
 ## 📷 Images
-<img src="https://github.com/gloriousLoaf/Snipit-Social/blob/main/readme-img/snipit-feed.png" alt="Snipit Feed, making a post" height="225">
+![Snipit Feed, making a post](readme-img/snipit-feed.png)
 <p>&nbsp;</p>
-<img src="https://github.com/gloriousLoaf/Snipit-Social/blob/main/readme-img/snipit-chat.png" alt="Snipit Feed, chat room" height="400">
+<img src="https://github.com/gloriousLoaf/Snipit-Social/readme-img/snipit-chat.png" alt="Snipit Feed, chat room" height="400">
 <p>&nbsp;</p>
 
 ## 🔮 Future Development
