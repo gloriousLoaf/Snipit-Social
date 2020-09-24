@@ -17,6 +17,9 @@ A place for devs & designers to meet and share.
 * [Questions](#-questions)
 <p>&nbsp;</p>
 
+#### Get straight to the business? Visit [Snipit Social](https://snipit-social.herokuapp.com/)
+<p>&nbsp;</p>
+
 ## 📝 Description
 Snipit Social is a lightweight social media web app that currently allows users to signup and login with encrypted authentication, create and edit a personal profile, author posts to share in a communal feed, and hop into chatrooms to share disappearing messages in real time. This app is designed as away for developers to connect in ways that widely-used services like GitHub do not offer, and allows for a focused way of collaborating without the all-issues nature of Twitter. No ads, no tracking or targeting, no bots. Future development and features are noted below.
 <p>&nbsp;</p>
