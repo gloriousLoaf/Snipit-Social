@@ -24,6 +24,7 @@ Snipit Social is a lightweight social media web app that currently allows users 
 ## 💾 Installation
 This is a **MERN** full stack app. We built this app to store data using **MongoDB Atlas** cloud hosting. Please [see their docs for information](https://docs.atlas.mongodb.com/) regarding setting up a cluster for this app. To start your own instance, clone this repository and run ``` npm install ``` from the root directory. Then ``` cd client ``` and run another install to complete the dependencies.
 **Local Instance:** To test and develop locally, open a **MongoDB** enabled terminal window, navigate to the root directory and run ``` mongod ``` to start the server listening. Unless altered, all data will hit your cloud database by default. Then in a new terminal, run ``` npm run dev ``` from the root. This script tells npm *Concurrently* to start both servers listening at ports 3000 and 5000 respectively. Launch your browser, navigate to ``` localhost:3000 ``` and begin using Snipit Social!
+<p>&nbsp;</p>
 **Web Instance:** Connect your MongoDB cloud cluster to you preferred cloud platform for website hosting. We used **[Heroku](https://devcenter.heroku.com/)** to deploy this app, go here to checkout 👉 **[Snipit Social](https://snipit-social.herokuapp.com/)** in action.
 <p>&nbsp;</p>
 
@@ -42,8 +43,6 @@ Users start their experience at our landing page, where they may sign up for a n
 * **Direct Messaging** Right now, chat rooms are a non-sticky experience, while DM's will be persistant.
 * **Sub-comments, Share, Report** To make things extra social.
 * **Premium Tier** To access new features and buys us a cup of coffee for a couple dollars per month.
-
----
 <p>&nbsp;</p>
 
 ## 👩‍⚖️ License
@@ -62,6 +61,7 @@ Users start their experience at our landing page, where they may sign up for a n
 * [MongoDB](https://www.mongodb.com/), [Express](https://expressjs.com/) and [Node](https://nodejs.org/)
 * [Socket.io](https://socket.io/) for our **chat rooms** and soon direct messaging.
 * [Passport](http://www.passportjs.org/), [GitHub Oauth2](https://docs.github.com/en/developers/apps/authorizing-oauth-apps) and [bcryptjs](https://www.npmjs.com/package/bcryptjs) for authentication.
+<p>&nbsp;</p>
 
 ## 📚 Resources
 Some helpful information that helped our development process:
