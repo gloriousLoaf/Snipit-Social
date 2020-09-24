@@ -11,8 +11,8 @@ A place for devs & designers to meet and share.
 * [Images](#-images)
 * [Future Development](#-future-development)
 * [License](#-license)
-* [Tools](#-tools)
 * [Contributors](#-contributors)
+* [Tools](#-tools)
 * [Resources](#-resources)
 * [Questions](#-questions)
 <p>&nbsp;</p>
