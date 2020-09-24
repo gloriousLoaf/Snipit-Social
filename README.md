@@ -59,8 +59,8 @@ Users start their experience at our landing page, where they may sign up for a n
 
 ## 🔨 Tools 
 * [React](https://reactjs.org/), [React-Redux](https://react-redux.js.org/) and [React-Bootstrap](https://react-bootstrap.github.io/)
-* [MongoDDB](), [Express]() and [Node]()
-* [Socket.io]() for our **chat rooms** and soon direct messaging.
+* [MongoDB](https://www.mongodb.com/), [Express](https://expressjs.com/) and [Node](https://nodejs.org/)
+* [Socket.io](https://socket.io/) for our **chat rooms** and soon direct messaging.
 * [Passport](http://www.passportjs.org/), [GitHub Oauth2](https://docs.github.com/en/developers/apps/authorizing-oauth-apps) and [bcryptjs](https://www.npmjs.com/package/bcryptjs) for authentication.
 
 ## 📚 Resources
