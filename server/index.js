@@ -104,9 +104,8 @@ io.on('connect', (socket) => {
     cb();
   });
 
-  ////// HEROKU CHANGES... NOT WORKING YET
+  // IF HEROKU BUILT starts acting up, comment-in, rebuild, push & deploy
   // setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
-  ///////
 
   // expecting message
   socket.on('sendMessage', (message, cb) => {
