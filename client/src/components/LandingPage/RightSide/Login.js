@@ -1,13 +1,9 @@
-import React, { useEffect, Component } from "react";
-import { Form, Button, Modal } from "react-bootstrap";
-
+// LOGIN MODAL //
+import React, { Component } from "react";
+import { Form, Button } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
-
-// import userLogin from "../RightSide/"
 import { connect } from "react-redux"
 import { loginUser } from "../../../actions/authActions/authActions"
-
-import searchAPI from '../../../utils/searchUserAPI';
 
 
 class Login extends Component {

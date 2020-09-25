@@ -1,5 +1,4 @@
-// Modal built-in,  could be broken out to a
-// third Component, but that needs more research?
+// LOGIN OR SIGNUP BUTTONS, HANDLE FUNCIONS //
 import React, { useState } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import SnipitLogo from "../../snipit.png";

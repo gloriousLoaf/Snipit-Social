@@ -1,6 +1,7 @@
+// SIGNUP MODAL //
 import React, { Component } from "react";
-import { Form, Button, Modal } from "react-bootstrap";
-import { Redirect, withRouter } from "react-router-dom";
+import { Form, Button } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerUser } from "../../../actions/authActions/authActions";
 
@@ -42,9 +43,6 @@ class Signup extends Component {
     console.log(userData)
 
     this.props.registerUser(userData, this.props.history);
-
-    // working on redirect after login, but this doesn't hit yet
-    // return <Redirect to="/profile/:id" />
 
   }
 
