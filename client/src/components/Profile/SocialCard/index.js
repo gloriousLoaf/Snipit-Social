@@ -6,7 +6,7 @@ import { AuthContext } from "../../../App";
 import './style.css';
 
 
-const Social = () => {
+const SocialCard = () => {
 
     // ALL THIS commented out stuff worked with GH auth,
     // not working now but please keep
@@ -49,4 +49,4 @@ const Social = () => {
     )
 };
 
-export default Social;
+export default SocialCard;

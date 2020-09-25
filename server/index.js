@@ -57,7 +57,7 @@ app.get("/auth/github", passport.authenticate("github"));
 app.get(
   "/auth/github/callback",
   passport.authenticate("github", { failureRedirect: "/" }),
-  function(req, res) {
+  function (req, res) {
     // Successful authentication, redirect home.
     res.redirect("/");
   }
@@ -103,6 +103,9 @@ io.on('connect', (socket) => {
     // final cb no err
     cb();
   });
+
+  // IF HEROKU BUILT starts acting up, comment-in, rebuild, push & deploy
+  // setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
 
   // expecting message
   socket.on('sendMessage', (message, cb) => {

@@ -7,7 +7,6 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux"
 import { loginUser } from "../../../actions/authActions/authActions"
 
-import searchAPI from '../../../utils/searchUserAPI';
 
 
 class Login extends Component {
@@ -22,14 +21,6 @@ class Login extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  // we don't need to be authenticated outside
-  // componentDidMount() {
-
-  //   if (this.props.auth.isAuthenticated) {
-  //     this.props.history.push('/')
-  //   }
-  // }
 
   // really cool way to handle new errors
   componentWillReceiveProps(nextProps) {
@@ -76,16 +67,16 @@ class Login extends Component {
     ///////////////////////////
 
     // redirect to posts
-    
+
   }
-  
+
   render() {
-    const { 
+    const {
       classes,
       auth,
       profile,
     } = this.props;
-    
+
     if (auth.isAuthenticated) {
       this.props.history.push('/posts');
     }
