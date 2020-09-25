@@ -1,4 +1,6 @@
 // ABOUTCARD - PROFILE
+// NOT IN USE - yet?
+// Could be used for parts?
 import React from 'react';
 import './style.css';
 

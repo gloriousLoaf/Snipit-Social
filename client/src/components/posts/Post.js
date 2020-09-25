@@ -8,7 +8,8 @@ import { deletePosts } from "../../actions/postActions/postActions";
 import DeleteButton from "../../components/posts/DeleteButton";
 
 import { Link } from "react-router-dom";
-import "./style.css";
+// unlinked for now, so much conflicting css that its hard to know where to style
+// import "./style.css";
 
 class Post extends Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class Post extends Component {
         id="border"
       >
         <hr></hr>
-        <Link to={`/reduxProfile/${post.user.id}`}>
+        <Link to={`/Profile/${post.user.id}`}>
           <h3 className="pl-3">{post.user.fullname}</h3>
         </Link>
         <div className="card-title">

@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import { AuthContext } from "../../../App";
 import './style.css';
 
-const UserActions = () => {
+const OldUserAction = () => {
 
     // ALL THIS commented out stuff was for GH auth,
     // please keep as we may get it working
@@ -46,4 +46,4 @@ const UserActions = () => {
     )
 };
 
-export default UserActions;
+export default OldUserAction;
