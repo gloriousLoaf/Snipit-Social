@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { logoutUser } from "../../actions/profileActions/profileActions";
+import { logoutUser } from "../../../actions/profileActions/profileActions";
 
 import { connect } from "react-redux";
 

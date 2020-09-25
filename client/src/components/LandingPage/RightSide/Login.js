@@ -23,14 +23,6 @@ class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // we don't need to be authenticated outside
-  // componentDidMount() {
-
-  //   if (this.props.auth.isAuthenticated) {
-  //     this.props.history.push('/')
-  //   }
-  // }
-
   // really cool way to handle new errors
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
@@ -76,16 +68,16 @@ class Login extends Component {
     ///////////////////////////
 
     // redirect to posts
-    
+
   }
-  
+
   render() {
-    const { 
+    const {
       classes,
       auth,
       profile,
     } = this.props;
-    
+
     if (auth.isAuthenticated) {
       this.props.history.push('/posts');
     }

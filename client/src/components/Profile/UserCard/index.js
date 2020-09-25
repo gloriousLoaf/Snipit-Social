@@ -5,8 +5,6 @@ import { Redirect } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 import { AuthContext } from "../../../App";
 import './style.css';
-// import gitAPI from "../../../utils/GithubAPIS";
-
 
 const UserCard = () => {
 

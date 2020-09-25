@@ -5,9 +5,7 @@ import LandingPage from "./components/LandingPage";
 import GitHubLogin from "./components/GitHubLogin";
 // Chat
 import Chat from "./components/chatrooms/Chat/index.js";
-import Join from "./components/chatrooms/Chat/index";
 //import js libraries
-
 // Reducer store for AuthContext (Logins)
 import { initialState, reducer } from "./store/reducer";
 import { logoutUser, getCurrentUser } from "./actions/authActions/authActions";
@@ -24,11 +22,11 @@ import store from "./store";
 // cant find how to separate it, might end up with huge reducer index.js
 // import { profileState, profileReducer } from "./store/reducer/profileReducer";
 
-// NEW Refactored Profilepage branch to React
-import Profile from "./components/Profile";
+// MAIN PROFILE
+import Profile from "./components/Profile/Profile.js"
 
-// redux profile testing - eric
-import reduxProfile from "./components/reduxProfile/Profile"
+// OLD GITHUB PROFILE
+import OldProfile from "./components/Profile/old-GitHub.js";
 
 // Timeline stuff, coming soon
 import ListPost from "./components/posts/ListPost";
@@ -76,20 +74,18 @@ const App = () => {
               {/* Soon */}
               {/* <Route path="/googlelogin" exact component={GoogleLogin} /> */}
 
-              {/* NEW Profile Page */}
+              {/* OldProfile only populates with info if you auth in 
+              through GitHub. Currently mining it for parts - David */}
+              <Route path="/OldProfile/:id" exact component={OldProfile} />
 
-              <Route path="/profile/:id" exact component={Profile} />
-              <Route path="/reduxProfile/:userId" component={reduxProfile} />
+              {/* REAL PROFILE */}
+              <Route path="/Profile/:userId" component={Profile} />
 
               {/* no content yet */}
               <Route path="/Posts" component={ListPost} />
 
               <Route path="/breakroom" component={breakroom} />
 
-
-
-              {/* Join goes to Chat. Join is temporary until DMs exist */}
-              <Route path="/join" exact component={Join} />
               <Route path="/chat" exact component={Chat} />
 
               <Route component={notFound} />

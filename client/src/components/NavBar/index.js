@@ -71,8 +71,8 @@ class NavBar extends Component {
 
         const authLinks = isAuthenticated
             && (
-                <Button href={`/reduxProfile/${this.props.auth.user._id}`} className="navbarLogo">
-                    <i className="far fa-user-circle" alt="reduxProfile" aria-hidden="true"></i>
+                <Button href={`/Profile/${this.props.auth.user._id}`} className="navbarLogo">
+                    <i className="far fa-user-circle" alt="Profile" aria-hidden="true"></i>
                 </Button>
             )
 
