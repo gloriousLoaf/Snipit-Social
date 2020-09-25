@@ -32,9 +32,10 @@ const Chat = ({ location }) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
 
-    ////// HEROKU CHANGES... NOT WORKING YET
-    const ENDPOINT = "https://snipit-social.herokuapp.com/";
+    // DEV
     // const ENDPOINT = "localhost:5000";
+    // PRODUCTION
+    const ENDPOINT = "https://snipit-social.herokuapp.com/";
 
     // On Connect, data from URL params
     useEffect(() => {
@@ -60,13 +61,10 @@ const Chat = ({ location }) => {
         //     });
         //  }, [ENDPOINT, location.search]);
 
-        // might not need? begin:
         return () => {
             socket.emit('disconnect');
             socket.off();
         }
-        // end
-
     }, [ENDPOINT, location.search]);
 
     // message handling
