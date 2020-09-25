@@ -24,7 +24,7 @@ export const refreshUserProfile = (userId) => dispatch => {
 export const getPostsByUserId = (userId) => dispatch => {
     dispatch(loadPosts())
     axios.get(`/api/posts/${userId}`)
-        .then( res => dispatch({
+        .then(res => dispatch({
             type: GET_POSTS,
             payload: res.data
         }))

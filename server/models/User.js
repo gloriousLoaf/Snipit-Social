@@ -19,7 +19,7 @@ const userSchema = new Schema({
     password: {
         type: String,
     },
-    role : {
+    role: {
         type: Number,
         default: 0
     },

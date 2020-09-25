@@ -1,4 +1,4 @@
-///// REDUX PROFILE /////
+///// MAIN PROFILE /////
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // connect this with export default at bottom
@@ -19,8 +19,8 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Post from "../posts/Post";
 import LoadingPosts from "../posts/LoadingPosts";
-import SocialCard from "../Profile/SocialCard";
-import UserActions from "./UserAction";
+import SocialCard from "./SocialCard";
+import UserAction from "./UserAction";
 
 class Profile extends Component {
   constructor(props) {
@@ -147,7 +147,7 @@ class Profile extends Component {
           {/* put any additional sections here, above LoadingPosts */}
           {/* see respective cards for #DeleteMe */}
           <SocialCard />
-          <UserActions />
+          <UserAction />
           {loadingPosts ? <LoadingPosts /> : items}
         </div>
 
