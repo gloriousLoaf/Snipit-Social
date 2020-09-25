@@ -55,7 +55,8 @@ Users start their experience at our landing page, where they may sign up for a n
 * [David Metcalf](https://github.com/gloriousLoaf) 
 * [Eric Gip](https://github.com/EricGip)
 * [Maurice Chouamou](https://github.com/mauricechouam)
-* [Chase Johnson](https://github.com/chaseyb) 
+* [Chase Johnson](https://github.com/chaseyb)
+* [Kimya Fallah](https://github.com/kimyaf)
 <p>&nbsp;</p>
 
 ## 🔨 Tools 
