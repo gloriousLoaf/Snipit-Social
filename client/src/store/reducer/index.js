@@ -11,7 +11,7 @@ const {
 
 // creating app state
 export const initialState = {
-  isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn")) || false,
+  // isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn")) || false,
   user: JSON.parse(localStorage.getItem("user")) || null,
   id: "",
   client_id: REACT_APP_CLIENT_ID,
@@ -26,10 +26,10 @@ export const initialState = {
 export const reducer = (state, action) => {
   switch (action.type) {
     case "LOGIN": {
-      localStorage.setItem(
-        "isLoggedIn",
-        JSON.stringify(action.payload.isLoggedIn)
-      );
+      // localStorage.setItem(
+      //   "isLoggedIn",
+      //   JSON.stringify(action.payload.isLoggedIn)
+      // );
       localStorage.setItem("user", JSON.stringify(action.payload.user));
 
       // just for testing, might have to make this for register case instead of log in
@@ -52,7 +52,7 @@ export const reducer = (state, action) => {
 
       return {
         ...state,
-        isLoggedIn: action.payload.isLoggedIn,
+        // isLoggedIn: action.payload.isLoggedIn,
         user: action.payload.user
       };
     }
@@ -60,7 +60,7 @@ export const reducer = (state, action) => {
       localStorage.clear();
       return {
         ...state,
-        isLoggedIn: false,
+        // isLoggedIn: false,
         user: null
       };
     }

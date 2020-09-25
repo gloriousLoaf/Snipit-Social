@@ -101,7 +101,7 @@ class Profile extends Component {
         followButtons = (
           ///////// CSS? /////////
           <div>
-            <Button onClick={this.handleFollow}>Follow</Button>
+            <Button onClick={this.handleFollow} {...this.props}>Follow</Button>
           </div>
         );
       } else {
@@ -131,6 +131,15 @@ class Profile extends Component {
 
             <li className="py-1"> {profile.following.length} following </li>
           </ul>
+          {/* NEW */}
+          Link your GitHub to share stats
+          <Button
+            href="/githublogin"
+            type="button"
+            className="github btn-dark mb-3"
+          >
+            <i className="fab fa-github" style={{ fontSize: 30 }}></i>
+          </Button>
           {followButtons}
         </Card>
       );

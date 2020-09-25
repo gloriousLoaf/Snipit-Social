@@ -146,19 +146,19 @@ class Login extends Component {
             </Button>
           </div>
           {/* Other Sign in Methods */}
-          <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">
+          {/* <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">
             Or Sign in with
-          </p>
+          </p> */}
           <div className="row my-2 d-flex justify-content-center">
             {/* Facebook Login, stretch goal?? */}
             {/* Github Login */}
-            <Button
+            {/* <Button
               href="/githublogin"
               type="button"
               className="github btn-dark mb-3"
             >
               <i className="fab fa-github" style={{ fontSize: 30 }}></i>
-            </Button>
+            </Button> */}
           </div>
         </Form>
       </div>

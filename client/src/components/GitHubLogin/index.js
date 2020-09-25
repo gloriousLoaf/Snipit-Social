@@ -1,16 +1,17 @@
 //// GITHUB LOGIN ////
-// for now, this is just GitHub, but we can integrate Gogle here too
 import React, { useState, useEffect, useContext } from "react";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
+// NEW
+import { useHistory } from 'react-router-dom';
 import { AuthContext } from "../../App";
 import GitHubLogo from './gh.png';
 import './style.css';
 
-import { connect } from "react-redux"
+// import { connect } from "react-redux"
 
 
 // creating our login component, using AuthContext global state
-const GitHubLogin = () => {
+const GitHubLogin = (props) => {
     const { state, dispatch } = useContext(AuthContext);
     const [data, setData] = useState({ errorMessage: "", isLoading: false });
 
@@ -45,7 +46,7 @@ const GitHubLogin = () => {
                 .then(data => {
                     dispatch({
                         type: "LOGIN",
-                        payload: { user: data, isLoggedIn: true }
+                        payload: { user: data }
                     });
                 })
                 .catch(error => {
@@ -58,18 +59,19 @@ const GitHubLogin = () => {
         }
     }, [state, dispatch, data]);
 
-    // THIS will redirect to user's profile w/ GitHub id,
-    // different than mongodb _id but still unique and won't
-    // disrupt other functioning, right?
-    if (state.isLoggedIn) {
-        let ghID = state.user.id;
-        return <Redirect to={`/profile/:${ghID}`} />;
-        // previous version:
-        // return <Redirect to="/profile/:id" />;
+    // Working on redirect back to new profile,
+    // state.user should only exist if GH auth went through
+    // react-router's useHistory works to navigate back but
+    // its not pretty due to some errors I'm still diagnosing
+    const history = useHistory();
+    if (state.user) {
+        return history.goBack();
     }
 
     // Based on login state, this displays a loading spinner and / or error msg
     return (
+        // The old GitHub stuff that displayed data.
+        // Will definitely use some stats to add to Profile
         <div className="gitContainer">
             <div className="login-card">
                 <h1 className="welcome">Welcome</h1>
@@ -98,7 +100,6 @@ const GitHubLogin = () => {
                 <p className="text-secondary text-center">This leads to GitHub's Authorization</p>
             </div >
         </div >
-
     );
 }
 
