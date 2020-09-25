@@ -7,7 +7,6 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux"
 import { loginUser } from "../../../actions/authActions/authActions"
 
-import searchAPI from '../../../utils/searchUserAPI';
 
 
 class Login extends Component {

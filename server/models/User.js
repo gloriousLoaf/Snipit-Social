@@ -23,8 +23,18 @@ const userSchema = new Schema({
         type: Number,
         default: 0
     },
-    followers: [],
-    following: []
+    followers: [
+        "5f61f0330d3bd37ba93e79f5",
+        "5f658ecc15aafb575c8f360b",
+        "5f658a78301bfb573c897b9a"
+
+    ],
+    following: [
+        "5f61f0330d3bd37ba93e79f5",
+        "5f658ecc15aafb575c8f360b",
+        "5f658a78301bfb573c897b9a",
+
+    ]
 });
 
 module.exports = mongoose.model("User", userSchema);
