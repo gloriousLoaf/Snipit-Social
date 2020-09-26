@@ -2,6 +2,25 @@
 /* BUT this isn't even linked into Profile.js right now,
     but it still somehow affects the page???
     the css iss an absolute mess : ( */ 
+
+/* NEW - GitHub Connector */ 
+.githubBtn {
+  margin: 0;
+  padding: 0;
+  font-size: 4rem;
+  color: #384047;
+  background-color: inherit;
+  border: none;
+  transition: 0.3s;
+
+}
+.githubBtn:hover, .githubBtn:focus,
+.githubBtn i:hover, .githubBtn i:focus {
+  color: var(--main-color);
+  background-color: inherit;
+}
+
+
 #social {
   flex-direction: row;
 }

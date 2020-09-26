@@ -131,16 +131,17 @@ class Profile extends Component {
 
             <li className="py-1"> {profile.following.length} following </li>
           </ul>
-          {/* NEW */}
-          Link your GitHub to share stats
-          <Button
-            href="/githublogin"
-            type="button"
-            className="github btn-dark mb-3"
-          >
-            <i className="fab fa-github" style={{ fontSize: 30 }}></i>
-          </Button>
+
+          {/* NEW - works but doesn't display anything yet */}
+          <div>
+            <Button href="/githublogin" type="button" className="githubBtn">
+              <i className="fab fa-github-square m-2" aria-hidden="true" title="Github"></i>
+            </Button>
+          </div>
+          <em style={{ marginBottom: "1rem" }}>Link your GitHub to share stats</em>
+
           {followButtons}
+
         </Card>
       );
     }
