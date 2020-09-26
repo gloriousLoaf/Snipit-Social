@@ -86,7 +86,6 @@ class Profile extends Component {
 
     let profileInfo;
 
-
     let followButtons;
 
     // if if authenticated,
@@ -101,18 +100,42 @@ class Profile extends Component {
         followButtons = (
           ///////// CSS? /////////
           <div>
-            <Button onClick={this.handleFollow} {...this.props}>Follow</Button>
+            <Button className="following" onClick={this.handleFollow} {...this.props}>Follow</Button>
           </div>
         );
       } else {
         followButtons = (
           ///////// CSS? /////////
           <div>
-            <Button onClick={this.handleUnfollow}>Unfollow</Button>
+            <Button className="following" onClick={this.handleUnfollow}>Unfollow</Button>
           </div>
         );
       }
     }
+
+    ///////// GitHub Button Logic - not quite... /////////
+    // Button will be moved up here and rendered conditionally
+    // first half of evaluation is the current url, great.
+    // second half needs to be set to the auth'd user's id
+    this.props.location.pathname === `/Profile/${this.props.match.params.userId}` ? (
+      console.log("yay!")
+      // if user matches url, render GitHub connector
+      // githubInfo =
+      // <>
+      //   <div>
+      //     <Button href="/githublogin" type="button" className="githubBtn">
+      //       <i className="fab fa-github-square m-2" aria-hidden="true" title="Github"></i>
+      //     </Button>
+      //   </div>
+      //   <em style={{ marginBottom: "1.5rem" }}>Link your GitHub to share stats!</em>
+      // </>
+    ) : (
+        console.log(user)
+        // if not, don't
+        // githubInfo = <></>
+      );
+    ////////////// end ///////////////
+
     ///////// CSS? /////////
     // this <Card/> will style the user info card
     if (profile && items) {
@@ -132,13 +155,16 @@ class Profile extends Component {
             <li className="py-1"> {profile.following.length} following </li>
           </ul>
 
-          {/* NEW - works but doesn't display anything yet */}
+          {/* NEW - works but doesn't display anything yet,
+              and its always rendered for now, see logic above */}
           <div>
             <Button href="/githublogin" type="button" className="githubBtn">
               <i className="fab fa-github-square m-2" aria-hidden="true" title="Github"></i>
             </Button>
           </div>
-          <em style={{ marginBottom: "1rem" }}>Link your GitHub to share stats</em>
+          <em style={{ marginBottom: "1.5rem" }}>Link your GitHub to share stats!</em>
+          {/* will just be: */}
+          {/* {githubInfo} */}
 
           {followButtons}
 
