@@ -7,7 +7,7 @@
 .githubBtn {
   margin: 0;
   padding: 0;
-  font-size: 4rem;
+  font-size: 2.5rem;
   color: #384047;
   background-color: inherit;
   border: none;
@@ -19,39 +19,10 @@
   color: var(--main-color);
   background-color: inherit;
 }
+
 /* Follow / Unfollow */ 
 .following {
   background-color: var(--main-color);
-}
-
-
-#social {
-  flex-direction: row;
-}
-
-.socialBtn {
-  transition: 0.3s;
-  background-color: inherit;
-  border: none;
-}
-
-.socialBtn i {
-  color: #384047;
-  font-size: 3rem;
-
-}
-.socialBtn:hover, .socialBtn:focus {
-  letter-spacing: 0.3rem;
-  box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 1);
-  background-color: inherit;
-}
-
-#date{
-  float: right;
-  margin: 4rem auto -3.5rem;
-  font-family: inherit;
-  font-size: 0.75rem;
-  color: #545454;
 }
 
 .card {

@@ -11,7 +11,7 @@ import './style.css';
 
 
 // creating our login component, using AuthContext global state
-const GitHubLogin = (props) => {
+const GitHubLogin = () => {
     const { state, dispatch } = useContext(AuthContext);
     const [data, setData] = useState({ errorMessage: "", isLoading: false });
 
@@ -46,7 +46,9 @@ const GitHubLogin = (props) => {
                 .then(data => {
                     dispatch({
                         type: "LOGIN",
-                        payload: { user: data }
+                        payload: { user: data, isLoggedIn: true }
+                        // testing without isLoggedIn
+                        // payload: { user: data }
                     });
                 })
                 .catch(error => {

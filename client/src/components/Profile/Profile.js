@@ -134,6 +134,11 @@ class Profile extends Component {
         // if not, don't
         // githubInfo = <></>
       );
+    // extract some data to display
+    // this needs to come from db, not localstorage
+    // so we can remove the button if you have already
+    // connected you account to github
+    let ghUser = JSON.parse(localStorage.getItem("user"));
     ////////////// end ///////////////
 
     ///////// CSS? /////////
@@ -142,6 +147,15 @@ class Profile extends Component {
       profileInfo = (
         <Card className="card container my-4 py-5 text-center" id="border">
           <h1> {profile.fullname} </h1>
+          <div>
+            {/* display GH avatar or placeholder? */}
+            {!ghUser ? (
+              <i className="avatar fas fa-user-circle" alt="Avatar"></i>
+            ) : (
+                <img className="avatar" src={ghUser.avatar_url} alt="Avatar" />
+              )
+            }
+          </div>
 
           <ul className="profStats list-unstyled mt-3">
             <li className="py-1">
@@ -155,16 +169,30 @@ class Profile extends Component {
             <li className="py-1"> {profile.following.length} following </li>
           </ul>
 
-          {/* NEW - works but doesn't display anything yet,
-              and its always rendered for now, see logic above */}
+          {/* NEW - kind of working */}
           <div>
             <Button href="/githublogin" type="button" className="githubBtn">
               <i className="fab fa-github-square m-2" aria-hidden="true" title="Github"></i>
+              Connect GitHub
             </Button>
           </div>
-          <em style={{ marginBottom: "1.5rem" }}>Link your GitHub to share stats!</em>
+          <em style={{ marginBottom: "1.5rem" }}>Link your account to share stats!</em>
           {/* will just be: */}
           {/* {githubInfo} */}
+
+          <div>
+            <ul className="ghStats mt-3"><h5>GitHub Stats</h5>
+              {!ghUser ? (
+                <li>Click the Octocat button below to check out my profile!</li>
+              ) : (
+                  <>
+                    <li>{ghUser.public_repos} Repos</li>
+                    <li>{ghUser.followers} Followers</li>
+                    <li>{ghUser.following} Following</li>
+                  </>
+                )}
+            </ul>
+          </div>
 
           {followButtons}
 

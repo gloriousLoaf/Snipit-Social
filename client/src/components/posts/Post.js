@@ -35,7 +35,7 @@ class Post extends Component {
         id="border"
       >
         <hr></hr>
-        <Link to={`/Profile/${post.user.id}`}>
+        <Link style={{ maxWidth: "max-content" }} to={`/Profile/${post.user.id}`}>
           <h3 className="pl-3">{post.user.fullname}</h3>
         </Link>
         <div className="card-title">
