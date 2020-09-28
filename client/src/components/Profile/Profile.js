@@ -176,7 +176,7 @@ class Profile extends Component {
               Connect GitHub
             </Button>
           </div>
-          <em style={{ marginBottom: "1.5rem" }}>Link your account to share stats!</em>
+          <em style={{ marginBottom: "1.5rem" }}>Link your account to add avatar and share stats!</em>
           {/* will just be: */}
           {/* {githubInfo} */}
 
