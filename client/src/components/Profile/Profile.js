@@ -36,6 +36,8 @@ class Profile extends Component {
   componentDidMount() {
     this.props.getPostsByUserId(this.props.match.params.userId);
     this.props.getUserProfile(this.props.match.params.userId);
+    // UPDATE M 9/28 WHY IS AUTH BROKEN?!??!?!? i am at my wits end
+    console.log(this.props.auth);
   }
 
   // do this for signup and login if you can.
@@ -73,8 +75,7 @@ class Profile extends Component {
       list,
       auth,
       user,
-      profile,
-      isAuthenticated
+      profile
     } = this.props;
 
     const items =
@@ -101,7 +102,7 @@ class Profile extends Component {
         followButtons = (
           ///////// CSS? /////////
           <div>
-            <Button className="following" onClick={this.handleFollow} {...this.props}>Follow</Button>
+            <Button className="following" onClick={this.handleFollow}>Follow</Button>
           </div>
         );
       } else {
@@ -117,6 +118,9 @@ class Profile extends Component {
     ///////// GitHub Button Logic /////////
     let githubConnector;
     // if the id url matches the auth'd user, display button:
+    // UPDATE M 9/28 props.auth is broken for no apparent reason,
+    // nothing with the related api calls has changed, auth'ing user
+    // just doesn't seem to work anymore. this is screwed without it...
     this.props.location.pathname === `/Profile/${this.props.auth.user._id}` ? (
       // if user matches url, render GitHub connector
       githubConnector = (
@@ -139,14 +143,15 @@ class Profile extends Component {
     // so we can remove the button if you have already
     // connected you account to github
     let ghUser = JSON.parse(localStorage.getItem("user"));
-    ////////////// alright ///////////////
+    /////////////////
 
     if (profile && items) {
       profileInfo = (
         <Card className="card container my-4 py-5 text-center" id="border">
           <h1> {profile.fullname} </h1>
           <div>
-            {/* if GH connected, display GH avatar */}
+            {/* if GH connected, display GH avatar
+                this will work right when pulling from db */}
             {!ghUser ? (
               <></>
             ) : (
@@ -168,7 +173,8 @@ class Profile extends Component {
             <li className="py-1"> {profile.following.length} following </li>
           </ul>
 
-          {/* NEW - close to working, see above */}
+          {/* NEW - close to working, see above
+            UPDATE no its not, everything is screwed, i hate this app. */}
           {githubConnector}
 
           <div>
