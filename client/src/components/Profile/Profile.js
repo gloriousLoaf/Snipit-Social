@@ -73,7 +73,8 @@ class Profile extends Component {
       list,
       auth,
       user,
-      profile
+      profile,
+      isAuthenticated
     } = this.props;
 
     const items =
@@ -113,63 +114,13 @@ class Profile extends Component {
       }
     }
 
-    ///////// GitHub Button Logic - not quite... /////////
-    // Button will be moved up here and rendered conditionally
-    // first half of evaluation is the current url, great.
-    // second half needs to be set to the auth'd user's id
-    this.props.location.pathname === `/Profile/${this.props.match.params.userId}` ? (
-      console.log("yay!")
+    ///////// GitHub Button Logic /////////
+    let githubConnector;
+    // if the id url matches the auth'd user, display button:
+    this.props.location.pathname === `/Profile/${this.props.auth.user._id}` ? (
       // if user matches url, render GitHub connector
-      // githubInfo =
-      // <>
-      //   <div>
-      //     <Button href="/githublogin" type="button" className="githubBtn">
-      //       <i className="fab fa-github-square m-2" aria-hidden="true" title="Github"></i>
-      //     </Button>
-      //   </div>
-      //   <em style={{ marginBottom: "1.5rem" }}>Link your GitHub to share stats!</em>
-      // </>
-    ) : (
-        console.log(user)
-        // if not, don't
-        // githubInfo = <></>
-      );
-    // extract some data to display
-    // this needs to come from db, not localstorage
-    // so we can remove the button if you have already
-    // connected you account to github
-    let ghUser = JSON.parse(localStorage.getItem("user"));
-    ////////////// end ///////////////
-
-    ///////// CSS? /////////
-    // this <Card/> will style the user info card
-    if (profile && items) {
-      profileInfo = (
-        <Card className="card container my-4 py-5 text-center" id="border">
-          <h1> {profile.fullname} </h1>
-          <div>
-            {/* display GH avatar or placeholder? */}
-            {!ghUser ? (
-              <i className="avatar fas fa-user-circle" alt="Avatar"></i>
-            ) : (
-                <img className="avatar" src={ghUser.avatar_url} alt="Avatar" />
-              )
-            }
-          </div>
-
-          <ul className="profStats list-unstyled mt-3">
-            <li className="py-1">
-              <h5> {profile.email} </h5>
-            </li>
-
-            <li className="py-1"> {items.length} posts </li>
-
-            <li className="py-1"> {profile.followers.length} followers </li>
-
-            <li className="py-1"> {profile.following.length} following </li>
-          </ul>
-
-          {/* NEW - kind of working */}
+      githubConnector = (
+        <>
           <div>
             <Button href="/githublogin" type="button" className="githubBtn">
               <i className="fab fa-github-square m-2" aria-hidden="true" title="Github"></i>
@@ -177,18 +128,61 @@ class Profile extends Component {
             </Button>
           </div>
           <em style={{ marginBottom: "1.5rem" }}>Link your account to add avatar and share stats!</em>
-          {/* will just be: */}
-          {/* {githubInfo} */}
+        </>
+      )
+    ) : (
+        // if not, don't
+        console.log("Not your profile!")
+      );
+    // extract some data to display
+    // this needs to come from db, not localstorage
+    // so we can remove the button if you have already
+    // connected you account to github
+    let ghUser = JSON.parse(localStorage.getItem("user"));
+    ////////////// alright ///////////////
+
+    if (profile && items) {
+      profileInfo = (
+        <Card className="card container my-4 py-5 text-center" id="border">
+          <h1> {profile.fullname} </h1>
+          <div>
+            {/* if GH connected, display GH avatar */}
+            {!ghUser ? (
+              <></>
+            ) : (
+                <img className="avatar" src={ghUser.avatar_url} alt="Avatar" />
+              )
+            }
+          </div>
+
+          <ul className="profStats list-unstyled mt-3">
+            <li>
+              <h5> {profile.email} </h5>
+              <h5> Snipshot:</h5>
+            </li>
+
+            <li className="pb-1"> {items.length} posts </li>
+
+            <li className="py-1"> {profile.followers.length} followers </li>
+
+            <li className="py-1"> {profile.following.length} following </li>
+          </ul>
+
+          {/* NEW - close to working, see above */}
+          {githubConnector}
 
           <div>
-            <ul className="ghStats mt-3"><h5>GitHub Stats</h5>
+            <ul className="profStats list-unstyled mt-2">
+              <li>
+                <h5>GitHub Stats:</h5>
+              </li>
               {!ghUser ? (
                 <li>Click the Octocat button below to check out my profile!</li>
               ) : (
                   <>
-                    <li>{ghUser.public_repos} Repos</li>
-                    <li>{ghUser.followers} Followers</li>
-                    <li>{ghUser.following} Following</li>
+                    <li className="pb-1">{ghUser.public_repos} Repos</li>
+                    <li className="py-1">{ghUser.followers} Followers</li>
+                    <li className="py-1">{ghUser.following} Following</li>
                   </>
                 )}
             </ul>
