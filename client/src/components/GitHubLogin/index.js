@@ -1,13 +1,10 @@
 //// GITHUB LOGIN ////
 import React, { useState, useEffect, useContext } from "react";
-// import { Redirect } from "react-router-dom";
-// NEW
-import { useHistory } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
+// import { useHistory } from 'react-router-dom';
 import { AuthContext } from "../../App";
 import GitHubLogo from './gh.png';
 import './style.css';
-
-// import { connect } from "react-redux"
 
 
 // creating our login component, using AuthContext global state
@@ -61,13 +58,10 @@ const GitHubLogin = () => {
         }
     }, [state, dispatch, data]);
 
-    // Working on redirect back to new profile,
-    // state.user should only exist if GH auth went through
-    // react-router's useHistory works to navigate back but
-    // its not pretty due to some errors I'm still diagnosing
-    const history = useHistory();
-    if (state.user) {
-        return history.goBack();
+    // Redirect back to user's profile after GH Connection
+    let backToMe = JSON.parse(localStorage.getItem("authUser"))
+    if (state.isLoggedIn) {
+        return <Redirect to={`/Profile/${backToMe._id}`} />
     }
 
     // Based on login state, this displays a loading spinner and / or error msg

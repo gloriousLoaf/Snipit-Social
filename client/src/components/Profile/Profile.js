@@ -25,9 +25,6 @@ import UserAction from "./UserAction";
 class Profile extends Component {
   constructor(props) {
     super(props);
-
-
-
     this.handleFollow = this.handleFollow.bind(this);
     this.handleUnfollow = this.handleUnfollow.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -36,8 +33,6 @@ class Profile extends Component {
   componentDidMount() {
     this.props.getPostsByUserId(this.props.match.params.userId);
     this.props.getUserProfile(this.props.match.params.userId);
-    // UPDATE M 9/28 WHY IS AUTH BROKEN?!??!?!? i am at my wits end
-    console.log(this.props.auth);
   }
 
   // do this for signup and login if you can.
@@ -53,7 +48,6 @@ class Profile extends Component {
       }
     }
   }
-
 
   handleFollow() {
     this.props.followUser(this.props.match.params.userId);
@@ -116,12 +110,22 @@ class Profile extends Component {
     }
 
     ///////// GitHub Button Logic /////////
+    /* Notes: Conditional currently works for a first time
+    // auth connection. Pulls authUser{} from localstorage,
+    // uses that to show connector on user's page but not other
+    // profiles. GH Connector adds user{} to localstorage with
+    // a lot more GH data we can display when we have time. It also
+    // hits the db. Querying db will be essential to make this
+    // a one-time auth, i.e. connect once and always see your data */
+    //////////// Here we go: /////////////
+
+    // GH button, rendered conditionally
     let githubConnector;
-    // if the id url matches the auth'd user, display button:
-    // UPDATE M 9/28 props.auth is broken for no apparent reason,
-    // nothing with the related api calls has changed, auth'ing user
-    // just doesn't seem to work anymore. this is screwed without it...
-    this.props.location.pathname === `/Profile/${this.props.auth.user._id}` ? (
+    // auth'd user id from storage
+    let myUser = JSON.parse(localStorage.getItem("authUser"));
+    // HERE we need to query db for existing GH data,
+    // PLUS check this conditional 👇 Have I auth'd GH? + Is this my page?
+    this.props.location.pathname === `/Profile/${myUser._id}` ? (
       // if user matches url, render GitHub connector
       githubConnector = (
         <>
@@ -135,13 +139,14 @@ class Profile extends Component {
         </>
       )
     ) : (
-        // if not, don't
-        console.log("Not your profile!")
+        // if not a match, it most be someone else, so don't display
+        // console.log("Not your profile!"),
+        githubConnector = (
+          <></>
+        )
       );
-    // extract some data to display
-    // this needs to come from db, not localstorage
-    // so we can remove the button if you have already
-    // connected you account to github
+    // ghUser is GH data obj, returned to localstorage,
+    // but will need to pull from db. this is temporary:
     let ghUser = JSON.parse(localStorage.getItem("user"));
     /////////////////
 
@@ -163,7 +168,7 @@ class Profile extends Component {
           <ul className="profStats list-unstyled mt-3">
             <li>
               <h5> {profile.email} </h5>
-              <h5> Snipshot:</h5>
+              <h5>Snipshot:</h5>
             </li>
 
             <li className="pb-1"> {items.length} posts </li>
