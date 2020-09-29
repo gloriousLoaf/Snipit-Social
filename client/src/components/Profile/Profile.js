@@ -13,6 +13,8 @@ import {
 
 import { deletePosts } from "../../actions/postActions/postActions";
 
+import gitAPI from '../../utils/GithubAPIS';
+
 import Banner from '../Banner';
 import NavBar from "../NavBar";
 import Card from "react-bootstrap/Card";
@@ -125,6 +127,18 @@ class Profile extends Component {
     let myUser = JSON.parse(localStorage.getItem("authUser"));
     // HERE we need to query db for existing GH data,
     // PLUS check this conditional 👇 Have I auth'd GH? + Is this my page?
+
+    gitAPI.getGitInfo(myUser._id)
+      .then(res => {
+        console.log("hello")
+        if (res === "error") {
+          throw new Error(res);
+        } else {
+          console.log(res)
+        }
+      })
+      .catch(res => console.log(res));
+
     this.props.location.pathname === `/Profile/${myUser._id}` ? (
       // if user matches url, render GitHub connector
       githubConnector = (

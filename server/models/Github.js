@@ -9,6 +9,10 @@ const gitSchema = new Schema({
         required: false,
         unique: 1,
     },
+    snipitId: {
+        type: String,
+        required: false,
+    },
     name: {
         type: String,
         required: false,

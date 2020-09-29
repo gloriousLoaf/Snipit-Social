@@ -1,7 +1,6 @@
 //// GITHUB LOGIN ////
 import React, { useState, useEffect, useContext } from "react";
 import { Redirect } from "react-router-dom";
-// import { useHistory } from 'react-router-dom';
 import { AuthContext } from "../../App";
 import GitHubLogo from './gh.png';
 import './style.css';
@@ -44,8 +43,6 @@ const GitHubLogin = () => {
                     dispatch({
                         type: "LOGIN",
                         payload: { user: data, isLoggedIn: true }
-                        // testing without isLoggedIn
-                        // payload: { user: data }
                     });
                 })
                 .catch(error => {

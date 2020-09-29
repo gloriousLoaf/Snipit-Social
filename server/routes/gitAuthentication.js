@@ -19,6 +19,8 @@ router.route("/addGitInfo").post((req, res) => {
         const newInfo = new GitInfo({
           id: req.body.id,
 
+          snipitId: req.body.snipitId,
+
           name: req.body.name,
 
           htmlUrl: req.body.htmlURL,
@@ -43,6 +45,21 @@ router.route("/addGitInfo").post((req, res) => {
     }
   );
   console.log(req.body);
+
+  // NEW route to query db for existing GitHub auth
+  // used in Profile.js to determine whether to show
+  // "Connect to GitHub" option, or display GH data from db
+  router.route("getGitInfo/:id").get((req, res) => {
+    GitInfo.findOne({
+      snipitId: req.params.id,
+    })
+      .then(info => res.json(info))
+      .catch(err => console.log(err));
+
+    console.log(req.params.id)
+
+  });
+
   // const id = req.body.id;
 
   // const name = req.body.name;
@@ -75,17 +92,5 @@ router.route("/addGitInfo").post((req, res) => {
   //   .then(post => res.json(post))
   //   .catch(err => console.log(err));
 });
-
-// router.route("getGitInfo/:id").get((req, res) => {
-//   GitInfo.findOne({
-//     id: req.body.id,
-//   }
-//   )
-//     .then(info => res.json(info))
-//     .catch(err => console.log(err));
-
-//     console.log(req.params.id)
-
-// });
 
 module.exports = router;
