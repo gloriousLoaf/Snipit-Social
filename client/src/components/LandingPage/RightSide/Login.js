@@ -56,11 +56,11 @@ class Login extends Component {
   }
 
   render() {
-    const {
-      classes,
-      auth,
-      profile,
-    } = this.props;
+    // const {
+    //   classes,
+    //   auth,
+    //   profile,
+    // } = this.props;
 
     // THIS was throwing render errors in react devtools,
     // but didn't seem to hurt perfomance? replaced by NEW above

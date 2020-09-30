@@ -51,13 +51,13 @@ router.route("/addGitInfo").post((req, res) => {
   // "Connect to GitHub" option, or display GH data from db
   router.route("getGitInfo/:id").get((req, res) => {
     GitInfo.findOne({
-      snipitId: req.params.id,
+      snipitId: req.body.id,
     })
-      .then(info => res.json(info))
+      .then(data => {
+        console.log(req.body.id);
+        res.json(data);
+      })
       .catch(err => console.log(err));
-
-    console.log(req.params.id)
-
   });
 
   // const id = req.body.id;

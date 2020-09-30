@@ -1,7 +1,7 @@
 //// CREATE A POST ////
 import React, { Component } from "react";
 
-import { Form, Card, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 import { connect } from 'react-redux'
 
