@@ -44,10 +44,10 @@ class UserAction extends Component {
 
   render() {
 
-    const {
-      // auth,
-      // user
-    } = this.props;
+    // const {
+    //   auth,
+    //   user
+    // } = this.props;
 
     return (
       <div>

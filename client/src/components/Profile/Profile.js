@@ -134,7 +134,7 @@ class Profile extends Component {
         if (res === "error") {
           throw new Error(res);
         } else {
-          console.log(res)
+          console.log(res.data);
         }
       })
       .catch(res => console.log(res));
