@@ -70,15 +70,15 @@ router.route("/addGitInfo").post((req, res) => {
 
 router.route("/:id").get((req, res) => {
   GitInfo.findOne({
-      id: req.params.id
+      id: req.params.id,
   })
     .then(gitData => {
       if (gitData) {
-
         // send this into state. 
         return res.json({
           _id: gitData._id, 
           id: gitData.id, 
+          snipitId: gitData.snipitId,
           name: gitData.name,
           avatarUrl: gitData.avatarUrl,
           bio: gitData.bio,
@@ -91,6 +91,32 @@ router.route("/:id").get((req, res) => {
       }
     })
     .catch(err => console.log(err));
+});
+
+router.route("/snipit/:snipitId").get((req, res) => {
+  GitInfo.findOne({
+      snipitId: req.params.snipitId,
+  })
+    .then(gitData => {
+      if (gitData) {
+        // send this into state. 
+        return res.json({
+          _id: gitData._id, 
+          id: gitData.id, 
+          snipitId: gitData.snipitId,
+          name: gitData.name,
+          avatarUrl: gitData.avatarUrl,
+          bio: gitData.bio,
+          blog: gitData.blog,
+          company: gitData.company,
+          hireable: gitData.hireable,
+        });
+      } else {
+        return res.status(404).json({ msg: "User not found" });
+      }
+    })
+    .catch(err => console.log(err));
+
 });
 
 module.exports = router;
