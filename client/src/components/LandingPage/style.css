@@ -67,10 +67,6 @@
 	
 }
 
-.github {
-
-}
-
 .bg-m {
 	background: var(--main-color);
 	border: none;
@@ -94,9 +90,7 @@
 }
 
 .signupBtn,
-.loginBtn,
-.modalSignin .github,
-.goog {
+.loginBtn {
 	transition: 0.3s;
 }
 
@@ -112,14 +106,16 @@
 	box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 0.6);
 }
 
-.github:hover,
-.github:focus,
-.goog:hover,
-.goog:focus {
-	box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 0.6);
-	border: rgba(0, 0, 0, 0.6);
-	background-color: var(--main-color);
+/* Old GitHub Auth Button styles, in case we reimplement that? */
+/* .github {
+  margin: 1rem 18.25rem;
 }
+.github:hover, .github:focus {
+  padding-bottom: 1rem !important;
+  box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 0.6);
+  border: rgba(0, 0, 0, 0.6);
+  background-color: var(--main-color);
+} */
 
 @media (min-width: 768px) {
 	.h-md-100 {

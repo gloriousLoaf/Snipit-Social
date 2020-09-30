@@ -1,8 +1,9 @@
 // SOCIAL CARD - PROFILE
-import React, { useContext } from 'react';
-import { Redirect } from "react-router-dom";
+import React from 'react';
+// import React, { useContext } from 'react';
+// import { Redirect } from "react-router-dom";
 import { Button } from 'react-bootstrap';
-import { AuthContext } from "../../../App";
+// import { AuthContext } from "../../../App";
 import './style.css';
 
 

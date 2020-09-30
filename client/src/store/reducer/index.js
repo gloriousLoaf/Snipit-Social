@@ -32,13 +32,11 @@ export const reducer = (state, action) => {
       );
       localStorage.setItem("user", JSON.stringify(action.payload.user));
 
-      // just for testing, might have to make this for register case instead of log in
-      // ORRR "findbyId, if (!user): submit this info"
-      // on login, we will save this info into the database
-      // console.log(action.payload.user);
-
+      // NEW added snipitId to reducer and to models/Github.js
+      let snip = JSON.parse(localStorage.getItem("authUser"))
       const variables = {
         id: action.payload.user.id,
+        snipitId: snip._id,
         htmlURL: action.payload.user.html_url,
         name: action.payload.user.name,
         avatarUrl: action.payload.user.avatar_url,

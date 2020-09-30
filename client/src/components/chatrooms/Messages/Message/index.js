@@ -1,7 +1,8 @@
 // MESSAGE - Single messages
-import React, { useContext } from "react";
+import React from "react";
+// import React, { useContext } from "react";
 import ReactEmoji from 'react-emoji';
-import { AuthContext } from "../../../../App";
+// import { AuthContext } from "../../../../App";
 import './style.css';
 
 // NEW!!
@@ -12,9 +13,10 @@ import '../../../../pages/Framework/css/night-mode.css';
 
 const Message = ({ message: { text, user }, name }) => {
 
-
+    // IMPORTANT - I think I can fix this for GitHub
+    // avatars in chat, which would be super cool
     // only errors we had was avatar URL, fix it later? 
-    const { state } = useContext(AuthContext);
+    // const { state } = useContext(AuthContext);
     // const { avatar_url } = state.user;
 
 

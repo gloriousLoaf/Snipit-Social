@@ -13,10 +13,7 @@ import {
 
 import { deletePosts } from "../../actions/postActions/postActions";
 
-import DeleteButton from "../../components/posts/DeleteButton";
-
-
-import Banner from "../Banner";
+import Banner from '../Banner';
 import NavBar from "../NavBar";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -28,6 +25,8 @@ import UserAction from "./UserAction";
 class Profile extends Component {
   constructor(props) {
     super(props);
+
+
 
     this.handleFollow = this.handleFollow.bind(this);
     this.handleUnfollow = this.handleUnfollow.bind(this);
@@ -53,6 +52,7 @@ class Profile extends Component {
     }
   }
 
+
   handleFollow() {
     this.props.followUser(this.props.match.params.userId);
   }
@@ -67,70 +67,14 @@ class Profile extends Component {
 
   render() {
     const {
+
       loadingPosts,
       loadingProfile,
       list,
       auth,
       user,
-      profile,
-      post
+      profile
     } = this.props;
-
-
-    console.log(list);
-    console.log(user)
-
-    let deleteButtonTest;
-
-    list.filter(i => {
-      // console.log(i)
-      if (i.user.id === user._id) {
-        // this hits, matches my one post with my id
-        // console.log("match");
-        // console.log(typeof i.user.id);
-        // console.log(typeof auth.user._id);
-        // console.log(i.user.id);
-        // console.log(auth.user._id);
-        // but it does not render the button
-        this.props.yourPosts();
-        deleteButtonTest = (
-          <div>
-            <DeleteButton
-              className="deleteBtn my-1"
-              onClick={() => this.handleDelete(post._id)}
-            >
-              <i className="uil-trash"></i>
-            </DeleteButton>
-          </div>
-        );
-      };
-    })
-
-
-    // filter for list.user.id, compare against auth.user._id
-    // list.filter(i => {
-    //   // console.log(i)
-    //   if (i.user.id === user._id) {
-    //     // this hits, matches my one post with my id
-    //     // console.log("match");
-    //     // console.log(typeof i.user.id);
-    //     // console.log(typeof auth.user._id);
-    //     // console.log(i.user.id);
-    //     // console.log(auth.user._id);
-    //     // but it does not render the button
-    //     this.props.yourPosts();
-    //     deleteButtonTest = (
-    //       <div>
-    //         <DeleteButton
-    //           className="deleteBtn my-1"
-    //           onClick={() => this.handleDelete(post._id)}
-    //         >
-    //           <i className="uil-trash"></i>
-    //         </DeleteButton>
-    //       </div>
-    //     );
-    //   }
-    // });
 
     const items =
       list &&
@@ -206,6 +150,7 @@ class Profile extends Component {
           <UserAction />
           {loadingPosts ? <LoadingPosts /> : items}
         </div>
+
 
         <NavBar />
       </div>
