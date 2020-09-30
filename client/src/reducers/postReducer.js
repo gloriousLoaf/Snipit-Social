@@ -1,33 +1,36 @@
-import {
-    ADD_POST,
-    LOADING_POSTS,
-    GET_POSTS,
-} from "../constants"
+import { ADD_POST, LOADING_POSTS, GET_POSTS, YOUR_POSTS } from "../constants";
 
 const initialState = {
-    list: null,
-    loading: false
-}
+  list: null,
+  loading: false,
+  yourPost: false
+};
 
-export default function (state = initialState, action) {
-    switch (action.type) {
-        case ADD_POST:
-            return {
-                ...state,
-                list: [action.payload, ...state.list]
-            }
-        case LOADING_POSTS:
-            return {
-                ...state,
-                loading: true
-            }
-        case GET_POSTS:
-            return {
-                ...state,
-                loading: false,
-                list: action.payload
-            }
-        default:
-            return state
-    }
+export default function(state = initialState, action) {
+  switch (action.type) {
+    case ADD_POST:
+      return {
+        ...state,
+        list: [action.payload, ...state.list]
+      };
+    case LOADING_POSTS:
+      return {
+        ...state,
+        loading: true
+      };
+    case GET_POSTS:
+      return {
+        ...state,
+        loading: false,
+        list: action.payload
+      };
+    case YOUR_POSTS:
+      return {
+        ...state,
+        loading: false,
+        yourPost: true
+      };
+    default:
+      return state;
+  }
 }
