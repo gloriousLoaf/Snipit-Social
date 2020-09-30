@@ -123,21 +123,46 @@ class Profile extends Component {
 
     // GH button, rendered conditionally
     let githubConnector;
-    // auth'd user id from storage
+    // GH info from db, if it already exists
+    let ghUser;
+    // new GH auth returns obj "user" to db & localstorage
+    let newGhUser = JSON.parse(localStorage.getItem("user"));
+    // auth'd user id from storage to query db & compare url
     let myUser = JSON.parse(localStorage.getItem("authUser"));
-    // HERE we need to query db for existing GH data,
-    // PLUS check this conditional 👇 Have I auth'd GH? + Is this my page?
-
+    // query db to see if user has already auth'd GH
     gitAPI.getGitInfo(myUser._id)
       .then(res => {
-        console.log("hello")
         if (res === "error") {
           throw new Error(res);
+        } else if (res.data) {
+          // can't directly set value of ghUser to res.data
+          localStorage.setItem("ghUser", JSON.stringify(res.data));
         } else {
-          console.log(res.data);
+          // and if no res.data, set ghUser as simple obj to compare
+          localStorage.setItem("ghUser", JSON.stringify({ data: "none yet" }));
         }
       })
       .catch(res => console.log(res));
+
+    //////////// HERE - this needs to not be parsed before auth, but parsed after...
+    ghUser = JSON.parse(localStorage.getItem("ghUser"));
+    // ghUser = localStorage.getItem("ghUser");
+    console.log(ghUser);
+    // }, 200)
+
+    // FINALLY, ghData will either be ghUser if api returns data,
+    // or newGhUser if the user makes a new GH auth connection.
+    // Used below to populate button or not, and display info.
+    let ghData;
+    if (ghUser === "no prior gh data") {
+      // undefined until user auth's GH
+      ghData = newGhUser;
+      console.log("new", ghData);
+    } else {
+      // previous GH auth existed
+      ghData = ghUser;
+      console.log("old", ghData);
+    }
 
     this.props.location.pathname === `/Profile/${myUser._id}` ? (
       // if user matches url, render GitHub connector
@@ -154,14 +179,10 @@ class Profile extends Component {
       )
     ) : (
         // if not a match, it most be someone else, so don't display
-        // console.log("Not your profile!"),
         githubConnector = (
           <></>
         )
       );
-    // ghUser is GH data obj, returned to localstorage,
-    // but will need to pull from db. this is temporary:
-    let ghUser = JSON.parse(localStorage.getItem("user"));
     /////////////////
 
     if (profile && items) {
@@ -171,10 +192,10 @@ class Profile extends Component {
           <div>
             {/* if GH connected, display GH avatar
                 this will work right when pulling from db */}
-            {!ghUser ? (
+            {ghData === { data: "none yet" } ? (
               <></>
             ) : (
-                <img className="avatar" src={ghUser.avatar_url} alt="Avatar" />
+                <img className="avatar" src={ghData.avatarUrl} alt="Avatar" />
               )
             }
           </div>
@@ -192,8 +213,7 @@ class Profile extends Component {
             <li className="py-1"> {profile.following.length} following </li>
           </ul>
 
-          {/* NEW - close to working, see above
-            UPDATE no its not, everything is screwed, i hate this app. */}
+          {/* GitHub Connector Button */}
           {githubConnector}
 
           <div>
@@ -201,13 +221,14 @@ class Profile extends Component {
               <li>
                 <h5>GitHub Stats:</h5>
               </li>
-              {!ghUser ? (
+              {ghData === { data: "none yet" } ? (
                 <li>Click the Octocat button below to check out my profile!</li>
               ) : (
                   <>
-                    <li className="pb-1">{ghUser.public_repos} Repos</li>
-                    <li className="py-1">{ghUser.followers} Followers</li>
-                    <li className="py-1">{ghUser.following} Following</li>
+                    <li className="pb-1">{ghData.publicRepos} Repos</li>
+                    <li className="py-1">{ghData.followers} Followers</li>
+                    <li className="py-1">{ghData.following} Following</li>
+                    <li className="pb-1"><a style={{ color: 'blue' }} href={ghData.htmlUrl}>View Profile</a></li>
                   </>
                 )}
             </ul>
