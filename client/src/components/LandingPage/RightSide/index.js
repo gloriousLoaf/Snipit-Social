@@ -1,5 +1,4 @@
-// Modal built-in,  could be broken out to a
-// third Component, but that needs more research?
+// LOGIN OR SIGNUP BUTTONS, HANDLE FUNCIONS //
 import React, { useState } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import SnipitLogo from "../../snipit.png";
@@ -19,7 +18,7 @@ const RightSide = () => {
         <div className="d-md-flex align-items-center h-md-100 p-5 justify-content-center loginarea">
           <div className="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
             <Form className="p-10">
-              <img alt="logo" classname="" src={SnipitLogo} />
+              <img alt="logo" className="" src={SnipitLogo} />
               &nbsp;
               <p className="Join text-center">Join Today</p>
               <Button

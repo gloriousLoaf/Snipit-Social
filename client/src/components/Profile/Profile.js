@@ -13,6 +13,8 @@ import {
 
 import { deletePosts } from "../../actions/postActions/postActions";
 
+import gitAPI from '../../utils/GithubAPIS';
+
 import Banner from '../Banner';
 import NavBar from "../NavBar";
 import Card from "react-bootstrap/Card";
@@ -25,9 +27,6 @@ import UserAction from "./UserAction";
 class Profile extends Component {
   constructor(props) {
     super(props);
-
-
-
     this.handleFollow = this.handleFollow.bind(this);
     this.handleUnfollow = this.handleUnfollow.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -51,7 +50,6 @@ class Profile extends Component {
       }
     }
   }
-
 
   handleFollow() {
     this.props.followUser(this.props.match.params.userId);
@@ -86,7 +84,6 @@ class Profile extends Component {
 
     let profileInfo;
 
-
     let followButtons;
 
     // if if authenticated,
@@ -101,37 +98,123 @@ class Profile extends Component {
         followButtons = (
           ///////// CSS? /////////
           <div>
-            <Button onClick={this.handleFollow}>Follow</Button>
+            <Button className="following" onClick={this.handleFollow}>Follow</Button>
           </div>
         );
       } else {
         followButtons = (
           ///////// CSS? /////////
           <div>
-            <Button onClick={this.handleUnfollow}>Unfollow</Button>
+            <Button className="following" onClick={this.handleUnfollow}>Unfollow</Button>
           </div>
         );
       }
     }
-    ///////// CSS? /////////
-    // this <Card/> will style the user info card
+
+    ///////// GitHub Button Logic /////////
+    /* Notes: Conditional currently works for a first time
+    // auth connection. Pulls authUser{} from localstorage,
+    // uses that to show connector on user's page but not other
+    // profiles. GH Connector adds user{} to localstorage with
+    // a lot more GH data we can display when we have time. It also
+    // hits the db. Querying db will be essential to make this
+    // a one-time auth, i.e. connect once and always see your data */
+    //////////// Here we go: /////////////
+
+    // GH button, rendered conditionally
+    let githubConnector;
+    // auth'd user id from storage
+    let myUser = JSON.parse(localStorage.getItem("authUser"));
+    // HERE we need to query db for existing GH data,
+    // PLUS check this conditional 👇 Have I auth'd GH? + Is this my page?
+
+    gitAPI.getGitInfo(myUser._id)
+      .then(res => {
+        console.log("hello")
+        if (res === "error") {
+          throw new Error(res);
+        } else {
+          console.log(res.data);
+        }
+      })
+      .catch(res => console.log(res));
+
+    this.props.location.pathname === `/Profile/${myUser._id}` ? (
+      // if user matches url, render GitHub connector
+      githubConnector = (
+        <>
+          <div>
+            <Button href="/githublogin" type="button" className="githubBtn">
+              <i className="fab fa-github-square m-2" aria-hidden="true" title="Github"></i>
+              Connect GitHub
+            </Button>
+          </div>
+          <em style={{ marginBottom: "1.5rem" }}>Link your account to add avatar and share stats!</em>
+        </>
+      )
+    ) : (
+        // if not a match, it most be someone else, so don't display
+        // console.log("Not your profile!"),
+        githubConnector = (
+          <></>
+        )
+      );
+    // ghUser is GH data obj, returned to localstorage,
+    // but will need to pull from db. this is temporary:
+    let ghUser = JSON.parse(localStorage.getItem("user"));
+    /////////////////
+
     if (profile && items) {
       profileInfo = (
         <Card className="card container my-4 py-5 text-center" id="border">
           <h1> {profile.fullname} </h1>
+          <div>
+            {/* if GH connected, display GH avatar
+                this will work right when pulling from db */}
+            {!ghUser ? (
+              <></>
+            ) : (
+                <img className="avatar" src={ghUser.avatar_url} alt="Avatar" />
+              )
+            }
+          </div>
 
           <ul className="profStats list-unstyled mt-3">
-            <li className="py-1">
+            <li>
               <h5> {profile.email} </h5>
+              <h5>Snipshot:</h5>
             </li>
 
-            <li className="py-1"> {items.length} posts </li>
+            <li className="pb-1"> {items.length} posts </li>
 
             <li className="py-1"> {profile.followers.length} followers </li>
 
             <li className="py-1"> {profile.following.length} following </li>
           </ul>
+
+          {/* NEW - close to working, see above
+            UPDATE no its not, everything is screwed, i hate this app. */}
+          {githubConnector}
+
+          <div>
+            <ul className="profStats list-unstyled mt-2">
+              <li>
+                <h5>GitHub Stats:</h5>
+              </li>
+              {!ghUser ? (
+                <li>Click the Octocat button below to check out my profile!</li>
+              ) : (
+                  <>
+                    <li className="pb-1">{ghUser.public_repos} Repos</li>
+                    <li className="py-1">{ghUser.followers} Followers</li>
+                    <li className="py-1">{ghUser.following} Following</li>
+                  </>
+                )}
+            </ul>
+          </div>
+
           {followButtons}
+
         </Card>
       );
     }

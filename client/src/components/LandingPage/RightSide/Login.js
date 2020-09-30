@@ -1,13 +1,9 @@
-import React, { useEffect, Component } from "react";
-import { Form, Button, Modal } from "react-bootstrap";
-
+// LOGIN MODAL //
+import React, { Component } from "react";
+import { Form, Button } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
-
-// import userLogin from "../RightSide/"
 import { connect } from "react-redux"
 import { loginUser } from "../../../actions/authActions/authActions"
-
-import searchAPI from '../../../utils/searchUserAPI';
 
 
 class Login extends Component {
@@ -28,8 +24,20 @@ class Login extends Component {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
-
   }
+
+  //////// NEW /////////
+  /* Replaced call inside render and gives us
+  // user id in localstorage for GitHub auth.
+  // Redirects to profile, not posts.
+  // Similar fix for Signup.js behavior?? */
+  componentDidUpdate(props) {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push(`/Profile/${this.props.user._id}`);
+    }
+    localStorage.setItem("authUser", JSON.stringify(this.props.user));
+  }
+  /////////////////////
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -45,42 +53,21 @@ class Login extends Component {
 
 
     this.props.loginUser(userData);
-
-
-    ///////////////////////////
-
-    /// ok, we have an email address in state, right? query db?
-    // but this is 404, probably a mistake I'm making in
-    // utils/searchUserAPI, or in routes/searchUser
-
-    // searchAPI.searchUser(this.state.email)
-    //   .then((res) => {
-    //     if (res === "error") {
-    //       throw new Error(res);
-    //     } else {
-    //       console.log(res)
-    //       // let id = res.asdfasdf
-    //       // this.props.history.push(`/profile/${id}`);
-    //     }
-    //   })
-    //   .catch(err => console.log(err));
-
-    ///////////////////////////
-
-    // redirect to posts
-
   }
 
   render() {
-    const {
-      classes,
-      auth,
-      profile,
-    } = this.props;
+    // const {
+    //   classes,
+    //   auth,
+    //   profile,
+    // } = this.props;
 
-    if (auth.isAuthenticated) {
-      this.props.history.push('/posts');
-    }
+    // THIS was throwing render errors in react devtools,
+    // but didn't seem to hurt perfomance? replaced by NEW above
+    // if (auth.isAuthenticated) {
+    //   this.props.history.push('/posts');
+    // }
+    // delete me if this works after further testing!
 
     const { errors } = this.state;
 
@@ -146,19 +133,19 @@ class Login extends Component {
             </Button>
           </div>
           {/* Other Sign in Methods */}
-          <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">
+          {/* <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">
             Or Sign in with
-          </p>
+          </p> */}
           <div className="row my-2 d-flex justify-content-center">
             {/* Facebook Login, stretch goal?? */}
             {/* Github Login */}
-            <Button
+            {/* <Button
               href="/githublogin"
               type="button"
               className="github btn-dark mb-3"
             >
               <i className="fab fa-github" style={{ fontSize: 30 }}></i>
-            </Button>
+            </Button> */}
           </div>
         </Form>
       </div>

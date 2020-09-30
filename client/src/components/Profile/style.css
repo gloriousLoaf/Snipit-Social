@@ -2,33 +2,27 @@
 /* BUT this isn't even linked into Profile.js right now,
     but it still somehow affects the page???
     the css iss an absolute mess : ( */ 
-#social {
-  flex-direction: row;
-}
 
-.socialBtn {
-  transition: 0.3s;
+/* NEW - GitHub Connector */ 
+.githubBtn {
+  margin: 0;
+  padding: 0;
+  font-size: 2.5rem;
+  color: #384047;
   background-color: inherit;
   border: none;
-}
-
-.socialBtn i {
-  color: #384047;
-  font-size: 3rem;
+  transition: 0.3s;
 
 }
-.socialBtn:hover, .socialBtn:focus {
-  letter-spacing: 0.3rem;
-  box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 1);
+.githubBtn:hover, .githubBtn:focus,
+.githubBtn i:hover, .githubBtn i:focus {
+  color: var(--main-color);
   background-color: inherit;
 }
 
-#date{
-  float: right;
-  margin: 4rem auto -3.5rem;
-  font-family: inherit;
-  font-size: 0.75rem;
-  color: #545454;
+/* Follow / Unfollow */ 
+.following {
+  background-color: var(--main-color);
 }
 
 .card {

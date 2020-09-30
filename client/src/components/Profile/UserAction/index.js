@@ -44,16 +44,10 @@ class UserAction extends Component {
 
   render() {
 
-    const {
-      auth,
-      user
-    } = this.props;
-
-
-    console.log(this.state.redirect)
-
-    // console.log(user)
-    // console.log(auth)
+    // const {
+    //   auth,
+    //   user
+    // } = this.props;
 
     return (
       <div>

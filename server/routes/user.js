@@ -29,8 +29,8 @@ router.route("/register").post((req, res) => {
       return res.status(404).json(errors);
     }
 
-    bcrypt.genSalt(10, function(err, salt) {
-      bcrypt.hash(req.body.password, salt, function(err, hash) {
+    bcrypt.genSalt(10, function (err, salt) {
+      bcrypt.hash(req.body.password, salt, function (err, hash) {
         const newUser = new User({
           fullname: req.body.fullname,
           email: req.body.email,
@@ -62,7 +62,7 @@ router.route("/login").post((req, res) => {
             { id: user._id },
             process.env.SECRET,
             { expiresIn: "1d" },
-            function(err, token) {
+            function (err, token) {
               return res.json({
                 success: true,
                 token: token
@@ -71,7 +71,7 @@ router.route("/login").post((req, res) => {
           );
         } else {
           // good practice to not tell them whats wrong, just its wrong.
-          errors.password = "Invalid pw";
+          errors.password = "Invalid password.";
           return res.status(404).json(errors);
         }
       });
@@ -97,7 +97,7 @@ router
     });
   });
 
-  // localhost:5000/api/users/logout to logout
+// localhost:5000/api/users/logout to logout
 router
   .route("/logout")
   .get((req, res) => {

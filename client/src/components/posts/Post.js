@@ -23,11 +23,9 @@ class Post extends Component {
   }
 
   render() {
-    const { classes, post, list, auth, user, profile } = this.props;
+    // const { post, list, auth, user, profile } = this.props;
+    const { post } = this.props;
 
-
-    // console.log(auth);
-    // console.log(list);
 
     return (
       <div

@@ -18,22 +18,15 @@ router.route("/addGitInfo").post((req, res) => {
       if (!gitInfo) {
         const newInfo = new GitInfo({
           id: req.body.id,
-
+          snipitId: req.body.snipitId,
           name: req.body.name,
-
           htmlUrl: req.body.htmlURL,
-
           avatarUrl: req.body.avatarUrl,
-
           bio: req.body.bio,
-
           blog: req.body.blog,
-
           company: req.body.company,
-
           hireable: req.body.hireable
         });
-
         newInfo
           .save()
           .then(post => res.json(post))
@@ -43,49 +36,75 @@ router.route("/addGitInfo").post((req, res) => {
     }
   );
   console.log(req.body);
-  // const id = req.body.id;
+})
 
-  // const name = req.body.name;
+// NEW route to query db for existing GitHub auth
+// used in Profile.js to determine whether to show
+// "Connect to GitHub" option, or display GH data from db
+router.route("getGitInfo/:id").get((req, res) => {
+  User.findOne({
+    // snipitId: JSON.stringify(req.body.id),
+    snipitId: req.body.id,
 
-  // const htmlUrl = req.body.htmlURL;
-
-  // const avatarUrl = req.body.avatarUrl;
-
-  // const bio = req.body.bio;
-
-  // const blog = req.body.blog;
-
-  // const company = req.body.company;
-
-  // const hireable = req.body.hireable;
-
-  // const newInfo = new GitInfo({
-  //   id,
-  //   name,
-  //   htmlUrl,
-  //   avatarUrl,
-  //   bio,
-  //   blog,
-  //   company,
-  //   hireable
-  // });
-
-  // newInfo
-  //   .save()
-  //   .then(post => res.json(post))
-  //   .catch(err => console.log(err));
+  })
+    .then(() => {
+      //   console.log(req.body.id);
+      //   res.json(data);
+      res.json({
+        id: req.body.id,
+        snipitId: req.body.snipitId,
+        name: req.body.name,
+        htmlUrl: req.body.htmlURL,
+        avatarUrl: req.body.avatarUrl,
+        bio: req.body.bio,
+        blog: req.body.blog,
+        company: req.body.company,
+        hireable: req.body.hireable
+      })
+        .catch(err => console.log(err));
+    });
 });
 
+
+/////////////////////// CODE GRAVEYARD
+
 // router.route("getGitInfo/:id").get((req, res) => {
-//   GitInfo.findOne({
-//     id: req.body.id,
-//   }
-//   )
-//     .then(info => res.json(info))
+//   GitInfo.findOne({ snipitId: req.body.id })
+//     .then(user => {
+//       console.log(res)
+//       if (user) {
+//         return res.json({
+//           _id: user._id,
+//           email: user.email,
+//           fullname: user.fullname,
+//           followers: user.followers,
+//           following: user.following
+//         });
+//       } else {
+//         return res.status(404).json({ msg: "User not found" });
+//       }
+//     })
 //     .catch(err => console.log(err));
+// });
 
-//     console.log(req.params.id)
-
+// WORKS to query the wrong collection, if you change GitHubAPIS.js to:
+// return axios.get("/api/users/" + id)
+// router.route("getGitInfo/:id").get((req, res) => {
+//   User.findOne(req.params.id)
+//     .then(user => {
+//       if (user) {
+//         return res.json({
+//           _id: user._id,
+//           email: user.email,
+//           fullname: user.fullname,
+//           followers: user.followers,
+//           following: user.following
+//         });
+//       } else {
+//         return res.status(404).json({ msg: "User not found" });
+//       }
+//     })
+//     .catch(err => console.log(err));
 // });
 
 module.exports = router;
