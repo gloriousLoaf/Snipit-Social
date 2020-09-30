@@ -84,7 +84,9 @@ const isLoggedIn = (req, res, next) => {
 // This line pulls in express app:
 const server = http.createServer(app);
 const io = socketio(server);
-io.origins("*:*");
+// io.origins("*:*");
+// io.origins("*:80*");
+io.origins("*:80 https://snipit-social.herokuapp.com/*");
 
 // On Connect, connect client-side socket
 io.on('connect', (socket) => {
