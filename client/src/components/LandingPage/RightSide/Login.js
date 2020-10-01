@@ -29,8 +29,8 @@ class Login extends Component {
   // redirect after auth and put user id in storage
   componentDidUpdate(props) {
     if (this.props.auth.isAuthenticated) {
-      // this.props.history.push(`/Profile/${this.props.user._id}`);
-      this.props.history.push(`/ProfileSwitcher/${this.props.user._id}`);
+      this.props.history.push(`/Profile/${this.props.user._id}`);
+      // this.props.history.push(`/ProfileSwitcher/${this.props.user._id}`);
       // this is a temporary solution, see Profile.js
       localStorage.setItem("ghUser", JSON.stringify({ data: "none yet" }));
     }

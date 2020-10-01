@@ -21,6 +21,8 @@ import store from "./store";
 
 // PROFILE SWITCHER
 import ProfileSwitcher from './components/Profile/ProfileSwitcher';
+import Profile from './components/Profile/Profile';
+
 
 // TIMELINE
 import ListPost from "./components/posts/ListPost";
@@ -63,7 +65,10 @@ const App = () => {
 
               <Route path="/githublogin" exact component={GitHubLogin} />
 
+              {/* NEED BOTH */}
               <Route path="/ProfileSwitcher/:userId" component={ProfileSwitcher} />
+              <Route path="/Profile/:userId" component={Profile} />
+
 
               <Route path="/Posts" component={ListPost} />
 

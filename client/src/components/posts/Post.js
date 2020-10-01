@@ -5,11 +5,11 @@ import { connect } from "react-redux";
 
 import { deletePosts, yourPosts } from "../../actions/postActions/postActions";
 
-import DeleteButton from "../../components/posts/DeleteButton";
+// import DeleteButton from "../../components/posts/DeleteButton";
 
 import { Link } from "react-router-dom";
 
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
 // unlinked for now, so much conflicting css that its hard to know where to style
 // import "./style.css";
 
@@ -25,16 +25,17 @@ class Post extends Component {
   }
 
   render() {
-    const { classes, post, list, auth, user, yourPost } = this.props;
+    // const { classes, post, list, auth, user, yourPost } = this.props;
+    const { post, list, user } = this.props;
 
     // console.log(auth.user._id);
     // console.log(list);
     // console.log(user)
 
     // doesnt work unless this is here...
-    let i = 0;
+    // let i = 0;
 
-    let deleteButtonTest;
+    // let deleteButtonTest;
 
     // for (i = 0; i < list.length; i++) {
     //   console.log(i)
@@ -72,16 +73,16 @@ class Post extends Component {
         // console.log(auth.user._id);
         // but it does not render the button
         this.props.yourPosts();
-        deleteButtonTest = (
-          <div>
-            <DeleteButton
-              className="deleteBtn my-1"
-              onClick={() => this.handleDelete(post._id)}
-            >
-              <i className="uil-trash"></i>
-            </DeleteButton>
-          </div>
-        );
+        // deleteButtonTest = (
+        //   <div>
+        //     <DeleteButton
+        //       className="deleteBtn my-1"
+        //       onClick={() => this.handleDelete(post._id)}
+        //     >
+        //       <i className="uil-trash"></i>
+        //     </DeleteButton>
+        //   </div>
+        // );
       };
     })
 
@@ -100,7 +101,7 @@ class Post extends Component {
         </Link>
         <div className="card-title">
           <div className="card-body ">
-            <h6 className="card-text">{post.text}</h6>
+            <h6 className="card-text textChanger">{post.text}</h6>
           </div>
           <span className="pt-3" id="date">
             {" "}

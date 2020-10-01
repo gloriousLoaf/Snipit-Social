@@ -60,7 +60,7 @@ class NavBar extends Component {
 
         const authLinks = isAuthenticated
             && (
-                <Button href={`/ProfileSwitcher/${this.props.auth.user._id}`} className="navbarLogo">
+                <Button href={`/Profile/${this.props.auth.user._id}`} className="navbarLogo">
                     <i className="far fa-user-circle" alt="Profile" aria-hidden="true"></i>
                 </Button>
             )

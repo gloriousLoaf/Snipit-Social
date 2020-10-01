@@ -36,7 +36,7 @@ export const deletePosts = (id) => dispatch => {
 }
 
 export const yourPosts = () => {
-    return { 
+    return {
         type: YOUR_POSTS,
     }
 }

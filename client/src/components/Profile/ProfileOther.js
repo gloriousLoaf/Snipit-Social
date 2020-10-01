@@ -13,7 +13,7 @@ import {
 
 import { deletePosts } from "../../actions/postActions/postActions";
 
-import gitAPI from '../../utils/GithubAPIS';
+// import gitAPI from '../../utils/GithubAPIS';
 
 import Banner from '../Banner';
 import NavBar from "../NavBar";
@@ -97,61 +97,65 @@ class ProfileOther extends Component {
             ) {
                 followButtons = (
                     ///////// CSS? /////////
-                    <div>
+                    <div className="mt-1 mb-4">
                         <Button className="following" onClick={this.handleFollow}>Follow</Button>
                     </div>
                 );
             } else {
                 followButtons = (
                     ///////// CSS? /////////
-                    <div>
+                    <div className="mt-1 mb-4">
                         <Button className="following" onClick={this.handleUnfollow}>Unfollow</Button>
                     </div>
                 );
             }
         }
 
-        ///////// GitHub Button Logic /////////
-        // GH button, rendered conditionally
-        // let githubConnector;
-        // GH info from db or assign to simple obj
-        let ghUser;
-        // new GH auth returns obj "user" to db & localstorage
-        let newGhUser = JSON.parse(localStorage.getItem("user"));
-        // auth'd user id from storage to query db & compare url
-        let myUser = JSON.parse(localStorage.getItem("authUser"));
-        // query db to see if user has already auth'd GH
-        gitAPI.getGitInfo(myUser._id)
-            .then(res => {
-                if (res === "error") {
-                    throw new Error(res);
-                } else if (res.data) {
-                    // can't directly set value of ghUser to res.data
-                    localStorage.setItem("ghUser", JSON.stringify(res.data));
-                } else {
-                    // and if no res.data, set ghUser as simple obj to compare
-                    localStorage.setItem("ghUser", JSON.stringify({ data: "none yet" }));
-                }
-            })
-            .catch(res => console.log(res));
+        /* IMPORTANT - this is from Profile.js and will be the starting ground for the
+            algorithm to show / not show any existing GitHub data on other users' pages.
+            For now, commenting it in will cause problems. Pick this up later! */
 
-        // parse it up for
-        ghUser = JSON.parse(localStorage.getItem("ghUser"));
-        console.log(ghUser);
+        // ///////// GitHub Button Logic /////////
+        // // GH button, rendered conditionally
+        // // let githubConnector;
+        // // GH info from db or assign to simple obj
+        // let ghUser;
+        // // new GH auth returns obj "user" to db & localstorage
+        // let newGhUser = JSON.parse(localStorage.getItem("user"));
+        // // auth'd user id from storage to query db & compare url
+        // let myUser = JSON.parse(localStorage.getItem("authUser"));
+        // // query db to see if user has already auth'd GH
+        // gitAPI.getGitInfo(myUser._id)
+        //     .then(res => {
+        //         if (res === "error") {
+        //             throw new Error(res);
+        //         } else if (res.data) {
+        //             // can't directly set value of ghUser to res.data
+        //             localStorage.setItem("ghUser", JSON.stringify(res.data));
+        //         } else {
+        //             // and if no res.data, set ghUser as simple obj to compare
+        //             localStorage.setItem("ghUser", JSON.stringify({ data: "none yet" }));
+        //         }
+        //     })
+        //     .catch(res => console.log(res));
 
-        // FINALLY, ghData will either be ghUser if api returns data,
-        // or newGhUser if the user makes a new GH auth connection.
-        // Used below to populate button or not, and display info.
-        let ghData;
-        if (ghUser === "no prior gh data") {
-            // undefined until user auth's GH
-            ghData = newGhUser;
-            console.log("new", ghData);
-        } else {
-            // previous GH auth existed
-            ghData = ghUser;
-            console.log("old", ghData);
-        }
+        // // parse it up for
+        // ghUser = JSON.parse(localStorage.getItem("ghUser"));
+        // console.log(ghUser);
+
+        // // FINALLY, ghData will either be ghUser if api returns data,
+        // // or newGhUser if the user makes a new GH auth connection.
+        // // Used below to populate button or not, and display info.
+        // let ghData;
+        // if (ghUser === "no prior gh data") {
+        //     // undefined until user auth's GH
+        //     ghData = newGhUser;
+        //     console.log("new", ghData);
+        // } else {
+        //     // previous GH auth existed
+        //     ghData = ghUser;
+        //     console.log("old", ghData);
+        // }
 
 
         if (profile && items) {
@@ -159,14 +163,15 @@ class ProfileOther extends Component {
                 <Card className="card container my-4 py-5 text-center" id="border">
                     <h1> {profile.fullname} </h1>
                     <div>
+                        {/* SOON */}
                         {/* if GH data exists, display it */}
-                        {ghData === { data: "none yet" } ? (
+                        {/* {ghData === { data: "none yet" } ? (
                             <></>
-                        ) : (
-                                // <img className="avatar" src={ghData.avatarUrl} alt="Avatar" />
-                                <img className="avatar" src="https://avatars3.githubusercontent.com/u/42220408?v=4" alt="Avatar" />
-                            )
-                        }
+                        ) : ( */}
+                        {/* <img className="avatar" src={ghData.avatarUrl} alt="Avatar" /> */}
+                        <img className="avatar" src="https://avatars3.githubusercontent.com/u/42220408?v=4" alt="Avatar" />
+                        {/* )
+                        } */}
                     </div>
 
                     <ul className="profStats list-unstyled mt-3">
@@ -179,8 +184,10 @@ class ProfileOther extends Component {
 
                         <li className="py-1"> {profile.followers.length} followers </li>
 
-                        <li className="py-1"> {profile.following.length} following </li>
+                        <li className="py-1 pb-1"> {profile.following.length} following </li>
                     </ul>
+
+                    {followButtons}
 
                     {/* SOON */}
                     {/* GitHub Connector Button */}
@@ -209,15 +216,14 @@ class ProfileOther extends Component {
                         </ul>
                     </div>
 
-                    {followButtons}
-
                 </Card>
             );
         }
 
-        setTimeout(() => {
-            localStorage.removeItem("ghUser");
-        }, 1000);
+        // What was I doing here? I think it is important though?
+        // setTimeout(() => {
+        //     localStorage.removeItem("ghUser");
+        // }, 1000);
 
         return (
             ///////// CSS /////////

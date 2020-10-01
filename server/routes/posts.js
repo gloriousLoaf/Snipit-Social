@@ -26,12 +26,12 @@ router.route("/add/").post(
 // finding any posts
 router.route("/")
 
-.get((req, res) => {
-  Post.find()
-    .sort({ createdAt: -1 })
-    .then(posts => res.json(posts))
-    .catch(err => console.log(err));
-});
+  .get((req, res) => {
+    Post.find()
+      .sort({ createdAt: -1 })
+      .then(posts => res.json(posts))
+      .catch(err => console.log(err));
+  });
 
 // deleting by id
 router.route("/delete/:id").delete((req, res) => {
@@ -41,18 +41,18 @@ router.route("/delete/:id").delete((req, res) => {
       Tweets.remove();
       return res.json(Tweets)
     })
-      .catch(err => res.status(422).json(err));
-  
-    // .then(Posts => res.json(Posts))
-    // res.redirect('/posts')
+    .catch(err => res.status(422).json(err));
+
+  // .then(Posts => res.json(Posts))
+  // res.redirect('/posts')
 });
 
 router.route("/:id")
-  .get( (req, res) => {
-    Post.find({ 'user.id': req.params.id})
-    .sort( {createdAt: -1})
-    .then(posts => res.json(posts))
-    .catch(err => console.log(err))
+  .get((req, res) => {
+    Post.find({ 'user.id': req.params.id })
+      .sort({ createdAt: -1 })
+      .then(posts => res.json(posts))
+      .catch(err => console.log(err))
 
   })
 
