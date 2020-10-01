@@ -27,6 +27,13 @@ class Signup extends Component {
     }
   }
 
+  componentDidUpdate(props) {
+    if (props.userData) {
+      console.log("yo")
+      this.props.history.push(`/Posts`);
+    }
+  }
+
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }

@@ -26,11 +26,7 @@ class Login extends Component {
     }
   }
 
-  //////// NEW /////////
-  /* Replaced call inside render and gives us
-  // user id in localstorage for GitHub auth.
-  // Redirects to profile, not posts.
-  // Similar fix for Signup.js behavior?? */
+  // redirect after auth and put user id in storage
   componentDidUpdate(props) {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push(`/Profile/${this.props.user._id}`);
@@ -61,13 +57,6 @@ class Login extends Component {
     //   auth,
     //   profile,
     // } = this.props;
-
-    // THIS was throwing render errors in react devtools,
-    // but didn't seem to hurt perfomance? replaced by NEW above
-    // if (auth.isAuthenticated) {
-    //   this.props.history.push('/posts');
-    // }
-    // delete me if this works after further testing!
 
     const { errors } = this.state;
 
