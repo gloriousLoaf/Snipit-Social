@@ -1,8 +1,7 @@
 // MESSAGE - Single messages
-import React from "react";
-// import React, { useContext } from "react";
+import React, { useContext } from "react";
 import ReactEmoji from 'react-emoji';
-// import { AuthContext } from "../../../../App";
+import { AuthContext } from "../../../../App";
 import './style.css';
 
 // NEW!!
@@ -16,8 +15,8 @@ const Message = ({ message: { text, user }, name }) => {
     // IMPORTANT - I think I can fix this for GitHub
     // avatars in chat, which would be super cool
     // only errors we had was avatar URL, fix it later? 
-    // const { state } = useContext(AuthContext);
-    // const { avatar_url } = state.user;
+    const { state } = useContext(AuthContext);
+    const { avatarUrl } = state.user;
 
 
     // getting names corresponding to who sent the message
@@ -27,6 +26,7 @@ const Message = ({ message: { text, user }, name }) => {
     if (user === trimmedName) {
         isSentByCurrentUser = true;
     }
+    console.log(state)
 
     // ternary to make user's own messages look different
     return (
@@ -38,12 +38,12 @@ const Message = ({ message: { text, user }, name }) => {
                         <div className="message-bubble-inner">
                             <div className="message-avatar">
                                 {/* ternary to display GH avatar or placeholder */}
-                                {/* {!state.avatar_url ? (
-                                    <img className="lilAvatar" src={avatar_url} alt="Avatar" />
-                                ) : ( */}
-                                <i className="lilAvatar fas fa-user-circle" alt="Avatar"></i>
-                                {/* )
-                                } */}
+                                {!state.avatarUrl ? (
+                                    <img className="lilAvatar" src={avatarUrl} alt="Avatar" />
+                                ) : (
+                                        <i className="lilAvatar fas fa-user-circle" alt="Avatar"></i>
+                                    )
+                                }
                             </div>
                             <div className="message-text">
                                 <p>{ReactEmoji.emojify(text)}</p>

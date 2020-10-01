@@ -182,16 +182,21 @@ class ProfileOther extends Component {
                         <li className="py-1"> {profile.following.length} following </li>
                     </ul>
 
+                    {/* SOON */}
                     {/* GitHub Connector Button */}
                     {/* {githubConnector} */}
 
-                    {/* <div>
+                    <div>
                         <ul className="profStats list-unstyled mt-2">
-                            <li>
-                                <h5>GitHub Stats:</h5>
-                            </li>
-                            
-                            {ghData === { data: "none yet" } ? (
+                            <li><h5>GitHub Stats:</h5></li>
+                            <li className="py-1">46 Repos</li>
+                            <li className="py-1">6 Followers</li>
+                            <li className="py-1">3 Following</li>
+                            <li className="py-1"><a style={{ color: 'blue' }} href="https://github.com/EricGip">View My GitHub</a></li>
+
+
+                            {/* SOON */}
+                            {/* {ghData === { data: "none yet" } ? (
                                 <li>Click the Octocat button below to check out my profile!</li>
                             ) : (
                                     <>
@@ -200,9 +205,9 @@ class ProfileOther extends Component {
                                         <li className="py-1">{ghData.following} Following</li>
                                         <li className="pb-1"><a style={{ color: 'blue' }} href={ghData.htmlUrl}>View Profile</a></li>
                                     </>
-                                )}
+                                )} */}
                         </ul>
-                    </div> */}
+                    </div>
 
                     {followButtons}
 
