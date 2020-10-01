@@ -24,6 +24,8 @@ import LoadingPosts from "../posts/LoadingPosts";
 import SocialCard from "./SocialCard";
 import UserAction from "./UserAction";
 
+import './style.css';
+
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -154,7 +156,7 @@ class Profile extends Component {
     // or newGhUser if the user makes a new GH auth connection.
     // Used below to populate button or not, and display info.
     let ghData;
-    if (ghUser === "no prior gh data") {
+    if (ghUser === { data: "none yet" }) {
       // undefined until user auth's GH
       ghData = newGhUser;
       console.log("new", ghData);
@@ -164,7 +166,7 @@ class Profile extends Component {
       console.log("old", ghData);
     }
 
-    this.props.location.pathname === `/Profile/${myUser._id}` ? (
+    this.props.location.pathname === `/Profile/${myUser._id}` && ghData.data ? (
       // if user matches url, render GitHub connector
       githubConnector = (
         <>
@@ -192,7 +194,7 @@ class Profile extends Component {
           <div>
             {/* if GH connected, display GH avatar
                 this will work right when pulling from db */}
-            {ghData === { data: "none yet" } ? (
+            {!ghData.avatarUrl ? (
               <></>
             ) : (
                 <img className="avatar" src={ghData.avatarUrl} alt="Avatar" />
@@ -214,14 +216,14 @@ class Profile extends Component {
           </ul>
 
           {/* GitHub Connector Button */}
-          {githubConnector}
+          { githubConnector}
 
           <div>
             <ul className="profStats list-unstyled mt-2">
               <li>
                 <h5>GitHub Stats:</h5>
               </li>
-              {ghData === { data: "none yet" } ? (
+              {!ghData.publicRepos ? (
                 <li>Click the Octocat button below to check out my profile!</li>
               ) : (
                   <>
@@ -234,9 +236,9 @@ class Profile extends Component {
             </ul>
           </div>
 
-          {followButtons}
+          { followButtons}
 
-        </Card>
+        </Card >
       );
     }
 
