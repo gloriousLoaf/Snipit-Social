@@ -30,8 +30,6 @@ class Post extends Component {
     // console.log(auth.user._id);
     // console.log(list);
     // console.log(user)
-    
-
 
     // doesnt work unless this is here...
     let i = 0;
@@ -62,32 +60,32 @@ class Post extends Component {
     //   }
     // }
 
-      // filter for list.user.id, compare against auth.user._id
-      list.filter(i => {
-        // console.log(i)
-        if (i.user.id === user._id) {
-          // this hits, matches my one post with my id
-          // console.log("match");
-          // console.log(typeof i.user.id);
-          // console.log(typeof auth.user._id);
-          // console.log(i.user.id);
-          // console.log(auth.user._id);
-          // but it does not render the button
-          this.props.yourPosts();
-          deleteButtonTest = (
-            <div>
-              <DeleteButton
-                className="deleteBtn my-1"
-                onClick={() => this.handleDelete(post._id)}
-              >
-                <i className="uil-trash"></i>
-              </DeleteButton>
-            </div>
-          );
-        };
-      })
-  
-    
+    // filter for list.user.id, compare against auth.user._id
+    list.filter(i => {
+      // console.log(i)
+      if (i.user.id === user._id) {
+        // this hits, matches my one post with my id
+        // console.log("match");
+        // console.log(typeof i.user.id);
+        // console.log(typeof auth.user._id);
+        // console.log(i.user.id);
+        // console.log(auth.user._id);
+        // but it does not render the button
+        this.props.yourPosts();
+        deleteButtonTest = (
+          <div>
+            <DeleteButton
+              className="deleteBtn my-1"
+              onClick={() => this.handleDelete(post._id)}
+            >
+              <i className="uil-trash"></i>
+            </DeleteButton>
+          </div>
+        );
+      };
+    })
+
+
     return (
       <div
         className="card container my-3 d-flex justify-content-center"
@@ -96,7 +94,7 @@ class Post extends Component {
         <hr></hr>
         <Link
           style={{ maxWidth: "max-content" }}
-          to={`/Profile/${post.user.id}`}
+          to={`/ProfileSwitcher/${post.user.id}`}
         >
           <h3 className="pl-3">{post.user.fullname}</h3>
         </Link>

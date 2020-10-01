@@ -1,4 +1,3 @@
-//////// new attempt to rewrite as Redux, probably bug-filled
 // NAVBAR - PROFILE
 import React, { Component } from 'react';
 import { Button, Dropdown, DropdownButton } from 'react-bootstrap';
@@ -28,9 +27,6 @@ class NavBar extends Component {
         let userObj = JSON.parse(localStorage.getItem("user"));
         if (!userObj) {
             // logic for getting email-auth's name
-            // userObj = something pulled from db or other localstorage
-
-            // i fixed it, scroll down to see what we can pull from redux -- eric
             userName = this.props.auth.user.fullname
         } else {
             userName = userObj.name;
@@ -64,7 +60,7 @@ class NavBar extends Component {
 
         const authLinks = isAuthenticated
             && (
-                <Button href={`/Profile/${this.props.auth.user._id}`} className="navbarLogo">
+                <Button href={`/ProfileSwitcher/${this.props.auth.user._id}`} className="navbarLogo">
                     <i className="far fa-user-circle" alt="Profile" aria-hidden="true"></i>
                 </Button>
             )

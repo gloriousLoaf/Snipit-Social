@@ -19,20 +19,15 @@ import setHeaderAuth from "./utils/setAuthHeader";
 //refactoring into redux (combining reducers)
 import store from "./store";
 
-// cant find how to separate it, might end up with huge reducer index.js
-// import { profileState, profileReducer } from "./store/reducer/profileReducer";
+// PROFILE SWITCHER
+import ProfileSwitcher from './components/Profile/ProfileSwitcher';
 
-// MAIN PROFILE
-import Profile from "./components/Profile/Profile.js"
-
-// Timeline stuff, coming soon
+// TIMELINE
 import ListPost from "./components/posts/ListPost";
 
 // utility components 
 import notFound from "./components/UtilityComponents/notFound"
 
-// Eventually we'll have a logo
-// import logo from "./logo.svg";
 import "./App.css";
 
 export const AuthContext = createContext();
@@ -68,7 +63,7 @@ const App = () => {
 
               <Route path="/githublogin" exact component={GitHubLogin} />
 
-              <Route path="/Profile/:userId" component={Profile} />
+              <Route path="/ProfileSwitcher/:userId" component={ProfileSwitcher} />
 
               <Route path="/Posts" component={ListPost} />
 
