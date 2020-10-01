@@ -3,7 +3,8 @@ import {
     ADD_POST,
     GET_POSTS,
     LOADING_POSTS,
-    DELETE_POST
+    DELETE_POST,
+    YOUR_POSTS
 } from "../../constants"
 
 export const addPost = postData => dispatch => {
@@ -32,6 +33,12 @@ export const deletePosts = (id) => dispatch => {
             payload: res.data
         }))
         .catch(err => console.log(err))
+}
+
+export const yourPosts = () => {
+    return { 
+        type: YOUR_POSTS,
+    }
 }
 
 export const loadPosts = () => {

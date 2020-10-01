@@ -114,15 +114,6 @@ class Profile extends Component {
     }
 
     ///////// GitHub Button Logic /////////
-    /* Notes: Conditional currently works for a first time
-    // auth connection. Pulls authUser{} from localstorage,
-    // uses that to show connector on user's page but not other
-    // profiles. GH Connector adds user{} to localstorage with
-    // a lot more GH data we can display when we have time. It also
-    // hits the db. Querying db will be essential to make this
-    // a one-time auth, i.e. connect once and always see your data */
-    //////////// Here we go: /////////////
-
     // GH button, rendered conditionally
     let githubConnector;
     // GH info from db, if it already exists
