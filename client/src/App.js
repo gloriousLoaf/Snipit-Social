@@ -68,10 +68,8 @@ const App = () => {
 
               <Route path="/githublogin" exact component={GitHubLogin} />
 
-              {/* REAL PROFILE */}
               <Route path="/Profile/:userId" component={Profile} />
 
-              {/* no content yet */}
               <Route path="/Posts" component={ListPost} />
 
               <Route path="/breakroom" component={breakroom} />

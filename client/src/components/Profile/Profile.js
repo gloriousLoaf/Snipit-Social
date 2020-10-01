@@ -146,18 +146,14 @@ class Profile extends Component {
       })
       .catch(res => console.log(res));
 
-    //////////// HERE - this needs to not be parsed before auth, but parsed after...
     ghUser = JSON.parse(localStorage.getItem("ghUser"));
-    // ghUser = localStorage.getItem("ghUser");
     console.log(ghUser);
-    // }, 200)
 
     // FINALLY, ghData will either be ghUser if api returns data,
     // or newGhUser if the user makes a new GH auth connection.
     // Used below to populate button or not, and display info.
     let ghData;
     if (ghUser === { data: "none yet" }) {
-      // undefined until user auth's GH
       ghData = newGhUser;
       console.log("new", ghData);
     } else {
@@ -166,7 +162,7 @@ class Profile extends Component {
       console.log("old", ghData);
     }
 
-    this.props.location.pathname === `/Profile/${myUser._id}` && ghData.data ? (
+    this.props.location.pathname === `/Profile/${myUser._id}` && ghUser.data ? (
       // if user matches url, render GitHub connector
       githubConnector = (
         <>
@@ -192,8 +188,7 @@ class Profile extends Component {
         <Card className="card container my-4 py-5 text-center" id="border">
           <h1> {profile.fullname} </h1>
           <div>
-            {/* if GH connected, display GH avatar
-                this will work right when pulling from db */}
+
             {!ghData.avatarUrl ? (
               <></>
             ) : (
@@ -220,17 +215,17 @@ class Profile extends Component {
 
           <div>
             <ul className="profStats list-unstyled mt-2">
-              <li>
-                <h5>GitHub Stats:</h5>
-              </li>
               {!ghData.publicRepos ? (
-                <li>Click the Octocat button below to check out my profile!</li>
+                <li></li>
               ) : (
                   <>
-                    <li className="pb-1">{ghData.publicRepos} Repos</li>
+                    <li>
+                      <h5>GitHub Stats:</h5>
+                    </li>
+                    <li className="py-1">{ghData.publicRepos} Repos</li>
                     <li className="py-1">{ghData.followers} Followers</li>
                     <li className="py-1">{ghData.following} Following</li>
-                    <li className="pb-1"><a style={{ color: 'blue' }} href={ghData.htmlUrl}>View Profile</a></li>
+                    <li className="py-1"><a style={{ color: 'blue' }} href={ghData.htmlUrl}>View My GitHub</a></li>
                   </>
                 )}
             </ul>
