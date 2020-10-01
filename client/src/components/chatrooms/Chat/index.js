@@ -33,9 +33,9 @@ const Chat = ({ location }) => {
     const [messages, setMessages] = useState([]);
 
     // DEV
-    // const ENDPOINT = "localhost:5000";
+    const ENDPOINT = "localhost:5000";
     // PRODUCTION
-    const ENDPOINT = "https://snipit-social.herokuapp.com/";
+    // const ENDPOINT = "https://snipit-social.herokuapp.com/";
 
     // On Connect, data from URL params
     useEffect(() => {

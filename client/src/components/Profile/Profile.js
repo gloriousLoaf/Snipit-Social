@@ -99,14 +99,14 @@ class Profile extends Component {
       ) {
         followButtons = (
           ///////// CSS? /////////
-          <div>
+          <div className="mt-1 mb-4">
             <Button className="following" onClick={this.handleFollow}>Follow</Button>
           </div>
         );
       } else {
         followButtons = (
           ///////// CSS? /////////
-          <div>
+          <div className="mt-1 mb-4">
             <Button className="following" onClick={this.handleUnfollow}>Unfollow</Button>
           </div>
         );
@@ -190,7 +190,7 @@ class Profile extends Component {
 
           <ul className="profStats list-unstyled mt-3">
             <li>
-              <h5> {profile.email} </h5>
+              <h5 className="textChanger"> {profile.email} </h5>
               <h5>Snipshot:</h5>
             </li>
 
@@ -198,8 +198,10 @@ class Profile extends Component {
 
             <li className="py-1"> {profile.followers.length} followers </li>
 
-            <li className="py-1"> {profile.following.length} following </li>
+            <li className="py-1 pb-1"> {profile.following.length} following </li>
           </ul>
+
+          { followButtons}
 
           {/* GitHub Connector Button */}
           { githubConnector}
@@ -221,8 +223,6 @@ class Profile extends Component {
                 )}
             </ul>
           </div>
-
-          { followButtons}
 
         </Card >
       );

@@ -55,12 +55,12 @@ class UserAction extends Component {
           <h2 className="d-flex justify-content-center">Settings</h2>
           <div className="row justify-content-around my-2">
             {/* Edit Profile function doesn't exist yet */}
-            <Button className="settingBtn">
+            <Button className="following">
               <i className="fas fa-sliders-h"></i>
             </Button>
 
             {/* Logout used to work with GH AuthContext, but... */}
-            <Button className="settingBtn" onClick={() => this.handleLogout() + this.renderRedirect()}>
+            <Button className="following" onClick={() => this.handleLogout() + this.renderRedirect()}>
               {/* <Button className="settingBtn"> */}
               <i className="fas fa-sign-out-alt"></i>
             </Button>
