@@ -1,7 +1,4 @@
 /* PROFILE - Main */ 
-/* BUT this isn't even linked into Profile.js right now,
-    but it still somehow affects the page???
-    the css iss an absolute mess : ( */ 
 
 /* NEW - GitHub Connector */ 
 .githubBtn {
@@ -65,3 +62,34 @@
       margin: 1rem auto 5rem auto;
     }
 }
+
+
+
+/* OLD GITHUB PROFILE PAGE
+    Use parts if needed? */
+    /* .profContainer {
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+  }
+    
+  .profCard {
+      margin: 0.75rem 0;
+      background-color: rgb(245, 245, 248);
+      padding: 25px 20px;
+      border-radius: 4px;
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(13, 37, 145, 0.1);
+  }
+  
+  .cardContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 10% 5rem 10%;
+  }
+  
+  @media (min-width: 960px) {
+      .cardContainer {
+        margin: 1rem auto 5rem auto;
+      }
+  } */
