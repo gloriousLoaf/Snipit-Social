@@ -25,9 +25,6 @@ import store from "./store";
 // MAIN PROFILE
 import Profile from "./components/Profile/Profile.js"
 
-// OLD GITHUB PROFILE
-import OldProfile from "./components/Profile/old-GitHub.js";
-
 // Timeline stuff, coming soon
 import ListPost from "./components/posts/ListPost";
 
@@ -71,17 +68,8 @@ const App = () => {
 
               <Route path="/githublogin" exact component={GitHubLogin} />
 
-              {/* Soon */}
-              {/* <Route path="/googlelogin" exact component={GoogleLogin} /> */}
-
-              {/* OldProfile only populates with info if you auth in 
-              through GitHub. Currently mining it for parts - David */}
-              <Route path="/OldProfile/:id" exact component={OldProfile} />
-
-              {/* REAL PROFILE */}
               <Route path="/Profile/:userId" component={Profile} />
 
-              {/* no content yet */}
               <Route path="/Posts" component={ListPost} />
 
               <Route path="/breakroom" component={breakroom} />

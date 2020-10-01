@@ -39,11 +39,15 @@ export const reducer = (state, action) => {
         snipitId: snip._id,
         htmlURL: action.payload.user.html_url,
         name: action.payload.user.name,
-        avatarUrl: action.payload.user.avatar_url,
+        avatarUrl: action.payload.user.avatar_url,   /////////////
         bio: action.payload.user.bio,
         blog: action.payload.user.blog,
         company: action.payload.user.company,
-        hireable: action.payload.user.hireable
+        hireable: action.payload.user.hireable,
+        publicRepos: action.payload.user.public_repos,
+        followers: action.payload.user.followers,
+        following: action.payload.user.following,
+        htmlUrl: action.payload.user.html_url
       };
 
       gitAPI.saveGitInfo(variables);

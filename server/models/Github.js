@@ -37,6 +37,22 @@ const gitSchema = new Schema({
         type: String,
         required: false,
     },
+    publicRepos: {
+        type: Number,
+        required: false
+    },
+    followers: {
+        type: Number,
+        required: false
+    },
+    following: {
+        type: Number,
+        required: false
+    },
+    htmlUrl: {
+        type: String,
+        required: false
+    }
 })
 
 module.exports = mongoose.model('GitInfo', gitSchema);
