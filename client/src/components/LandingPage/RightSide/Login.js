@@ -32,6 +32,8 @@ class Login extends Component {
       this.props.history.push(`/Profile/${this.props.user._id}`);
     }
     localStorage.setItem("authUser", JSON.stringify(this.props.user));
+    /////////////////// this is a temporary solution, see Profile.js
+    localStorage.setItem("ghUser", JSON.stringify({ data: "none yet" }));
   }
   /////////////////////
 
