@@ -12,11 +12,13 @@ import '../../../../pages/Framework/css/night-mode.css';
 
 const Message = ({ message: { text, user }, name }) => {
 
-
-    // only errors we had was avatar URL, fix it later? 
-    const { state } = useContext(AuthContext);
+    // OLD - Keep, may need after fixing below workaround
+    // const { state } = useContext(AuthContext);
     // const { avatar_url } = state.user;
 
+    // NEW 10/2 working on workaround to have avatars in chat
+    // for GH users, without crashing chat for non-GH'ers
+    const ghUser = JSON.parse(localStorage.getItem("ghUser"));
 
     // getting names corresponding to who sent the message
     let isSentByCurrentUser = false;
@@ -36,12 +38,12 @@ const Message = ({ message: { text, user }, name }) => {
                         <div className="message-bubble-inner">
                             <div className="message-avatar">
                                 {/* ternary to display GH avatar or placeholder */}
-                                {/* {!state.avatar_url ? (
-                                    <img className="lilAvatar" src={avatar_url} alt="Avatar" />
-                                ) : ( */}
-                                <i className="lilAvatar fas fa-user-circle" alt="Avatar"></i>
-                                {/* )
-                                } */}
+                                {ghUser.avatarUrl ? (
+                                    <img className="lilAvatar" src={ghUser.avatarUrl} alt="Avatar" />
+                                ) : (
+                                        <i className="lilAvatar fas fa-user-circle" alt="Avatar"></i>
+                                    )
+                                }
                             </div>
                             <div className="message-text">
                                 <p>{ReactEmoji.emojify(text)}</p>
@@ -58,12 +60,12 @@ const Message = ({ message: { text, user }, name }) => {
                         <div className="message-bubble-inner">
                             <div className="message-avatar">
                                 {/* ternary to display GH avatar or placeholder */}
-                                {/* {!state.avatar_url ? ( */}
-                                <i className="lilAvatar fas fa-user-circle" alt="Avatar"></i>
-                                {/* ) : (
-                                        <img className="avatar" src={avatar_url} alt="Avatar" />
+                                {ghUser.avatarUrl ? (
+                                    <i className="lilAvatar fas fa-user-circle" alt="Avatar"></i>
+                                ) : (
+                                        <img className="avatar" src={ghUser.avatarUrl} alt="Avatar" />
                                     )
-                                } */}
+                                }
                             </div>
                             <div className="message-text">
                                 <p>{ReactEmoji.emojify(text)}</p>

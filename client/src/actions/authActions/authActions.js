@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_ERRORS, SET_CURRENT_USER} from "../../constants/"
+import { GET_ERRORS, SET_CURRENT_USER } from "../../constants/"
 
 import setAuthHeader from "../../utils/setAuthHeader"
 
@@ -23,7 +23,11 @@ export const loginUser = (userData) => dispatch => {
 
 export const registerUser = (userData, history) => dispatch => {
     axios.post("/api/users/register", userData)
-        .then(res => history.push('/login'))
+        .then(res => {
+            // history.push('/')
+            alert("Thanks, you're ready to login!");
+            window.location.reload()
+        })
         // .catch(err => console.log(err.response.data))
         .catch(err => dispatch({
             type: GET_ERRORS,

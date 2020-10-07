@@ -1,12 +1,9 @@
 //// GITHUB LOGIN ////
-// for now, this is just GitHub, but we can integrate Gogle here too
 import React, { useState, useEffect, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../../App";
 import GitHubLogo from './gh.png';
 import './style.css';
-
-import { connect } from "react-redux"
 
 
 // creating our login component, using AuthContext global state
@@ -58,18 +55,16 @@ const GitHubLogin = () => {
         }
     }, [state, dispatch, data]);
 
-    // THIS will redirect to user's profile w/ GitHub id,
-    // different than mongodb _id but still unique and won't
-    // disrupt other functioning, right?
+    // Redirect back to user's profile after GH Connection
+    let backToMe = JSON.parse(localStorage.getItem("authUser"))
     if (state.isLoggedIn) {
-        let ghID = state.user.id;
-        return <Redirect to={`/profile/:${ghID}`} />;
-        // previous version:
-        // return <Redirect to="/profile/:id" />;
+        return <Redirect to={`/Profile/${backToMe._id}`} />
     }
 
     // Based on login state, this displays a loading spinner and / or error msg
     return (
+        // The old GitHub stuff that displayed data.
+        // Will definitely use some stats to add to Profile
         <div className="gitContainer">
             <div className="login-card">
                 <h1 className="welcome">Welcome</h1>
@@ -88,7 +83,7 @@ const GitHubLogin = () => {
                                 }
 
                                 <a className="login-link"
-                                    href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}
+                                    href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}`}
                                     onClick={() => {
                                         setData({ ...data, errorMessage: "" });
                                     }}>Authorize</a>
@@ -98,7 +93,6 @@ const GitHubLogin = () => {
                 <p className="text-secondary text-center">This leads to GitHub's Authorization</p>
             </div >
         </div >
-
     );
 }
 

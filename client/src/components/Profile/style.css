@@ -1,34 +1,25 @@
 /* PROFILE - Main */ 
-/* BUT this isn't even linked into Profile.js right now,
-    but it still somehow affects the page???
-    the css iss an absolute mess : ( */ 
-#social {
-  flex-direction: row;
-}
 
-.socialBtn {
-  transition: 0.3s;
+/* NEW - GitHub Connector */ 
+.githubBtn {
+  margin: 0;
+  padding: 0;
+  font-size: 2.5rem;
+  color: #384047;
   background-color: inherit;
   border: none;
-}
-
-.socialBtn i {
-  color: #384047;
-  font-size: 3rem;
+  transition: 0.3s;
 
 }
-.socialBtn:hover, .socialBtn:focus {
-  letter-spacing: 0.3rem;
-  box-shadow: 3px 5px 3px 0 rgba(0, 0, 0, 1);
+.githubBtn:hover, .githubBtn:focus,
+.githubBtn i:hover, .githubBtn i:focus {
+  color: var(--main-color);
   background-color: inherit;
 }
 
-#date{
-  float: right;
-  margin: 4rem auto -3.5rem;
-  font-family: inherit;
-  font-size: 0.75rem;
-  color: #545454;
+/* Follow / Unfollow */ 
+.following {
+  background-color: var(--main-color);
 }
 
 .card {
@@ -71,3 +62,34 @@
       margin: 1rem auto 5rem auto;
     }
 }
+
+
+
+/* OLD GITHUB PROFILE PAGE
+    Use parts if needed? */
+    /* .profContainer {
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+  }
+    
+  .profCard {
+      margin: 0.75rem 0;
+      background-color: rgb(245, 245, 248);
+      padding: 25px 20px;
+      border-radius: 4px;
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(13, 37, 145, 0.1);
+  }
+  
+  .cardContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 10% 5rem 10%;
+  }
+  
+  @media (min-width: 960px) {
+      .cardContainer {
+        margin: 1rem auto 5rem auto;
+      }
+  } */

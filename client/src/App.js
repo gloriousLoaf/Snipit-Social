@@ -19,23 +19,17 @@ import setHeaderAuth from "./utils/setAuthHeader";
 //refactoring into redux (combining reducers)
 import store from "./store";
 
-// cant find how to separate it, might end up with huge reducer index.js
-// import { profileState, profileReducer } from "./store/reducer/profileReducer";
+// PROFILE SWITCHER
+import ProfileSwitcher from './components/Profile/ProfileSwitcher';
+import Profile from './components/Profile/Profile';
 
-// MAIN PROFILE
-import Profile from "./components/Profile/Profile.js"
 
-// OLD GITHUB PROFILE
-import OldProfile from "./components/Profile/old-GitHub.js";
-
-// Timeline stuff, coming soon
+// TIMELINE
 import ListPost from "./components/posts/ListPost";
 
 // utility components 
 import notFound from "./components/UtilityComponents/notFound"
 
-// Eventually we'll have a logo
-// import logo from "./logo.svg";
 import "./App.css";
 
 export const AuthContext = createContext();
@@ -71,17 +65,11 @@ const App = () => {
 
               <Route path="/githublogin" exact component={GitHubLogin} />
 
-              {/* Soon */}
-              {/* <Route path="/googlelogin" exact component={GoogleLogin} /> */}
-
-              {/* OldProfile only populates with info if you auth in 
-              through GitHub. Currently mining it for parts - David */}
-              <Route path="/OldProfile/:id" exact component={OldProfile} />
-
-              {/* REAL PROFILE */}
+              {/* NEED BOTH */}
+              <Route path="/ProfileSwitcher/:userId" component={ProfileSwitcher} />
               <Route path="/Profile/:userId" component={Profile} />
 
-              {/* no content yet */}
+
               <Route path="/Posts" component={ListPost} />
 
               <Route path="/breakroom" component={breakroom} />

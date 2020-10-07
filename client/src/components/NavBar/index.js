@@ -1,10 +1,10 @@
-//////// new attempt to rewrite as Redux, probably bug-filled
 // NAVBAR - PROFILE
 import React, { Component } from 'react';
-import { Button, Dropdown, DropdownButton, Form, FormControl } from 'react-bootstrap';
+import { Button, Dropdown, DropdownButton } from 'react-bootstrap';
+// import { Button, Dropdown, DropdownButton, Form, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 // import { getCurrentUser } from "../../actions/authActions/authActions";
 import './style.css';
 
@@ -27,9 +27,6 @@ class NavBar extends Component {
         let userObj = JSON.parse(localStorage.getItem("user"));
         if (!userObj) {
             // logic for getting email-auth's name
-            // userObj = something pulled from db or other localstorage
-
-            // i fixed it, scroll down to see what we can pull from redux -- eric
             userName = this.props.auth.user.fullname
         } else {
             userName = userObj.name;
@@ -55,19 +52,11 @@ class NavBar extends Component {
     render() {
 
         const {
-            auth,
-            user,
-            profile,
+            // auth,
+            // user,
+            // profile,
             isAuthenticated,
         } = this.props;
-
-        // console.log(auth)
-
-        // console.log(user)
-
-        // console.log(profile)
-
-        // console.log(this.props.auth.user)
 
         const authLinks = isAuthenticated
             && (
@@ -75,7 +64,6 @@ class NavBar extends Component {
                     <i className="far fa-user-circle" alt="Profile" aria-hidden="true"></i>
                 </Button>
             )
-
 
         return (
             <div className="navbarContainer">

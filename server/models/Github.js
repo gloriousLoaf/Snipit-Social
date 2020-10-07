@@ -9,6 +9,10 @@ const gitSchema = new Schema({
         required: false,
         unique: 1,
     },
+    snipitId: {
+        type: String,
+        required: false,
+    },
     name: {
         type: String,
         required: false,
@@ -33,6 +37,22 @@ const gitSchema = new Schema({
         type: String,
         required: false,
     },
+    publicRepos: {
+        type: Number,
+        required: false
+    },
+    followers: {
+        type: Number,
+        required: false
+    },
+    following: {
+        type: Number,
+        required: false
+    },
+    htmlUrl: {
+        type: String,
+        required: false
+    }
 })
 
 module.exports = mongoose.model('GitInfo', gitSchema);

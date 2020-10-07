@@ -84,7 +84,9 @@ const isLoggedIn = (req, res, next) => {
 // This line pulls in express app:
 const server = http.createServer(app);
 const io = socketio(server);
-io.origins("*:*");
+// io.origins("*:*");
+// io.origins("*:80*");
+io.origins("*:* https://snipit-social.herokuapp.com/*");
 
 // On Connect, connect client-side socket
 io.on('connect', (socket) => {
@@ -105,7 +107,7 @@ io.on('connect', (socket) => {
   });
 
   // IF HEROKU BUILT starts acting up, comment-in, rebuild, push & deploy
-  // setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+  setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
 
   // expecting message
   socket.on('sendMessage', (message, cb) => {
